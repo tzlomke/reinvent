@@ -1,11 +1,17 @@
 const express = require("express");
 const mongoose = require("mongoose");
-// const db = require("./models");
+const db = require("./models");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
-const app = express();
-const bodyParser = require("body-parser");
 
+const bodyParser = require("body-parser");
+const passport = require("passport");
+
+// User Authentication Routes
+const userAuthRoutes = require("./routes/api/userAuthentication");
+
+// Initialize Express
+const app = express();
 
 // Middleware
 app.use(
