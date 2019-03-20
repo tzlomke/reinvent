@@ -8,11 +8,11 @@ module.exports = function validateRegisterInput(data) {
 	// Converts Empty Form Fields to Empty String Before Running Validator
 	data.firstName = !isEmpty(data.firstName) ? data.firstName : "";
 	data.lastName = !isEmpty(data.lastName) ? data.lastName : "";
-	data.email = !isEmpty(data.email) ? data.email : "";
+	data.username = !isEmpty(data.username) ? data.username : "";
 	data.password = !isEmpty(data.password) ? data.password : "";
 	data.passwordConfirm = !isEmpty(data.passwordConfirm) ? data.passwordConfirm : "";
 
-	// Check for Empty Fields, Valid Email Formats, Password Requirements Met and Confirm Password Matches
+	// Check for Empty Fields, Password Requirements Met and Confirm Password Matches
 	// Sets Errors for Unmet Requirements
 
 	// Name Checks
@@ -24,11 +24,9 @@ module.exports = function validateRegisterInput(data) {
 		errors.lastName = "Last Name is Required";
 	}
 
-	// Email Checks
-	if (Validator.isEmpty(data.email)) {
-		errors.email = "Email is required";
-	} else if (!Validator.isEmail(data.email)) {
-		errors.email = "Please enter a valid email address"
+	// Username Checks
+	if (Validator.isEmpty(data.username)) {
+		errors.username = "Username is required";
 	}
 
 	// Password Checks
