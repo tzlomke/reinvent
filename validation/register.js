@@ -10,18 +10,18 @@ module.exports = function validateRegisterInput(data) {
 	data.lastName = !isEmpty(data.lastName) ? data.lastName : "";
 	data.username = !isEmpty(data.username) ? data.username : "";
 	data.password = !isEmpty(data.password) ? data.password : "";
-	data.passwordConfirm = !isEmpty(data.passwordConfirm) ? data.passwordConfirm : "";
+	data.confirmPassword = !isEmpty(data.confirmPassword) ? data.confirmPassword : "";
 
 	// Check for Empty Fields, Password Requirements Met and Confirm Password Matches
 	// Sets Errors for Unmet Requirements
 
 	// Name Checks
 	if (Validator.isEmpty(data.firstName)) {
-		errors.firstName = "First Name is Required";
+		errors.firstName = "First Name is required";
 	}
 
 	if (Validator.isEmpty(data.lastName)) {
-		errors.lastName = "Last Name is Required";
+		errors.lastName = "Last Name is required";
 	}
 
 	// Username Checks

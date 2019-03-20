@@ -18,7 +18,7 @@ router.post("/register", (req, res) => {
 	const { errors, isValid } = validateRegistrationInput(req.body);
 
 	if (!isValid) {
-		return releaseEvents.status(400).json(errors);
+		return res.status(400).json(errors);
 	}
 
 	// Check to See if Username already exists on database
