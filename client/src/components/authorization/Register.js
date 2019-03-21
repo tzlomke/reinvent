@@ -19,13 +19,20 @@ class Register extends Component {
 		};
 	};
 
+	componentDidMount() {
+		// If logged in and user navigates to Register page, should redirect them to dashboard
+		if (this.props.auth.isAuthenticated) {
+		 	this.props.history.push("/dashboard");
+		}
+	};
+
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.errors) {
 			this.setState({
 				errors: nextProps.errors
 			});
-		}
-	}
+		};
+	};
 
 	onChange = event => {
 			this.setState({ [event.target.id]: event.target.value });
@@ -124,7 +131,7 @@ class Register extends Component {
 									error={errors.password}
 									id="password"
 									type="password"
-									clasName={classNames("", {
+									className={classNames("", {
 										invalid: errors.password
 									})}
 								/>
@@ -139,7 +146,7 @@ class Register extends Component {
 									error={errors.confirmPassword}
 									id="confirmPassword"
 									type="password"
-									clasName={classNames("", {
+									className={classNames("", {
 										invalid: errors.confirmPassword
 									})}
 								/>
