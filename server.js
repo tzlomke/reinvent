@@ -5,6 +5,11 @@ const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
 const bodyParser = require("body-parser");
+const routes = require('./routes');
+
+// Middleware setup shifted to match what was used in class
+// app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
 
 
 // Middleware
@@ -14,6 +19,9 @@ app.use(
 	})
 );
 app.use(bodyParser.json());
+
+// Routes
+app.use(routes);
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
