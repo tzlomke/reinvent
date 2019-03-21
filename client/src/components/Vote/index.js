@@ -8,8 +8,6 @@ class Vote extends Component {
         votes: []
     };
 
-    data = "";
-
     componentDidMount() {
         this.loadVotes();
     }
@@ -28,8 +26,7 @@ class Vote extends Component {
 
     onCreate = (data) =>  {
         voteAPI.saveVote(data).then(res => {
-            this.data = res.data;
-            console.log(this.data);
+            console.log(res.data);
         });
     };
 
