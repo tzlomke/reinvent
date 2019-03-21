@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import API from '../utils/API';
-import CampaignDisplay from './CampaignDisplay';
+import API from '../../utils/API';
+import CampaignDisplay from '../CampaignDisplay';
 
 class CampaignForm extends Component {
 

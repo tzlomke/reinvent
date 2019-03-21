@@ -1,7 +1,10 @@
 const router = require("express").Router();
 const campaignRoutes = require("./campaign");
 
-// Book routes
+// Campaign routes
 router.use("/campaign", campaignRoutes);
+
+// Discussion routes
+router.use("/discussion", discussionRoutes);
 
 module.exports = router;

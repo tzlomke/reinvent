@@ -6,5 +6,11 @@ export default {
   },
   campaignGet: () => {
     return axios.get('/api/campaign');
+  },
+  discussionPost: (discussion) => {
+    return axios.post('/api/discussion', discussion);
+  },
+  discussionGet: () => {
+    return axios.get('/api/discussion');
   }
 };
