@@ -63,10 +63,10 @@ class Login extends Component {
 
 						<div className="col s12" style={{ paddingLeft: "11.250px" }}>
 							<h4>
-							<b>Login</b> below
+								<b>Login</b> below
 							</h4>
 							<p className="grey-text text-darken-1">
-							Don't have an account? <Link to="/register">Register</Link>
+								Don't have an account? <Link to="/register">Register</Link>
 							</p>
 						</div>
 
@@ -76,7 +76,7 @@ class Login extends Component {
 								<input
 									onChange={this.onChange}
 									value={this.state.username}
-									error={errors.username}
+									errors={errors.username}
 									id="username"
 									type="text"
 									className={classNames("", {
@@ -94,7 +94,7 @@ class Login extends Component {
 								<input
 									onChange={this.onChange}
 									value={this.state.password}
-									error={errors.password}
+									errors={errors.password}
 									id="password"
 									type="password"
 									className={classNames("", {
@@ -111,10 +111,10 @@ class Login extends Component {
 							<div className="col s12" style={{ paddingLeft: "11.250px" }}>
 								<button
 									style={{
-									width: "150px",
-									borderRadius: "3px",
-									letterSpacing: "1.5px",
-									marginTop: "1rem"
+										width: "150px",
+										borderRadius: "3px",
+										letterSpacing: "1.5px",
+										marginTop: "1rem"
 									}}
 									type="submit"
 									className="btn btn-large waves-effect waves-light hoverable blue accent-3"

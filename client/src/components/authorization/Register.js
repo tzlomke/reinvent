@@ -48,7 +48,7 @@ class Register extends Component {
 			username: this.state.username,
 			password: this.state.password,
 			confirmPassword: this.state.confirmPassword,
-			fullname: `${this.state.firstName} ${this.state.lastName}`
+			fullName: `${this.state.firstName} ${this.state.lastName}`
 		};
 		
 		this.props.registerUser(newUser, this.props.history);
@@ -64,16 +64,16 @@ class Register extends Component {
 					<div className="col s8 offset-s2">
 					
 						<Link to="/" className="btn-flat waves-effect">
-							<i className="material-icons left">keyboard_backspace</i> Back to
-							home
+							<i className="material-icons left">keyboard_backspace</i> 
+							Back to	home
 						</Link>
 						
 						<div className="col s12" style={{ paddingLeft: "11.250px" }}>
 							<h4>
-							<b>Register</b> below
+								<b>Register</b> below
 							</h4>
 							<p className="grey-text text-darken-1">
-							Already have an account? <Link to="/login">Log in</Link>
+								Already have an account? <Link to="/login">Log in</Link>
 							</p>
 						</div>
 
@@ -83,7 +83,7 @@ class Register extends Component {
 								<input
 									onChange={this.onChange}
 									value={this.state.firstName}
-									error={errors.firstName}
+									errors={errors.firstName}
 									id="firstName"
 									type="text"
 									className={classNames("", {
@@ -98,7 +98,7 @@ class Register extends Component {
 								<input
 									onChange={this.onChange}
 									value={this.state.lastName}
-									error={errors.name}
+									errors={errors.lastName}
 									id="lastName"
 									type="text"
 									className={classNames("", {
@@ -113,7 +113,7 @@ class Register extends Component {
 								<input
 									onChange={this.onChange}
 									value={this.state.username}
-									error={errors.name}
+									errors={errors.username}
 									id="username"
 									type="text"
 									className={classNames("", {
@@ -128,7 +128,7 @@ class Register extends Component {
 								<input
 									onChange={this.onChange}
 									value={this.state.password}
-									error={errors.password}
+									errors={errors.password}
 									id="password"
 									type="password"
 									className={classNames("", {
@@ -143,7 +143,7 @@ class Register extends Component {
 								<input
 									onChange={this.onChange}
 									value={this.state.confirmPassword}
-									error={errors.confirmPassword}
+									errors={errors.confirmPassword}
 									id="confirmPassword"
 									type="password"
 									className={classNames("", {
@@ -157,10 +157,10 @@ class Register extends Component {
 							<div className="col s12" style={{ paddingLeft: "11.250px" }}>
 								<button
 									style={{
-									width: "150px",
-									borderRadius: "3px",
-									letterSpacing: "1.5px",
-									marginTop: "1rem"
+										width: "150px",
+										borderRadius: "3px",
+										letterSpacing: "1.5px",
+										marginTop: "1rem"
 									}}
 									type="submit"
 									className="btn btn-large waves-effect waves-light hoverable blue accent-3"

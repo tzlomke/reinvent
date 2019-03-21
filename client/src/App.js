@@ -17,7 +17,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
-		// Set auth token header auth
+	// Set auth token header auth
 	const token = localStorage.jwtToken;
 	setAuthToken(token);
 	// Decode token and get user info and exp

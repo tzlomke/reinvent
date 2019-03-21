@@ -5,10 +5,11 @@ import { logoutUser } from "../../actions/authActions";
 
 class Dashboard extends Component {
 
-	onLogoutClick = e => {
-		e.preventDefault();
+	onLogoutClick = event => {
+		event.preventDefault();
 		this.props.logoutUser();
 	};
+
 	render() {
 
 		const { user } = this.props.auth;
@@ -19,7 +20,7 @@ class Dashboard extends Component {
 					<div className="col s12 center-align">
 						<h4>
 
-							<b>Hey there,</b> {user.fullName}
+							<b>Hey there,</b> {user.username}
 
 							<p className="flow-text grey-text text-darken-1">
 								You are logged in
