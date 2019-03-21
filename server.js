@@ -4,13 +4,21 @@ const mongoose = require("mongoose");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
-// bodyParser commented out due to middleware setup change.
-// const bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
+const routes = require('./routes');
+
+// Middleware setup shifted to match what was used in class
+// app.use(express.urlencoded({ extended: true }));
+// app.use(express.json());
+
 
 // Middleware
-// Middleware setup shifted to match what was used in class
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+app.use(
+	bodyParser.urlencoded({
+		extended: false
+	})
+);
+app.use(bodyParser.json());
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -21,11 +29,14 @@ if (process.env.NODE_ENV === "production") {
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/renivent", { useNewUrlParser: true })
 	.then(console.log("Connected to MongoDB"));
 
+// Routes
+app.use(routes);
+
 // Send every request to the React app
 // Define any API routes before this runs
-app.get("*", function(req, res) {
-	res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
+// app.get("*", function(req, res) {
+// 	res.sendFile(path.join(__dirname, "./client/build/index.html"));
+// });
 
 app.listen(PORT, function() {
 	console.log(`🌎 ==> API server now on port ${PORT}!`);

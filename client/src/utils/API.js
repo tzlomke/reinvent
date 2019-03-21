@@ -2,9 +2,9 @@ import axios from 'axios';
 
 export default {
   campaignPost: (campaign) => {
-    return axios.post('/campaign', campaign);
+    return axios.post('/api/campaign', campaign);
   },
   campaignGet: () => {
-    return axios.get('/campaign');
+    return axios.get('/api/campaign');
   }
 };
