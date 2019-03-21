@@ -2,19 +2,19 @@ const db = require('../models');
 
 module.exports = {
   // Create a campaign. The callbacks allow the responses to be passed almost unchanged up the chain to make it easier on frontend
-  createCampaign: (req, cb) => {
+  createCampaign: (req, res) => {
     db.Campaign
-      .create(req)
-      .then(dbCampaign => cb(dbCampaign))
-      .catch(err => cb(err))
+      .create(req.body)
+      .then(dbCampaign => res.json(dbCampaign))
+      .catch(err => res.json(err))
   },
   // Get all the campaigns in a database
-  getCampaign: (req, cb) => {
+  getCampaign: (req, res) => {
     // We could use req to allow for focused searches for particular campaigns later on. Or, we could build another get function
     // console.log(req);
     db.Campaign
       .find({})
-      .then(dbCampaign => cb(dbCampaign))
-      .catch(err => cb(err))
+      .then(dbCampaign => res.json(dbCampaign))
+      .catch(err => res.json(err));
   }
 };
