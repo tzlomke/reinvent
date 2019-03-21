@@ -1,4 +1,6 @@
 module.exports = {
   Campaign: require('./Campaign'),
-  User: require('./User')
+  User: require('./User'),
+  Discussion: require('./Discussion'),
+  Vote: require("./vote")
 };

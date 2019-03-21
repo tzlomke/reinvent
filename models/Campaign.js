@@ -7,6 +7,10 @@ const campaignSchema = new Schema({
   synopsis: String,
   date: { type: Date, default: Date.now },
 
+  comments: [{
+    author: {type: String, required: true },
+
+  }],
   // Ref Votes related to the campaign
   vote: [
     {

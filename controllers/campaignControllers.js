@@ -16,5 +16,19 @@ module.exports = {
       .find({})
       .then(dbCampaign => res.json(dbCampaign))
       .catch(err => res.json(err));
+  },
+  // Create a discussion
+  createDiscusison: (req, res) => {
+    db.Discussion
+      .create(req.body)
+      .then(dbDiscussion => res.json(dbDiscussion))
+      .catch(err => {res.json(err)})
+  },
+  // Get the discussions
+  getDiscusison: (req, res) => {
+    db.Discussion
+      .find({})
+      .then(dbDiscussion => res.json(dbDiscussion))
+      .catch(err => {res.json(err)})
   }
 };
