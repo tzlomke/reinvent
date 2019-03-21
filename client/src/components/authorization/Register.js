@@ -1,6 +1,12 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { registerUser } from "../../actions/authActions";
+import classNames from "classnames";
+
 class Register extends Component {
+	
 	constructor() {
 		super();
 		this.state = {
@@ -11,6 +17,14 @@ class Register extends Component {
 			confirmPassword: "",
 			errors: {}
 		};
+	};
+
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.errors) {
+			this.setState({
+				errors: nextProps.errors
+			});
+		}
 	}
 
 	onChange = event => {
@@ -30,7 +44,7 @@ class Register extends Component {
 			fullname: `${this.state.firstName} ${this.state.lastName}`
 		};
 		
-	console.log(newUser);
+		this.props.registerUser(newUser, this.props.history);
 	};
 
 	render() {
@@ -62,11 +76,15 @@ class Register extends Component {
 								<input
 									onChange={this.onChange}
 									value={this.state.firstName}
-									error={errors.name}
+									error={errors.firstName}
 									id="firstName"
 									type="text"
+									className={classNames("", {
+										invalid: errors.firstName
+									})}
 								/>
 								<label htmlFor="firstName">First Name</label>
+								<span className="red-text">{errors.firstName}</span>
 							</div>
 
 							<div className="input-field col s12">
@@ -76,8 +94,12 @@ class Register extends Component {
 									error={errors.name}
 									id="lastName"
 									type="text"
+									className={classNames("", {
+										invalid: errors.lastName
+									})}
 								/>
 								<label htmlFor="lastName">Last Name</label>
+								<span className="red-text">{errors.lastName}</span>
 							</div>
 
 							<div className="input-field col s12">
@@ -87,8 +109,12 @@ class Register extends Component {
 									error={errors.name}
 									id="username"
 									type="text"
+									className={classNames("", {
+										invalid: errors.username
+									})}
 								/>
 								<label htmlFor="userame">Userame</label>
+								<span className="red-text">{errors.username}</span>
 							</div>
 
 							<div className="input-field col s12">
@@ -98,19 +124,27 @@ class Register extends Component {
 									error={errors.password}
 									id="password"
 									type="password"
+									clasName={classNames("", {
+										invalid: errors.password
+									})}
 								/>
 								<label htmlFor="password">Password</label>
+								<span className="red-text">{errors.password}</span>
 							</div>
 
 							<div className="input-field col s12">
 								<input
 									onChange={this.onChange}
-									value={this.state.password2}
-									error={errors.password2}
+									value={this.state.confirmPassword}
+									error={errors.confirmPassword}
 									id="confirmPassword"
 									type="password"
+									clasName={classNames("", {
+										invalid: errors.confirmPassword
+									})}
 								/>
 								<label htmlFor="confirmPassword">Confirm Password</label>
+								<span className="red-text">{errors.confirmPassword}</span>
 							</div>
 							
 							<div className="col s12" style={{ paddingLeft: "11.250px" }}>
@@ -135,4 +169,15 @@ class Register extends Component {
 	}
 }
 
-export default Register;
+Register.propTypes = {
+	registerUser: PropTypes.func.isRequired,
+	auth: PropTypes.object.isRequired,
+	errors: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+	auth: state.auth,
+	errors: state.errors
+});
+
+export default connect(mapStateToProps, { registerUser })(withRouter(Register));
