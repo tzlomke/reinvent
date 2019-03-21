@@ -5,9 +5,11 @@
   "proxy": "http://localhost:3001/",
   "dependencies": {
     "concurrently": "^4.1.0",
+    "axios": "^0.18.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "react-scripts": "^2.1.1"
+    "react-scripts": "^2.1.1",
+    "react-vote": "^3.3.3"
   },
   "scripts": {
     "start": "react-scripts start",
