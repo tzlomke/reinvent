@@ -27,6 +27,16 @@ class CampaignForm extends Component {
       campaignInputArea: ''
     });
     campaignForm.reset();
+    this.loadCampaigns();
+  };
+
+  handleCampaignClick = (event) => {
+    const id = event.target.dataset.id;
+    this.state.campaignsFromDB.map(element => {
+      if(element._id === id) {
+        console.log(element);
+      }
+    });
   };
 
   handleChange = (event) => {
@@ -69,10 +79,13 @@ class CampaignForm extends Component {
                 <button id="submitCampaign" type="submit" onClick = {this.handleFormSubmit}>Submit</button>
               </form>
             </section>
+            <header>New Campaigns</header>
           {this.state.campaignsFromDB.map((campaign) => {
             return(
               <CampaignDisplay 
+                onClick = {this.handleCampaignClick}
                 key = {campaign._id}
+                campaignID = {campaign._id}
                 title={campaign.title}
                 author={campaign.author}
                 synopsis={campaign.synopsis} />
