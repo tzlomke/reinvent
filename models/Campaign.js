@@ -7,9 +7,12 @@ const campaignSchema = new Schema({
   synopsis: String,
   date: { type: Date, default: Date.now },
 
+  // Use $push to get this array built
   comments: [{
+    subject: {type: String, requied: true},
     author: {type: String, required: true },
-
+    body: {type: String, required: true},
+    date: { type: Date, default: Date.now }
   }],
   // Ref Votes related to the campaign
   vote: [
