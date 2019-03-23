@@ -1,20 +1,18 @@
 import React, { Component } from "react";
-import API from "../../utils/API";
+// import API from "../../utils/API";
 
-class ProfilePicture extends Component {
-
-	state = {
-		hasImage: false,
-		imageFile: {}
-	};
+const ProfilePicture = (props) => {
+	const { profileImage } = props;
 
 	// Needs: Upload and Render Image File
 	// Find A Place to Host Images
 	// ? Stateful or Stateless?
 
-	render() {
-		<div></div>
-	};
+	return(
+		<div className="profile-image-container">
+			<img className="profile-image" src={profileImage} alt="Profile Picture" height="150" width ="150"></img>
+		</div>
+	)
 };
 
 export default ProfilePicture;
