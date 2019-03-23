@@ -26,7 +26,7 @@ const ProfileData = (props) => {
 				</div>
 			</section>
 		</div>
-	)
+	);
 };
 
 export default ProfileData;
