@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(routes);
 
 // Connect to DataBase
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/renivent", { useNewUrlParser: true })
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reInvent_Db", { useNewUrlParser: true })
 	.then(console.log("Connected to MongoDB"));
 
 
