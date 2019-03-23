@@ -1,9 +1,13 @@
 import React, { Component } from "react";
+
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
+
 import "./App.css";
+// import Ideas from './pages/Ideas';
+// import IdeasDiscussed from "./pages/IdeasDiscussed";
 
 import { Provider } from "react-redux";
 import store from "./store";
@@ -35,6 +39,7 @@ if (localStorage.jwtToken) {
 }
 
 class App extends Component {
+
 	render() {
 		return (
 			<Provider store={store}>
