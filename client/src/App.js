@@ -39,16 +39,6 @@ if (localStorage.jwtToken) {
 }
 
 class App extends Component {
-<<<<<<< HEAD
-  render() {
-    return (
-      <div className="App">
-        <Ideas />
-        <IdeasDiscussed />
-      </div>
-    );
-  }
-=======
 
 	render() {
 		return (
@@ -67,7 +57,6 @@ class App extends Component {
 			</Provider>
 		);
 	}
->>>>>>> master
 }
 
 export default App;
