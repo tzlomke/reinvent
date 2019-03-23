@@ -4,11 +4,17 @@
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
-    "concurrently": "^4.1.0",
     "axios": "^0.18.0",
+    "classnames": "^2.2.6",
+    "jwt-decode": "^2.2.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
+    "react-redux": "^6.0.1",
+    "react-router-dom": "^5.0.0",
     "react-scripts": "^2.1.1",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
+    "concurrently": "^4.1.0",
     "react-vote": "^3.3.3"
   },
   "scripts": {
