@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-// import API from "../../utils/API";
+import React from "react";
 
 const ProfileData = (props) => {
 	const { userFullName, username, userCampaigns } = props;
@@ -10,16 +9,12 @@ const ProfileData = (props) => {
 
 	return(
 		<div>
-
 			<header>
 				<h1>{userFullName}</h1>
 				<h4>{username}</h4>
 			</header>
-
 			<section className="user-data">
-
 				<div className="user-campaigns">
-
 					<h3>My Campaigns</h3>
 					<ul className="campaign-list">
 						{userCampaigns.map(campaign => (
@@ -28,13 +23,10 @@ const ProfileData = (props) => {
 							</li>
 						))}		
 					</ul>
-					
 				</div>
-
 			</section>
-
 		</div>
-	);
+	)
 };
 
 export default ProfileData;

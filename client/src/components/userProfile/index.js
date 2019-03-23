@@ -6,18 +6,22 @@ import ProfilePicture from "./ProfilePicture";
 class UserProfile extends Component {
 
 	state = {
-		userFullName="Taylor Zlomke",
-		username="tzlomke",
-		userCampaigns=[
+		userFullName: "Taylor Zlomke",
+		username: "tzlomke",
+		userCampaigns: [
 			{
 				title: "More Recycling",
 				author: "Taylor Zlomke"
+			},
+			{
+				title: "Employee BBQ",
+				author: "Taylor Zlomke"
 			}
 		],
-		profileImage="https://avatars0.githubusercontent.com/u/38269347?s=460&v=4"
+		profileImage: "https://avatars0.githubusercontent.com/u/38269347?s=460&v=4"
 	};
 
-	handleChange = () => {
+	handleChange = (event) => {
 		const { name, value } = event.target;
 		this.setState({
 			[name]: value
@@ -41,17 +45,19 @@ class UserProfile extends Component {
 	};
 
 	render() {
-		<div className="profile-wrapper">
-			<ProfilePicture 
-				profileImage = {this.state.profileImage}
-			/>
+		return(
+			<div className="profile-wrapper">
+				<ProfilePicture 
+					profileImage = {this.state.profileImage}
+				/>
 
-			<ProfileData 
-				userFullName = {this.state.userFullName}
-				username = {this.state.username}
-				userCampaigns = {this.state.userCampaigns}
-			/>
-		</div>
+				<ProfileData 
+					userFullName = {this.state.userFullName}
+					username = {this.state.username}
+					userCampaigns = {this.state.userCampaigns}
+				/>
+			</div>
+		)
 	};
 }
 
