@@ -6,8 +6,12 @@ export default {
     return axios.post('/api/campaign', campaign);
   },
   // Get all campaigns
-  campaignGet: () => {
-    return axios.get('/api/campaign');
+  campaignGet: (id) => {
+    return axios.get('/api/campaign', {params: {id: id}});
+  },
+  // Post discussions
+  discussionPost: (discussion) => {
+    return axios.post('/api/campaign/discussion', discussion);
   },
   // Gets all votes
   getVotes: function () {

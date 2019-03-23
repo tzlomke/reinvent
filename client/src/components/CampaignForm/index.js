@@ -34,7 +34,8 @@ class CampaignForm extends Component {
     const id = event.target.dataset.id;
     this.state.campaignsFromDB.map(element => {
       if(element._id === id) {
-        console.log(element);
+        // This should expand the clicked campaign, and display the discussion
+        console.log(`This one: ${element}`);
       }
     });
   };

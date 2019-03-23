@@ -4,11 +4,11 @@ import React from 'react';
 const CampaignDisplay = (props) => {
   const { title, author, synopsis, onClick, campaignID } = props;
   return(
-    <section id="campaignDisplay" onClick={onClick} data-id={campaignID}>
-      <h2>Title: {title}</h2>
-      <h3>Author: {author}</h3>
-      <p>{synopsis}</p>
-    </section>
+      <section className="campaignDisplay" onClick={onClick} data-id={campaignID}>
+        <h2>Title: {title}</h2>
+        <h3>Author: {author}</h3>
+        <p>{synopsis}</p>
+      </section>
   );
 };
 
