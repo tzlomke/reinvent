@@ -53,13 +53,6 @@ const UserSchema = new Schema({
 
 	fullName: String,
 
-	ideas: [
-		{
-			type: Schema.Types.ObjectId,
-			ref: "Idea"
-		}
-	],
-
 	campaigns: [
 		{
 			type: Schema.Types.ObjectId,
