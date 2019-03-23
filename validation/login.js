@@ -9,7 +9,7 @@ module.exports = function validateRegisterInput(data) {
 	data.username = !isEmpty(data.username) ? data.username : "";
 	data.password = !isEmpty(data.password) ? data.password : "";
 
-	// Check for Empty Fields, Valid Email Formats, Password Requirements Met and Confirm Password Matches
+	// Check for Empty Form Fields, Valid Username, Correct Password
 	// Sets Errors for Unmet Requirements
 
 	// Email Checks

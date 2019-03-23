@@ -1,9 +1,35 @@
+const path = require("path");
+
+// Environmental Variables
+// require("dotenv").config();
+const dotenv = require('dotenv').config({path: path.join(__dirname, '.env')})
+
 const express = require("express");
 const mongoose = require("mongoose");
-const path = require("path");
+
+// const db = require("./models");
+const passport = require("passport");
+
+// Port
 const PORT = process.env.PORT || 3001;
+
+// User Authentication Routes
+const userAuthRoutes = require("./routes/api/userAuthentication");
+
+// Initialize Express
 const app = express();
+
 const routes = require("./routes");
+
+
+// Passport Middleware
+app.use(passport.initialize());
+
+// Passport Configuration
+require("./config/passport")(passport);
+
+// App Routing
+app.use("/api/userAuthentication", userAuthRoutes);
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -20,8 +46,9 @@ app.use(express.json());
 app.use(routes);
 
 // Connect to DataBase
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/renivent", { useNewUrlParser: true })
-	.then(console.log("Connected to MongoDB"));
+mongoose
+	.connect(process.env.MONGODB_URI || "mongodb://localhost/reniventdb", { useNewUrlParser: true })
+	.then(console.log("Connected to MongoDB!"));
 
 
 // Send every request to the React app
