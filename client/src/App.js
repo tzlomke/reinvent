@@ -7,11 +7,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-<<<<<<< HEAD
-=======
         <CampaignDisplay />
         <CampaignForm />
->>>>>>> created UserProfile component folder and files
       </div>
     );
   }
