@@ -14,8 +14,15 @@ module.exports = {
     // console.log(req);
     db.Campaign
       .find({})
+      .populate("vote")
       .then(dbCampaign => res.json(dbCampaign))
       .catch(err => res.json(err));
+  },
+  updateCampaign: (req, res) => {
+    db.Campaign
+    .findByIdAndUpdate(req.params.id,req.body)
+    .then(dbCampaign => res.json(dbCampaign))
+    .catch(err => res.json(err));
   },
   // Create a discussion
   createDiscusison: (req, res) => {

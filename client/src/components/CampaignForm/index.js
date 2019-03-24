@@ -69,15 +69,6 @@ class CampaignForm extends Component {
                 <button id="submitCampaign" type="submit" onClick = {this.handleFormSubmit}>Submit</button>
               </form>
             </section>
-          {this.state.campaignsFromDB.map((campaign) => {
-            return(
-              <CampaignDisplay 
-                key = {campaign._id}
-                title={campaign.title}
-                author={campaign.author}
-                synopsis={campaign.synopsis} />
-            )
-          })}
       </div>
     );
   };
