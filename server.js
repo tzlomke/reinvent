@@ -28,9 +28,6 @@ app.use(passport.initialize());
 // Passport Configuration
 require("./config/passport")(passport);
 
-// App Routing
-app.use("/api/userAuthentication", userAuthRoutes);
-
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
