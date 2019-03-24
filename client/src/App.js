@@ -17,6 +17,7 @@ import Login from "./components/authorization/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import CampaignForm from "./components/CampaignForm";
 import Dashboard from "./components/dashboard/Dashboard";
+import UserProfile from "./components/UserProfile";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -51,6 +52,7 @@ class App extends Component {
 						<Switch>
               				<PrivateRoute exact path="/dashboard" component={Dashboard} />
 							<PrivateRoute exact path="/campaigns" component={CampaignForm} />
+							<PrivateRoute exact path="/profile" component={UserProfile} />
             			</Switch>	
 					</div>
 				</Router>

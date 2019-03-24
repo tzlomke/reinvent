@@ -6,6 +6,12 @@ const userAuthRoutes = require("./userAuthentication");
 // Campaign routes
 router.use("/campaign", campaignRoutes);
 
+<<<<<<< HEAD
+=======
+// Discussion routes
+// router.use("/discussion", discussionRoutes);
+
+>>>>>>> userProfile
 // vote routes
 router.use("/vote", voteRoutes);
 
