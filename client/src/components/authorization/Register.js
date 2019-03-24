@@ -35,7 +35,35 @@ class Register extends Component {
 	};
 
 	onChange = event => {
-			this.setState({ [event.target.id]: event.target.value });
+		this.setState({ [event.target.id]: event.target.value });
+	};
+
+	labelMove = (event, call) => {
+		const { value } = event.target;
+		const { id } = event.target;
+		const labels = document.getElementsByTagName('label');
+		const element = () => {
+			for (let i = 0; i < labels.length; i++) {
+				if(labels[i].htmlFor === id) {
+					return labels[i];
+				};
+			};
+		};
+		if(call === 'focus') {
+			element().className = 'active';
+		} else if(call === 'blur') {
+			if(value === '') {
+				element().className = '';
+			};
+		};
+	};
+
+	onFocus = event => {
+		this.labelMove(event, 'focus');
+	};
+
+	onBlur = event => {
+		this.labelMove(event, 'blur');
 	};
 
 	onSubmit = event => {
@@ -81,6 +109,8 @@ class Register extends Component {
 
 							<div className="input-field col s12">
 								<input
+									onBlur={this.onBlur}
+									onFocus={this.onFocus}
 									onChange={this.onChange}
 									value={this.state.firstName}
 									errors={errors.firstName}
@@ -96,6 +126,8 @@ class Register extends Component {
 
 							<div className="input-field col s12">
 								<input
+									onBlur={this.onBlur}
+									onFocus={this.onFocus}
 									onChange={this.onChange}
 									value={this.state.lastName}
 									errors={errors.lastName}
@@ -111,6 +143,8 @@ class Register extends Component {
 
 							<div className="input-field col s12">
 								<input
+									onBlur={this.onBlur}
+									onFocus={this.onFocus}
 									onChange={this.onChange}
 									value={this.state.username}
 									errors={errors.username}
@@ -120,12 +154,14 @@ class Register extends Component {
 										invalid: errors.username
 									})}
 								/>
-								<label htmlFor="userame">Userame</label>
+								<label htmlFor="username">Userame</label>
 								<span className="red-text">{errors.username}</span>
 							</div>
 
 							<div className="input-field col s12">
 								<input
+									onBlur={this.onBlur}
+									onFocus={this.onFocus}
 									onChange={this.onChange}
 									value={this.state.password}
 									errors={errors.password}
@@ -141,6 +177,8 @@ class Register extends Component {
 
 							<div className="input-field col s12">
 								<input
+									onBlur={this.onBlur}
+									onFocus={this.onFocus}
 									onChange={this.onChange}
 									value={this.state.confirmPassword}
 									errors={errors.confirmPassword}
