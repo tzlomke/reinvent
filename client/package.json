@@ -13,7 +13,7 @@
     "react-router-dom": "^5.0.0",
     "react-scripts": "^2.1.1",
     "redux": "^4.0.1",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
     "concurrently": "^4.1.0",
     "react-vote": "^3.3.3"
   },
