@@ -17,7 +17,7 @@ class DiscussionForm extends Component {
     const discussionForm = document.getElementById('newDiscussion');
     API.discussionPost({
       // This is hard coded fix!!!
-      id: '5c959797c7735834e087a0df',
+      id: '5c96800a1b842f0d9897a508',
       subject: this.state.titleInput,
       author: this.state.authorInput,
       body: this.state.discussInputArea})
@@ -30,7 +30,7 @@ class DiscussionForm extends Component {
       discussionInputArea: ''
     });
     discussionForm.reset();
-    // this.loadCampaigns();
+    this.loadDiscussion();
   };
 
   handleCampaignClick = (event) => {
@@ -52,10 +52,12 @@ class DiscussionForm extends Component {
   // TODO make this so that it is tied to whatever campaign ID we are in
   loadDiscussion = () => {
     // This is hard coded fix!!!
-    API.campaignGet('5c959797c7735834e087a0df')
+    API.campaignGet('5c96800a1b842f0d9897a508')
       .then(response => {
-        // This is just about there, we just need to post the results
-        this.setState({ discussionsForCampaign: response.data[0].comments });
+        if(response.data[0] !== undefined) {
+          // This is just about there, we just need to post the results
+          this.setState({ discussionsForCampaign: response.data[0].comments });
+        };
       });
   };
 
