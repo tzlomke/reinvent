@@ -1,3 +1,4 @@
+
 const path = require("path");
 
 // Environmental Variables
@@ -12,9 +13,6 @@ const passport = require("passport");
 
 // Port
 const PORT = process.env.PORT || 3001;
-
-// User Authentication Routes
-const userAuthRoutes = require("./routes/api/userAuthentication");
 
 // Initialize Express
 const app = express();
