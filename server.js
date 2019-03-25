@@ -1,8 +1,7 @@
 const path = require("path");
 
 // Environmental Variables
-// require("dotenv").config();
-const dotenv = require('dotenv').config({path: path.join(__dirname, '.env')})
+require('dotenv').config({path: path.join(__dirname, '.env')})
 
 const express = require("express");
 const mongoose = require("mongoose");
@@ -12,9 +11,6 @@ const passport = require("passport");
 
 // Port
 const PORT = process.env.PORT || 3001;
-
-// User Authentication Routes
-const userAuthRoutes = require("./routes/api/userAuthentication");
 
 // Initialize Express
 const app = express();
