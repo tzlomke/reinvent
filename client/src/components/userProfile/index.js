@@ -6,11 +6,9 @@ import { logoutUser } from "../../actions/authActions";
 import ProfileData from "./ProfileData";
 import ProfilePicture from "./ProfilePicture";
 
-
 class UserProfile extends Component {
 
 	state = {
-		userID: "",
 		userFullName: "",
 		username: "",
 		userCampaigns: [],
@@ -24,9 +22,15 @@ class UserProfile extends Component {
 		});
 	};
 
+	onLogoutClick = event => {
+		event.preventDefault();
+		this.props.logoutUser();
+	};
+
 	loadUser = () => {
 		let userParam = this.props.location.pathname;
 		let username = userParam.split("/")[2];
+		console.log(username)
 		API.getUser(username)
 			.then(response => {
 				let userData = response.data[0]
@@ -45,8 +49,8 @@ class UserProfile extends Component {
 	};
 
 	render() {
-		const { user } = this.props.auth;
-		console.log(user);
+		const { user } = this.props.auth
+		console.log(user.id)
 
 		return(
 			<div className="profile-wrapper">
@@ -55,9 +59,12 @@ class UserProfile extends Component {
 				/>
 
 				<ProfileData 
+					authenticatedUserID = {user.id}
+					userID = {this.state.userID}
 					userFullName = {this.state.userFullName}
 					username = {this.state.username}
 					userCampaigns = {this.state.userCampaigns}
+					logout = {this.onLogoutClick}
 				/>
 			</div>
 		)
