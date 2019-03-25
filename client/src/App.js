@@ -6,8 +6,6 @@ import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
 
 import "./App.css";
-// import Ideas from './pages/Ideas';
-// import IdeasDiscussed from "./pages/IdeasDiscussed";
 
 import { Provider } from "react-redux";
 import store from "./store";
@@ -17,7 +15,9 @@ import Landing from "./components/layout/Landing";
 import Register from "./components/authorization/Register";
 import Login from "./components/authorization/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
+import CampaignForm from "./components/CampaignForm";
 import Dashboard from "./components/dashboard/Dashboard";
+import UserProfile from "./components/UserProfile";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -51,6 +51,8 @@ class App extends Component {
 						<Route exact path="/login" component={Login} />
 						<Switch>
               				<PrivateRoute exact path="/dashboard" component={Dashboard} />
+							<PrivateRoute exact path="/campaigns" component={CampaignForm} />
+							<PrivateRoute exact path="/profile/:username" component={UserProfile} />
             			</Switch>	
 					</div>
 				</Router>

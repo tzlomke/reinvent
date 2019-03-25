@@ -1,6 +1,11 @@
 import axios from 'axios';
 
 export default {
+  // Get User Data
+  getUser: (username) => {
+    console.log(username);
+    return axios.get('/api/profile/' + username);
+  },
   // Post a campaign
   campaignPost: (campaign) => {
     return axios.post('/api/campaign', campaign);
