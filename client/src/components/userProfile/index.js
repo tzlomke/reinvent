@@ -6,18 +6,9 @@ import ProfilePicture from "./ProfilePicture";
 class UserProfile extends Component {
 
 	state = {
-		userFullName: "Taylor Zlomke",
-		username: "tzlomke",
-		userCampaigns: [
-			{
-				title: "More Recycling",
-				author: "Taylor Zlomke"
-			},
-			{
-				title: "Employee BBQ",
-				author: "Taylor Zlomke"
-			}
-		],
+		userFullName: "",
+		username: "",
+		userCampaigns: [],
 		profileImage: "https://avatars0.githubusercontent.com/u/38269347?s=460&v=4"
 	};
 
@@ -28,20 +19,24 @@ class UserProfile extends Component {
 		});
 	};
 
-	// loadUser = () => {
-	// 	API.getUser()
-	// 		.then(response => {
-	// 			this.setState({
-	// 				userFullName: response.fullName,
-	// 				username: response.username,
-	// 				userCampaigns: response.campaigns,
-	// 				profileImage: response.profileImage,
-	// 			});
-	// 		});
-	// };
+	loadUser = () => {
+		let userParam = this.props.location.pathname;
+		let username = userParam.split("/")[2];
+		console.log(username)
+		API.getUser(username)
+			.then(response => {
+				let userData = response.data[0]
+				this.setState({
+					userFullName: `${userData.firstName} ${userData.lastName}`,
+					username: userData.username,
+					userCampaigns: response.data.campaigns,
+					// profileImage: response.profileImage,
+				});
+			});
+	};
 
 	componentDidMount = () => {
-		// this.loadUser();
+		this.loadUser();
 	};
 
 	render() {

@@ -6,8 +6,11 @@ module.exports = {
     console.log(req.body)
     db.Campaign
       .create(req.body)
-      .then(dbCampaign => res.json(dbCampaign))
-      .catch(err => res.json(err))
+      .then(dbCampaign => {
+        db.User.findOneAndUpdate({ _id: id }, {$push : { campaigns: dbCampaign._id } }, { new: true });
+        res.json(dbCampaign);
+      })
+      .catch(err => res.json(err));
   },
   // Get all the campaigns in a database
   getCampaign: (req, res) => {

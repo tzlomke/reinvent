@@ -10,7 +10,7 @@ const ProfilePicture = (props) => {
 
 	return(
 		<div className="profile-image-container">
-			<img className="profile-image" src={profileImage} alt="Profile Picture" height="150" width ="150"></img>
+			<img className="profile-image" src={profileImage} alt="Profile Pic" height="150" width ="150"></img>
 		</div>
 	)
 };

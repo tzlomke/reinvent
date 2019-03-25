@@ -16,13 +16,13 @@ const ProfileData = (props) => {
 			<section className="user-data">
 				<div className="user-campaigns">
 					<h3>My Campaigns</h3>
-					<ul className="campaign-list">
+					{/* <ul className="campaign-list">
 						{userCampaigns.map(campaign => (
 							<li className="campaign" key={campaign.id}>
 								{campaign.title}
 							</li>
 						))}		
-					</ul>
+					</ul> */}
 				</div>
 			</section>
 		</div>
