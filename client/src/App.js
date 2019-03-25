@@ -6,11 +6,6 @@ import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
 
 import "./App.css";
-<<<<<<< HEAD
-import Ideas from './pages/Ideas';
-import IdeasDiscussed from "./pages/IdeasDiscussed";
-=======
->>>>>>> master
 
 import { Provider } from "react-redux";
 import store from "./store";
@@ -22,7 +17,7 @@ import Login from "./components/authorization/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import CampaignForm from "./components/CampaignForm";
 import Dashboard from "./components/dashboard/Dashboard";
-import UserProfile from "./components/UserProfile";
+import UserProfile from "./components/userProfile";
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
