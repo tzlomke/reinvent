@@ -1,14 +1,10 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { logoutUser } from "../../actions/authActions";
 
 const ProfileData = (props) => {
 	const { userFullName, username, userID, authenticatedUserID } = props;
 
 	// Needs: Render User Info, Render User Campaign Data as Links, (Other Campaigns User Participates In? Upload and Render Bio?)
-	// ? Stateful or Stateless?
-	if (props.userID === props.authenticatedUserID) {
+	if (userID === authenticatedUserID) {
 		return(
 			<div>
 				<header>
