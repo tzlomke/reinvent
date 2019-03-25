@@ -17,12 +17,7 @@
     "react-vote": "^3.3.3",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
-<<<<<<< HEAD
-    "concurrently": "^4.1.0",
-    "react-vote": "^3.3.3"
-=======
     "validator": "^10.11.0"
->>>>>>> 6d01554bd5d49e945d7f3dabbd05097961cf6b6d
   },
   "scripts": {
     "start": "react-scripts start",
