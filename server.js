@@ -1,9 +1,30 @@
+
+const path = require("path");
+
+// Environmental Variables
+// require("dotenv").config();
+const dotenv = require('dotenv').config({path: path.join(__dirname, '.env')})
+
 const express = require("express");
 const mongoose = require("mongoose");
-const path = require("path");
+
+// const db = require("./models");
+const passport = require("passport");
+
+// Port
 const PORT = process.env.PORT || 3001;
+
+// Initialize Express
 const app = express();
+
 const routes = require("./routes");
+
+
+// Passport Middleware
+app.use(passport.initialize());
+
+// Passport Configuration
+require("./config/passport")(passport);
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {

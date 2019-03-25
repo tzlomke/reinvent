@@ -12,11 +12,10 @@ class Ideas extends Component {
     campaignInputArea: '',
     campaignsFromDB: [],
     userId: "1",
-    votes: []
   }
 
-  voteId=""
-  campaignId=""
+  voteId="";
+  campaignId="";
 
   handleFormSubmit = (event) => {
     event.preventDefault()
@@ -63,14 +62,6 @@ class Ideas extends Component {
     )
 };
 
-  loadVotes = () => {
-    voteAPI.getVotes().then(res =>  {
-        this.setState({votes:res.data})
-        console.log(res.data);
-    });
-  };
-
-
   onCreate = (data) =>  {
     voteAPI.saveVote(data).then(res => {
         console.log(res.data._id);
@@ -112,7 +103,6 @@ class Ideas extends Component {
 
   componentDidMount = () => {
     this.loadCampaigns();
-    this.loadVotes();
   };
 
   render(){
@@ -121,7 +111,7 @@ class Ideas extends Component {
         <CampaignForm/>
         {this.state.campaignsFromDB.map(campaign =>
           campaign.map(campaign => (
-            campaign.vote.length  !== 0 ?(
+            campaign.vote.length  !== 0 ? (
               console.log(campaign.vote[0]._id),
               <CampaignDisplay
               handleData={()=>this.handleData(campaign.vote[0]._id, campaign._id)}

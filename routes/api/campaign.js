@@ -11,4 +11,8 @@ router
   .route("/:id")
   .put(campaignController.updateCampaign);
 
+  // A route for posting campaigns
+router.route('/discussion')
+  .post(campaignController.createDiscussion);
+  
 module.exports = router;

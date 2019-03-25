@@ -5,30 +5,30 @@ const isEmpty = require("is-empty");
 module.exports = function validateRegisterInput(data) {
 	let errors = {};
 
+	console.log(errors);
+
 	// Converts Empty Form Fields to Empty String Before Running Validator
 	data.firstName = !isEmpty(data.firstName) ? data.firstName : "";
 	data.lastName = !isEmpty(data.lastName) ? data.lastName : "";
-	data.email = !isEmpty(data.email) ? data.email : "";
+	data.username = !isEmpty(data.username) ? data.username : "";
 	data.password = !isEmpty(data.password) ? data.password : "";
-	data.passwordConfirm = !isEmpty(data.passwordConfirm) ? data.passwordConfirm : "";
+	data.confirmPassword = !isEmpty(data.confirmPassword) ? data.confirmPassword : "";
 
-	// Check for Empty Fields, Valid Email Formats, Password Requirements Met and Confirm Password Matches
+	// Check for Empty Fields, Password Requirements Met and Confirm Password Matches
 	// Sets Errors for Unmet Requirements
 
 	// Name Checks
 	if (Validator.isEmpty(data.firstName)) {
-		errors.firstName = "First Name is Required";
+		errors.firstName = "First Name is required";
 	}
 
 	if (Validator.isEmpty(data.lastName)) {
-		errors.lastName = "Last Name is Required";
+		errors.lastName = "Last Name is required";
 	}
 
-	// Email Checks
-	if (Validator.isEmpty(data.email)) {
-		errors.email = "Email is required";
-	} else if (!Validator.isEmail(data.email)) {
-		errors.email = "Please enter a valid email address"
+	// Username Checks
+	if (Validator.isEmpty(data.username)) {
+		errors.username = "Username is required";
 	}
 
 	// Password Checks

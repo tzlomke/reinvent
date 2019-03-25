@@ -27,6 +27,17 @@ class CampaignForm extends Component {
       campaignInputArea: ''
     });
     campaignForm.reset();
+    this.loadCampaigns();
+  };
+
+  handleCampaignClick = (event) => {
+    const id = event.target.dataset.id;
+    this.state.campaignsFromDB.map(element => {
+      if(element._id === id) {
+        // This should expand the clicked campaign, and display the discussion
+        console.log(`This one: ${element}`);
+      }
+    });
   };
 
   handleChange = (event) => {
