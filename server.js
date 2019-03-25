@@ -1,3 +1,4 @@
+
 const path = require("path");
 
 // Environmental Variables
@@ -13,9 +14,6 @@ const passport = require("passport");
 // Port
 const PORT = process.env.PORT || 3001;
 
-// User Authentication Routes
-const userAuthRoutes = require("./routes/api/userAuthentication");
-
 // Initialize Express
 const app = express();
 
@@ -27,9 +25,6 @@ app.use(passport.initialize());
 
 // Passport Configuration
 require("./config/passport")(passport);
-
-// App Routing
-app.use("/api/userAuthentication", userAuthRoutes);
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {

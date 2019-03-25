@@ -6,16 +6,23 @@
   "dependencies": {
     "axios": "^0.18.0",
     "classnames": "^2.2.6",
+    "concurrently": "^4.1.0",
     "jwt-decode": "^2.2.0",
+    "prop-types": "^15.7.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-redux": "^6.0.1",
     "react-router-dom": "^5.0.0",
     "react-scripts": "^2.1.1",
+    "react-vote": "^3.3.3",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
+<<<<<<< HEAD
     "concurrently": "^4.1.0",
     "react-vote": "^3.3.3"
+=======
+    "validator": "^10.11.0"
+>>>>>>> master
   },
   "scripts": {
     "start": "react-scripts start",
