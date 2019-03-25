@@ -29,8 +29,8 @@ class UserProfile extends Component {
 				this.setState({
 					userFullName: `${userData.firstName} ${userData.lastName}`,
 					username: userData.username,
-					userCampaigns: response.data.campaigns,
-					// profileImage: response.profileImage,
+					userCampaigns: userData.campaigns,
+					profileImage: userData.profileImage,
 				});
 			});
 	};
