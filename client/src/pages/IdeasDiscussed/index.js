@@ -1,5 +1,5 @@
 import React from 'react';
-import DiscussionForm from '../components/DiscussionForm';
+import DiscussionForm from '../../components/DiscussionForm';
 
 const IdeasDiscussed = () => {
   return(
