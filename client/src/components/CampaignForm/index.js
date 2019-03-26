@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import API from '../../utils/API';
-import CampaignDisplay from '../CampaignDisplay';
 
 class CampaignForm extends Component {
 
@@ -80,18 +79,6 @@ class CampaignForm extends Component {
                 <button id="submitCampaign" type="submit" onClick = {this.handleFormSubmit}>Submit</button>
               </form>
             </section>
-            <header>New Campaigns</header>
-          {this.state.campaignsFromDB.map((campaign) => {
-            return(
-              <CampaignDisplay 
-                onClick = {this.handleCampaignClick}
-                key = {campaign._id}
-                campaignID = {campaign._id}
-                title={campaign.title}
-                author={campaign.author}
-                synopsis={campaign.synopsis} />
-            )
-          })}
       </div>
     );
   };

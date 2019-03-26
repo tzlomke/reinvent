@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Ideas from "./pages/Ideas";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import jwt_decode from "jwt-decode";
@@ -15,7 +16,6 @@ import Landing from "./components/layout/Landing";
 import Register from "./components/authorization/Register";
 import Login from "./components/authorization/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
-import CampaignForm from "./components/CampaignForm";
 import Dashboard from "./components/dashboard/Dashboard";
 import UserProfile from "./components/userProfile";
 
@@ -50,10 +50,10 @@ class App extends Component {
 						<Route exact path="/register" component={Register} />
 						<Route exact path="/login" component={Login} />
 						<Switch>
-              				<PrivateRoute exact path="/dashboard" component={Dashboard} />
-							<PrivateRoute exact path="/campaigns" component={CampaignForm} />
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+							<PrivateRoute exact path="/campaigns" component={Ideas} />
 							<PrivateRoute exact path="/profile/:username" component={UserProfile} />
-            			</Switch>	
+            </Switch>	
 					</div>
 				</Router>
 			</Provider>
