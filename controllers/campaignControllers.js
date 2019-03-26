@@ -24,6 +24,7 @@ module.exports = {
     } else {
       db.Campaign
         .find({})
+        .populate("vote")
         .then(dbCampaign => res.json(dbCampaign))
         .catch(err => res.json(err));
     };
