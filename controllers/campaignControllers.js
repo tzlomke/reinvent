@@ -24,6 +24,7 @@ module.exports = {
     } else {
       db.Campaign
         .find({})
+        .populate("vote")
         .then(dbCampaign => res.json(dbCampaign))
         .catch(err => res.json(err));
     };
@@ -33,6 +34,30 @@ module.exports = {
     const { id, subject, author, body } = req.body
     console.log(id);
     db.Campaign
+      .find({})
+      .populate("vote")
+      .then(dbCampaign => res.json(dbCampaign))
+      .catch(err => res.json(err));
+  },
+  updateCampaign: (req, res) => {
+    db.Campaign
+    .findByIdAndUpdate(req.params.id,req.body)
+    .then(dbCampaign => res.json(dbCampaign))
+    .catch(err => res.json(err));
+  },
+  // Create a discussion
+  createDiscusison: (req, res) => {
+    db.Discussion
+      .create(req.body)
+      .then(dbDiscussion => res.json(dbDiscussion))
+      .catch(err => {res.json(err)})
+  },
+  // Get the discussions
+  getDiscusison: (req, res) => {
+    db.Discussion
+      .find({})
+      .then(dbDiscussion => res.json(dbDiscussion))
+      .catch(err => {res.json(err)})
       .updateOne(
         { _id: id },
         { $push: 
