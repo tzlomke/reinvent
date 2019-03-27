@@ -3,7 +3,7 @@ import CampaignDisplay from "../../components/CampaignDisplay";
 import API from "../../utils/API";
 import voteAPI from "../../utils/API";
 
-class Ideas extends Component {
+class ActiveVoteIdeas extends Component {
 
   state = {
     campaignsFromDB: [],
@@ -130,4 +130,4 @@ class Ideas extends Component {
   }
 }
 
-export default Ideas;
+export default ActiveVoteIdeas;
