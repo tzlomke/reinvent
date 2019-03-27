@@ -54,23 +54,21 @@ class Ideas extends Component {
 
   updateVote = (data) => {
     setTimeout(()=>(
-      console.log(this.voteId),
-      console.log(data),
-      voteAPI.updateVote(this.voteId, data).then(res =>{
+    console.log(this.voteId),
+    console.log(data),
+    voteAPI.updateVote(this.voteId, data).then(res =>{
         console.log(res.data);
-    })),1)
-  };
+    })),1
+    )
+};
 
   onCreate = (data) =>  {
-    setTimeout(()=> (
-      data.campaign = [this.campaignId],
-      voteAPI.saveVote(data).then(res => {
-          console.log(res.data._id);
-          console.log(res.data);
-          API.campaignPut(this.campaignId, {vote: res.data._id})
-          .then(res=>console.log(res.data))
-      })
-    ),1)
+    voteAPI.saveVote(data).then(res => {
+        console.log(res.data._id);
+        console.log(res.data);
+        API.campaignPut(this.campaignId, {vote: res.data._id})
+        .then(res=>console.log(res.data))
+    });
   };
 
   onUpvote = (data, voteId) => {

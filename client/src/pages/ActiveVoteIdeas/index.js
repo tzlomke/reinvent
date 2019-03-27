@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import CampaignForm from "../../components/CampaignForm";
 import CampaignDisplay from "../../components/CampaignDisplay";
 import API from "../../utils/API";
 import voteAPI from "../../utils/API";
@@ -7,9 +6,6 @@ import voteAPI from "../../utils/API";
 class Ideas extends Component {
 
   state = {
-    titleInput: '',
-    authorInput: '',
-    campaignInputArea: '',
     campaignsFromDB: [],
     userId: "1",
   }
@@ -17,34 +13,9 @@ class Ideas extends Component {
   voteId="";
   campaignId="";
 
-  handleFormSubmit = (event) => {
-    event.preventDefault()
-    const campaignForm = document.getElementById('newCampaign');
-    API.campaignPost({
-      title: this.state.titleInput,
-      author: this.state.authorInput,
-      synopsis: this.state.campaignInputArea})
-      .then(response => {
-        (console.log(`You successfully uploaded: ${response.data.title}`));
-      });
-    this.setState({
-      titleInput: '',
-      authorInput: '',
-      campaignInputArea: ''
-    });
-    campaignForm.reset();
-  };
-
-  handleChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({ 
-      [name]: value 
-    });
-  };
-
   loadCampaigns = () => {
     const campaignArray = [];
-    API.campaignGet()
+    API.activeCampaignGet()
       .then(response => {
         campaignArray.push(response.data);
         this.setState({ campaignsFromDB: campaignArray });
@@ -54,23 +25,21 @@ class Ideas extends Component {
 
   updateVote = (data) => {
     setTimeout(()=>(
-      console.log(this.voteId),
-      console.log(data),
-      voteAPI.updateVote(this.voteId, data).then(res =>{
+    console.log(this.voteId),
+    console.log(data),
+    voteAPI.updateVote(this.voteId, data).then(res =>{
         console.log(res.data);
-    })),1)
-  };
+    })),1
+    )
+};
 
   onCreate = (data) =>  {
-    setTimeout(()=> (
-      data.campaign = [this.campaignId],
-      voteAPI.saveVote(data).then(res => {
-          console.log(res.data._id);
-          console.log(res.data);
-          API.campaignPut(this.campaignId, {vote: res.data._id})
-          .then(res=>console.log(res.data))
-      })
-    ),1)
+    voteAPI.saveVote(data).then(res => {
+        console.log(res.data._id);
+        console.log(res.data);
+        API.campaignPut(this.campaignId, {vote: res.data._id})
+        .then(res=>console.log(res.data))
+    });
   };
 
   onUpvote = (data, voteId) => {
@@ -110,7 +79,6 @@ class Ideas extends Component {
   render(){
     return (
       <div>
-        <CampaignForm/>
         {this.state.campaignsFromDB.map(campaign =>
           campaign.map(campaign => (
             campaign.vote.length  !== 0 ? (
