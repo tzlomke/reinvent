@@ -106,7 +106,9 @@ class Ideas extends Component {
   };
 
   render(){
-    return (
+    let display;
+    if(window.location.pathname === '/campaigns') {
+      display = 
       <div>
         <CampaignForm/>
         {this.state.campaignsFromDB.map(campaign =>
@@ -156,6 +158,12 @@ class Ideas extends Component {
           ))
         )}
       </div>
+    } else if (window.location.pathname === '/campaigns/discussion') {
+      display =
+        <p>Hahahahaha</p>
+    }
+    return (
+      display
     )
   }
 }
