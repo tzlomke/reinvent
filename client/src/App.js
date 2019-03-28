@@ -9,8 +9,8 @@ import "./App.css";
 import { Provider } from "react-redux";
 import store from "./store";
 
-// Component Imports
-import Navbar from "./components/layout/Navbar";
+import Header from "./components/Header";
+import Navbar from "./components/Navbar";
 import Landing from "./components/layout/Landing";
 import Register from "./components/authorization/Register";
 import Login from "./components/authorization/Login";
@@ -49,6 +49,7 @@ class App extends Component {
 			<Provider store={store}>
 				<Router>
 					<div className="App">
+						<Header />
 						<Navbar />
 						<Route exact path="/" component={Landing} />
 						<Route exact path="/register" component={Register} />
