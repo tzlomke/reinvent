@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Ideas from "./pages/Ideas";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import jwt_decode from "jwt-decode";
@@ -11,6 +10,7 @@ import "./App.css";
 import { Provider } from "react-redux";
 import store from "./store";
 
+// Component Imports
 import Navbar from "./components/layout/Navbar";
 import Landing from "./components/layout/Landing";
 import Register from "./components/authorization/Register";
@@ -18,6 +18,11 @@ import Login from "./components/authorization/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import UserProfile from "./components/userProfile";
+
+// Page Imports
+import NewsList from "./pages/NewsList";
+import Ideas from "./pages/Ideas";
+
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -50,10 +55,11 @@ class App extends Component {
 						<Route exact path="/register" component={Register} />
 						<Route exact path="/login" component={Login} />
 						<Switch>
-              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+							<PrivateRoute exact path="/dashboard" component={Dashboard} />
 							<PrivateRoute exact path="/campaigns" component={Ideas} />
 							<PrivateRoute exact path="/profile/:username" component={UserProfile} />
-            </Switch>	
+							<PrivateRoute exact path="/news-feed" component={NewsList} />
+            			</Switch>	
 					</div>
 				</Router>
 			</Provider>
