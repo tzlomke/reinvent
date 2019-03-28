@@ -10,6 +10,7 @@ import "./App.css";
 import { Provider } from "react-redux";
 import store from "./store";
 
+// Component Imports
 import Navbar from "./components/layout/Navbar";
 import Landing from "./components/layout/Landing";
 import Register from "./components/authorization/Register";
@@ -17,6 +18,11 @@ import Login from "./components/authorization/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import UserProfile from "./components/userProfile";
+
+// Page Imports
+import NewsList from "./pages/NewsList";
+import Ideas from "./pages/Ideas";
+
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -52,6 +58,7 @@ class App extends Component {
     						<PrivateRoute exact path="/dashboard" component={Dashboard} />
 							<PrivateRoute path="/ideas" component={Ideas} />
 							<PrivateRoute exact path="/profile/:username" component={UserProfile} />
+							<PrivateRoute exact path="/news-feed" component={NewsList} />
 	        			</Switch>	
 					</div>
 				</Router>
