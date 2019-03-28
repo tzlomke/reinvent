@@ -9,13 +9,8 @@ class Navbar extends Component {
 					<div className="nav-wrapper white">
 						<Link
 							to="/ideas"
-<<<<<<< HEAD
-							className="col s5 brand-logo center black-text nav-link"> Navbar
-						
-=======
 							className="col s5 brand-logo center black-text nav-link">
 							Ideas
->>>>>>> master
 						</Link>
 					</div>
 				</nav>

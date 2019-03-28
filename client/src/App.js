@@ -10,13 +10,8 @@ import "./App.css";
 import { Provider } from "react-redux";
 import store from "./store";
 
-<<<<<<< HEAD
 import Header from "./components/Header";
 import Navbar from "./components/Navbar";
-=======
-// Component Imports
-import Navbar from "./components/layout/Navbar";
->>>>>>> master
 import Landing from "./components/layout/Landing";
 import Register from "./components/authorization/Register";
 import Login from "./components/authorization/Login";
