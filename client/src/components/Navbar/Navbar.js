@@ -4,12 +4,13 @@ import './Navbar.css';
 
 const Navbar = props => (
   <div className="navbar ">
+  
     <Link
-	    to="/"
+	    to="/ideas"
 		className="col s5 brand-logo center white-text nav-link"> Ideas
 		</Link>
         <Link
-	    to="/"
+	    to="/news-feed"
 		className="col s5 brand-logo center white-text nav-link"> Newsletter
 		</Link>
         <Link
