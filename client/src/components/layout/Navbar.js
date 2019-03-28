@@ -8,8 +8,9 @@ class Navbar extends Component {
 				<nav className="z-depth-0">
 					<div className="nav-wrapper white">
 						<Link
-							to="/"
-							className="col s5 brand-logo center black-text nav-link">
+							to="/ideas"
+							className="col s5 brand-logo center black-text nav-link"> Navbar
+						
 						</Link>
 					</div>
 				</nav>
@@ -19,3 +20,4 @@ class Navbar extends Component {
 }
 
 export default Navbar;
+
