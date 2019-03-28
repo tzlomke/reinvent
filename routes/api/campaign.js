@@ -11,6 +11,12 @@ router
   .route("/:id")
   .put(campaignController.updateCampaign);
 
+router.route("/active")
+  .get(campaignController.getActiveCampaigns);
+
+router.route("/closed")
+  .get(campaignController.getClosedCampaigns);
+
   // A route for posting campaigns
 router.route('/discussion')
   .post(campaignController.createDiscussion);
