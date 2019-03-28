@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import API from '../../utils/API';
+import React from 'react';
 
+<<<<<<< HEAD
 class CampaignForm extends Component {
 
   state = {
@@ -61,29 +61,31 @@ class CampaignForm extends Component {
   
 
   render() {
+=======
+function CampaignForm(props)  {
+>>>>>>> master
     return(
-      <div>
+      <div className= "modal" id="campaignFormModal">
         <header>Campaign</header>
           <section id="campaignEntry">
             <form id="newCampaign">
               <section id="newCampTitle">
                 <label htmlFor="titleIt">Title</label>
-                <input type="text" id="titleIt" name="titleInput" value={this.state.value} onChange={this.handleChange}></input>
+                <input type="text" id="titleIt" name="titleInput" value={props.titleInput} onChange={props.handleChange}></input>
               </section>
               <section id="newCampAuthor">
                 <label htmlFor="authorIt">Author</label>
-                <input type="text" id="authorIt" name="authorInput" value={this.state.value} onChange={this.handleChange}></input>
+                <input type="text" id="authorIt" name="authorInput" value={props.authorInput} onChange={props.handleChange}></input>
               </section>
               <section id="newCampSynop">
                 <label htmlFor="campaignIt">New Campaign Here</label>
-                <textarea id="campaignIt" name="campaignInputArea" value={this.state.value} onChange={this.handleChange}></textarea>
+                <textarea id="campaignIt" name="campaignInputArea" value={props.campaignInput} onChange={props.handleChange}></textarea>
               </section>
-                <button id="submitCampaign" type="submit" onClick = {this.handleFormSubmit}>Submit</button>
+                <button id="submitCampaign" type="submit" className="modal-close" onClick = {props.handleFormSubmit}>Submit</button>
               </form>
             </section>
       </div>
     );
-  };
 };
 
 export default CampaignForm;
