@@ -29,20 +29,8 @@ export default {
   getvote: function (id) {
       return axios.get("/api/vote/" + id);
   },
-  // Deletes the vote with the given id
-  deleteVote: function (id) {
-      return axios.delete("/api/vote/" + id);
-  },
-  // Saves a vote to the database
-  saveVote: function (voteData) {
-      return axios.post("/api/vote", voteData);
-  },
   discussionGet: () => {
     return axios.get('/api/discussion');
-  },
-  // Gets all votes
-  getVotes: function () {
-    return axios.get("/api/vote");
   },
   // Gets the vote with the given id
   getVote: function (id) {

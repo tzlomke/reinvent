@@ -34,9 +34,11 @@ class CampaignForm extends Component {
     this.state.campaignsFromDB.map(element => {
       if(element._id === id) {
         // This should expand the clicked campaign, and display the discussion
-        console.log(`This one: ${element}`);
+        return `This one: ${element}`;
       }
+      return element;
     });
+    return 'success';
   };
 
   handleChange = (event) => {

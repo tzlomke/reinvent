@@ -12,6 +12,8 @@ class Ideas extends Component {
     campaignInputArea: '',
     campaignsFromDB: [],
     userId: "1",
+    campaignExpand: false,
+    focusedCampaign: {}
   }
 
   voteId="";
@@ -42,32 +44,33 @@ class Ideas extends Component {
     });
   };
 
+  // This will grab the correct campaign, and expand it.
+  campaignClick = (id) => {
+    this.setState({ campaignExpand: true });
+    console.log(id);
+  };
+
   loadCampaigns = () => {
     const campaignArray = [];
     API.campaignGet()
       .then(response => {
         campaignArray.push(response.data);
         this.setState({ campaignsFromDB: campaignArray });
-        console.log(response.data);
       });
   };
 
   updateVote = (data) => {
     setTimeout(()=>(
-    console.log(this.voteId),
-    console.log(data),
     voteAPI.updateVote(this.voteId, data).then(res =>{
-        console.log(res.data);
+        return res.data;
     })),1
     )
-};
+  };
 
   onCreate = (data) =>  {
     voteAPI.saveVote(data).then(res => {
-        console.log(res.data._id);
-        console.log(res.data);
         API.campaignPut(this.campaignId, {vote: res.data._id})
-        .then(res=>console.log(res.data))
+        .then(res=> res.data)
     });
   };
 
@@ -98,25 +101,22 @@ class Ideas extends Component {
   handleData = (voteId, campaignId) => {
     this.voteId = voteId;
     this.campaignId = campaignId;
-    console.log(this.voteId, this.campaignId);
   };
 
   componentDidMount = () => {
     this.loadCampaigns();
   };
 
-  render(){
-    let display;
-    if(window.location.pathname === '/campaigns') {
-      display = 
+  render(){ 
+    return (
       <div>
         <CampaignForm/>
         {this.state.campaignsFromDB.map(campaign =>
           campaign.map(campaign => (
             campaign.vote.length  !== 0 ? (
-              console.log(campaign.vote[0]._id),
               <CampaignDisplay
               handleData={()=>this.handleData(campaign.vote[0]._id, campaign._id)}
+              campaignExpand={() => this.campaignClick(campaign._id)}
               data={campaign.vote}
               title={campaign.title}
               author={campaign.author}
@@ -137,6 +137,7 @@ class Ideas extends Component {
             ):(
               <CampaignDisplay
               handleData={()=>this.handleData(campaign.vote._id, campaign._id)}
+              campaignExpand={() => this.campaignClick(campaign._id)}
               data={campaign.vote}
               title={campaign.title}
               author={campaign.author}
@@ -158,12 +159,6 @@ class Ideas extends Component {
           ))
         )}
       </div>
-    } else if (window.location.pathname === '/campaigns/discussion') {
-      display =
-        <p>Hahahahaha</p>
-    }
-    return (
-      display
     )
   }
 }

@@ -5,11 +5,11 @@ import "./styles.css";
 const CampaignDisplay = (props) => {
   const { title, author, synopsis, styles, onCreate, onUpvote,
     onClose, onReset, onDownvote, onExpand, onEdit, isAdmin,
-    clientId, data, handleData } = props;
+    clientId, data, handleData, campaignExpand } = props;
   return(
     <div onClick={handleData}>
       <div className="row">
-        <a href="/campaigns/discussion" className="campaignAnchor">
+        <a onClick={campaignExpand} className="campaignAnchor">
           <section id="campaignDisplay" className="col s9">
             <h2>Title: {title}</h2>
             <h3>Author: {author}</h3>
