@@ -1,69 +1,6 @@
 import React from 'react';
 
-<<<<<<< HEAD
-class CampaignForm extends Component {
-
-  state = {
-    titleInput: '',
-    authorInput: '',
-    campaignInputArea: '',
-    campaignsFromDB: []
-  }
-
-  handleFormSubmit = (event) => {
-    event.preventDefault()
-    const campaignForm = document.getElementById('newCampaign');
-    API.campaignPost({
-      title: this.state.titleInput,
-      author: this.state.authorInput,
-      synopsis: this.state.campaignInputArea})
-      .then(response => {
-        (console.log(`You successfully uploaded: ${response.data.title}`));
-      });
-    this.setState({
-      titleInput: '',
-      authorInput: '',
-      campaignInputArea: ''
-    });
-    campaignForm.reset();
-    this.loadCampaigns();
-  };
-
-  handleCampaignClick = (event) => {
-    const id = event.target.dataset.id;
-    this.state.campaignsFromDB.map(element => {
-      if(element._id === id) {
-        // This should expand the clicked campaign, and display the discussion
-        return `This one: ${element}`;
-      }
-      return element;
-    });
-    return 'success';
-  };
-
-  handleChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({ 
-      [name]: value 
-    });
-  };
-
-  loadCampaigns = () => {
-    API.campaignGet()
-      .then(response => {
-        this.setState({ campaignsFromDB: response.data });
-      });
-  };
-
-  componentDidMount = () => {
-    this.loadCampaigns();
-  };
-  
-
-  render() {
-=======
 function CampaignForm(props)  {
->>>>>>> master
     return(
       <div className= "modal" id="campaignFormModal">
         <header>Campaign</header>
