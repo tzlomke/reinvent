@@ -5,7 +5,7 @@ import ActiveVoteIdeas from "../ActiveVoteIdeas";
 import ClosedVoteIdeas from "../ClosedVoteIdeas"
 import PrivateRoute from "../../components/private-route/PrivateRoute";
 import CampaignForm from "../../components/CampaignForm";
-import $ from "jquery";
+
 class Ideas extends Component {
 
   state = {
@@ -40,11 +40,9 @@ class Ideas extends Component {
     });
   };
 
-  // componentDidMount =() => {
-  //   $(document).ready(function(){
-  //     $('.modal').modal();
-  //   });
-  // };
+  componentDidMount =() => {
+      window.$('.modal').modal();
+  };
 
   render(){
     return (
