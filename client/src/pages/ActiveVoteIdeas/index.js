@@ -74,6 +74,7 @@ class ActiveVoteIdeas extends Component {
     // console.log(this.voteId, this.campaignId);
   };
 
+  // Getting closer, but needs more work
   campaignExpand = (campaignId) => {
     // this.setState({ campaignClicked: { expand: true }});
     API.campaignGet(campaignId)
@@ -147,7 +148,7 @@ class ActiveVoteIdeas extends Component {
         </div>
       ) : (
         <div>
-          {campaignClicked.vote[0].length  > 1 ? (
+          {campaignClicked.vote.length  > 1 ? (
             console.log('campaign it' + campaignClicked.vote[0]._id),
             <CampaignDisplay
             // handleData={()=>this.handleData(campaign.vote[0]._id, campaign._id)}
