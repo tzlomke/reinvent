@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Ideas from "./pages/Ideas";
-
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
@@ -50,10 +49,10 @@ class App extends Component {
 						<Route exact path="/register" component={Register} />
 						<Route exact path="/login" component={Login} />
 						<Switch>
-              <PrivateRoute exact path="/dashboard" component={Dashboard} />
-							<PrivateRoute exact path="/campaigns" component={Ideas} />
+    						<PrivateRoute exact path="/dashboard" component={Dashboard} />
+							<PrivateRoute path="/ideas" component={Ideas} />
 							<PrivateRoute exact path="/profile/:username" component={UserProfile} />
-            </Switch>	
+	        			</Switch>	
 					</div>
 				</Router>
 			</Provider>

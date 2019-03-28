@@ -14,6 +14,15 @@ export default {
   campaignGet: (id) => {
     return axios.get('/api/campaign', {params: {id: id}});
   },
+  // get active campaigns
+  activeCampaignGet: () => {
+    return axios.get("/api/campaign/active");
+  },
+  // get closed campaigns
+  closedCampaignGet: () => {
+    return axios.get("/api/campaign/closed")
+  },
+  // update campaigns
   campaignPut: (id, campaignUpdate) => {
     return axios.put('/api/campaign/' + id, campaignUpdate)
   },

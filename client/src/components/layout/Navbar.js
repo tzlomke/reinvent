@@ -8,8 +8,9 @@ class Navbar extends Component {
 				<nav className="z-depth-0">
 					<div className="nav-wrapper white">
 						<Link
-							to="/"
+							to="/ideas"
 							className="col s5 brand-logo center black-text nav-link">
+							Ideas
 						</Link>
 					</div>
 				</nav>
