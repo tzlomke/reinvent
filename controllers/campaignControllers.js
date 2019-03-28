@@ -29,6 +29,42 @@ module.exports = {
         .catch(err => res.json(err));
     };
   },
+  // get active and unopened vote campaigns from database
+  getActiveCampaigns: (req, res) => {
+    db.Vote
+      .find({closed: false})
+      .then(dbCampaign => {
+        const activeVoteCampaignIds = [];
+        dbCampaign.forEach(vote => {
+          activeVoteCampaignIds.push(vote.campaign[0])
+        });
+        db.Campaign
+          .find({$or:[{_id: {$in: activeVoteCampaignIds}}, {vote:[]}]})
+          .populate("vote")
+          .sort({date: -1})
+          .then(dbCampaign => res.json(dbCampaign))
+          .catch(err => res.json(err));
+      })
+      .catch(err => res.json(err));
+  },
+  // get closed vote campaigns
+  getClosedCampaigns: (req, res) => {
+    db.Vote
+      .find({closed: true})
+      .then(dbCampaign => {
+        const closedVoteCampaignIds = [];
+        dbCampaign.forEach(vote => {
+          closedVoteCampaignIds.push(vote.campaign[0])
+        });
+        db.Campaign
+          .find({_id: {$in: closedVoteCampaignIds}})
+          .populate("vote")
+          .sort({date: -1})
+          .then(dbCampaign => res.json(dbCampaign))
+          .catch(err => res.json(err));
+      })
+      .catch(err => res.json(err));
+  },
   // Create a discussion
   createDiscussion: (req, res) => {
     const { id, subject, author, body } = req.body
@@ -39,6 +75,7 @@ module.exports = {
       .then(dbCampaign => res.json(dbCampaign))
       .catch(err => res.json(err));
   },
+  // update campign
   updateCampaign: (req, res) => {
     db.Campaign
     .findByIdAndUpdate(req.params.id,req.body)
