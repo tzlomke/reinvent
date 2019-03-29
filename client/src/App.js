@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
+import Calendar from "./pages/Calendar";
 
 import "./App.css";
 
@@ -52,6 +53,7 @@ class App extends Component {
     						<PrivateRoute exact path="/dashboard" component={Dashboard} />
 							<PrivateRoute path="/ideas" component={Ideas} />
 							<PrivateRoute exact path="/profile/:username" component={UserProfile} />
+							<PrivateRoute exact path="/calendar" component={Calendar} />
 	        			</Switch>	
 					</div>
 				</Router>

@@ -40,7 +40,7 @@ class Ideas extends Component {
     });
   };
 
-  componentDidMount =() => {
+  componentDidMount = () => {
       window.$('.modal').modal();
   };
 

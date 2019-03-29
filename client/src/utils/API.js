@@ -68,6 +68,13 @@ export default {
   // updates a vote
   updateVote: function (id, voteData) {
     return axios.put("/api/vote/" + id, voteData);
+  },
+  // create an event
+  createEvent: (eventData) => {
+    return axios.post("/api/event", eventData);
+  },
+  // gets all events
+  getEvents: () => {
+    return axios.get("/api/event");
   }
-
 };
