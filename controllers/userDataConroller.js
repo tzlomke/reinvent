@@ -23,7 +23,7 @@ const imageUpload = multer({
 		bucket: process.env.S3_BUCKET,
 		acl: "public-read",
 		key: (req, file, cb) => {
-			cb(null, path.basename( file.originalname, path.extname( file.originalname ) ) + '-' + Date.now() + path.extname( file.originalname ) )
+			cb(null, Date.now() + path.extname( file.originalname ) )
 		},
 		limits: { fileSize: 2000000 },
 		fileFilter: (req, file, cb) => {
