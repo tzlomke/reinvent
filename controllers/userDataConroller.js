@@ -26,6 +26,7 @@ const imageUpload = multer({
 			cb(null, Date.now() + path.extname( file.originalname ) )
 		},
 		limits: { fileSize: 2000000 },
+		contentType: multlerS3.AUTO_CONTENT_TYPE,
 		fileFilter: (req, file, cb) => {
 			checkFileType(file, cb);
 		},
