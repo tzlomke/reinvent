@@ -3,7 +3,7 @@ const db = require("../models");
 // Defining methods for the votesController
 module.exports = {
     findAll: function (req, res) {
-        db.Vote
+        db.Event
             .find(req.query)
             .sort({
                 date: -1
@@ -12,19 +12,19 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     findById: function (req, res) {
-        db.Vote
+        db.Event
             .findById(req.params.id)
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
     create: function (req, res) {
-        db.Vote
+        db.Event
             .create(req.body)
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err));
     },
     update: function (req, res) {
-        db.Vote
+        db.Event
             .replaceOne({
                 _id: req.params.id
             }, req.body)
@@ -32,7 +32,7 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     remove: function (req, res) {
-        db.Vote
+        db.Event
             .findById({
                 _id: req.params.id
             })
