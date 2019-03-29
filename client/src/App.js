@@ -59,12 +59,8 @@ class App extends Component {
 							<PrivateRoute exact path="/dashboard" component={Dashboard} />
 							<PrivateRoute path="/ideas" component={Ideas} />
 							<PrivateRoute exact path="/profile/:username" component={UserProfile} />
-<<<<<<< HEAD
-						</Switch>	
-=======
 							<PrivateRoute exact path="/news-feed" component={NewsList} />
 	        			</Switch>	
->>>>>>> master
 					</div>
 				</Router>
 			</Provider>
