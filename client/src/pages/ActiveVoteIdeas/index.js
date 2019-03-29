@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import CampaignDisplay from "../../components/CampaignDisplay";
 import API from "../../utils/API";
 import voteAPI from "../../utils/API";
+import DiscussionForm from '../../components/DiscussionForm';
+import DiscussionDisplay from "../../components/DiscussionDisplay";
 
 class ActiveVoteIdeas extends Component {
 
@@ -9,7 +11,10 @@ class ActiveVoteIdeas extends Component {
     campaignsFromDB: [],
     userId: "1",
     campaignClicked: {},
-    campaignExpand: false
+    campaignExpand: false,
+    discussionTitleInput: '',
+    discussionAuthorInput: '',
+    discussInputArea: ''
   }
 
   voteId="";
@@ -76,12 +81,10 @@ class ActiveVoteIdeas extends Component {
 
   // Getting closer, but needs more work
   campaignExpand = (campaignId) => {
-    // this.setState({ campaignClicked: { expand: true }});
     API.campaignGet(campaignId)
       .then(response => {
         const resDat = response.data[0];
         this.setState({ campaignClicked: resDat, campaignExpand: true });
-        console.log(resDat);
       });
   };
 
@@ -89,11 +92,44 @@ class ActiveVoteIdeas extends Component {
     this.loadCampaigns();
   };
 
+  // All the discussion stuff
+
+  handleDiscussionSubmit = (event) => {
+    event.preventDefault()
+    const discussionForm = document.getElementById('newDiscussion');
+    console.log(discussionForm);
+  //   API.discussionPost({
+  //     // This is hard coded fix!!!
+  //     id: '5c96800a1b842f0d9897a508',
+  //     subject: this.state.titleInput,
+  //     author: this.state.authorInput,
+  //     body: this.state.discussInputArea})
+  //     .then(response => {
+  //       (console.log(response.status));
+  //     });
+    this.setState({
+      titleInput: '',
+      authorInput: '',
+      discussionInputArea: ''
+    });
+    discussionForm.reset();
+    this.campaignExpand(this.state.campaignClicked._id);
+  };
+
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({ 
+      [name]: value 
+    });
+  };
+
+  unFocusCampaign = () => {
+    this.setState({ campaignExpand: false });
+  };
+
   render(){
     const campaignsFromDB = this.state.campaignsFromDB;
     const campaignClicked = this.state.campaignClicked;
-    console.log(this.state.campaignClicked);
-    console.log(this.state.campaignExpand)
     return (
       !this.state.campaignExpand ? (
         <div>
@@ -171,26 +207,41 @@ class ActiveVoteIdeas extends Component {
             clientId={"1"}
             />
           ):(
-            <CampaignDisplay
-            // handleData={()=>this.handleData(campaign.vote._id, campaign._id)}
-            // campaignExpand={() => this.campaignExpand(campaign._id)}
-            data={campaignClicked.vote}
-            title={campaignClicked.title}
-            author={campaignClicked.author}
-            synopsis={campaignClicked.synopsis}
-            key={campaignClicked._id}
-            styles={{opacity:1}}
-            // text={customText}
-            onCreate={this.onCreate}
-            onUpvote={this.onUpvote}
-            onClose={this.onClose}
-            onReset={this.onReset}
-            onDownvote={this.onDownvote}
-            onExpand={this.onExpand}
-            onEdit={this.onEdit}
-            isAdmin={true}
-            clientId={"1"}
-            />
+            <div>
+              <button onClick={this.unFocusCampaign}>Back</button>
+              <CampaignDisplay
+              // handleData={()=>this.handleData(campaign.vote._id, campaign._id)}
+              // campaignExpand={() => this.campaignExpand(campaign._id)}
+              data={campaignClicked.vote}
+              title={campaignClicked.title}
+              author={campaignClicked.author}
+              synopsis={campaignClicked.synopsis}
+              key={campaignClicked._id}
+              styles={{opacity:1}}
+              // text={customText}
+              onCreate={this.onCreate}
+              onUpvote={this.onUpvote}
+              onClose={this.onClose}
+              onReset={this.onReset}
+              onDownvote={this.onDownvote}
+              onExpand={this.onExpand}
+              onEdit={this.onEdit}
+              isAdmin={true}
+              clientId={"1"}
+              />
+              <DiscussionForm 
+              discussionSubmit={this.handleDiscussionSubmit}
+              discussionFormChange={this.handleChange}
+              discussionTitleInput={this.state.discussionTitleInput}
+              discussionAuthorInput={this.state.discussionAuthorInput}
+              discussInputArea={this.state.discussInputArea}/>
+              {campaignClicked.comments.map((discussion, index) => 
+                <DiscussionDisplay
+                key={index}
+                discussionData={discussion}
+                />
+              )}
+            </div>
           )}
         </div>
       )
