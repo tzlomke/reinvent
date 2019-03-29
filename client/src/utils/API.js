@@ -6,6 +6,11 @@ export default {
     console.log(username);
     return axios.get('/api/profile/' + username);
   },
+  // Post Profile Image
+  profileImageUpload: (username) => {
+    console.log(username);
+    return axios.post('/api/:username/profile-image-upload');
+  },
   // Post a campaign
   campaignPost: (campaign) => {
     return axios.post('/api/campaign', campaign);
