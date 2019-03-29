@@ -45,8 +45,18 @@ class Calendar extends Component {
         eventForm.reset();
     };
 
+    loadEvents = () => {
+        API.getEvents()
+        .then(res => this.setState({ events: res.data }));
+    };
+
+    componentDidMount = () => {
+        this.loadEvents();
+    }
+
     render = () => (
         <div className="container">
+            <button data-target="eventFormModal" className="btn modal-trigger">Add an Event</button>
             <EventForm
             eventTitle={this.state.eventTitle}
             startDate={this.state.startDate}
@@ -58,7 +68,8 @@ class Calendar extends Component {
             handleFormSubmit={this.handleFormSubmit}
             />
             <div id="calendarDisplay">
-                <MyCalendar/>
+                <MyCalendar
+                events={this.state.events}/>
             </div>
         </div>
     );
