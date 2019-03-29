@@ -28,7 +28,9 @@ export default {
   },
   // Post discussions
   discussionPost: (discussion) => {
-    return axios.post('/api/campaign/discussion', discussion);
+    const { author, body } = discussion;
+    const uploadDiscuss = { author, body }
+    return axios.put(`/api/campaign/discussion/${discussion.id}`, uploadDiscuss);
   },
   // Gets all votes
   getVotes: function () {

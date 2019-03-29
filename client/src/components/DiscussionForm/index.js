@@ -6,10 +6,6 @@ const DiscussionForm = ({ discussionSubmit, discussionFormChange, discussionTitl
       <header>Discussion</header>
         <section id="discussionEntry">
           <form id="newDiscussion">
-            <section id="newDiscTitle">
-              <label htmlFor="discTitleIt">Title</label>
-              <input type="text" id="discTitleIt" name="discussionTitleInput" value={discussionTitleInput} onChange={discussionFormChange}></input>
-            </section>
             <section id="newDiscAuthor">
               <label htmlFor="authorDiscIt">Author</label>
               <input type="text" id="authorDiscIt" name="discussionAuthorInput" value={discussionAuthorInput} onChange={discussionFormChange}></input>

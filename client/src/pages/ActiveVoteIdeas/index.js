@@ -12,7 +12,6 @@ class ActiveVoteIdeas extends Component {
     userId: "1",
     campaignClicked: {},
     campaignExpand: false,
-    discussionTitleInput: '',
     discussionAuthorInput: '',
     discussInputArea: ''
   }
@@ -26,16 +25,13 @@ class ActiveVoteIdeas extends Component {
       .then(response => {
         campaignArray.push(response.data);
         this.setState({ campaignsFromDB: campaignArray });
-        // console.log(response.data);
       });
   };
 
   updateVote = (data) => {
     setTimeout(()=>(
-    console.log(this.voteId),
-    console.log(data),
     voteAPI.updateVote(this.voteId, data).then(res =>{
-        console.log(res.data);
+        return res.data;
     })),1
     )
 };
@@ -97,20 +93,16 @@ class ActiveVoteIdeas extends Component {
   handleDiscussionSubmit = (event) => {
     event.preventDefault()
     const discussionForm = document.getElementById('newDiscussion');
-    console.log(discussionForm);
-  //   API.discussionPost({
-  //     // This is hard coded fix!!!
-  //     id: '5c96800a1b842f0d9897a508',
-  //     subject: this.state.titleInput,
-  //     author: this.state.authorInput,
-  //     body: this.state.discussInputArea})
-  //     .then(response => {
-  //       (console.log(response.status));
-  //     });
+    API.discussionPost({
+      id: this.state.campaignClicked._id,
+      author: this.state.discussionAuthorInput,
+      body: this.state.discussInputArea})
+      .then(response => {
+        (console.log(response.status));
+      });
     this.setState({
-      titleInput: '',
-      authorInput: '',
-      discussionInputArea: ''
+      discussionAuthorInput: '',
+      discussInputArea: ''
     });
     discussionForm.reset();
     this.campaignExpand(this.state.campaignClicked._id);
@@ -124,6 +116,7 @@ class ActiveVoteIdeas extends Component {
   };
 
   unFocusCampaign = () => {
+    this.loadCampaigns();
     this.setState({ campaignExpand: false });
   };
 
