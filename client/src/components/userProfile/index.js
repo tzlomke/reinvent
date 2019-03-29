@@ -40,7 +40,7 @@ class UserProfile extends Component {
 					userFullName: `${userData.firstName} ${userData.lastName}`,
 					username: userData.username,
 					userCampaigns: userData.campaigns,
-					profileImage: userData.profileImage[0],
+					profileImage: userData.profileImage[userData.profileImage.length-1],
 				});
 			});
 	};
