@@ -7,11 +7,23 @@ class Navbar extends Component {
 			<div className="navbar-fixed">
 				<nav className="z-depth-0">
 					<div className="nav-wrapper white">
-						<Link
-							to="/ideas"
-							className="col s5 brand-logo center black-text nav-link">
-							Ideas
-						</Link>
+						<ul id="nav-mobile" className="center hide-on-med-and-down">
+							<li>
+								<Link
+									to="/ideas"
+									className="black-text nav-link">
+									Ideas
+								</Link>
+							</li>
+							<li>								
+								<Link
+									to="/news-feed"
+									className="black-text nav-link">
+									News Feed
+								</Link>
+							</li>
+
+						</ul>
 					</div>
 				</nav>
 			</div>
@@ -20,3 +32,4 @@ class Navbar extends Component {
 }
 
 export default Navbar;
+
