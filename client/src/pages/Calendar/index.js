@@ -2,7 +2,10 @@ import React, {Component} from "react";
 import MyCalendar from "../../components/MyCalendar";
 import EventForm from "../../components/EventForm";
 import API from "../../utils/API";
+import ReactTooltip from 'react-tooltip';
+import moment from "moment";
 import "./style.css"
+
 
 class Calendar extends Component {
     state = {
@@ -31,10 +34,12 @@ class Calendar extends Component {
             title: this.state.eventTitle,
             start: this.state.startDate,
             end: this.state.endDate,
-            description: this.state.eventDescription
+            description: this.state.eventDescription,
+            displayEventTime: true
         })
         .then(response => {
             (console.log(`You successfully uploaded: ${response.data.title}`));
+            this.loadEvents();
         });
         this.setState({
             eventTitle: "",
@@ -52,6 +57,14 @@ class Calendar extends Component {
 
     componentDidMount = () => {
         this.loadEvents();
+        window.$('.modal').modal();
+        
+    }
+
+    componentDidUpdate =() => {
+        setTimeout(() => {
+            ReactTooltip.rebuild();
+        }, 100)
     }
 
     render = () => (
@@ -71,6 +84,20 @@ class Calendar extends Component {
                 <MyCalendar
                 events={this.state.events}/>
             </div>
+            {this.state.events.map(event =>(
+                <ReactTooltip 
+                key={event._id}
+                id={event._id}
+                globalEventOff="click"
+                effect="solid"
+                >
+                    <span>{event.title}</span>
+                    <br></br>
+                    <span>{moment(event.start).format("h:mm A")}-{moment(event.end).format("h:mm A")}</span>
+                    <br></br>
+                    <span>{event.description}</span>
+                </ReactTooltip>
+            ))}
         </div>
     );
 };

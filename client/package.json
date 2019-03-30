@@ -18,6 +18,7 @@
     "react-redux": "^6.0.1",
     "react-router-dom": "^5.0.0",
     "react-scripts": "^2.1.1",
+    "react-tooltip": "^3.10.0",
     "react-vote": "^3.3.3",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",

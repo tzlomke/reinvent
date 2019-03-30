@@ -3,7 +3,7 @@ import DateTimePicker from 'react-datetime-picker';
 
 function EventForm (props)  {
     return(
-        <div className="" id="eventFormModal">
+        <div className="modal" id="eventFormModal">
             <header>New Event</header>
             <section id="eventFormSection">
                 <form id="eventForm">
@@ -20,9 +20,10 @@ function EventForm (props)  {
                         />
                     </section>
                     <section id="startDateTimeSection">
-                        <label htmlFor="startDateTime">End Date and Time</label>
+                        <label htmlFor="endDateTime">End Date and Time</label>
                         <DateTimePicker
-                        id="startDateTime"
+                        className="dateTimePicker"
+                        id="endDateTime"
                         value={props.endDate}
                         onChange={props.endChange}
                         />
