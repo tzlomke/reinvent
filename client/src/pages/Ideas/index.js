@@ -28,11 +28,8 @@ class Ideas extends Component {
         let userData = response.data[0]
         console.log(userData);
 				this.setState({
-					// userID: userData._id,
-					// userFullName: `${userData.firstName} ${userData.lastName}`,
-					// username: userData.username,
-					// userCampaigns: userData.campaigns,
-					// profileImage: userData.profileImage[userData.profileImage.length-1],
+					userId: userData._id,
+					authorInput: `${userData.firstName} ${userData.lastName} | ${userData.username}`,
 				});
 			});
 	};
@@ -43,13 +40,13 @@ class Ideas extends Component {
     API.campaignPost({
       title: this.state.titleInput,
       author: this.state.authorInput,
+      userId: this.state.userId,
       synopsis: this.state.campaignInputArea})
       .then(response => {
         (console.log(`You successfully uploaded: ${response.data.title}`));
       });
     this.setState({
       titleInput: '',
-      authorInput: '',
       campaignInputArea: ''
     });
     campaignForm.reset();
