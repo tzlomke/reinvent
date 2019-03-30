@@ -28,7 +28,7 @@ const Navbar = props => (
 			className="col s5 brand-logo center white-text nav-link"> Profile
 		</Link>
 		<Link
-			to="/"
+			to="/dashboard"
 			className="col s5 brand-logo center white-text nav-link"> Logout
 		</Link>
 		
