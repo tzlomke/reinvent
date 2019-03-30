@@ -8,12 +8,12 @@ const Navbar = props => (
   <div className="navbar ">
   
 		<Link
-			to="/ideas"
-			className="col s5 brand-logo center white-text nav-link"> Ideas
+			to="/News-Feed"
+			className="col s5 brand-logo center white-text nav-link"> News Feed
 		</Link>
 		<Link
-			to="/news-feed"
-			className="col s5 brand-logo center white-text nav-link"> Newsletter
+			to="/ideas"
+			className="col s5 brand-logo center white-text nav-link"> Ideas
 		</Link>
         <Link
 	    to="/calendar"
@@ -27,7 +27,10 @@ const Navbar = props => (
 			to={props.profileRoute}
 			className="col s5 brand-logo center white-text nav-link"> Profile
 		</Link>
-		
+		<Link
+			to="/"
+			className="col s5 brand-logo center white-text nav-link"> Logout
+		</Link>
 		
 	</div>
 );
