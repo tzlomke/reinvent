@@ -37,7 +37,7 @@ export default {
   },
   // Post discussions
   discussionPost: (discussion) => {
-    return axios.post('/api/campaign/discussion', discussion);
+    return axios.put(`/api/campaign/discussion/${discussion.id}`, discussion);
   },
   // Gets all votes
   getVotes: function () {
