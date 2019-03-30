@@ -3,11 +3,12 @@ const db = require('../models');
 module.exports = {
   // Create a campaign. The callbacks allow the responses to be passed almost unchanged up the chain to make it easier on frontend
   createCampaign: (req, res) => {
-    console.log(req.body)
     db.Campaign
       .create(req.body)
       .then(dbCampaign => {
-        db.User.findOneAndUpdate({ _id: id }, {$push : { campaigns: dbCampaign._id } }, { new: true });
+        return db.User.findOneAndUpdate({ _id: req.body.userId }, {$push : { campaigns: dbCampaign._id } }, { new: true });
+      })
+      .then(dbCampaign => {
         res.json(dbCampaign);
       })
       .catch(err => res.json(err));

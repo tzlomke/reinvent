@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import ProfileData from "./ProfileData";
 import ProfilePicture from "./ProfilePicture";
+import ImageUpload from "./ImageUpload";
 
 class UserProfile extends Component {
 
@@ -12,7 +13,7 @@ class UserProfile extends Component {
 		userFullName: "",
 		username: "",
 		userCampaigns: [],
-		profileImage: "https://avatars0.githubusercontent.com/u/38269347?s=460&v=4"
+		profileImage: ""
 	};
 
 	handleChange = (event) => {
@@ -31,7 +32,7 @@ class UserProfile extends Component {
 		let userParam = this.props.location.pathname;
 		let username = userParam.split("/")[2];
 		console.log(username)
-		API.getUser(username)
+		API.getUserByUsername(username)
 			.then(response => {
 				let userData = response.data[0]
 				this.setState({
@@ -39,7 +40,7 @@ class UserProfile extends Component {
 					userFullName: `${userData.firstName} ${userData.lastName}`,
 					username: userData.username,
 					userCampaigns: userData.campaigns,
-					profileImage: userData.profileImage,
+					profileImage: userData.profileImage[userData.profileImage.length-1],
 				});
 			});
 	};
@@ -57,6 +58,8 @@ class UserProfile extends Component {
 				<ProfilePicture 
 					profileImage = {this.state.profileImage}
 				/>
+
+				<ImageUpload />
 
 				<ProfileData 
 					authenticatedUserID = {user.id}
