@@ -1,96 +1,45 @@
-import React, {Component} from "react";
+import React from "react";
 import ReactVote from "react-vote";
-import voteAPI from "../../utils/voteAPI";
 
-class Vote extends Component {
-    state = {
-        userId: "1",
-        votes: []
-    };
-
-    componentDidMount() {
-        this.loadVotes();
-    }
-
-    updateVote = (data) => {
-        voteAPI.updateVote(this.data._id,  data).then(res =>{
-            console.log(res.data);
-        });
-    };
-
-    loadVotes = () => {
-        voteAPI.getVotes().then(res =>  {
-            this.setState({votes:res.data});
-        });
-    };
-
-    onCreate = (data) =>  {
-        voteAPI.saveVote(data).then(res => {
-            console.log(res.data);
-        });
-    };
-
-    onUpvote = (data) => {
-        this.updateVote(data);
-    };
-
-    onDownvote = (data) => {
-        this.updateVote(data);
-    };  
-    
-    onClose = (data) => {
-        this.updateVote(data);
-    };
-
-    onReset = (data) => {
-        this.updateVote(data);
-    };
-
-    onExpand = (data) => {
-        this.updateVote(data);
-    };
-
-    onEdit = (data) => {
-        this.updateVote(data);
-    };
-    
-    render() {
-        return (
-        <div>
-            <ReactVote
-            // styles={customStyle}
-            // text={customText}
-            onCreate={this.onCreate}
-            onUpvote={this.onUpvote}
-            onClose={this.onClose}
-            onReset={this.onReset}
-            onDownvote={this.onDownvote}
-            onExpand={this.onExpand}
-            onEdit={this.onEdit}
-            isAdmin={true}
-            clientId={"1"}
-            />
-            {this.state.votes.map(vote => (
-                console.log(vote),
+function Vote(props){
+    return (
+        props.data.length === 0 ? (
+            <div>
                 <ReactVote
-                key={vote._id}
-                // styles={customStyle}
+                styles={{opacity:1}}
                 // text={customText}
-                data={vote}
-                onCreate={this.onCreate}
-                onUpvote={this.onUpvote}
-                onClose={this.onClose}
-                onReset={this.onReset}
-                onDownvote={this.onDownvote}
-                onExpand={this.onExpand}
-                onEdit={this.onEdit}
+                onCreate={props.onCreate}
+                onUpvote={props.onUpvote}
+                onClose={props.onClose}
+                onReset={props.onReset}
+                onDownvote={props.onDownvote}
+                onExpand={props.onExpand}
+                onEdit={props.onEdit}
                 isAdmin={true}
                 clientId={"1"}
                 />
-            ))}
-        </div>
+            </div>
+        ) : (
+            console.log("this is happening"),
+            console.log(props.data[0]),
+            <div>
+                <ReactVote
+                data={props.data[0]}
+                styles={{opacity:1}}
+                // text={customText}
+                onCreate={props.onCreate}
+                onUpvote={props.onUpvote}
+                onClose={props.onClose}
+                onReset={props.onReset}
+                onDownvote={props.onDownvote}
+                onExpand={props.onExpand}
+                onEdit={props.onEdit}
+                isAdmin={true}
+                clientId={"1"}
+                />
+            </div>
+        )
         );
-    };
 };
 
 export default Vote;

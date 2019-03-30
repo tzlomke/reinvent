@@ -11,6 +11,13 @@ const voteSchema = new Schema({
     items: [],
     multiple: false,
     showTotal: Boolean,
+    // ref campaign related to vote
+    campaign:[
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Campaign'
+        }
+    ]
 });
 
 const Vote = mongoose.model("Vote", voteSchema);

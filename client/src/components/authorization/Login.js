@@ -48,6 +48,34 @@ class Login extends Component {
 		this.props.loginUser(userData);
 	};
 
+	labelMove = (event, call) => {
+		const { value } = event.target;
+		const { id } = event.target;
+		const labels = document.getElementsByTagName('label');
+		const element = () => {
+			for (let i = 0; i < labels.length; i++) {
+				if(labels[i].htmlFor === id) {
+					return labels[i];
+				};
+			};
+		};
+		if(call === 'focus') {
+			element().className = 'active';
+		} else if(call === 'blur') {
+			if(value === '') {
+				element().className = '';
+			};
+		};
+	};
+
+	onFocus = event => {
+		this.labelMove(event, 'focus');
+	};
+
+	onBlur = event => {
+		this.labelMove(event, 'blur');
+	};
+
 	render() {
 		const { errors } = this.state;
 		
@@ -74,6 +102,8 @@ class Login extends Component {
 
 							<div className="input-field col s12">
 								<input
+									onFocus={this.onFocus}
+									onBlur={this.onBlur}
 									onChange={this.onChange}
 									value={this.state.username}
 									errors={errors.username}
@@ -92,6 +122,8 @@ class Login extends Component {
 
 							<div className="input-field col s12">
 								<input
+									onFocus={this.onFocus}
+									onBlur={this.onBlur}
 									onChange={this.onChange}
 									value={this.state.password}
 									errors={errors.password}
