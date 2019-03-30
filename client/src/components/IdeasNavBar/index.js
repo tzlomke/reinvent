@@ -6,7 +6,7 @@ function Navbar(props){
 		<div className="navbar-fixed">
 			<nav className="z-depth-0">
 				<div className="nav-wrapper white">
-					<ul classname ="tabs">
+					<ul className ="tabs">
                         <li>
                             <Link
 						        to="/ideas/active"

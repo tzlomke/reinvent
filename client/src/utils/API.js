@@ -2,9 +2,13 @@ import axios from 'axios';
 
 export default {
   // Get User Data
-  getUser: (username) => {
+  getUserByUsername: (username) => {
     console.log(username);
     return axios.get('/api/profile/' + username);
+  },
+  getUserById: (userId) => {
+    console.log(userId);
+    return axios.get('/api/profile/find/' + userId);
   },
   // Post Profile Image
   profileImageUpload: (username) => {

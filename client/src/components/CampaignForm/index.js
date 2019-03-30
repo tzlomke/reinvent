@@ -1,6 +1,7 @@
 import React from 'react';
 
 function CampaignForm(props)  {
+
     return(
       <div className= "modal" id="campaignFormModal">
         <header>Campaign</header>

@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import CampaignForm from "../../components/CampaignForm";
+// import CampaignForm from "../../components/CampaignForm";
 import CampaignDisplay from "../../components/CampaignDisplay";
 import API from "../../utils/API";
 import voteAPI from "../../utils/API";

@@ -18,7 +18,7 @@ router.route("/closed")
   .get(campaignController.getClosedCampaigns);
 
   // A route for posting campaigns
-router.route('/discussion')
-  .post(campaignController.createDiscussion);
+router.route('/discussion/:id')
+  .put(campaignController.createDiscussion);
   
 module.exports = router;

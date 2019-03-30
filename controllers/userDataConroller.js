@@ -53,9 +53,19 @@ const checkFileType = (file, cb) => {
 };
 
 module.exports = {
-	getUser: function(req, res) {
+	getUserByUsername: function(req, res) {
 		db.User
 			.find({ username: req.params.username })
+			.populate("campaigns")
+			.then(dbUser => res.json(dbUser))
+			.catch(err => res.status(422).json(err));
+	},
+
+	getUserById: function(req, res) {
+		let id = req.params.id;
+		console.log("ID: " + id);
+		db.User
+			.find({ _id: id })
 			.populate("campaigns")
 			.then(dbUser => res.json(dbUser))
 			.catch(err => res.status(422).json(err));

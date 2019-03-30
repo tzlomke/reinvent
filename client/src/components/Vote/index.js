@@ -20,8 +20,6 @@ function Vote(props){
                 />
             </div>
         ) : (
-            console.log("this is happening"),
-            console.log(props.data[0]),
             <div>
                 <ReactVote
                 data={props.data[0]}
