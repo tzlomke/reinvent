@@ -12,8 +12,7 @@ function CampaignForm(props)  {
                 <input type="text" id="titleIt" name="titleInput" value={props.titleInput} onChange={props.handleChange}></input>
               </section>
               <section id="newCampAuthor">
-                <label htmlFor="authorIt">Author</label>
-                <input type="text" id="authorIt" name="authorInput" value={props.authorInput} onChange={props.handleChange}></input>
+                <h6 id="authorIt" name="authorInput">{props.authorInput}</h6>
               </section>
               <section id="newCampSynop">
                 <label htmlFor="campaignIt">New Campaign Here</label>
