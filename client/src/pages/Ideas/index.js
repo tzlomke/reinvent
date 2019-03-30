@@ -66,8 +66,8 @@ class Ideas extends Component {
 
   render(){ 
 
-    const { user } = this.props.auth
-		console.log(user.id)
+    // const { user } = this.props.auth
+		// console.log(user.id)
 
     return (
       <div>

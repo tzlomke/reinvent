@@ -24,7 +24,7 @@ const Navbar = props => (
 			className="col s5 brand-logo center white-text nav-link"> Resources
 		</Link>
 		<Link
-			to="/profile/:username"
+			to={props.profileRoute}
 			className="col s5 brand-logo center white-text nav-link"> Profile
 		</Link>
 		
