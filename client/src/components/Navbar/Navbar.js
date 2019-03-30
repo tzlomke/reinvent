@@ -14,7 +14,7 @@ const Navbar = props => (
 		className="col s5 brand-logo center white-text nav-link"> Newsletter
 		</Link>
         <Link
-	    to="/"
+	    to="/calendar"
 		className="col s5 brand-logo center white-text nav-link"> Calendar
 		</Link>
         <Link

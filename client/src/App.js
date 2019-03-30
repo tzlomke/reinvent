@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
+import Calendar from "./pages/Calendar";
 
 import "./App.css";
 
@@ -16,7 +17,7 @@ import Register from "./components/authorization/Register";
 import Login from "./components/authorization/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
-import UserProfile from "./components/UserProfile";
+// import UserProfile from "./components/UserProfile";
 // import IdeasDiscussed from "./pages/IdeasDiscussed";
 
 // Page Imports
@@ -58,7 +59,8 @@ class App extends Component {
 						<Switch>
 							<PrivateRoute exact path="/dashboard" component={Dashboard} />
 							<PrivateRoute path="/ideas" component={Ideas} />
-							<PrivateRoute exact path="/profile/:username" component={UserProfile} />
+							{/* <PrivateRoute exact path="/profile/:username" component={UserProfile} /> */}
+							<PrivateRoute exact path="/calendar" component={Calendar} />
 							<PrivateRoute exact path="/news-feed" component={NewsList} />
 	        			</Switch>	
 					</div>
