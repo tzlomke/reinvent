@@ -1,10 +1,11 @@
 import React from 'react';
 import DateTimePicker from 'react-datetime-picker';
+import './EventForm.css';
 
 function EventForm (props)  {
     return(
         <div className="modal" id="eventFormModal">
-            <header>New Event</header>
+            <header className="header">New Event</header>
             <section id="eventFormSection">
                 <form id="eventForm">
                     <section id="eventTitleSection">
@@ -14,6 +15,7 @@ function EventForm (props)  {
                     <section id="startDateTimeSection">
                         <label htmlFor="startDateTime">Start Date and Time</label>
                         <DateTimePicker
+                        className="dateTimePicker1"
                         id="startDateTime"
                         value={props.startDate}
                         onChange={props.startChange}
@@ -22,7 +24,7 @@ function EventForm (props)  {
                     <section id="startDateTimeSection">
                         <label htmlFor="endDateTime">End Date and Time</label>
                         <DateTimePicker
-                        className="dateTimePicker"
+                        className="dateTimePicker2"
                         id="endDateTime"
                         value={props.endDate}
                         onChange={props.endChange}
@@ -32,7 +34,7 @@ function EventForm (props)  {
                         <label htmlFor="eventDescription">Event Description</label>
                         <textarea id="eventDescription" name="eventDescription" value={props.campaignInput} onChange={props.handleChange}></textarea>
                     </section>
-                    <button id="submitEvent" type="submit" className="modal-close" onClick = {props.handleFormSubmit}>Submit</button>
+                    <button id="submitEvent" type="submit" className="btn btn-dark modal-close" onClick = {props.handleFormSubmit}>Submit</button>
                 </form>
             </section>
         </div>

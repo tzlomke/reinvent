@@ -1,0 +1,29 @@
+.modal {
+    -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+   padding: 5px;
+   /* height: 100% !important; */
+   overflow: visible;
+   }
+
+.header {
+   font-display: bold;
+}
+
+.dateTimePicker1 {
+    margin-left: 10px;
+    width: fit-content;
+    border: 20px;
+}
+
+.dateTimePicker2 {
+    margin-left: 14px;
+    border: 20px;
+    width: fit-content;
+    overflow: visible;
+}
+
+.react-datetime-picker__inputGroup__input.react-datetime-picker__inputGroup__year {
+    width: auto;
+    overflow: visible;
+}
