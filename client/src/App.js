@@ -17,7 +17,8 @@ import Register from "./components/authorization/Register";
 import Login from "./components/authorization/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
-import UserProfile from "./components/userProfile";
+import UserProfile from "./components/UserProfile";
+// import IdeasDiscussed from "./pages/IdeasDiscussed";
 
 // Page Imports
 import NewsList from "./pages/NewsList";
@@ -56,7 +57,7 @@ class App extends Component {
 						<Route exact path="/register" component={Register} />
 						<Route exact path="/login" component={Login} />
 						<Switch>
-    						<PrivateRoute exact path="/dashboard" component={Dashboard} />
+							<PrivateRoute exact path="/dashboard" component={Dashboard} />
 							<PrivateRoute path="/ideas" component={Ideas} />
 							<PrivateRoute exact path="/profile/:username" component={UserProfile} />
 							<PrivateRoute exact path="/calendar" component={Calendar} />

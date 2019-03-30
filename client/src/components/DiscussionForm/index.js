@@ -1,106 +1,24 @@
-import React, {Component} from 'react';
-import API from '../../utils/API';
-import DiscussionDisplay from '../DiscussionDisplay';
+import React from 'react';
 
-class DiscussionForm extends Component {
-
-  state = {
-    titleInput: '',
-    authorInput: '',
-    discussionInputArea: '',
-    campaignsFromDB: [],
-    discussionsForCampaign: []
-  }
-
-  handleFormSubmit = (event) => {
-    event.preventDefault()
-    const discussionForm = document.getElementById('newDiscussion');
-    API.discussionPost({
-      // This is hard coded fix!!!
-      id: '5c96800a1b842f0d9897a508',
-      subject: this.state.titleInput,
-      author: this.state.authorInput,
-      body: this.state.discussInputArea})
-      .then(response => {
-        (console.log(response.status));
-      });
-    this.setState({
-      titleInput: '',
-      authorInput: '',
-      discussionInputArea: ''
-    });
-    discussionForm.reset();
-    this.loadDiscussion();
-  };
-
-  handleCampaignClick = (event) => {
-    const id = event.target.dataset.id;
-    this.state.campaignsFromDB.map(element => {
-      if(element._id === id) {
-        console.log(element);
-      }
-    });
-  };
-
-  handleChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({ 
-      [name]: value 
-    });
-  };
-
-  // TODO make this so that it is tied to whatever campaign ID we are in
-  loadDiscussion = () => {
-    // This is hard coded fix!!!
-    API.campaignGet('5c96800a1b842f0d9897a508')
-      .then(response => {
-        if(response.data[0] !== undefined) {
-          // This is just about there, we just need to post the results
-          this.setState({ discussionsForCampaign: response.data[0].comments });
-        };
-      });
-  };
-
-  componentDidMount = () => {
-    this.loadDiscussion();
-  };
-  
-
-  render() {
-    return(
-      <div>
-        <header>Discussion</header>
-          <section id="discussionEntry">
-            <form id="newDiscussion">
-              <section id="newDiscTitle">
-                <label htmlFor="discTitleIt">Title</label>
-                <input type="text" id="discTitleIt" name="titleInput" value={this.state.value} onChange={this.handleChange}></input>
-              </section>
-              <section id="newDiscAuthor">
-                <label htmlFor="authorDiscIt">Author</label>
-                <input type="text" id="authorDiscIt" name="authorInput" value={this.state.value} onChange={this.handleChange}></input>
-              </section>
-              <section id="newCampSynop">
-                <label htmlFor="discussIt">New Discussion Here</label>
-                <textarea id="discussIt" name="discussInputArea" value={this.state.value} onChange={this.handleChange}></textarea>
-              </section>
-                <button id="submitDiscussion" type="submit" onClick = {this.handleFormSubmit}>Submit</button>
-              </form>
+const DiscussionForm = ({ discussionSubmit, discussionFormChange, discussionTitleInput, discussionAuthorInput, discussInputArea }) => {
+  return(
+    <div>
+      <header>Discussion</header>
+        <section id="discussionEntry">
+          <form id="newDiscussion">
+            <section id="newDiscAuthor">
+              <label htmlFor="authorDiscIt">Author</label>
+              <input type="text" id="authorDiscIt" name="discussionAuthorInput" value={discussionAuthorInput} onChange={discussionFormChange}></input>
             </section>
-            <header>New Discussion</header>
-          {this.state.discussionsForCampaign.map((discussion) => {
-            return(
-              <DiscussionDisplay 
-                onClick = {this.handleCampaignClick}
-                key = {discussion._id}
-                title={discussion.subject}
-                author={discussion.author}
-                synopsis={discussion.body} />
-            )
-          })}
-      </div>
-    );
-  };
+            <section id="newCampSynop">
+              <label htmlFor="discussIt">New Discussion Here</label>
+              <textarea id="discussIt" name="discussInputArea" value={discussInputArea} onChange={discussionFormChange}></textarea>
+            </section>
+              <button id="submitDiscussion" type="submit" onClick = {discussionSubmit}>Submit</button>
+            </form>
+          </section>
+    </div>
+  );
 };
 
 export default DiscussionForm;

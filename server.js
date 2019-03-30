@@ -2,8 +2,7 @@
 const path = require("path");
 
 // Environmental Variables
-// require("dotenv").config();
-const dotenv = require('dotenv').config({path: path.join(__dirname, '.env')})
+require('dotenv').config({path: path.join(__dirname, '.env')})
 
 const express = require("express");
 const mongoose = require("mongoose");

@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { logoutUser } from "../../actions/authActions";
 import ProfileData from "./ProfileData";
 import ProfilePicture from "./ProfilePicture";
 
@@ -19,6 +22,11 @@ class UserProfile extends Component {
 		});
 	};
 
+	onLogoutClick = event => {
+		event.preventDefault();
+		this.props.logoutUser();
+	};
+
 	loadUser = () => {
 		let userParam = this.props.location.pathname;
 		let username = userParam.split("/")[2];
@@ -27,6 +35,7 @@ class UserProfile extends Component {
 			.then(response => {
 				let userData = response.data[0]
 				this.setState({
+					userID: userData._id,
 					userFullName: `${userData.firstName} ${userData.lastName}`,
 					username: userData.username,
 					userCampaigns: userData.campaigns,
@@ -40,6 +49,9 @@ class UserProfile extends Component {
 	};
 
 	render() {
+		const { user } = this.props.auth
+		console.log(user.id)
+
 		return(
 			<div className="profile-wrapper">
 				<ProfilePicture 
@@ -47,13 +59,25 @@ class UserProfile extends Component {
 				/>
 
 				<ProfileData 
+					authenticatedUserID = {user.id}
+					userID = {this.state.userID}
 					userFullName = {this.state.userFullName}
 					username = {this.state.username}
 					userCampaigns = {this.state.userCampaigns}
+					logout = {this.onLogoutClick}
 				/>
 			</div>
 		)
 	};
 }
 
-export default UserProfile;
+UserProfile.propTypes = {
+	logoutUser: PropTypes.func.isRequired,
+	auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  	auth: state.auth
+});
+
+export default connect(mapStateToProps, { logoutUser })(UserProfile);
