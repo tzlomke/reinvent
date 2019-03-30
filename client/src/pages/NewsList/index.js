@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-// import DeleteBtn from "../components/DeleteBtn";
+import DeleteBtn from "../../components/DeleteBtn";
 // import Jumbotron from "../components/Jumbotron";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
+import { NewsCard } from "../../components/NewsCard";
+
 // import { Input, TextArea, FormBtn } from "../components/Form";
 
 class NewsFeed extends Component {
@@ -64,12 +66,28 @@ class NewsFeed extends Component {
               <List>
                 {this.state.articles.map(article => (
                   <ListItem key={article._id}>
-                    <Link to={"/articles/" + article._id}>
+                    {/* <Link to={"/articles/" + article._id}>
                       <strong>
                         {article.title} by {article.author}
                       </strong>
-                    </Link>
-                    {/* <DeleteBtn onClick={() => this.deleteArticle(article._id)} /> */}
+                    </Link> */}
+                    <DeleteBtn onClick={() => this.deleteArticle(article._id)} />
+                    <NewsCard 
+                      colSize={ "12" } 
+                      cardTitle={ article.title }
+                      cardSub={ article.author }
+                      cardText={ article.synopsis }
+                      cardTextColor={ "white-text" }
+                      cardColor={ "blue-grey" }
+                      cardAction={ 
+                        <Link to={"/articles/" + article._id}>
+                          <span>
+                            Read
+                          </span>
+                        </Link> 
+                      }
+                    > 
+                    </NewsCard>
                   </ListItem>
                 ))}
               </List>

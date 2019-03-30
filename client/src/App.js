@@ -11,14 +11,14 @@ import { Provider } from "react-redux";
 import store from "./store";
 
 import Header from "./components/Header";
-import Navbar from "./components/Navbar";
+import DynamicNavbar from "./components/Navbar";
 import Landing from "./components/layout/Landing";
 import Register from "./components/authorization/Register";
 import Login from "./components/authorization/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import UserProfile from "./components/UserProfile";
-import IdeasDiscussed from "./pages/IdeasDiscussed";
+// import IdeasDiscussed from "./pages/IdeasDiscussed";
 import Resources from "./pages/Resources";
 
 // Page Imports
@@ -53,14 +53,14 @@ class App extends Component {
 				<Router>
 					<div className="App">
 						<Header />
-						<Navbar />
+						<DynamicNavbar />
 						<Route exact path="/" component={Landing} />
 						<Route exact path="/register" component={Register} />
 						<Route exact path="/login" component={Login} />
 						<Switch>
 							<PrivateRoute exact path="/dashboard" component={Dashboard} />
 							<PrivateRoute path="/ideas" component={Ideas} />
-							{/* <PrivateRoute exact path="/profile/:username" component={UserProfile} /> */}
+							<PrivateRoute exact path="/profile/:username" component={UserProfile} />
 							<PrivateRoute exact path="/calendar" component={Calendar} />
 							<PrivateRoute exact path="/news-feed" component={NewsList} />
 							<PrivateRoute exact path="/resources" component={Resources}/>

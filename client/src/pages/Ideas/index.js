@@ -1,6 +1,9 @@
 import React, {Component} from "react";
-import IdeasNavBar from "../../components/IdeasNavBar";
 import API from "../../utils/API";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { logoutUser } from "../../actions/authActions";
+import IdeasNavBar from "../../components/IdeasNavBar";
 import ActiveVoteIdeas from "../ActiveVoteIdeas";
 import ClosedVoteIdeas from "../ClosedVoteIdeas"
 import PrivateRoute from "../../components/private-route/PrivateRoute";
@@ -12,10 +15,24 @@ class Ideas extends Component {
     titleInput: '',
     authorInput: '',
     campaignInputArea: '',
-    userId: "1",
+    userId: '',
     campaignExpand: false,
     focusedCampaign: {}
-  }
+  };
+
+  loadUser = () => {
+    let authenticatedUserId = this.props.auth.user.id
+    console.log(this.props.auth.user.id);
+		API.getUserById(authenticatedUserId)
+			.then(response => {
+        let userData = response.data[0]
+        console.log(userData);
+				this.setState({
+					userId: userData._id,
+					authorInput: `${userData.firstName} ${userData.lastName} | ${userData.username}`,
+				});
+			});
+	};
 
   handleFormSubmit = (event) => {
     event.preventDefault()
@@ -23,13 +40,13 @@ class Ideas extends Component {
     API.campaignPost({
       title: this.state.titleInput,
       author: this.state.authorInput,
+      userId: this.state.userId,
       synopsis: this.state.campaignInputArea})
       .then(response => {
         (console.log(`You successfully uploaded: ${response.data.title}`));
       });
     this.setState({
       titleInput: '',
-      authorInput: '',
       campaignInputArea: ''
     });
     campaignForm.reset();
@@ -42,11 +59,13 @@ class Ideas extends Component {
     });
   };
 
-  componentDidMount = () => {
-    window.$('.modal').modal();
+  componentDidMount =() => {
+      this.loadUser()
+      window.$('.modal').modal();
   };
 
   render(){ 
+
     return (
       <div>
         <IdeasNavBar/>
@@ -63,4 +82,13 @@ class Ideas extends Component {
   }
 }
 
-export default Ideas;
+Ideas.propTypes = {
+	logoutUser: PropTypes.func.isRequired,
+	auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  	auth: state.auth
+});
+
+export default connect(mapStateToProps, { logoutUser })(Ideas);
