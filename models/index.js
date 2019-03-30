@@ -3,5 +3,6 @@ module.exports = {
   User: require('./User'),
   Vote: require("./vote"),
   Article: require("./article"),
-  Event: require("./Event")
+  Event: require("./Event"),
+  Resource: require("./Resource")
 };
