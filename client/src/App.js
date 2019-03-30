@@ -11,7 +11,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 
 import Header from "./components/Header";
-import Navbar from "./components/Navbar";
+import DynamicNavbar from "./components/Navbar";
 import Landing from "./components/layout/Landing";
 import Register from "./components/authorization/Register";
 import Login from "./components/authorization/Login";
@@ -52,7 +52,7 @@ class App extends Component {
 				<Router>
 					<div className="App">
 						<Header />
-						<Navbar />
+						<DynamicNavbar />
 						<Route exact path="/" component={Landing} />
 						<Route exact path="/register" component={Register} />
 						<Route exact path="/login" component={Login} />
