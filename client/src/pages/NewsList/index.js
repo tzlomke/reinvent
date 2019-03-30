@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import DeleteBtn from "../components/DeleteBtn";
+import DeleteBtn from "../../components/DeleteBtn";
 // import Jumbotron from "../components/Jumbotron";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
@@ -69,7 +69,7 @@ class NewsFeed extends Component {
                         {article.title} by {article.author}
                       </strong>
                     </Link>
-                    {/* <DeleteBtn onClick={() => this.deleteArticle(article._id)} /> */}
+                    <DeleteBtn onClick={() => this.deleteArticle(article._id)} />
                   </ListItem>
                 ))}
               </List>
