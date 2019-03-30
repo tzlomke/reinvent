@@ -66,15 +66,15 @@ module.exports = {
       .catch(err => res.json(err));
   },
   // Create a discussion
-  createDiscussion: (req, res) => {
-    const { id, subject, author, body } = req.body
-    console.log(id);
-    db.Campaign
-      .find({})
-      .populate("vote")
-      .then(dbCampaign => res.json(dbCampaign))
-      .catch(err => res.json(err));
-  },
+  // createDiscussion: (req, res) => {
+  //   const { id, subject, author, body } = req.body
+  //   console.log(id);
+  //   db.Campaign
+  //     .find({})
+  //     .populate("vote")
+  //     .then(dbCampaign => res.json(dbCampaign))
+  //     .catch(err => res.json(err));
+  // },
   // update campign
   updateCampaign: (req, res) => {
     db.Campaign
@@ -83,31 +83,32 @@ module.exports = {
     .catch(err => res.json(err));
   },
   // Create a discussion
-  createDiscusison: (req, res) => {
-    db.Discussion
-      .create(req.body)
+  createDiscussion: (req, res) => {
+    console.log(req.body)
+    db.Campaign
+      .findOneAndUpdate({ _id: req.params.id }, { $push: { comments: req.body } })
       .then(dbDiscussion => res.json(dbDiscussion))
       .catch(err => {res.json(err)})
   },
   // Get the discussions
-  getDiscusison: (req, res) => {
-    db.Discussion
-      .find({})
-      .then(dbDiscussion => res.json(dbDiscussion))
-      .catch(err => {res.json(err)})
-      .updateOne(
-        { _id: id },
-        { $push: 
-          { comments:
-            { 
-            subject: subject,
-            author: author,
-            body: body
-            }
-          }
-        }
-      )
-      .then(dbCampaign => res.json(dbCampaign))
-      .catch(err => res.json(err));
-  }
+  // getDiscusison: (req, res) => {
+  //   db.Discussion
+  //     .find({})
+  //     .then(dbDiscussion => res.json(dbDiscussion))
+  //     .catch(err => {res.json(err)})
+  //     .updateOne(
+  //       { _id: id },
+  //       { $push: 
+  //         { comments:
+  //           { 
+  //           subject: subject,
+  //           author: author,
+  //           body: body
+  //           }
+  //         }
+  //       }
+  //     )
+  //     .then(dbCampaign => res.json(dbCampaign))
+  //     .catch(err => res.json(err));
+  // }
 };

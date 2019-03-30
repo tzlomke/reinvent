@@ -14,7 +14,7 @@ const campaignSchema = new Schema({
 
   // Use $push to get this array built
   comments: [{
-    subject: { type: String, requied: true },
+    // subject: { type: String, requied: true },
     // author: 
     //   {
     //     type: Schema.Types.ObjectId,

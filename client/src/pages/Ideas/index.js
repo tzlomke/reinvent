@@ -13,6 +13,8 @@ class Ideas extends Component {
     authorInput: '',
     campaignInputArea: '',
     userId: "1",
+    campaignExpand: false,
+    focusedCampaign: {}
   }
 
   handleFormSubmit = (event) => {
@@ -44,7 +46,7 @@ class Ideas extends Component {
       window.$('.modal').modal();
   };
 
-  render(){
+  render(){ 
     return (
       <div>
         <IdeasNavBar/>
