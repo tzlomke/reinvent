@@ -8,8 +8,7 @@ const ProfileData = (props) => {
 		return(
 			<div>
 				<header>
-					<h1>{userFullName}</h1>
-					<h4>{username}</h4>
+					<h1>{userFullName} | {username} </h1>
 				</header>
 				<section className="user-data">
 					<div className="user-campaigns">
@@ -29,8 +28,7 @@ const ProfileData = (props) => {
 		return(
 			<div>
 				<header>
-					<h1>{userFullName}</h1>
-					<h4>{username}</h4>
+					<h1>{userFullName} | {username}</h1>
 				</header>
 				<section className="user-data">
 					<div className="user-campaigns">
