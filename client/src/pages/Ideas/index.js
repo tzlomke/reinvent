@@ -15,10 +15,10 @@ class Ideas extends Component {
     titleInput: '',
     authorInput: '',
     campaignInputArea: '',
-    userId: "1",
+    userId: '',
     campaignExpand: false,
     focusedCampaign: {}
-  }
+  };
 
   loadUser = () => {
     let authenticatedUserId = this.props.auth.user.id
@@ -65,9 +65,6 @@ class Ideas extends Component {
   };
 
   render(){ 
-
-    // const { user } = this.props.auth
-		// console.log(user.id)
 
     return (
       <div>
