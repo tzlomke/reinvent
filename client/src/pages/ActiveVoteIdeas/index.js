@@ -222,18 +222,18 @@ class ActiveVoteIdeas extends Component {
               isAdmin={true}
               clientId={"1"}
               />
-              <DiscussionForm 
-              discussionSubmit={this.handleDiscussionSubmit}
-              discussionFormChange={this.handleChange}
-              discussionTitleInput={this.state.discussionTitleInput}
-              discussionAuthorInput={this.state.discussionAuthorInput}
-              discussInputArea={this.state.discussInputArea}/>
               {campaignClicked.comments.map((discussion, index) => 
                 <DiscussionDisplay
                 key={index}
                 discussionData={discussion}
                 />
               )}
+              <DiscussionForm 
+              discussionSubmit={this.handleDiscussionSubmit}
+              discussionFormChange={this.handleChange}
+              discussionTitleInput={this.state.discussionTitleInput}
+              discussionAuthorInput={this.state.discussionAuthorInput}
+              discussInputArea={this.state.discussInputArea}/>
             </div>
           )}
         </div>
