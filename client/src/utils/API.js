@@ -67,6 +67,17 @@ export default {
   getEvents: () => {
     return axios.get("/api/event");
   },
+
+  // create a resource
+  createResource: (resourceData) => {
+    return axios.post("/api/resource", resourceData);
+  },
+
+  // gets all resources
+  getResources: () => {
+    return axios.get("/api/resource");
+  },
+
   // Load News Articles Feed
   getArticles: function() {
     console.log("im here");
