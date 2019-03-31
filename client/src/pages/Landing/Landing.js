@@ -9,17 +9,21 @@ const Landing = (props) => {
 		
 		<div>
 			 
-			<div className="logoContainer">
-				<img className="logoImage" src={lightbulbCutout} alt="Light Bulb"></img>
-				<div className="logoTextContainer">
-					<h1 className="logoHatch">RE:INVENT</h1>
-					<h1 className="logoOutline">RE:INVENT</h1>
+			<div className="container logoContainer">
+				<div class="row">
+					<div class="col s12">
+						<img className="logoImage" src={lightbulbCutout} alt="Light Bulb"></img>
+						<div className="logoTextContainer center-align">
+							<h1 className="logoHatch center-align">Re:invent</h1>
+							<h1 className="logoOutline center-align">Re:invent</h1>
+						</div>
+					</div>
 				</div>
 			</div>
 			
 			<br />
 			
-			{/* <div style={{ height: "75vh" }} className="container valign-wrapper">
+			<div style={{ height: "75vh" }} className="container valign-wrapper">
 				<div className="row">
 					<div className="col s12 center-align">
 						<br />
@@ -49,7 +53,7 @@ const Landing = (props) => {
 
 					</div>
 				</div>
-			</div> */}
+			</div>
 
 		</div>
 	);

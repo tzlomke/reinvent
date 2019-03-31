@@ -9,13 +9,13 @@ import "./App.css";
 
 import { Provider } from "react-redux";
 import store from "./store";
-
 import Landing from "./pages/Landing";
 import Register from "./components/authorization/Register";
 import Login from "./components/authorization/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import UserProfile from "./components/UserProfile";
+// import IdeasDiscussed from "./pages/IdeasDiscussed";
 import Resources from "./pages/Resources";
 
 // Page Imports
@@ -33,12 +33,12 @@ if (localStorage.jwtToken) {
 	// Set user and isAuthenticated
 	store.dispatch(setCurrentUser(decoded));
 	// Check for expired token
-	const currentTime = Date.now() / 1000;
+	const currentTime = Date.now() / 1000; // to get in milliseconds
 	if (decoded.exp < currentTime) {
 		// Logout user
 		store.dispatch(logoutUser());
 		// Redirect to login
-		window.location.href = "/";
+		window.location.href = "./login";
 	}
 }
 

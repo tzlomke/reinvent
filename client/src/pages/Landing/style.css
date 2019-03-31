@@ -14,34 +14,36 @@ body {
   background-image: url("../../images/hip-square.png");
 }
 
-.logoContainer {
-  display: block;
+.logoTextContainer {
+  display: inline-block;
   position: relative;
 }
 
 .logoHatch {
+  display: inline;
   white-space: nowrap;
   overflow: hidden;   
   font-family: "LogoHatch";
-  font-size: 100px;
-  color: rgb(47, 165, 192);
+  font-size: 202px;
+  color: rgb(114, 204, 224);
   position: absolute;
-  animation: animated-text 2s steps(30,end) 2s 1 normal both;
+  animation: animated-text 2.2s steps(40,end) 1.5s 1 normal both;
+}
+
+.logoOutline {
+  display: inline;
+  white-space: nowrap;
+  overflow: hidden;   
+  font-family: "LogoOutline";
+  font-size: 200px;
+  color: #767171;
+  position: absolute;
+  animation: animated-text 1.8s steps(30,end) .3s 1 normal both;
 }
 
 @keyframes animated-text{
   from{width: 0;}
-  to{width: 472px;}
-}
-
-.logoOutline {
-  white-space: nowrap;
-  overflow: hidden;   
-  font-family: "LogoOutline";
-  font-size: 101px;
-  color: #767171;
-  position: absolute;
-  animation: animated-text 2s steps(30,end) 2.1s 1 normal both;
+  to{width: 770px;}
 }
 
 .logoImage {
@@ -49,16 +51,4 @@ body {
   height: 200px;
   display: block;
   position: relative;
-}
-
-.logoImage::after {
-  content: "";
-  background: url("../../images/lightbulbCutout.png");
-  opacity: 0.5;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-  z-index: -1;   
 }
