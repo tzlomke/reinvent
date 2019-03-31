@@ -31,7 +31,6 @@ class UserProfile extends Component {
 	loadUser = () => {
 		let userParam = this.props.location.pathname;
 		let username = userParam.split("/")[2];
-		console.log(username)
 		API.getUserByUsername(username)
 			.then(response => {
 				let userData = response.data[0]
@@ -51,7 +50,6 @@ class UserProfile extends Component {
 
 	render() {
 		const { user } = this.props.auth
-		console.log(user.id)
 
 		return(
 			<div className="profile-wrapper">
