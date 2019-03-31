@@ -7,7 +7,7 @@ import axios from 'axios';
 import $ from 'jquery';
 import ProfileData from "./ProfileData";
 import ProfilePicture from "./ProfilePicture";
-// import ImageUpload from "./ImageUpload";
+import defaultProfileImage from "../../images/lightbulbCutout.png"
 
 
 class UserProfile extends Component {
@@ -113,8 +113,16 @@ class UserProfile extends Component {
 					userFullName: `${userData.firstName} ${userData.lastName}`,
 					username: userData.username,
 					userCampaigns: userData.campaigns,
-					profileImage: userData.profileImage[userData.profileImage.length-1],
-				});
+				})
+				if (userData.profileImage[0] !== undefined) {
+					this.setState({
+						profileImage: userData.profileImage[userData.profileImage.length-1]
+					});
+				} else {
+					this.setState({
+						profileImage: defaultProfileImage
+					});
+				};
 			});
 	};
 

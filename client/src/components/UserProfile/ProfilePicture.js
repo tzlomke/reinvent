@@ -1,11 +1,9 @@
 import React from "react";
-import defaultProfileImage from "../../images/lightbulbCutout.png"
 
 
 
 const ProfilePicture = (props) => {
 	const { profileImage, handleShowImageUploadModal, handleHideImageUploadModal, fileSelectionHandler, fileUploadHandler, showImageUploadModal } = props;
-	console.log(defaultProfileImage);
 	return(
 		<div>
 			<div className="profile-image-container">
