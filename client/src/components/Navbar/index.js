@@ -30,11 +30,6 @@ class DynamicNavbar extends Component {
 					});
 				});
 	};
-
-	onLogoutClick = event => {
-		event.preventDefault();
-		this.props.logoutUser();
-	};
 	
 	componentDidMount = () => {
 		this.loadUser();
