@@ -6,7 +6,7 @@ import { logoutUser } from "../../actions/authActions";
 import IdeasNavBar from "../../components/IdeasNavBar";
 import ActiveVoteIdeas from "../ActiveVoteIdeas";
 import ClosedVoteIdeas from "../ClosedVoteIdeas"
-import PrivateRoute from "../../components/private-route/PrivateRoute";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import CampaignForm from "../../components/CampaignForm";
 
 class Ideas extends Component {
@@ -75,8 +75,10 @@ class Ideas extends Component {
           campaignInput={this.state.campaignInputArea}
           handleFormSubmit={this.handleFormSubmit}
           handleChange={this.handleChange}/>
-        <PrivateRoute exact path="/ideas/active" component={ActiveVoteIdeas} />
-				<PrivateRoute exact path="/ideas/closed" component={ClosedVoteIdeas} />
+        <Router>
+          <Route exact path="/ideas/active" component={ActiveVoteIdeas} />
+          <Route exact path="/ideas/closed" component={ClosedVoteIdeas} />
+        </Router>
       </div>
     )
   }
