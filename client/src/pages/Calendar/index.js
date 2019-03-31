@@ -58,13 +58,19 @@ class Calendar extends Component {
         this.loadEvents();
         window.$('.modal').modal();
         
-    }
+    };
 
-    componentDidUpdate =() => {
+    componentDidUpdate = () => {
         setTimeout(() => {
             ReactTooltip.rebuild();
-        }, 100)
-    }
+        }, 500)
+    };
+
+    onView = () => {
+        setTimeout(() => {
+            ReactTooltip.rebuild();
+        }, 500)
+    };
 
     render = () => (
         <div className="container">
@@ -81,7 +87,8 @@ class Calendar extends Component {
             />
             <div id="calendarDisplay">
                 <MyCalendar
-                events={this.state.events}/>
+                events={this.state.events}
+                onView={this.onView}/>
             </div>
             {this.state.events.map(event =>(
                 <ReactTooltip 
