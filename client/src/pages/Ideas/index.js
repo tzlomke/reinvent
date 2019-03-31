@@ -6,7 +6,7 @@ import { logoutUser } from "../../actions/authActions";
 import IdeasNavBar from "../../components/IdeasNavBar";
 import ActiveVoteIdeas from "../ActiveVoteIdeas";
 import ClosedVoteIdeas from "../ClosedVoteIdeas"
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Route } from "react-router-dom";
 import CampaignForm from "../../components/CampaignForm";
 
 class Ideas extends Component {
