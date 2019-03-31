@@ -1,30 +1,27 @@
-.navbar-fixed {
-  background: #006064;
-  min-height: 70px;
-  font-size: 18px;
-  padding: 20px 0;
-  width: 100%;
-  color: #fff;
-  z-index: 99;
-  white-space: nowrap;
-}
-  
-.navbar div {
-  text-align: center;
-  margin-bottom: 20px;
-  width: 100%;
+@font-face {
+  font-family: "Farray";
+  src: url("../../fonts/FARRAY.ttf") format("truetype");
 }
 
-@media (min-width: 576px) {
-  .navbar {
-    display: flex;
-    justify-content: space-around;
-    font-size: calc(10px + 14 * (100vw - 320px) / 800);
-  }
+.logo {
+  font-family: "Farray";
+}
 
-  .navbar div {
-    margin-bottom: 0;
-    text-align: center;
-    width: 33.333%;
-  }
+.logoImage {
+  width: 200px;
+  height: 200px;
+  display: block;
+  position: relative;
+}
+
+.logoImage::after {
+  content: "";
+  background: url("../../images/lightbulbCutout.png");
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;   
 }

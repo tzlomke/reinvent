@@ -1,7 +1,5 @@
 import React from "react";
 
-
-
 const ProfilePicture = (props) => {
 	const { profileImage, handleShowImageUploadModal, handleHideImageUploadModal, fileSelectionHandler, fileUploadHandler, showImageUploadModal } = props;
 	return(
