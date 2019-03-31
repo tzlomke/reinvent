@@ -5,7 +5,8 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import IdeasNavBar from "../../components/IdeasNavBar";
 import ActiveVoteIdeas from "../ActiveVoteIdeas";
-import ClosedVoteIdeas from "../ClosedVoteIdeas"
+import ClosedVoteIdeas from "../ClosedVoteIdeas";
+import TrendingVoteIdeas from "../TrendingVoteIdeas";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import CampaignForm from "../../components/CampaignForm";
 
@@ -79,6 +80,7 @@ class Ideas extends Component {
           <Switch>
             <Route exact path="/ideas/active" component={ActiveVoteIdeas} />
             <Route exact path="/ideas/closed" component={ClosedVoteIdeas} />
+            <Route exact path="/ideas/trending" component={TrendingVoteIdeas} />
           </Switch> 
         </Router>
       </div>

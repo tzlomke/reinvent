@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import DiscussionForm from '../../components/DiscussionForm';
 import DiscussionDisplay from "../../components/DiscussionDisplay";
 
-class ActiveVoteIdeas extends Component {
+class TrendingVoteIdeas extends Component {
 
   state = {
     campaignsFromDB: [],
@@ -37,7 +37,7 @@ class ActiveVoteIdeas extends Component {
 
   loadCampaigns = () => {
     const campaignArray = [];
-    API.activeCampaignGet()
+    API.trendingCampaignGet()
       .then(response => {
         campaignArray.push(response.data);
         this.setState({ campaignsFromDB: campaignArray });
@@ -260,7 +260,7 @@ class ActiveVoteIdeas extends Component {
   }
 }
 
-ActiveVoteIdeas.propTypes = {
+TrendingVoteIdeas.propTypes = {
 	auth: PropTypes.object.isRequired
 };
 
@@ -268,4 +268,4 @@ const mapStateToProps = state => ({
   	auth: state.auth
 });
 
-export default connect(mapStateToProps)(ActiveVoteIdeas);
+export default connect(mapStateToProps)(TrendingVoteIdeas);
