@@ -10,15 +10,12 @@ import "./App.css";
 import { Provider } from "react-redux";
 import store from "./store";
 
-import Header from "./components/Header";
-import DynamicNavbar from "./components/Navbar";
 import Landing from "./components/layout/Landing";
 import Register from "./components/authorization/Register";
 import Login from "./components/authorization/Login";
 import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import UserProfile from "./components/UserProfile";
-// import IdeasDiscussed from "./pages/IdeasDiscussed";
 import Resources from "./pages/Resources";
 
 // Page Imports
@@ -36,12 +33,12 @@ if (localStorage.jwtToken) {
 	// Set user and isAuthenticated
 	store.dispatch(setCurrentUser(decoded));
 	// Check for expired token
-	const currentTime = Date.now() / 1000; // to get in milliseconds
+	const currentTime = Date.now() / 1000;
 	if (decoded.exp < currentTime) {
 		// Logout user
 		store.dispatch(logoutUser());
 		// Redirect to login
-		window.location.href = "./login";
+		window.location.href = "/";
 	}
 }
 
@@ -52,8 +49,6 @@ class App extends Component {
 			<Provider store={store}>
 				<Router>
 					<div className="App">
-						<Header />
-						<DynamicNavbar />
 						<Route exact path="/" component={Landing} />
 						<Route exact path="/register" component={Register} />
 						<Route exact path="/login" component={Login} />
