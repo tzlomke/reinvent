@@ -34,8 +34,7 @@ class Calendar extends Component {
             title: this.state.eventTitle,
             start: this.state.startDate,
             end: this.state.endDate,
-            description: this.state.eventDescription,
-            displayEventTime: true
+            description: this.state.eventDescription
         })
         .then(response => {
             (console.log(`You successfully uploaded: ${response.data.title}`));
