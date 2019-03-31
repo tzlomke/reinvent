@@ -37,7 +37,7 @@ module.exports = {
       .then(dbCampaign => {
         const activeVoteCampaignIds = [];
         dbCampaign.forEach(vote => {
-          activeVoteCampaignIds.push(vote.campaign[0])
+          activeVoteCampaignIds.push(vote.campaign[0]);
         });
         db.Campaign
           .find({$or:[{_id: {$in: activeVoteCampaignIds}}, {vote:[]}]})
@@ -67,20 +67,18 @@ module.exports = {
       .catch(err => res.json(err));
   },
   getTrendingCampaigns: (req, res) => {
-    db.Vote.find({closed: false})
-    .then(dbCampaign => {
-      const trendingCampaignIds=[];
-      dbCampaign.forEach(vote => {
-        if (dbCampaign.vote.length >= 5 || dbCampaign.comments.length >= 3) {
-          trendingCampaignIds.push(vote.campaign[0]);
-        }
-      });
-      db.Campaign
-        .find({$or:[{_id: {$in: trendingCampaignIds}}, {vote:[]}]})
-        .populate("vote")
-        .sort({date: -1})
-        .then(dbCampaign => res.json(dbCampaign))
-        .catch(err => res.json(err));
+    db.Campaign
+      .find({})
+      .populate("vote")
+      .then(dbCampaign => {
+        let trendingCampaigns=[];
+        dbCampaign.forEach(campaign => {
+          if (campaign.comments.length >= 2 || campaign.vote.length >= 3) {
+            trendingCampaigns.push(campaign)
+          }
+        });
+        console.log(trendingCampaigns);
+        res.json(trendingCampaigns);
       })
       .catch(err => res.json(err));
   },
