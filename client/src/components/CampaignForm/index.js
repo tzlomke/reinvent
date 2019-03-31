@@ -1,10 +1,11 @@
 import React from 'react';
+import './CampaignForm.css';
 
 function CampaignForm(props)  {
 
     return(
       <div className= "modal" id="campaignFormModal">
-        <header>Campaign</header>
+        <header className ="header">New Idea</header>
           <section id="campaignEntry">
             <form id="newCampaign">
               <section id="newCampTitle">
@@ -15,10 +16,10 @@ function CampaignForm(props)  {
                 <h6 id="authorIt" name="authorInput">{props.authorInput}</h6>
               </section>
               <section id="newCampSynop">
-                <label htmlFor="campaignIt">New Campaign Here</label>
+                <label htmlFor="campaignIt">New Idea Here</label>
                 <textarea id="campaignIt" name="campaignInputArea" value={props.campaignInput} onChange={props.handleChange}></textarea>
               </section>
-                <button id="submitCampaign" type="submit" className="modal-close" onClick = {props.handleFormSubmit}>Submit</button>
+                <button id="submitCampaign" type="submit" className="btn btn-dark modal-close" onClick = {props.handleFormSubmit}>Submit</button>
               </form>
             </section>
       </div>

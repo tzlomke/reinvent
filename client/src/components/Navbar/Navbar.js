@@ -8,15 +8,15 @@ const Navbar = props => (
   <div className="navbar ">
   
 		<Link
+			to="/News-Feed"
+			className="col s5 brand-logo center white-text nav-link"> News Feed
+		</Link>
+		<Link
 			to="/ideas"
 			className="col s5 brand-logo center white-text nav-link"> Ideas
 		</Link>
-		<Link
-			to="/news-feed"
-			className="col s5 brand-logo center white-text nav-link"> Newsletter
-		</Link>
-		<Link
-			to="/"
+        	<Link
+	    		to="/calendar"
 			className="col s5 brand-logo center white-text nav-link"> Calendar
 		</Link>
 		<Link
@@ -27,7 +27,11 @@ const Navbar = props => (
 			to={props.profileRoute}
 			className="col s5 brand-logo center white-text nav-link"> Profile
 		</Link>
-		
+		<Link
+			onClick={props.onLogoutClick}
+			to="/"
+			className="col s5 brand-logo center white-text nav-link"> Logout
+		</Link>
 		
 	</div>
 );

@@ -12,6 +12,11 @@ class DynamicNavbar extends Component {
 		profileRoute: ""
 	};
 
+	onLogoutClick = event => {
+		event.preventDefault();
+		this.props.logoutUser();
+	};
+
 	loadUser = () => {
 		let authenticatedUserId = this.props.auth.user.id
 		console.log(this.props.auth.user.id);

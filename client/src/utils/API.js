@@ -78,6 +78,25 @@ export default {
   updateVote: function (id, voteData) {
     return axios.put("/api/vote/" + id, voteData);
   },
+  // create an event
+  createEvent: (eventData) => {
+    return axios.post("/api/event", eventData);
+  },
+  // gets all events
+  getEvents: () => {
+    return axios.get("/api/event");
+  },
+
+  // create a resource
+  createResource: (resourceData) => {
+    return axios.post("/api/resource", resourceData);
+  },
+
+  // gets all resources
+  getResources: () => {
+    return axios.get("/api/resource");
+  },
+
   // Load News Articles Feed
   getArticles: function() {
     console.log("im here");
