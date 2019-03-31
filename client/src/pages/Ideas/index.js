@@ -6,7 +6,7 @@ import { logoutUser } from "../../actions/authActions";
 import IdeasNavBar from "../../components/IdeasNavBar";
 import ActiveVoteIdeas from "../ActiveVoteIdeas";
 import ClosedVoteIdeas from "../ClosedVoteIdeas"
-import { BrowserRouter as Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import CampaignForm from "../../components/CampaignForm";
 
 class Ideas extends Component {
@@ -68,15 +68,19 @@ class Ideas extends Component {
 
     return (
       <div>
-        <IdeasNavBar/>
         <CampaignForm
           titleInput={this.state.titleInput}
           authorInput={this.state.authorInput}
           campaignInput={this.state.campaignInputArea}
           handleFormSubmit={this.handleFormSubmit}
           handleChange={this.handleChange}/>
-        <Route exact path="/ideas/active" component={ActiveVoteIdeas} />
-				<Route exact path="/ideas/closed" component={ClosedVoteIdeas} />
+        <Router>
+          <IdeasNavBar/> 
+          <Switch>
+            <Route exact path="/ideas/active" component={ActiveVoteIdeas} />
+            <Route exact path="/ideas/closed" component={ClosedVoteIdeas} />
+          </Switch> 
+        </Router>
       </div>
     )
   }
