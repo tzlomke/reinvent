@@ -29,7 +29,7 @@ class Ideas extends Component {
         console.log(userData);
 				this.setState({
 					userId: userData._id,
-					authorInput: `${userData.firstName} ${userData.lastName} | ${userData.username}`,
+					authorInput: `${userData.username}`,
 				});
 			});
 	};

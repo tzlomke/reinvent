@@ -6,16 +6,23 @@ const CampaignDisplay = (props) => {
   const { title, author, synopsis, styles, onCreate, onUpvote,
     onClose, onReset, onDownvote, onExpand, onEdit, isAdmin,
     clientId, data, handleData, campaignExpand } = props;
+
+  const profileRoute = `/profile/${author}`;
+
   return(
     <div onClick={handleData}>
       <div className="row">
-        <a href="javascript:void(0)" onClick={campaignExpand} className="campaignAnchor">
           <section id="campaignDisplay" className="col s9">
-            <h2>Title: {title}</h2>
-            <h3>Author: {author}</h3>
+            <a href="javascript:void(0)" onClick={campaignExpand} className="campaignAnchor">
+              <h2>{title}</h2>
+            </a>
+            <a href={profileRoute}>
+              <h5> {author}</h5>
+            </a>
             <p>{synopsis}</p>
           </section>
-        </a>
+
+        
           <div className="col s3" id="voteDisplay">
               <Vote
                 data={data}
