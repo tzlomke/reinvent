@@ -125,13 +125,13 @@ onCreate = (data) =>  {
   render(){
     const campaignsFromDB = this.state.campaignsFromDB;
     const campaignClicked = this.state.campaignClicked;
+    console.log(campaignClicked)
     return (
       !this.state.campaignExpand ? (
         <div>
           {campaignsFromDB.map(campaign =>
             campaign.map(campaign => (
               campaign.vote.length  !== 0 ? (
-                console.log(campaign.vote[0]._id),
                 <CampaignDisplay
                 handleData={()=>this.handleData(campaign.vote[0]._id, campaign._id)}
                 campaignExpand={() => this.campaignExpand(campaign._id)}
@@ -179,10 +179,10 @@ onCreate = (data) =>  {
         </div>
       ) : (
         <div>
-          {campaignClicked.vote.length  > 1 ? (
-            console.log('campaign it' + campaignClicked.vote[0]._id),
+          {campaignClicked.vote.length  !== 0 ? (
+            console.log(campaignClicked.vote),
             <CampaignDisplay
-            // handleData={()=>this.handleData(campaign.vote[0]._id, campaign._id)}
+            handleData={()=>this.handleData(campaignClicked.vote[0], campaignClicked._id)}
             // campaignExpand={() => this.campaignExpand(campaign._id)}
             data={campaignClicked.vote}
             title={campaignClicked.title}
