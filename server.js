@@ -41,7 +41,7 @@ app.use(routes);
 
 // Connect to DataBase
 mongoose
-	.connect(process.env.MONGODB_URI || "mongodb://localhost/reniventdb", {
+	.connect(process.env.MONGODB_URI || "mongodb://localhost/reInvent_db", {
 		useNewUrlParser: true
 	})
 	.then(console.log("Connected to MongoDB!"));
