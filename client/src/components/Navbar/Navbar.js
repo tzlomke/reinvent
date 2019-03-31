@@ -5,8 +5,7 @@ import './Navbar.css';
 const Navbar = props => (
 
 	
-  <div className="navbar ">
-  
+	<div className="navbar ">
 		<Link
 			to="/News-Feed"
 			className="col s5 brand-logo center white-text nav-link"> News Feed
@@ -19,9 +18,9 @@ const Navbar = props => (
 	    		to="/calendar"
 			className="col s5 brand-logo center white-text nav-link"> Calendar
 		</Link>
-		<Link
-			to="/"
-			className="col s5 brand-logo center white-text nav-link"> Resources
+        <Link
+	    to="/resources"
+		className="col s5 brand-logo center white-text nav-link"> Resources
 		</Link>
 		<Link
 			to={props.profileRoute}

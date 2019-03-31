@@ -3,9 +3,9 @@ import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
-import React from "../../components/ResourcesForm";
+import ResourceForm from "../../components/ResourcesForm";
 
-class NewsFeed extends Component {
+class Resources extends Component {
     state = {
         resources: [],
         title: "",
@@ -15,19 +15,15 @@ class NewsFeed extends Component {
 
     componentDidMount = () => {
         this.loadResources();
+        window.$('.modal').modal();
     };
 
     loadResources = () => {
         API.getResources()
-        .then(res =>
-            {this.setState({ 
-                Resources: res.data,
-                title: "",
-                author: "",
-                synopsis: "" 
-            })
-            console.log(res.data)}
-        )
+        .then(res => {
+            this.setState({ resources: res.data });
+            console.log(res.data);
+        })
         .catch(err => console.log(err));
     };
 
@@ -41,12 +37,17 @@ class NewsFeed extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
         if (this.state.title && this.state.link) {
-            API.saveBook({
+            API.createResource({
                 title: this.state.title,
-            author: this.state.author,
-            synopsis: this.state.synopsis
+                link: this.state.link
         })
-        .then(res => this.loadBooks())
+        .then(res => {
+            this.loadResources();
+            this.setState({
+                title: "",
+                link: ""
+            })
+        })
         .catch(err => console.log(err));
         }
     };
@@ -54,18 +55,25 @@ class NewsFeed extends Component {
     render() {
         return (
         <Container>
+            <ResourceForm
+            title={this.state.title}
+            link={this.state.link}
+            handleInputChange={this.handleInputChange}
+            handleFormSubmit={this.handleFormSubmit}
+            />
             <Row>
                 <Col size="12">
+                    <button data-target="resourceFormModal" className="btn modal-trigger">Add a Resource Link</button>
                     <h1>Resources</h1>
                     {this.state.resources.length ? (
                         <List>
-                            {this.state.resource.map(resource => (
+                            {this.state.resources.map(resource => (
                                 <ListItem key={resource._id}>
-                                    <Link to={"/articles/" + article._id}>
+                                    <a href={resource.link}>
                                         <strong>
-                                        {article.title} by {article.author}
+                                        {resource.title}
                                         </strong>
-                                    </Link>
+                                    </a>
                                 </ListItem>
                             ))}
                         </List>
@@ -79,4 +87,4 @@ class NewsFeed extends Component {
     }
 }
 
-export default NewsFeed;
+export default Resources;
