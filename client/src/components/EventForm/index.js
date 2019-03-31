@@ -1,6 +1,6 @@
 import React from 'react';
-import DateTimePicker from 'react-datetime-picker';
 import './EventForm.css';
+import { PresignedPost } from 'aws-sdk/clients/s3';
 
 function EventForm (props)  {
     return(
@@ -13,22 +13,16 @@ function EventForm (props)  {
                         <input type="text" id="eventTitle" name="eventTitle" value={props.eventTitle} onChange={props.handleChange}></input>
                     </section>
                     <section id="startDateTimeSection">
-                        <label htmlFor="startDateTime">Start Date and Time</label>
-                        <DateTimePicker
-                        className="dateTimePicker1"
-                        id="startDateTime"
-                        value={props.startDate}
-                        onChange={props.startChange}
-                        />
+                        <label htmlFor="startDate">Start Date</label>
+                        <input id="startDate" type="text" className="startdatepicker" name="startDate" value={props.startDate} onSelect={props.onSelect} onChange={props.handleChange}></input>
+                        <label htmlFor="startTime">Start Time</label>
+                        <input type="text" className="starttimepicker" id="startTime" name="startTime" value={props.startTime} onChange={props.handleChange}></input>
                     </section>
-                    <section id="startDateTimeSection">
-                        <label htmlFor="endDateTime">End Date and Time</label>
-                        <DateTimePicker
-                        className="dateTimePicker2"
-                        id="endDateTime"
-                        value={props.endDate}
-                        onChange={props.endChange}
-                        />
+                    <section id="endDateTimeSection">
+                    <label htmlFor="EndDate">End Date</label>
+                        <input id="EndDate" type="text" className="enddatepicker" id="endDate" name="endDate" value={props.endDate} onChange={props.handleChange}></input>
+                        <label htmlFor="EndTime">End Time</label>
+                        <input type="text" className="endtimepicker" id="endTime" name="endTime" value={props.endTime} onChange={props.handleChange}></input>
                     </section>
                     <section id="eventDescriptionSection">
                         <label htmlFor="eventDescription">Event Description</label>
