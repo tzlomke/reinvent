@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import CampaignDisplay from "../../components/CampaignDisplay";
 import API from "../../utils/API";
 import voteAPI from "../../utils/API";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import DiscussionForm from '../../components/DiscussionForm';
 import DiscussionDisplay from "../../components/DiscussionDisplay";
 
@@ -9,7 +11,7 @@ class ActiveVoteIdeas extends Component {
 
   state = {
     campaignsFromDB: [],
-    userId: "1",
+    userId: '',
     campaignClicked: {},
     campaignExpand: false,
     discussionAuthorInput: '',
@@ -18,6 +20,20 @@ class ActiveVoteIdeas extends Component {
 
   voteId="";
   campaignId="";
+
+  loadUser = () => {
+    let authenticatedUserId = this.props.auth.user.id
+    console.log(this.props.auth.user.id);
+		API.getUserById(authenticatedUserId)
+			.then(response => {
+        let userData = response.data[0]
+        console.log(userData);
+				this.setState({
+					userId: userData._id,
+					discussionAuthorInput: `${userData.username}`,
+				});
+			});
+	};
 
   loadCampaigns = () => {
     const campaignArray = [];
@@ -222,7 +238,7 @@ onCreate = (data) =>  {
               onExpand={this.onExpand}
               onEdit={this.onEdit}
               isAdmin={true}
-              clientId={"1"}
+              clientId={this.state.userId}
               />
               <DiscussionForm 
               discussionSubmit={this.handleDiscussionSubmit}
@@ -244,4 +260,12 @@ onCreate = (data) =>  {
   }
 }
 
-export default ActiveVoteIdeas;
+ActiveVoteIdeas.propTypes = {
+	auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  	auth: state.auth
+});
+
+export default connect(mapStateToProps)(ActiveVoteIdeas);

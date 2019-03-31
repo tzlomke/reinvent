@@ -87,7 +87,6 @@ class Ideas extends Component {
 }
 
 Ideas.propTypes = {
-	logoutUser: PropTypes.func.isRequired,
 	auth: PropTypes.object.isRequired
 };
 
