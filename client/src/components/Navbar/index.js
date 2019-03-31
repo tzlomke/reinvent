@@ -14,16 +14,19 @@ class DynamicNavbar extends Component {
 
 	loadUser = () => {
 		let authenticatedUserId = this.props.auth.user.id
-		console.log(this.props.auth.user.id);
 			API.getUserById(authenticatedUserId)
 				.then(response => {
 					let userData = response.data[0]
-					console.log(userData);
 					this.setState({
 						username: userData.username,
 						profileRoute: "/profile/" + userData.username
 					});
 				});
+	};
+
+	onLogoutClick = event => {
+		event.preventDefault();
+		this.props.logoutUser();
 	};
 	
 	componentDidMount = () => {
@@ -35,6 +38,7 @@ class DynamicNavbar extends Component {
 		return (
 			<Navbar
 				profileRoute={this.state.profileRoute}
+				onLogoutClick={this.onLogoutClick}
 			/>
 		)
 	}
@@ -46,6 +50,7 @@ DynamicNavbar.propTypes = {
 };
 
 const mapStateToProps = state => ({
+	logoutUser: PropTypes.func.isRequired,
   	auth: state.auth
 });
 

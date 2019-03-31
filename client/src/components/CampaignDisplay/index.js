@@ -8,7 +8,7 @@ const CampaignDisplay = (props) => {
     clientId, data, handleData, campaignExpand } = props;
   return(
     <div onClick={handleData}>
-      <div className="row">
+      <div className="row"> 
         <a href="javascript:void(0)" onClick={campaignExpand} className="campaignAnchor">
           <section id="campaignDisplay" className="col s9">
             <h2>Title: {title}</h2>
