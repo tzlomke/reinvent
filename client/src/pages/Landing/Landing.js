@@ -7,7 +7,7 @@ const Landing = (props) => {
 	
 	return (
 		
-		<div>
+		<div className="landingPageContainer">
 			 
 			<div className="container logoContainer">
 				<div class="row">
@@ -15,7 +15,7 @@ const Landing = (props) => {
 						<img className="logoImage" src={lightbulbCutout} alt="Light Bulb"></img>
 						<div className="logoTextContainer center-align">
 							<h1 className="logoHatch center-align">Re:invent</h1>
-							<h1 className="logoOutline center-align">Re:invent</h1>
+							{/* <h1 className="logoOutline center-align">Re:invent</h1> */}
 						</div>
 					</div>
 				</div>
@@ -34,19 +34,19 @@ const Landing = (props) => {
 								borderRadius: "3px",
 								letterSpacing: "1.5px"
 							}}
-							className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+							className="tomato"
 						>
 							Register
 						</a>
 
 						<a href="/login"
 							style={{
-								marginLeft: "2rem",
+								marginLeft: "5rem",
 								width: "150px",
 								borderRadius: "3px",
 								letterSpacing: "1.5px"
 							}}
-							className="btn btn-large waves-effect white hoverable black-text"
+							className="tomato"
 						>
 							Log In
 						</a>

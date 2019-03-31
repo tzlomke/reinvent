@@ -1,16 +1,14 @@
 @font-face {
-  font-family: "LogoHatch";
-  src: url("../../fonts/Monkstead/OTF/MonksteadHatch.otf") 
-    format("opentype");
+  font-family: "TomatoSoup";
+  src: url("../../fonts/TomatoSoup-Regular.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: "LogoOutline";
-  src: url("../../fonts/Monkstead/OTF/MonksteadOutline.otf") 
-    format("opentype");
+  font-family: "Evo";
+  src: url("../../fonts/Yeager-Regular.otf") format("opentype");
 }
 
-body {
+.landingPageContainer {
   background-image: url("../../images/hip-square.png");
 }
 
@@ -22,28 +20,40 @@ body {
 .logoHatch {
   display: inline;
   white-space: nowrap;
+  font-family: "Evo";
   overflow: hidden;   
-  font-family: "LogoHatch";
-  font-size: 202px;
-  color: rgb(114, 204, 224);
+  font-size: 100px;
+  color: rgb(105, 160, 169);
   position: absolute;
   animation: animated-text 2.2s steps(40,end) 1.5s 1 normal both;
 }
-
+/* 
 .logoOutline {
   display: inline;
   white-space: nowrap;
   overflow: hidden;   
   font-family: "LogoOutline";
   font-size: 200px;
-  color: #767171;
+  color: #4a88b2;
   position: absolute;
   animation: animated-text 1.8s steps(30,end) .3s 1 normal both;
+} */
+
+.tomato {
+  font-family: "TomatoSoup";
+  font-size: 100px;
+  color: rgb(171, 82, 100);
+  text-shadow: .5px 1px .75px rgba(0,0,0,0.3);
+  transition: text-shadow .2s ease-in-out;
+}
+
+.tomato:hover {
+  text-shadow: 4px 8px 6px rgba(0,0,0,0.3);
 }
 
 @keyframes animated-text{
   from{width: 0;}
-  to{width: 770px;}
+  to{width: 700px;}
 }
 
 .logoImage {
