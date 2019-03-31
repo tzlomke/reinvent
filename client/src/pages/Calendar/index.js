@@ -72,6 +72,12 @@ class Calendar extends Component {
         }, 500)
     };
 
+    onShowMore = () => {
+        setTimeout(() => {
+            ReactTooltip.rebuild();
+        }, 500)
+    }
+
     render = () => (
         <div className="container">
             <button data-target="eventFormModal" className="btn modal-trigger">Add an Event</button>
@@ -87,6 +93,7 @@ class Calendar extends Component {
             />
             <div id="calendarDisplay">
                 <MyCalendar
+                onShowMore={this.onShowMore}
                 events={this.state.events}
                 onView={this.onView}/>
             </div>

@@ -9,6 +9,8 @@ const localizer = BigCalendar.momentLocalizer(moment);
 const MyCalendar = props => (
     <BigCalendar
     onView={props.onView}
+    onShowMore={props.onShowMore}
+    popup={true}
     localizer={localizer}
     events={props.events}
     startAccessor={(event) => new Date(event.start)}
