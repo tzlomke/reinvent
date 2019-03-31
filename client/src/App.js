@@ -19,6 +19,7 @@ import PrivateRoute from "./components/private-route/PrivateRoute";
 import Dashboard from "./components/dashboard/Dashboard";
 import UserProfile from "./components/UserProfile";
 // import IdeasDiscussed from "./pages/IdeasDiscussed";
+import Resources from "./pages/Resources";
 
 // Page Imports
 import NewsList from "./pages/NewsList";
@@ -62,6 +63,7 @@ class App extends Component {
 							<PrivateRoute exact path="/profile/:username" component={UserProfile} />
 							<PrivateRoute exact path="/calendar" component={Calendar} />
 							<PrivateRoute exact path="/news-feed" component={NewsList} />
+							<PrivateRoute exact path="/resources" component={Resources}/>
 	        			</Switch>	
 					</div>
 				</Router>
