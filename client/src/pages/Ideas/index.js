@@ -22,12 +22,14 @@ class Ideas extends Component {
 
   loadUser = () => {
     let authenticatedUserId = this.props.auth.user.id
+    console.log(this.props.auth.user.id);
 		API.getUserById(authenticatedUserId)
 			.then(response => {
         let userData = response.data[0]
+        console.log(userData);
 				this.setState({
 					userId: userData._id,
-					authorInput: `${userData.firstName} ${userData.lastName} | ${userData.username}`,
+					authorInput: `${userData.username}`,
 				});
 			});
 	};
