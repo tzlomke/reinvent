@@ -21,7 +21,6 @@ class Resources extends Component {
         API.getResources()
         .then(res => {
             this.setState({ resources: res.data });
-            console.log(res.data);
         })
         .catch(err => console.log(err));
     };
@@ -68,7 +67,7 @@ class Resources extends Component {
                         <List>
                             {this.state.resources.map(resource => (
                                 <ListItem key={resource._id}>
-                                    <a href={resource.link} target="_blank">
+                                    <a href={resource.link} target="_blank" rel="noopener noreferrer">
                                         <strong>
                                         {resource.title}
                                         </strong>
