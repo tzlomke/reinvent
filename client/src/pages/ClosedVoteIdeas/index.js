@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Col, Row, Container } from "../../components/Grid";
 import { Title, SubTitle } from "../../components/Title";
-
+import { CardOutline } from "../../components/NewsCard";
 
 class ClosedVoteIdeas extends Component {
 
@@ -102,6 +102,13 @@ class ClosedVoteIdeas extends Component {
         <SubTitle 
           subTitleText="Closed Ideas"
         />
+        <CardOutline
+          colSize={ "12" } 
+          cardColor={ "" }
+          cardTextColor={ "" }
+        >
+          {/* Need to move the data displayed below into this component. */}
+        </CardOutline>
         {this.state.campaignsFromDB.map(campaign =>
           campaign.map(campaign => (
             campaign.vote.length  !== 0 ? (

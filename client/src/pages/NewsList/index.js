@@ -8,7 +8,6 @@ import { NewsCard } from "../../components/NewsCard";
 import moment from 'moment';
 import { Title, SubTitle } from "../../components/Title";
 
-
 // import { Input, TextArea, FormBtn } from "../components/Form";
 
 class NewsFeed extends Component {
