@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { NewsCard } from "../../components/NewsCard";
+import moment from 'moment';
 
 // import { Input, TextArea, FormBtn } from "../components/Form";
 
@@ -14,7 +15,9 @@ class NewsFeed extends Component {
     articles: [],
     title: "",
     author: "",
-    synopsis: ""
+    synopsis: "",
+    date: ""
+
   };
 
   componentDidMount = () => {
@@ -24,7 +27,7 @@ class NewsFeed extends Component {
   loadFeed = () => {
     API.getArticles()
       .then(res =>
-        {this.setState({ articles: res.data, title: "", author: "", synopsis: "" })
+        {this.setState({ articles: res.data, title: "", author: "", synopsis: "", date: "" })
         console.log(res.data)}
       )
       .catch(err => console.log(err));
@@ -76,6 +79,7 @@ class NewsFeed extends Component {
                       colSize={ "12" } 
                       cardTitle={ article.title }
                       cardSub={ article.author }
+                      cardSub2={ moment( article.date).format("MM-DD-YYYY") }
                       cardText={ article.synopsis }
                       cardTextColor={ "white-text" }
                       cardColor={ "blue-grey" }

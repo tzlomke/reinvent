@@ -20,6 +20,7 @@ import Resources from "./pages/Resources";
 
 // Page Imports
 import NewsList from "./pages/NewsList";
+import Article from "./pages/Article";
 import Ideas from "./pages/Ideas";
 
 
@@ -58,6 +59,7 @@ class App extends Component {
 							<PrivateRoute exact path="/profile/:username" component={UserProfile} />
 							<PrivateRoute exact path="/calendar" component={Calendar} />
 							<PrivateRoute exact path="/news-feed" component={NewsList} />
+							<PrivateRoute exact path="/articles/:id" component={Article} />
 							<PrivateRoute exact path="/resources" component={Resources}/>
 	        			</Switch>	
 					</div>
