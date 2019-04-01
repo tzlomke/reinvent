@@ -87,13 +87,13 @@ export default {
 
   // Load News Articles Feed
   getArticles: function() {
-    console.log("im here");
     return axios.get("/api/news-feed");
+  },
+  // Gets an article with the given id
+  getArticle: function(id) {
+    // console.log("im at single article");
+    return axios.get("/api/news-feed/" + id);
   }
-  // // Gets an article with the given id
-  // getArticle: function(id) {
-  //   return axios.get("/api/articles/" + id);
-  // },
   // // Deletes the artile with the given id
   // deleteArticle: function(id) {
   //   return axios.delete("/api/articles/" + id);
