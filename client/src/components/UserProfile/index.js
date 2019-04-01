@@ -7,7 +7,7 @@ import axios from 'axios';
 import $ from 'jquery';
 import ProfileData from "./ProfileData";
 import ProfilePicture from "./ProfilePicture";
-import ImageUpload from "./ImageUpload";
+import defaultProfileImage from "../../images/lightbulbCutout.png"
 
 
 class UserProfile extends Component {
@@ -17,16 +17,25 @@ class UserProfile extends Component {
 		username: "",
 		userCampaigns: [],
 		profileImage: "",
-		selectedFile: null
+		selectedFile: null,
+		showImageUploadModal: false
 	};
 
-	singleFileChangedHandler = (event) => {
+	handleShowImageUploadModal = () => {
+		this.setState({ showImageUploadModal: true });
+	};
+
+	handleHideImageUploadModal = () => {
+		this.setState({ showImageUploadModal: false });
+	};
+
+	fileSelectionHandler = (event) => {
 		this.setState({
 			selectedFile: event.target.files[0]
 		});
 	};
 	
-	singleFileUploadHandler = () => {
+	fileUploadHandler = () => {
 		const data = new FormData();
 		// If file selected
 		if ( this.state.selectedFile ) {
@@ -54,6 +63,9 @@ class UserProfile extends Component {
 						let fileName = response.data;
 						console.log( 'fileName', fileName );
 						this.ocShowAlert( 'File Uploaded', '#3089cf' );
+						setTimeout(() => {
+							this.handleHideImageUploadModal();
+						}, 500)
 						this.loadUser();
 					}
 				}
@@ -100,8 +112,16 @@ class UserProfile extends Component {
 					userFullName: `${userData.firstName} ${userData.lastName}`,
 					username: userData.username,
 					userCampaigns: userData.campaigns,
-					profileImage: userData.profileImage[userData.profileImage.length-1],
-				});
+				})
+				if (userData.profileImage[0] !== undefined) {
+					this.setState({
+						profileImage: userData.profileImage[userData.profileImage.length-1]
+					});
+				} else {
+					this.setState({
+						profileImage: defaultProfileImage
+					});
+				};
 			});
 	};
 
@@ -115,14 +135,19 @@ class UserProfile extends Component {
 		return(
 			<div className="profile-wrapper">
 				<ProfilePicture 
+					handleShowImageUploadModal = {this.handleShowImageUploadModal}
+					handleHideImageUploadModal = {this.handleHideImageUploadModal}
+					showImageUploadModal = {this.state.showImageUploadModal}
+					fileSelectionHandler = {this.fileSelectionHandler}
+					fileUploadHandler = {this.fileUploadHandler}
 					profileImage = {this.state.profileImage}
 				/>
 
-				<ImageUpload 
+				{/* <ImageUpload 
 					ocShowAlert = {this.ocShowAlert}
-					singleFileChangedHandler = {this.singleFileChangedHandler}
-					singleFileUploadHandler = {this.singleFileUploadHandler}
-				/>
+					fileSelectionHandler = {this.fileSelectionHandler}
+					fileUploadHandler = {this.fileUploadHandler}
+				/> */}
 
 				<ProfileData 
 					authenticatedUserID = {user.id}

@@ -5,7 +5,8 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import IdeasNavBar from "../../components/IdeasNavBar";
 import ActiveVoteIdeas from "../ActiveVoteIdeas";
-import ClosedVoteIdeas from "../ClosedVoteIdeas"
+import ClosedVoteIdeas from "../ClosedVoteIdeas";
+import TrendingVoteIdeas from "../TrendingVoteIdeas";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import CampaignForm from "../../components/CampaignForm";
 
@@ -68,7 +69,6 @@ class Ideas extends Component {
 
     return (
       <div>
-        
         <CampaignForm
           titleInput={this.state.titleInput}
           authorInput={this.state.authorInput}
@@ -76,11 +76,12 @@ class Ideas extends Component {
           handleFormSubmit={this.handleFormSubmit}
           handleChange={this.handleChange}/>
         <Router>
-          <IdeasNavBar/>
+          <IdeasNavBar/> 
           <Switch>
             <Route exact path="/ideas/active" component={ActiveVoteIdeas} />
             <Route exact path="/ideas/closed" component={ClosedVoteIdeas} />
-          </Switch>
+            <Route exact path="/ideas/trending" component={TrendingVoteIdeas} />
+          </Switch> 
         </Router>
       </div>
     )
@@ -88,7 +89,6 @@ class Ideas extends Component {
 }
 
 Ideas.propTypes = {
-	logoutUser: PropTypes.func.isRequired,
 	auth: PropTypes.object.isRequired
 };
 
