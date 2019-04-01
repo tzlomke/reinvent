@@ -6,6 +6,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import DiscussionForm from '../../components/DiscussionForm';
 import DiscussionDisplay from "../../components/DiscussionDisplay";
+import { Col, Row, Container } from "../../components/Grid";
+
 
 class ActiveVoteIdeas extends Component {
 
@@ -142,127 +144,137 @@ class ActiveVoteIdeas extends Component {
     return (
       !this.state.campaignExpand ? (
         <div>
-          {campaignsFromDB.map(campaign =>
-            campaign.map(campaign => (
-              campaign.vote.length  !== 0 ? (
-                <CampaignDisplay
-                handleData={()=>this.handleData(campaign.vote[0]._id, campaign._id)}
-                campaignExpand={() => this.campaignExpand(campaign._id)}
-                data={campaign.vote}
-                title={campaign.title}
-                author={campaign.author}
-                synopsis={campaign.synopsis}
-                key={campaign._id}
-                styles={{opacity:1}}
-                // text={customText}
-                onCreate={this.onCreate}
-                onUpvote={this.onUpvote}
-                onClose={this.onClose}
-                onReset={this.onReset}
-                onDownvote={this.onDownvote}
-                onExpand={this.onExpand}
-                onEdit={this.onEdit}
-                isAdmin={true}
-                clientId={"1"}
-                />
-              ):(
-                <CampaignDisplay
-                handleData={()=>this.handleData(campaign.vote._id, campaign._id)}
-                campaignExpand={() => this.campaignExpand(campaign._id)}
-                data={campaign.vote}
-                title={campaign.title}
-                author={campaign.author}
-                synopsis={campaign.synopsis}
-                key={campaign._id}
-                styles={{opacity:1}}
-                // text={customText}
-                onCreate={this.onCreate}
-                onUpvote={this.onUpvote}
-                onClose={this.onClose}
-                onReset={this.onReset}
-                onDownvote={this.onDownvote}
-                onExpand={this.onExpand}
-                onEdit={this.onEdit}
-                isAdmin={true}
-                clientId={"1"}
-                />
-              ) 
-            ))
-          )}
+          <br />
+          <h3>Active Ideas</h3>
+          <hr />
+          <div>
+            {campaignsFromDB.map(campaign =>
+              campaign.map(campaign => (
+                campaign.vote.length  !== 0 ? (
+                  <CampaignDisplay
+                  handleData={()=>this.handleData(campaign.vote[0]._id, campaign._id)}
+                  campaignExpand={() => this.campaignExpand(campaign._id)}
+                  data={campaign.vote}
+                  title={campaign.title}
+                  author={campaign.author}
+                  synopsis={campaign.synopsis}
+                  key={campaign._id}
+                  styles={{opacity:1}}
+                  // text={customText}
+                  onCreate={this.onCreate}
+                  onUpvote={this.onUpvote}
+                  onClose={this.onClose}
+                  onReset={this.onReset}
+                  onDownvote={this.onDownvote}
+                  onExpand={this.onExpand}
+                  onEdit={this.onEdit}
+                  isAdmin={true}
+                  clientId={"1"}
+                  />
+                ):(
+                  <CampaignDisplay
+                  handleData={()=>this.handleData(campaign.vote._id, campaign._id)}
+                  campaignExpand={() => this.campaignExpand(campaign._id)}
+                  data={campaign.vote}
+                  title={campaign.title}
+                  author={campaign.author}
+                  synopsis={campaign.synopsis}
+                  key={campaign._id}
+                  styles={{opacity:1}}
+                  // text={customText}
+                  onCreate={this.onCreate}
+                  onUpvote={this.onUpvote}
+                  onClose={this.onClose}
+                  onReset={this.onReset}
+                  onDownvote={this.onDownvote}
+                  onExpand={this.onExpand}
+                  onEdit={this.onEdit}
+                  isAdmin={true}
+                  clientId={"1"}
+                  />
+                ) 
+              ))
+            )}
+          </div>
         </div>
       ) : (
         <div>
-          <button onClick={this.unFocusCampaign}>Back</button>
-          {campaignClicked.vote.length  !== 0 ? (
-            <div>
-              <CampaignDisplay
-              handleData={()=>this.handleData(campaignClicked.vote[0]._id, campaignClicked._id)}
-              data={campaignClicked.vote}
-              title={campaignClicked.title}
-              author={campaignClicked.author}
-              synopsis={campaignClicked.synopsis}
-              key={campaignClicked._id}
-              styles={{opacity:1}}
-              // text={customText}
-              onCreate={this.onCreate}
-              onUpvote={this.onUpvote}
-              onClose={this.onClose}
-              onReset={this.onReset}
-              onDownvote={this.onDownvote}
-              onExpand={this.onExpand}
-              onEdit={this.onEdit}
-              isAdmin={true}
-              clientId={this.state.userId}
-              />
-              {campaignClicked.comments.map((discussion, index) => 
-                <DiscussionDisplay
-                key={index}
-                discussionData={discussion}
+          <br />
+          <h3>Active Ideas</h3>
+          <hr />
+          <div>
+            <button onClick={this.unFocusCampaign}>Back</button>
+            {campaignClicked.vote.length  !== 0 ? (
+              <div>
+                <CampaignDisplay
+                handleData={()=>this.handleData(campaignClicked.vote[0]._id, campaignClicked._id)}
+                data={campaignClicked.vote}
+                title={campaignClicked.title}
+                author={campaignClicked.author}
+                synopsis={campaignClicked.synopsis}
+                key={campaignClicked._id}
+                styles={{opacity:1}}
+                // text={customText}
+                onCreate={this.onCreate}
+                onUpvote={this.onUpvote}
+                onClose={this.onClose}
+                onReset={this.onReset}
+                onDownvote={this.onDownvote}
+                onExpand={this.onExpand}
+                onEdit={this.onEdit}
+                isAdmin={true}
+                clientId={this.state.userId}
                 />
-              )}
-              <DiscussionForm 
-              discussionSubmit={this.handleDiscussionSubmit}
-              discussionFormChange={this.handleChange}
-              discussionTitleInput={this.state.discussionTitleInput}
-              discussionAuthorInput={this.state.discussionAuthorInput}
-              discussInputArea={this.state.discussInputArea}/>
-            </div>
-          ):(
-            <div>
-              <CampaignDisplay
-              // Commented out. I don't think we need this, and it causes errors since there is now vote on this discussion load
-              // handleData={()=>this.handleData(campaignClicked.vote[0]._id, campaignClicked._id)}
-              data={campaignClicked.vote}
-              title={campaignClicked.title}
-              author={campaignClicked.author}
-              synopsis={campaignClicked.synopsis}
-              key={campaignClicked._id}
-              styles={{opacity:1}}
-              // text={customText}
-              onCreate={this.onCreate}
-              onUpvote={this.onUpvote}
-              onClose={this.onClose}
-              onReset={this.onReset}
-              onDownvote={this.onDownvote}
-              onExpand={this.onExpand}
-              onEdit={this.onEdit}
-              isAdmin={true}
-              clientId={"1"}
-              />
-              {campaignClicked.comments.map((discussion, index) => 
-                <DiscussionDisplay
-                key={index}
-                discussionData={discussion}
+                {campaignClicked.comments.map((discussion, index) => 
+                  <DiscussionDisplay
+                  key={index}
+                  discussionData={discussion}
+                  />
+                )}
+                <DiscussionForm 
+                discussionSubmit={this.handleDiscussionSubmit}
+                discussionFormChange={this.handleChange}
+                discussionTitleInput={this.state.discussionTitleInput}
+                discussionAuthorInput={this.state.discussionAuthorInput}
+                discussInputArea={this.state.discussInputArea}/>
+              </div>
+            ):(
+              <div>
+                <CampaignDisplay
+                // Commented out. I don't think we need this, and it causes errors since there is now vote on this discussion load
+                // handleData={()=>this.handleData(campaignClicked.vote[0]._id, campaignClicked._id)}
+                data={campaignClicked.vote}
+                title={campaignClicked.title}
+                author={campaignClicked.author}
+                synopsis={campaignClicked.synopsis}
+                key={campaignClicked._id}
+                styles={{opacity:1}}
+                // text={customText}
+                onCreate={this.onCreate}
+                onUpvote={this.onUpvote}
+                onClose={this.onClose}
+                onReset={this.onReset}
+                onDownvote={this.onDownvote}
+                onExpand={this.onExpand}
+                onEdit={this.onEdit}
+                isAdmin={true}
+                clientId={"1"}
                 />
-              )}
-              <DiscussionForm 
-              discussionSubmit={this.handleDiscussionSubmit}
-              discussionFormChange={this.handleChange}
-              discussionTitleInput={this.state.discussionTitleInput}
-              discussionAuthorInput={this.state.discussionAuthorInput}
-              discussInputArea={this.state.discussInputArea}/>
-            </div>
-          )}
+                {campaignClicked.comments.map((discussion, index) => 
+                  <DiscussionDisplay
+                  key={index}
+                  discussionData={discussion}
+                  />
+                )}
+                <DiscussionForm 
+                discussionSubmit={this.handleDiscussionSubmit}
+                discussionFormChange={this.handleChange}
+                discussionTitleInput={this.state.discussionTitleInput}
+                discussionAuthorInput={this.state.discussionAuthorInput}
+                discussInputArea={this.state.discussInputArea}/>
+              </div>
+            )}
+          </div>
         </div>
       )
     )

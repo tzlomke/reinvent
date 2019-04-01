@@ -4,6 +4,7 @@ import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import ResourceForm from "../../components/ResourcesForm";
 
+
 class Resources extends Component {
     state = {
         resources: [],
@@ -53,6 +54,10 @@ class Resources extends Component {
     render() {
         return (
         <Container>
+            <button data-target="resourceFormModal" className="btn modal-trigger">Add a Resource Link</button>
+            <br />
+            <h1>Resources</h1>
+            <hr />
             <ResourceForm
             title={this.state.title}
             link={this.state.link}
@@ -61,8 +66,8 @@ class Resources extends Component {
             />
             <Row>
                 <Col size="12">
-                    <button data-target="resourceFormModal" className="btn modal-trigger">Add a Resource Link</button>
-                    <h1>Resources</h1>
+
+                    {/* <h1>Resources</h1> */}
                     {this.state.resources.length ? (
                         <List>
                             {this.state.resources.map(resource => (
