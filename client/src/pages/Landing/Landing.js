@@ -67,34 +67,29 @@ const Landing = (props) => {
 			{/* About Page */}
 			<div className="about-container">
 				<div className="container">
+					
+					{/* Display Font */}
 					<div className="row">
 						<div className="col s12 display-text">
-							<div class="fold-wrapper">
-							<ul class="words">
-									<li class="words-line">
-										<p>&nbsp;</p>
-										<p>What's</p>
-									</li>
-									<li class="words-line">
-										<p>What's</p>
-										<p>the</p>
-									</li>
-									<li class="words-line">
-										<p>the</p>
-										<p>big</p>
-									</li>
-									<li class="words-line">
-										<p>big</p>
-										<p>idea</p>
-									</li>
-									<li class="words-line">
-										<p>idea</p>
-										<p>&nbsp;</p>
-									</li>
-								</ul>
-							</div>
+							
+								<div>
+									<div className="center">
+										<h1>
+											What's the big idea?!
+										</h1>
+									</div>
+								</div>
+							
 						</div>
 					</div>
+					
+					{/* Text Content */}
+					<div className="row">
+						<p className="text-content">
+							Hello
+						</p>
+					</div>
+
 				</div>
 			</div>
 
