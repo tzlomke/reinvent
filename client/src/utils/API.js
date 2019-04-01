@@ -91,7 +91,7 @@ export default {
   },
   // Gets an article with the given id
   getArticle: function(id) {
-    console.log("im at single article");
+    // console.log("im at single article");
     return axios.get("/api/news-feed/" + id);
   }
   // // Deletes the artile with the given id
