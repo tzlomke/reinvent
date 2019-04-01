@@ -19,171 +19,168 @@
   height: 100vh;
 }
 
-/* Logo */
-.logo-text {
-  font-family: "Arkipelago";
-  color: #ececec;
-  font-size:10em;
-  text-align:center;
-  text-shadow: 0 0px 0 #333,
-    0 6px 8px rgba(0,0,0,.4),
-    0 9px 10px rgba(0,0,0,.15),
-    0 30px 10px rgba(0,0,0,.18),
-    0 15px 10px rgba(0,0,0,.21);
-}
+    /* Logo */
+    .logo-text {
+      font-family: "Arkipelago";
+      color: #ececec;
+      font-size:8em;
+      text-align:center;
+      text-shadow: 0 0px 0 #333,
+        0 6px 8px rgba(0,0,0,.4),
+        0 9px 10px rgba(0,0,0,.15),
+        0 30px 10px rgba(0,0,0,.18),
+        0 15px 10px rgba(0,0,0,.21);
+    }
 
-/* Auth Links */
-.links-container {
-  height: 100px;
-}
+    /* Auth Links */
+    .links-container {
+      height: 100px;
+    }
 
-.auth-links {
-  font-family: "Arkipelago";
-  margin-top: 20px;
-  font-size: 20px;
-  color: white;
-  text-shadow: 0 0px 0 #333,
-    0 6px 8px rgba(0,0,0,.4),
-    0 9px 10px rgba(0,0,0,.15),
-    0 30px 10px rgba(0,0,0,.18),
-    0 15px 10px rgba(0,0,0,.21);
-}
+    .auth-links {
+      font-family: "Arkipelago";
+      margin-top: 20px;
+      font-size: 20px;
+      color: white;
+      text-shadow: 0 0px 0 #333,
+        0 6px 8px rgba(0,0,0,.4),
+        0 9px 10px rgba(0,0,0,.15),
+        0 30px 10px rgba(0,0,0,.18),
+        0 15px 10px rgba(0,0,0,.21);
+    }
 
-.button {
-  flex: 1 1 auto;
-  margin: 10px;
-  padding: 20px;
-  border: 2px solid #f7f7f7;
-  text-align: center;
-  text-transform: uppercase;
-  position: relative;
-  overflow:hidden;
-  transition: .3s;
-}
+    .button {
+      flex: 1 1 auto;
+      margin: 10px;
+      padding: 20px;
+      border: 2px solid #f7f7f7;
+      text-align: center;
+      text-transform: uppercase;
+      position: relative;
+      overflow:hidden;
+      transition: .3s;
+    }
 
-.button:after {
-  position: absolute;
-  transition: .3s;
-  content: '';
-  width: 0;
-  left: 50%;
-  bottom: 0;
-  height: 3px;
-  background: #f7f7f7;
-  right: 0;
-  left: auto;
-}
+    .button:after {
+      position: absolute;
+      transition: .3s;
+      content: '';
+      width: 0;
+      left: 50%;
+      bottom: 0;
+      height: 3px;
+      background: #f7f7f7;
+      right: 0;
+      left: auto;
+    }
 
-.button:hover {
-  cursor: pointer;
-  box-shadow: 0 0px 0 #333,
-    0 6px 8px rgba(0,0,0,.4),
-    0 9px 10px rgba(0,0,0,.15),
-    0 30px 10px rgba(0,0,0,.18),
-    0 15px 10px rgba(0,0,0,.21);
-}
+    .button:hover {
+      cursor: pointer;
+      box-shadow: 0 0px 0 #333,
+        0 6px 8px rgba(0,0,0,.4),
+        0 9px 10px rgba(0,0,0,.15),
+        0 30px 10px rgba(0,0,0,.18),
+        0 15px 10px rgba(0,0,0,.21);
+    }
 
-.button:hover:after {
-  width: 100%;
-  left: 0;
-}
+    .button:hover:after {
+      width: 100%;
+      left: 0;
+    }
 
 /* About Page */
 .about-container {
   height: 100vh;
 }
 
-.display-text {
-  font-family: "FatFont";
-  display: flex;
-  font-size: 60px;
-  color: black;
-}
+    .display-text {
+      font-family: "FatFont";
+      display: flex;
+      font-size: 60px;
+      color: black;
+    }
 
 /* Animated Background */
-.background-image {
-  height: 150vh;
-  z-index: 0;
-  background-image: url("../../images/Retro-Astronaut.jpg");
-  background-repeat: no-repeat;
+.background-container {
+  height: 100vh;
 }
 
-.ripple-background {
-  z-index: 1;
-}
+    .ripple-background {
+      z-index: 1;
+    }
 
-.circle {
-  position: absolute;
-  border-radius: 50%;
-  background: white;
-  animation: ripple 15s infinite;
-  box-shadow: 0px 0px 1px 0px #333;
-}
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      background: white;
+      animation: ripple 15s infinite;
+      box-shadow: 0px 0px 1px 0px #ececec;
+    }
 
-.small {
-  width: 175px;
-  height: 175px;
-  left: -87.5px;
-  bottom: -87.5px;
-}
+    .small {
+      width: 175px;
+      height: 175px;
+      left: -87.5px;
+      bottom: -87.5px;
+    }
 
-.medium {
-  width: 350px;
-  height: 350px;
-  left: -175px;
-  bottom: -175px;
-}
+    .medium {
+      width: 350px;
+      height: 350px;
+      left: -175px;
+      bottom: -175px;
+    }
 
-.large {
-  width: 525px;
-  height: 525px;
-  left: -262.5px;
-  bottom: -262.5px;
-}
+    .large {
+      width: 525px;
+      height: 525px;
+      left: -262.5px;
+      bottom: -262.5px;
+    }
 
-.xlarge {
-  width: 700px;
-  height: 700px;
-  left: -350px;
-  bottom: -350px;
-}
+    .xlarge {
+      width: 700px;
+      height: 700px;
+      left: -350px;
+      bottom: -350px;
+    }
 
-.xxlarge {
-  width: 875px;
-  height: 875px;
-  left: -437.5px;
-  bottom: -437.5px;
-}
+    .xxlarge {
+      width: 875px;
+      height: 875px;
+      left: -437.5px;
+      bottom: -437.5px;
+    }
 
-.shade1 {
-  opacity: 0.2;
-}
-.shade2 {
-  opacity: 0.5;
-}
+    .shade1 {
+      opacity: 0.2;
+    }
+    .shade2 {
+      opacity: 0.5;
+    }
 
-.shade3 {
-  opacity: 0.7;
-}
+    .shade3 {
+      opacity: 0.7;
+    }
 
-.shade4 {
-  opacity: 0.8;
-}
+    .shade4 {
+      opacity: 0.8;
+    }
 
-.shade5 {
-  opacity: 0.9;
-}
+    .shade5 {
+      opacity: 0.9;
+    }
 
-@keyframes ripple {
-  0%{
-    transform: scale(0.8);
-  }
-  
-  50%{
-    transform: scale(1.2);
-  }
-  
-  100%{
-    transform: scale(0.8);
-  }
-}
+    @keyframes ripple {
+      0%{
+        transform: scale(0.8);
+      }
+      
+      50%{
+        transform: scale(1.2);
+      }
+      
+      100%{
+        transform: scale(0.8);
+      }
+    }
