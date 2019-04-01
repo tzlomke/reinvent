@@ -15,9 +15,9 @@ const ProfileData = (props) => {
 						<ul className="campaign-list">
 							{userCampaigns.map(campaign => (
 								// This is corrected to campaign._id to allow it to be a valid key
-								<li className="campaign" key={campaign._id}>
-									{campaign.title}
-								</li>
+									<li className="campaign" key={campaign._id}>
+										{campaign.title}
+									</li>
 							))}		
 						</ul>
 					</div>
