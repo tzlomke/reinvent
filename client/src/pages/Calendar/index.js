@@ -10,32 +10,34 @@ import "./style.css"
 class Calendar extends Component {
     state = {
         eventTitle: "",
-        startDate: new Date(),
-        endDate: new Date (),
+        startDate: "",
+        endDate: "",
+        startTime: "",
+        endTime: "",
         eventDescription: "",
         events: []
     };
 
-    startChange = date => this.setState({ startDate: date });
-
-    endChange =  date => this.setState({ endDate: date });
-
     handleChange = (event) => {
         const { name, value } = event.target;
+        console.log("change")
         this.setState({ 
             [name]: value 
         });
     };
+
+    onSelect = (dateTime) =>{
+        console.log(dateTime)
+    }
 
     handleFormSubmit = (event) => {
         event.preventDefault();
         const eventForm = document.getElementById('eventForm');
         API.createEvent({
             title: this.state.eventTitle,
-            start: this.state.startDate,
-            end: this.state.endDate,
-            description: this.state.eventDescription,
-            displayEventTime: true
+            start: "" + this.state.startDate + " " + this.state.startTime + "",
+            end: "" + this.state.endDate + " " + this.state.endTime+ "",
+            description: this.state.eventDescription
         })
         .then(response => {
             (console.log(`You successfully uploaded: ${response.data.title}`));
@@ -43,8 +45,10 @@ class Calendar extends Component {
         });
         this.setState({
             eventTitle: "",
-            startDate: new Date(),
-            endDate: new Date (),
+            startDate: "",
+            endDate: "",
+            startTime: "",
+            endTime: "",
             eventDescription: ""
         })
         eventForm.reset();
@@ -57,23 +61,75 @@ class Calendar extends Component {
 
     componentDidMount = () => {
         this.loadEvents();
+
         window.$('.modal').modal();
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            var elems = document.querySelectorAll('.startdatepicker');
+            var instances = window.M.Datepicker.init(elems, {
+                onSelect:(date)=>(this.setState({startDate: moment(date).format("MM-DD-YYYY")}))
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            var elems = document.querySelectorAll('.enddatepicker');
+            var instances = window.M.Datepicker.init(elems, {
+                onSelect:(date)=>(this.setState({endDate: moment(date).format("MM-DD-YYYY")}))
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            var elems = document.querySelectorAll('.starttimepicker');
+            var instances = window.M.Timepicker.init(elems, {
+                onSelect:(hours, mins)=>{
+                    if ( hours.toString().length === 1 ) {
+                        hours = "0" + hours;
+                    };
+                    if ( mins.toString().length === 1 ) {
+                        mins = "0" + mins;
+                    };
+                    const time = hours + ":" + mins
+                    this.setState({endTime: time})
+                },
+                twelveHour: false
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            var elems = document.querySelectorAll('.endtimepicker');
+            var instances = window.M.Timepicker.init(elems, {
+                onSelect:(hours, mins)=>{
+                    if ( hours.toString().length === 1 ) {
+                        hours = "0" + hours;
+                    };
+                    if ( mins.toString().length === 1 ) {
+                        mins = "0" + mins;
+                    };
+                    const time = hours + ":" + mins
+                    this.setState({endTime: time})
+                },
+                twelveHour: false
+            });
+        });
         
     }
 
-    componentDidUpdate =() => {
+    onShowMore = () => {
         setTimeout(() => {
             ReactTooltip.rebuild();
-        }, 100)
+        }, 500)
     }
 
     render = () => (
         <div className="container">
             <button data-target="eventFormModal" className="btn modal-trigger">Add an Event</button>
             <EventForm
+            onSelect={this.onSelect}
             eventTitle={this.state.eventTitle}
             startDate={this.state.startDate}
             endDate={this.state.endDate}
+            startTime={this.state.startTime}
+            endTime={this.state.endTime}
             eventDescription={this.state.eventDescription}
             startChange={this.startChange}
             endChange={this.endChange}
@@ -82,7 +138,9 @@ class Calendar extends Component {
             />
             <div id="calendarDisplay">
                 <MyCalendar
-                events={this.state.events}/>
+                onShowMore={this.onShowMore}
+                events={this.state.events}
+                onView={this.onView}/>
             </div>
             {this.state.events.map(event =>(
                 <ReactTooltip 

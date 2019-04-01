@@ -26,7 +26,7 @@ router.use("/event", eventRoutes);
 router.use("/news-feed", newsFeed);
 
 // resource routes
-// router.use("/resource", resourceRoutes);
+router.use("/resource", resourceRoutes);
 
 
 module.exports = router;

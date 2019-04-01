@@ -15,11 +15,12 @@ module.exports = {
   },
   // Get all the campaigns in a database
   getCampaign: (req, res) => {
-    // We could use req to allow for focused searches for particular campaigns later on. Or, we could build another get function
+    // req.query allows for focused searches if parameter is provided
     const { id } = req.query;
     if(id !== undefined) {
       db.Campaign
         .find({ _id: id })
+        .populate("vote")
         .then(dbCampaign => res.json(dbCampaign))
         .catch(err => res.json(err));
     } else {
@@ -37,7 +38,7 @@ module.exports = {
       .then(dbCampaign => {
         const activeVoteCampaignIds = [];
         dbCampaign.forEach(vote => {
-          activeVoteCampaignIds.push(vote.campaign[0])
+          activeVoteCampaignIds.push(vote.campaign[0]);
         });
         db.Campaign
           .find({$or:[{_id: {$in: activeVoteCampaignIds}}, {vote:[]}]})
@@ -63,6 +64,22 @@ module.exports = {
           .sort({date: -1})
           .then(dbCampaign => res.json(dbCampaign))
           .catch(err => res.json(err));
+      })
+      .catch(err => res.json(err));
+  },
+  getTrendingCampaigns: (req, res) => {
+    db.Campaign
+      .find({})
+      .populate("vote")
+      .then(dbCampaign => {
+        let trendingCampaigns=[];
+        dbCampaign.forEach(campaign => {
+          if (campaign.comments.length >= 2 || campaign.vote.length >= 3) {
+            trendingCampaigns.push(campaign)
+          }
+        });
+        console.log(trendingCampaigns);
+        res.json(trendingCampaigns);
       })
       .catch(err => res.json(err));
   },

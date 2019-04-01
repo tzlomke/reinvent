@@ -7,3 +7,7 @@
 .header {
     font-display: bold;
 }
+
+#submitCampaign {
+    margin-left: 10px;
+}

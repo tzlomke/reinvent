@@ -16,6 +16,10 @@ function Navbar(props){
 			to="/ideas/closed"
 			className="btn-large brand-logo center black-text nav-link"> Closed Ideas
 		</Link>
+		<Link
+			to="/ideas/trending"
+			className="btn-large brand-logo center black-text nav-link">Trending Ideas
+		</Link>
 		
 		{/* <div className="navbar-fixed">
 			<nav className="z-depth-0">
@@ -36,7 +40,7 @@ function Navbar(props){
 					        </Link>
                         </li> */}
                         {/* <li> */}
-                            <a className="btn-large brand-logo center black-text btn-lrg modal-trigger" href="#campaignFormModal"> New Idea</a>
+                            <a className="btn-large brand-logo center black-text btn-lrg modal-trigger" href="#campaignFormModal"> New Idea +</a>
                         {/* </li> */}
                     {/* </ul> */}
 				</div>

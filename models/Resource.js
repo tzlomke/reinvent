@@ -10,10 +10,10 @@ const resourceSchema = new Schema({
         type: String,
         required: true
     },
-    category: {
-        type: String,
-        default: "Miscellaneous"
-    },
+    // category: {
+    //     type: String,
+    //     default: "Miscellaneous"
+    // },
 });
 
 const Resource = mongoose.model("Resource", resourceSchema);
