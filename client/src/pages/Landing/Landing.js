@@ -19,7 +19,7 @@ const Landing = (props) => {
 					<div className="container valign-wrapper splash-container">
 						<div className="row">
 							<div className="col s12 center-align">
-								<h1 className="logo-text">Re:invent</h1>
+								<p className="logo-text">Re:invent</p>
 							</div>
 							
 								<div className="col s12 center-align links-container">
@@ -64,7 +64,39 @@ const Landing = (props) => {
 				
 			</div>
 
-			
+			{/* About Page */}
+			<div className="about-container">
+				<div className="container">
+					<div className="row">
+						<div className="col s12 display-text">
+							<div class="fold-wrapper">
+							<ul class="words">
+									<li class="words-line">
+										<p>&nbsp;</p>
+										<p>What's</p>
+									</li>
+									<li class="words-line">
+										<p>What's</p>
+										<p>the</p>
+									</li>
+									<li class="words-line">
+										<p>the</p>
+										<p>big</p>
+									</li>
+									<li class="words-line">
+										<p>big</p>
+										<p>idea</p>
+									</li>
+									<li class="words-line">
+										<p>idea</p>
+										<p>&nbsp;</p>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 
 		</div>
 

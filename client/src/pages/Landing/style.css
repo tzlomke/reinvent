@@ -4,6 +4,11 @@
   src: url("../../fonts/Arkipelago.otf") format("opentype");
 }
 
+@font-face {
+  font-family: "FatFont";
+  src: url("../../fonts/FATFONT/WEB/FREEFATFONT-Regular.woff2")
+}
+
 /* General Styles */
 .landing-page-container {
   height: 200vh;
@@ -83,6 +88,82 @@
   left: 0;
 }
 
+/* About Page */
+.about-container {
+  height: 100vh;
+}
+
+.display-text {
+  font-family: "FatFont";
+  font-size: 60px;
+  color: black;
+}
+
+.words {
+  margin: 0 auto;
+  padding: 80px 0;
+  font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+  font-size: 68px;
+  font-weight: 900;
+  letter-spacing: -2px;
+  text-transform: uppercase;
+  transform: translate3d(0, 0, 0);
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+}
+
+.words-line {
+  height: 50px;
+  color: black;
+  overflow: hidden;
+  position: relative;
+}
+
+.words-line :nth-child(odd) {
+  transform: skew(60deg, -30deg) scaleY(.66667);
+}
+.words-line:nth-child(even) {
+  transform: skew(0deg, -30deg) scaleY(1.33333);
+}
+.words-line:nth-child(1){
+  left: 29pxl
+}
+.words-line:nth-child(2){
+  left: 58pxl
+}
+.words-line:nth-child(3){
+  left: 87px;
+}
+.words-line:nth-child(4){
+  left: 116px;
+}
+.words-line:nth-child(5){
+  left: 145px;
+}
+
+
+
+/*
+** Fine-grained text styles
+*/
+.words-line p {
+  height: 50px;
+  line-height: 45px;
+  padding: 0 10px;
+  transition: all .4s ease-in-out;
+  transform: translate3d(0, 0, 0);
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+
+/*
+** The hover interaction
+*/
+.words:hover p{
+    transform: translate3d(0, -(50px), 0);
+}
+
 /* Animated Background */
 .background-image {
   height: 150vh;
@@ -100,42 +181,42 @@
   border-radius: 50%;
   background: white;
   animation: ripple 15s infinite;
-  box-shadow: 0px 0px 1px 0px #508fb9;
+  box-shadow: 0px 0px 1px 0px #333;
 }
 
 .small {
-  width: 150px;
-  height: 150px;
-  left: -75px;
-  bottom: -75px;
+  width: 175px;
+  height: 175px;
+  left: -87.5px;
+  bottom: -87.5px;
 }
 
 .medium {
-  width: 300px;
-  height: 300px;
-  left: -150px;
-  bottom: -150px;
+  width: 350px;
+  height: 350px;
+  left: -175px;
+  bottom: -175px;
 }
 
 .large {
-  width: 450px;
-  height: 450px;
-  left: -225px;
-  bottom: -225px;
+  width: 525px;
+  height: 525px;
+  left: -262.5px;
+  bottom: -262.5px;
 }
 
 .xlarge {
-  width: 600px;
-  height: 600px;
-  left: -300px;
-  bottom: -300px;
+  width: 700px;
+  height: 700px;
+  left: -350px;
+  bottom: -350px;
 }
 
 .xxlarge {
-  width: 750px;
-  height: 750px;
-  left: -375px;
-  bottom: -375px;
+  width: 875px;
+  height: 875px;
+  left: -437.5px;
+  bottom: -437.5px;
 }
 
 .shade1 {
