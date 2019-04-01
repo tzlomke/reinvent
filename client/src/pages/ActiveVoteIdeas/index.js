@@ -27,11 +27,12 @@ class ActiveVoteIdeas extends Component {
 		API.getUserById(authenticatedUserId)
 			.then(response => {
         let userData = response.data[0]
-        console.log(userData);
+        console.log(userData.username);
 				this.setState({
 					userId: userData._id,
 					discussionAuthorInput: `${userData.username}`,
-				});
+        });
+        console.log('Hey' + this.state.discussionAuthorInput)
 			});
 	};
 
@@ -90,7 +91,6 @@ class ActiveVoteIdeas extends Component {
     this.campaignId = campaignId;
   };
 
-  // Getting closer, but needs more work
   campaignExpand = (campaignId) => {
     API.campaignGet(campaignId)
       .then(response => {
@@ -101,6 +101,7 @@ class ActiveVoteIdeas extends Component {
 
   componentDidMount = () => {
     this.loadCampaigns();
+    this.loadUser();
   };
 
   // All the discussion stuff
@@ -229,7 +230,8 @@ class ActiveVoteIdeas extends Component {
           ):(
             <div>
               <CampaignDisplay
-              handleData={()=>this.handleData(campaignClicked.vote[0]._id, campaignClicked._id)}
+              // Commented out. I don't think we need this, and it causes errors since there is now vote on this discussion load
+              // handleData={()=>this.handleData(campaignClicked.vote[0]._id, campaignClicked._id)}
               data={campaignClicked.vote}
               title={campaignClicked.title}
               author={campaignClicked.author}

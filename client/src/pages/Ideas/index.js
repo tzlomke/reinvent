@@ -51,6 +51,8 @@ class Ideas extends Component {
       campaignInputArea: ''
     });
     campaignForm.reset();
+    // Add window.location.reload() to allow the ideas to auto refresh
+    window.location.reload();
   };
 
   handleChange = (event) => {

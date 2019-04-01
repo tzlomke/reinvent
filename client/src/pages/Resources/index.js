@@ -21,7 +21,6 @@ class Resources extends Component {
         API.getResources()
         .then(res => {
             this.setState({ resources: res.data });
-            console.log(res.data);
         })
         .catch(err => console.log(err));
     };
