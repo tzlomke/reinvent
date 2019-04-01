@@ -12,11 +12,12 @@ const CampaignDisplay = (props) => {
   return(
     <div onClick={handleData}>
       <div className="row">
+      {/* Added title attribute to both a tags. It's a simple tooltip setup */}
           <section id="campaignDisplay" className="col s9">
-            <a href="javascript:void(0)" onClick={campaignExpand} className="campaignAnchor">
+            <a title="Click to Expand Campaign" href="javascript:void(0)" onClick={campaignExpand} className="campaignAnchor">
               <h2>{title}</h2>
             </a>
-            <a href={profileRoute}>
+            <a title="Click to Visit Profile" href={profileRoute}>
               <h5> {author}</h5>
             </a>
             <p>{synopsis}</p>

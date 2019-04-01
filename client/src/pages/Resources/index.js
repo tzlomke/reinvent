@@ -68,7 +68,7 @@ class Resources extends Component {
                         <List>
                             {this.state.resources.map(resource => (
                                 <ListItem key={resource._id}>
-                                    <a href={resource.link}>
+                                    <a href={resource.link} target="_blank">
                                         <strong>
                                         {resource.title}
                                         </strong>

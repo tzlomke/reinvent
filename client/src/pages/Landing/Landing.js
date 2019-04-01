@@ -10,8 +10,9 @@ const Landing = (props) => {
 		<div>
 			 
 			<div className="container logoContainer">
-				<div class="row">
-					<div class="col s12">
+			{/* The two following div tags were changed from class to className */}
+				<div className="row">
+					<div className="col s12">
 						<img className="logoImage" src={lightbulbCutout} alt="Light Bulb"></img>
 						<div className="logoTextContainer center-align">
 							<h1 className="logoHatch center-align">Re:invent</h1>

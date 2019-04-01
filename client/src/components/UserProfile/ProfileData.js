@@ -2,7 +2,6 @@ import React from "react";
 
 const ProfileData = (props) => {
 	const { userFullName, username, userID, authenticatedUserID, userCampaigns } = props;
-
 	// Needs: Render User Info, Render User Campaign Data as Links, (Other Campaigns User Participates In? Upload and Render Bio?)
 	if (userID === authenticatedUserID) {
 		return(
@@ -15,7 +14,8 @@ const ProfileData = (props) => {
 						<h3>My Ideas</h3>
 						<ul className="campaign-list">
 							{userCampaigns.map(campaign => (
-								<li className="campaign" key={campaign.id}>
+								// This is corrected to campaign._id to allow it to be a valid key
+								<li className="campaign" key={campaign._id}>
 									{campaign.title}
 								</li>
 							))}		
@@ -35,7 +35,8 @@ const ProfileData = (props) => {
 						<h3>{userFullName}'s Ideas</h3>
 						<ul className="campaign-list">
 							{userCampaigns.map(campaign => (
-								<li className="campaign" key={campaign.id}>
+								// This is corrected to campaign._id to allow it to be a valid key
+								<li className="campaign" key={campaign._id}>
 									{campaign.title}
 								</li>
 							))}		
