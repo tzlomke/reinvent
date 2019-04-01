@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import DeleteBtn from "../../components/DeleteBtn";
-// import Jumbotron from "../components/Jumbotron";
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
@@ -15,7 +14,7 @@ class NewsFeed extends Component {
     articles: [],
     title: "",
     author: "",
-    synopsis: "",
+    content: "",
     date: ""
 
   };
@@ -27,7 +26,7 @@ class NewsFeed extends Component {
   loadFeed = () => {
     API.getArticles()
       .then(res =>
-        {this.setState({ articles: res.data, title: "", author: "", synopsis: "", date: "" })
+        {this.setState({ articles: res.data, title: "", author: "", content: "", date: "" })
         console.log(res.data)}
       )
       .catch(err => console.log(err));
@@ -52,7 +51,7 @@ class NewsFeed extends Component {
 //       API.saveBook({
 //         title: this.state.title,
 //         author: this.state.author,
-//         synopsis: this.state.synopsis
+//         content: this.state.content
 //       })
 //         .then(res => this.loadBooks())
 //         .catch(err => console.log(err));
@@ -80,7 +79,7 @@ class NewsFeed extends Component {
                       cardTitle={ article.title }
                       cardSub={ article.author }
                       cardSub2={ moment( article.date).format("MM-DD-YYYY") }
-                      cardText={ article.synopsis }
+                      cardText={ article.content }
                       cardTextColor={ "white-text" }
                       cardColor={ "blue-grey" }
                       cardAction={ 
