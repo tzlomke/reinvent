@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DiscussionForm = ({ discussionSubmit, discussionFormChange, discussionTitleInput, discussionAuthorInput, discussInputArea }) => {
+const DiscussionForm = ({ discussionSubmit, discussionFormChange, discussionAuthorInput, discussInputArea }) => {
   return(
     <div>
       <header>Discussion</header>
@@ -8,7 +8,7 @@ const DiscussionForm = ({ discussionSubmit, discussionFormChange, discussionTitl
           <form id="newDiscussion">
             <section id="newDiscAuthor">
               <label htmlFor="authorDiscIt">Author</label>
-              <input type="text" id="authorDiscIt" name="discussionAuthorInput" value={discussionAuthorInput} onChange={discussionFormChange}></input>
+              <h6 id="authorDiscIt" name="discussionAuthorInput">{discussionAuthorInput}</h6>
             </section>
             <section id="newCampSynop">
               <label htmlFor="discussIt">New Discussion Here</label>

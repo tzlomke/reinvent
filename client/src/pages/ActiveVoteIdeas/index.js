@@ -27,11 +27,12 @@ class ActiveVoteIdeas extends Component {
 		API.getUserById(authenticatedUserId)
 			.then(response => {
         let userData = response.data[0]
-        console.log(userData);
+        console.log(userData.username);
 				this.setState({
 					userId: userData._id,
 					discussionAuthorInput: `${userData.username}`,
-				});
+        });
+        console.log('Hey' + this.state.discussionAuthorInput)
 			});
 	};
 
@@ -101,6 +102,7 @@ class ActiveVoteIdeas extends Component {
 
   componentDidMount = () => {
     this.loadCampaigns();
+    this.loadUser();
   };
 
   // All the discussion stuff
