@@ -3,16 +3,13 @@ import axios from 'axios';
 export default {
   // Get User Data
   getUserByUsername: (username) => {
-    console.log(username);
     return axios.get('/api/profile/' + username);
   },
   getUserById: (userId) => {
-    console.log(userId);
     return axios.get('/api/profile/find/' + userId);
   },
   // Post Profile Image
   profileImageUpload: (username) => {
-    console.log(username);
     return axios.post('/api/:username/profile-image-upload');
   },
   // Post a campaign
@@ -40,7 +37,7 @@ export default {
   },
   // Post discussions
   discussionPost: (discussion) => {
-    return axios.post('/api/campaign/discussion', discussion);
+    return axios.put(`/api/campaign/discussion/${discussion.id}`, discussion);
   },
   // Gets all votes
   getVotes: function () {
@@ -61,21 +58,9 @@ export default {
   discussionGet: () => {
     return axios.get('/api/discussion');
   },
-  // Gets all votes
-  getVotes: function () {
-    return axios.get("/api/vote");
-  },
   // Gets the vote with the given id
   getVote: function (id) {
     return axios.get("/api/vote/" + id);
-  },
-  // Deletes the vote with the given id
-  deleteVote: function (id) {
-    return axios.delete("/api/vote/" + id);
-  },
-  // Saves a vote to the database
-  saveVote: function (voteData) {
-    return axios.post("/api/vote", voteData);
   },
   // updates a vote
   updateVote: function (id, voteData) {
