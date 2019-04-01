@@ -9,6 +9,7 @@ import ClosedVoteIdeas from "../ClosedVoteIdeas";
 import TrendingVoteIdeas from "../TrendingVoteIdeas";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import CampaignForm from "../../components/CampaignForm";
+import { Container } from "../../components/Grid";
 
 class Ideas extends Component {
 
@@ -70,7 +71,10 @@ class Ideas extends Component {
   render(){ 
 
     return (
-      <div>
+        <Container>
+          {/* <br />
+          <h1>Ideas</h1>
+          <hr /> */}
         <CampaignForm
           titleInput={this.state.titleInput}
           authorInput={this.state.authorInput}
@@ -85,7 +89,7 @@ class Ideas extends Component {
             <Route exact path="/ideas/trending" component={TrendingVoteIdeas} />
           </Switch> 
         </Router>
-      </div>
+      </Container>
     )
   }
 }

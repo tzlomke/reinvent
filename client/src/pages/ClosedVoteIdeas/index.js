@@ -5,6 +5,9 @@ import API from "../../utils/API";
 import voteAPI from "../../utils/API";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { Col, Row, Container } from "../../components/Grid";
+import { Title, SubTitle } from "../../components/Title";
+
 
 class ClosedVoteIdeas extends Component {
 
@@ -96,6 +99,9 @@ class ClosedVoteIdeas extends Component {
   render(){
     return (
       <div>
+        <SubTitle 
+          subTitleText="Closed Ideas"
+        />
         {this.state.campaignsFromDB.map(campaign =>
           campaign.map(campaign => (
             campaign.vote.length  !== 0 ? (
