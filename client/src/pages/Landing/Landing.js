@@ -16,7 +16,7 @@ const Landing = (props) => {
 						<img className="logoImage" src={lightbulbCutout} alt="Light Bulb"></img>
 						{/* <h1 className="logoHatch center-align">Re:invent</h1>
 						<hr /> */}
-						<Title 
+						<Title center
 							titleText="Re:invent"
 						/>
 						<div className="logoTextContainer center-align">
