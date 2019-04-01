@@ -91,7 +91,6 @@ class ActiveVoteIdeas extends Component {
     this.campaignId = campaignId;
   };
 
-  // Getting closer, but needs more work
   campaignExpand = (campaignId) => {
     API.campaignGet(campaignId)
       .then(response => {
@@ -231,7 +230,8 @@ class ActiveVoteIdeas extends Component {
           ):(
             <div>
               <CampaignDisplay
-              handleData={()=>this.handleData(campaignClicked.vote[0]._id, campaignClicked._id)}
+              // Commented out. I don't think we need this, and it causes errors since there is now vote on this discussion load
+              // handleData={()=>this.handleData(campaignClicked.vote[0]._id, campaignClicked._id)}
               data={campaignClicked.vote}
               title={campaignClicked.title}
               author={campaignClicked.author}
