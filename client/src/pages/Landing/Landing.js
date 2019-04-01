@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import SpaceGirl from "../../images/Retro-Astronaut2.png";
-import ReactDOM from "react-dom";
+import $ from "jquery";
 import "./style.css";
 import { Parallax } from "react-parallax";
 
@@ -10,11 +10,13 @@ class Landing extends Component {
 	constructor(props) {
 		super(props);
 		this.state = { width: 0, height: 0 };
+		this.handleScroll = this.handleScroll.bind(this);
 		this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
 	}
 	  
 	componentDidMount() {
 		this.updateWindowDimensions();
+		this.handleScroll();
 		window.addEventListener('resize', this.updateWindowDimensions);
 	}
 	  
@@ -26,7 +28,13 @@ class Landing extends Component {
 		this.setState({ width: window.innerWidth, height: window.innerHeight });
 	}
 
-	render (props) {
+	handleScroll () {
+        $('html, body').animate({
+            scrollTop: $(".about-container").offset().top
+        }, 1000);
+    }
+
+	render () {
 		return (
 			
 			<div className="landing-page-container">
@@ -70,7 +78,9 @@ class Landing extends Component {
 									
 									<div className="row">
 										<div className="col s12 center-align">
-											<a href="#" onClick={() => {window.scroll({top: this.state.height, left: 0, behavior: 'smooth' })}}>&#10549;</a>
+											<a href="#" className="scroll-click" onClick={() => {this.handleScroll()}}>
+												&#8609;
+											</a>
 										</div>
 									</div>
 								</div>
