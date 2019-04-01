@@ -7,6 +7,8 @@ import { connect } from "react-redux";
 import DiscussionForm from '../../components/DiscussionForm';
 import DiscussionDisplay from "../../components/DiscussionDisplay";
 import { Col, Row, Container } from "../../components/Grid";
+import { Title, SubTitle } from "../../components/Title";
+
 
 
 class ActiveVoteIdeas extends Component {
@@ -144,9 +146,9 @@ class ActiveVoteIdeas extends Component {
     return (
       !this.state.campaignExpand ? (
         <div>
-          <br />
-          <h3>Active Ideas</h3>
-          <hr />
+          <SubTitle 
+            subTitleText="Active Ideas"
+          />
           <div>
             {campaignsFromDB.map(campaign =>
               campaign.map(campaign => (
@@ -199,9 +201,9 @@ class ActiveVoteIdeas extends Component {
         </div>
       ) : (
         <div>
-          <br />
-          <h3>Active Ideas</h3>
-          <hr />
+          <SubTitle 
+            subTitleText="Active Ideas"
+          />
           <div>
             <button onClick={this.unFocusCampaign}>Back</button>
             {campaignClicked.vote.length  !== 0 ? (

@@ -6,6 +6,8 @@ import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { NewsCard } from "../../components/NewsCard";
 import moment from 'moment';
+import { Title, SubTitle } from "../../components/Title";
+
 
 // import { Input, TextArea, FormBtn } from "../components/Form";
 
@@ -61,9 +63,12 @@ class NewsFeed extends Component {
   render() {
     return (
       <Container>
+        <Title 
+          titleText="Latest News"
+        />
         <Row>
           <Col size="12">
-              <h1>Latest News</h1>
+              {/* <h1>Latest News</h1> */}
             {this.state.articles.length ? (
               <List>
                 {this.state.articles.map(article => (

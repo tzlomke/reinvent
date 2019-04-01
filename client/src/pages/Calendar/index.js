@@ -6,6 +6,8 @@ import ReactTooltip from 'react-tooltip';
 import moment from "moment";
 import "./style.css"
 import { Col, Row, Container } from "../../components/Grid";
+import { Title, SubTitle } from "../../components/Title";
+
 
 
 
@@ -126,9 +128,9 @@ class Calendar extends Component {
 
         <Container>
             <button data-target="eventFormModal" className="btn modal-trigger">Add an Event</button>
-            <br />
-            <h1>Calendar</h1>
-            <hr />
+            <Title 
+                titleText="Calendar"
+            />
             <div className="">
                 <br></br>    
                 <EventForm

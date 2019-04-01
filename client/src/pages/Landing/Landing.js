@@ -2,6 +2,7 @@ import React from "react";
 import lightbulbCutout from "../../images/lightbulbCutout.png";
 import "./style.css";
 import { Col, Row, Container } from "../../components/Grid";
+import { Title, SubTitle } from "../../components/Title";
 
 const Landing = (props) => {
 	
@@ -13,8 +14,11 @@ const Landing = (props) => {
 					<Col size="12">
 
 						<img className="logoImage" src={lightbulbCutout} alt="Light Bulb"></img>
-						<h1 className="logoHatch center-align">Re:invent</h1>
-						<hr />
+						{/* <h1 className="logoHatch center-align">Re:invent</h1>
+						<hr /> */}
+						<Title 
+							titleText="Re:invent"
+						/>
 						<div className="logoTextContainer center-align">
 							{/* <h1 className="logoOutline center-align">Re:invent</h1> */}
 						</div>

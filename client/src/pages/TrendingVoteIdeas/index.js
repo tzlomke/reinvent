@@ -7,6 +7,8 @@ import { connect } from "react-redux";
 import DiscussionForm from '../../components/DiscussionForm';
 import DiscussionDisplay from "../../components/DiscussionDisplay";
 import { Col, Row, Container } from "../../components/Grid";
+import { Title, SubTitle } from "../../components/Title";
+
 
 
 class TrendingVoteIdeas extends Component {
@@ -146,9 +148,9 @@ class TrendingVoteIdeas extends Component {
     return (
       !this.state.campaignExpand ? (
         <div>
-          <br />
-          <h3>Trending Ideas</h3>
-          <hr />
+          <SubTitle 
+            subTitleText="Trending Ideas"
+          />
           <div>
             {campaignsFromDB.map(campaign =>
               campaign.map(campaign => (
@@ -202,9 +204,9 @@ class TrendingVoteIdeas extends Component {
         </div>
       ) : (
         <div>
-          <br />
-          <h3>Trending Ideas</h3>
-          <hr />
+          <SubTitle 
+            subTitleText="Trending Ideas"
+          />
           <div>
             {campaignClicked.vote.length  > 1 ? (
               console.log('campaign it' + campaignClicked.vote[0]._id),

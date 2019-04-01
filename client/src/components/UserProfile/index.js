@@ -9,8 +9,7 @@ import ProfileData from "./ProfileData";
 import ProfilePicture from "./ProfilePicture";
 import defaultProfileImage from "../../images/lightbulbCutout.png"
 import { Col, Row, Container } from "../../components/Grid";
-
-
+import { Title, SubTitle } from "../../components/Title";
 
 class UserProfile extends Component {
 
@@ -136,9 +135,9 @@ class UserProfile extends Component {
 
 		return(
 			<Container>
-				<br />
-				<h1>My Profile</h1>
-            	<hr />
+				<Title 
+          			titleText="My Profile"
+				/>
 				<div className="profile-wrapper">
 					<ProfilePicture 
 						handleShowImageUploadModal = {this.handleShowImageUploadModal}

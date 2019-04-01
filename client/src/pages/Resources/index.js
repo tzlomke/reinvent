@@ -3,6 +3,8 @@ import API from "../../utils/API";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import ResourceForm from "../../components/ResourcesForm";
+import { Title, SubTitle } from "../../components/Title";
+
 
 
 class Resources extends Component {
@@ -55,9 +57,9 @@ class Resources extends Component {
         return (
         <Container>
             <button data-target="resourceFormModal" className="btn modal-trigger">Add a Resource Link</button>
-            <br />
-            <h1>Resources</h1>
-            <hr />
+            <Title 
+                titleText="Resources"
+            />
             <ResourceForm
             title={this.state.title}
             link={this.state.link}
