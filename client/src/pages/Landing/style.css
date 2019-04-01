@@ -1,64 +1,172 @@
+/* Fonts */
 @font-face {
-  font-family: "TomatoSoup";
-  src: url("../../fonts/TomatoSoup-Regular.ttf") format("truetype");
+  font-family: "Arkipelago";
+  src: url("../../fonts/Arkipelago.otf") format("opentype");
 }
 
-@font-face {
-  font-family: "Evo";
-  src: url("../../fonts/Yeager-Regular.otf") format("opentype");
+/* General Styles */
+.landing-page-container {
+  height: 200vh;
 }
 
-.landingPageContainer {
-  background-image: url("../../images/hip-square.png");
+/* Logo, Links, UI, etc. */
+.splash-container {
+  height: 100vh;
 }
 
-.logoTextContainer {
-  display: inline-block;
+/* Logo */
+.logo-text {
+  font-family: "Arkipelago";
+  color: #ececec;
+  font-size:10em;
+  text-align:center;
+  text-shadow: 0 0px 0 #333,
+    0 6px 8px rgba(0,0,0,.4),
+    0 9px 10px rgba(0,0,0,.15),
+    0 30px 10px rgba(0,0,0,.18),
+    0 15px 10px rgba(0,0,0,.21);
+}
+
+/* Auth Links */
+.links-container {
+  height: 100px;
+}
+
+.auth-links {
+  font-family: "Arkipelago";
+  margin-top: 20px;
+  font-size: 20px;
+  color: white;
+  text-shadow: 0 0px 0 #333,
+    0 6px 8px rgba(0,0,0,.4),
+    0 9px 10px rgba(0,0,0,.15),
+    0 30px 10px rgba(0,0,0,.18),
+    0 15px 10px rgba(0,0,0,.21);
+}
+
+.button {
+  flex: 1 1 auto;
+  margin: 10px;
+  padding: 20px;
+  border: 2px solid #f7f7f7;
+  text-align: center;
+  text-transform: uppercase;
   position: relative;
+  overflow:hidden;
+  transition: .3s;
 }
 
-.logoHatch {
-  display: inline;
-  white-space: nowrap;
-  font-family: "Evo";
-  overflow: hidden;   
-  font-size: 100px;
-  color: rgb(105, 160, 169);
+.button:after {
   position: absolute;
-  animation: animated-text 2.2s steps(40,end) 1.5s 1 normal both;
+  transition: .3s;
+  content: '';
+  width: 0;
+  left: 50%;
+  bottom: 0;
+  height: 3px;
+  background: #f7f7f7;
+  right: 0;
+  left: auto;
 }
-/* 
-.logoOutline {
-  display: inline;
-  white-space: nowrap;
-  overflow: hidden;   
-  font-family: "LogoOutline";
-  font-size: 200px;
-  color: #4a88b2;
+
+.button:hover {
+  cursor: pointer;
+  box-shadow: 0 0px 0 #333,
+    0 6px 8px rgba(0,0,0,.4),
+    0 9px 10px rgba(0,0,0,.15),
+    0 30px 10px rgba(0,0,0,.18),
+    0 15px 10px rgba(0,0,0,.21);
+}
+
+.button:hover:after {
+  width: 100%;
+  left: 0;
+}
+
+/* Animated Background */
+.background-image {
+  height: 150vh;
+  z-index: 0;
+  background-image: url("../../images/Retro-Astronaut.jpg");
+  background-repeat: no-repeat;
+}
+
+.ripple-background {
+  z-index: 1;
+}
+
+.circle {
   position: absolute;
-  animation: animated-text 1.8s steps(30,end) .3s 1 normal both;
-} */
-
-.tomato {
-  font-family: "TomatoSoup";
-  font-size: 100px;
-  color: rgb(171, 82, 100);
-  text-shadow: .5px 1px .75px rgba(0,0,0,0.3);
-  transition: text-shadow .2s ease-in-out;
+  border-radius: 50%;
+  background: white;
+  animation: ripple 15s infinite;
+  box-shadow: 0px 0px 1px 0px #508fb9;
 }
 
-.tomato:hover {
-  text-shadow: 4px 8px 6px rgba(0,0,0,0.3);
+.small {
+  width: 150px;
+  height: 150px;
+  left: -75px;
+  bottom: -75px;
 }
 
-@keyframes animated-text{
-  from{width: 0;}
-  to{width: 700px;}
+.medium {
+  width: 300px;
+  height: 300px;
+  left: -150px;
+  bottom: -150px;
 }
 
-.logoImage {
-  width: 200px;
-  height: 200px;
-  display: block;
-  position: relative;
+.large {
+  width: 450px;
+  height: 450px;
+  left: -225px;
+  bottom: -225px;
+}
+
+.xlarge {
+  width: 600px;
+  height: 600px;
+  left: -300px;
+  bottom: -300px;
+}
+
+.xxlarge {
+  width: 750px;
+  height: 750px;
+  left: -375px;
+  bottom: -375px;
+}
+
+.shade1 {
+  opacity: 0.2;
+}
+.shade2 {
+  opacity: 0.5;
+}
+
+.shade3 {
+  opacity: 0.7;
+}
+
+.shade4 {
+  opacity: 0.8;
+}
+
+.shade5 {
+  opacity: 0.9;
+}
+
+@keyframes ripple {
+  0%{
+    transform: scale(0.8);
+  }
+  
+  50%{
+    transform: scale(1.2);
+  }
+  
+  100%{
+    transform: scale(0.8);
+  }
 }
