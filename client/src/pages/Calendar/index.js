@@ -114,10 +114,10 @@ class Calendar extends Component {
         
     }
 
-    componentDidUpdate =() => {
+    onShowMore = () => {
         setTimeout(() => {
             ReactTooltip.rebuild();
-        }, 100)
+        }, 500)
     }
 
     render = () => (
@@ -138,7 +138,9 @@ class Calendar extends Component {
             />
             <div id="calendarDisplay">
                 <MyCalendar
-                events={this.state.events}/>
+                onShowMore={this.onShowMore}
+                events={this.state.events}
+                onView={this.onView}/>
             </div>
             {this.state.events.map(event =>(
                 <ReactTooltip 

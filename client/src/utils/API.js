@@ -28,6 +28,9 @@ export default {
   closedCampaignGet: () => {
     return axios.get("/api/campaign/closed")
   },
+  trendingCampaignGet: () => {
+    return axios.get("/api/campaign/trending");
+  },
   // update campaigns
   campaignPut: (id, campaignUpdate) => {
     return axios.put('/api/campaign/' + id, campaignUpdate)

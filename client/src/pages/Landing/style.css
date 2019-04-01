@@ -1,0 +1,54 @@
+/* @font-face {
+  font-family: "LogoHatch";
+  src: url("../../fonts/Monkstead/OTF/MonksteadHatch.otf") 
+    format("opentype");
+}
+
+@font-face {
+  font-family: "LogoOutline";
+  src: url("../../fonts/Monkstead/OTF/MonksteadOutline.otf") 
+    format("opentype");
+}
+
+body {
+  background-image: url("../../images/hip-square.png");
+}
+
+.logoTextContainer {
+  display: inline-block;
+  position: relative;
+}
+
+.logoHatch {
+  display: inline;
+  white-space: nowrap;
+  overflow: hidden;   
+  font-family: "LogoHatch";
+  font-size: 202px;
+  color: rgb(114, 204, 224);
+  position: absolute;
+  animation: animated-text 2.2s steps(40,end) 1.5s 1 normal both;
+}
+
+.logoOutline {
+  display: inline;
+  white-space: nowrap;
+  overflow: hidden;   
+  font-family: "LogoOutline";
+  font-size: 200px;
+  color: #767171;
+  position: absolute;
+  animation: animated-text 1.8s steps(30,end) .3s 1 normal both;
+}
+
+@keyframes animated-text{
+  from{width: 0;}
+  to{width: 770px;}
+}
+
+.logoImage {
+  width: 200px;
+  height: 200px;
+  display: block;
+  position: relative;
+} */
