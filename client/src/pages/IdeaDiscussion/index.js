@@ -5,7 +5,6 @@ import { CardOutline } from "../../components/NewsCard";
 import DiscussionDisplay from "../../components/DiscussionDisplay";
 import DiscussionForm from "../../components/DiscussionForm";
 import API from "../../utils/API";
-import voteAPI from "../../utils/API";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
@@ -18,6 +17,9 @@ class IdeaDiscussion extends Component {
     discussionAuthorInput: '',
     discussInputArea: ''
   }
+
+  voteId="";
+  campaignId="";
 
   loadUser = () => {
     let authenticatedUserId = this.props.auth.user.id
@@ -46,7 +48,7 @@ class IdeaDiscussion extends Component {
 
   updateVote = (data) => {
     setTimeout(()=>(
-    voteAPI.updateVote(this.voteId, data).then(res =>{
+    API.updateVote(this.voteId, data).then(res =>{
       return res.data;
     })),1)
   };
@@ -54,7 +56,8 @@ class IdeaDiscussion extends Component {
   onCreate = (data) =>  {
     setTimeout(() =>{
       data.campaign =[this.campaignId];
-      voteAPI.saveVote(data).then(res => {
+      API.saveVote(data)
+        .then(res => {
           API.campaignPut(this.campaignId, {vote: res.data._id})
           .then(res=> res.data)
       });
@@ -88,6 +91,7 @@ class IdeaDiscussion extends Component {
   handleData = (voteId, campaignId) => {
     this.voteId = voteId;
     this.campaignId = campaignId;
+    console.log(voteId,campaignId)
     return voteId,campaignId;
   };
 
@@ -143,7 +147,7 @@ class IdeaDiscussion extends Component {
                 <div>
                   <CampaignDisplay
                   campaignClickable={false}
-                  handleData={()=>this.handleData(campaignClicked.vote[0]._id, campaignClicked._id)}
+                  handleData={() => {this.handleData(campaignClicked.vote[0]._id, campaignClicked._id)}}
                   data={campaignClicked.vote}
                   title={campaignClicked.title}
                   author={campaignClicked.author}
@@ -178,7 +182,7 @@ class IdeaDiscussion extends Component {
               <div>
                 <CampaignDisplay
                 // Commented out. I don't think we need this, and it causes errors since there is now vote on this discussion load
-                // handleData={()=>this.handleData(campaignClicked.vote[0]._id, campaignClicked._id)}
+                handleData={()=>this.handleData(campaignClicked.vote._id, campaignClicked._id)}
                 campaignClickable={false}
                 data={campaignClicked.vote}
                 title={campaignClicked.title}

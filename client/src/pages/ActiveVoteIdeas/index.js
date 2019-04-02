@@ -47,14 +47,13 @@ class ActiveVoteIdeas extends Component {
   updateVote = (data) => {
     setTimeout(()=>(
     voteAPI.updateVote(this.voteId, data).then(res =>{
-      console.log(res.data);
         return res.data;
     })),1)
   };
 
   onCreate = (data) =>  {
     setTimeout(() =>{
-      data.campaign =[this.campaignId];
+      data.campaign = [this.campaignId];
       voteAPI.saveVote(data).then(res => {
           API.campaignPut(this.campaignId, {vote: res.data._id})
           .then(res=> res.data)
