@@ -83,17 +83,6 @@ module.exports = {
       })
       .catch(err => res.json(err));
   },
-  // Create a discussion
-  // createDiscussion: (req, res) => {
-  //   const { id, subject, author, body } = req.body
-  //   console.log(id);
-  //   db.Campaign
-  //     .find({})
-  //     .populate("vote")
-  //     .then(dbCampaign => res.json(dbCampaign))
-  //     .catch(err => res.json(err));
-  // },
-  // update campign
   updateCampaign: (req, res) => {
     db.Campaign
     .findByIdAndUpdate(req.params.id,req.body)
@@ -108,25 +97,4 @@ module.exports = {
       .then(dbDiscussion => res.json(dbDiscussion))
       .catch(err => {res.json(err)})
   },
-  // Get the discussions
-  // getDiscusison: (req, res) => {
-  //   db.Discussion
-  //     .find({})
-  //     .then(dbDiscussion => res.json(dbDiscussion))
-  //     .catch(err => {res.json(err)})
-  //     .updateOne(
-  //       { _id: id },
-  //       { $push: 
-  //         { comments:
-  //           { 
-  //           subject: subject,
-  //           author: author,
-  //           body: body
-  //           }
-  //         }
-  //       }
-  //     )
-  //     .then(dbCampaign => res.json(dbCampaign))
-  //     .catch(err => res.json(err));
-  // }
 };
