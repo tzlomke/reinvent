@@ -30,7 +30,7 @@ class Landing extends Component {
 	handleScroll () {
         $('html, body').animate({
             scrollTop: $(".about-container").offset().top
-        }, 2000);
+        }, 2200);
 	}
 
 	render () {
@@ -49,7 +49,7 @@ class Landing extends Component {
 							<div className="container valign-wrapper splash-container">
 								<div className="row">
 									<div className="col s12 center-align">
-										<p className="logo-text">Re:invent</p>
+										<p className="logo-text">R<em>e</em>:invent</p>
 									</div>
 									
 									<div className="col s12 center-align links-container">
@@ -78,7 +78,7 @@ class Landing extends Component {
 									<div className="row">
 										<div className="col s12 center-align">
 											<a href="#" className="scroll-click" onClick={() => {this.handleScroll()}}>
-												&#8609;
+												&#709;
 											</a>
 										</div>
 									</div>
@@ -114,9 +114,9 @@ class Landing extends Component {
 									<div className="display-text">
 										<div>
 											<div id="text">
-												<span>What's the big idea?!</span>
-												<span>What's the big idea?!</span>
-												<span>What's the big idea?!</span>
+												<span>What's the big idea?</span>
+												<span>What's the big idea?</span>
+												<span>What's the big idea?</span>
 											</div>
 										</div>
 									</div>

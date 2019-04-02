@@ -9,6 +9,11 @@
   src: url("../../fonts/FATFONT/WEB/FREEFATFONT-Regular.woff")
 }
 
+@font-face {
+  font-family: "SpaceGrotesk";
+  src: url("../../fonts/SpaceGrotesk/SpaceGrotesk-Regular.woff");
+}
+
 /* General Styles */
 .landing-page-container {
   height: 200vh;
@@ -38,7 +43,7 @@
     }
 
     .auth-links {
-      font-family: "Arkipelago";
+      font-family: "SpaceGrotesk";
       margin-top: 20px;
       font-size: 20px;
       color: white;
@@ -135,7 +140,7 @@
 }
 
     .display-text {
-      font-family: "FatFont";
+      font-family: "Arkipelago";
       display: flex;
       height: 400px;
       height: 300px;
@@ -150,7 +155,7 @@
         margin-left: 150px;
     }
  
-    .logo-text-secondary {
+    /* .logo-text-secondary {
       font-family: "Arkipelago";
       display: flex;
       font-size: 6em;
@@ -160,7 +165,7 @@
         0 9px 10px rgba(0,0,0,.15),
         0 30px 10px rgba(0,0,0,.18),
         0 15px 10px rgba(0,0,0,.21);
-    }
+    } */
 
     #text {
 			position: absolute;
