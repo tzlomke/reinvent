@@ -107,9 +107,7 @@ class ClosedVoteIdeas extends Component {
           cardColor={ "" }
           cardTextColor={ "" }
         >
-          {/* Need to move the data displayed below into this component. */}
-        </CardOutline>
-        {this.state.campaignsFromDB.map(campaign =>
+          {this.state.campaignsFromDB.map(campaign =>
           campaign.map(campaign => (
             campaign.vote.length  !== 0 ? (
               console.log(campaign.vote[0]._id),
@@ -134,27 +132,28 @@ class ClosedVoteIdeas extends Component {
               />
             ):(
               <CampaignDisplay
-              handleData={()=>this.handleData(campaign.vote._id, campaign._id)}
-              data={campaign.vote}
-              title={campaign.title}
-              author={campaign.author}
-              synopsis={campaign.synopsis}
-              key={campaign._id}
-              styles={{opacity:1}}
-              // text={customText}
-              onCreate={this.onCreate}
-              onUpvote={this.onUpvote}
-              onClose={this.onClose}
-              onReset={this.onReset}
-              onDownvote={this.onDownvote}
-              onExpand={this.onExpand}
-              onEdit={this.onEdit}
-              isAdmin={true}
-              clientId={this.state.userId}
-              />
-            ) 
-          ))
-        )}
+                handleData={()=>this.handleData(campaign.vote._id, campaign._id)}
+                data={campaign.vote}
+                title={campaign.title}
+                author={campaign.author}
+                synopsis={campaign.synopsis}
+                key={campaign._id}
+                styles={{opacity:1}}
+                // text={customText}
+                onCreate={this.onCreate}
+                onUpvote={this.onUpvote}
+                onClose={this.onClose}
+                onReset={this.onReset}
+                onDownvote={this.onDownvote}
+                onExpand={this.onExpand}
+                onEdit={this.onEdit}
+                isAdmin={true}
+                clientId={this.state.userId}
+                />
+              ) 
+            ))
+          )}
+        </CardOutline>
       </div>
     )
   }
