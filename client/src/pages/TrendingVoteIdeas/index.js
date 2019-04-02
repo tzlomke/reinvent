@@ -4,8 +4,8 @@ import API from "../../utils/API";
 import voteAPI from "../../utils/API";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import DiscussionForm from '../../components/DiscussionForm';
-import DiscussionDisplay from "../../components/DiscussionDisplay";
+// import DiscussionForm from '../../components/DiscussionForm';
+// import DiscussionDisplay from "../../components/DiscussionDisplay";
 import { Col, Row, Container } from "../../components/Grid";
 import { Title, SubTitle } from "../../components/Title";
 import { CardOutline } from "../../components/NewsCard";
@@ -15,10 +15,6 @@ class TrendingVoteIdeas extends Component {
   state = {
     campaignsFromDB: [],
     userId: '',
-    campaignClicked: {},
-    campaignExpand: false,
-    discussionAuthorInput: '',
-    discussInputArea: ''
   }
 
   voteId="";
@@ -96,15 +92,6 @@ class TrendingVoteIdeas extends Component {
     console.log(this.voteId, this.campaignId);
   };
 
-  // Getting closer, but needs more work
-  campaignExpand = (campaignId) => {
-    API.campaignGet(campaignId)
-      .then(response => {
-        const resDat = response.data[0];
-        this.setState({ campaignClicked: resDat, campaignExpand: true });
-      });
-  };
-
   componentDidMount = () => {
     this.loadCampaigns();
   };
@@ -143,114 +130,29 @@ class TrendingVoteIdeas extends Component {
 
   render(){
     const campaignsFromDB = this.state.campaignsFromDB;
-    const campaignClicked = this.state.campaignClicked;
     return (
-      !this.state.campaignExpand ? (
-        <div>
-          <SubTitle 
-            subTitleText="Trending Ideas"
-          />
-          <CardOutline
-            colSize={ "12" } 
-            cardColor={ "" }
-            cardTextColor={ "" }
-          >
-            <div>
-              {campaignsFromDB.map(campaign =>
-                campaign.map(campaign => (
-                  campaign.vote.length  !== 0 ? (
-                    console.log(campaign.vote[0]._id),
-                    <CampaignDisplay
-                    handleData={()=>this.handleData(campaign.vote[0]._id, campaign._id)}
-                    campaignExpand={() => this.campaignExpand(campaign._id)}
-                    data={campaign.vote}
-                    title={campaign.title}
-                    author={campaign.author}
-                    synopsis={campaign.synopsis}
-                    key={campaign._id}
-                    styles={{opacity:1}}
-                    // text={customText}
-                    onCreate={this.onCreate}
-                    onUpvote={this.onUpvote}
-                    onClose={this.onClose}
-                    onReset={this.onReset}
-                    onDownvote={this.onDownvote}
-                    onExpand={this.onExpand}
-                    onEdit={this.onEdit}
-                    isAdmin={true}
-                    clientId={this.state.userId}
-                    />
-                  ):(
-                    <CampaignDisplay
-                    handleData={()=>this.handleData(campaign.vote._id, campaign._id)}
-                    campaignExpand={() => this.campaignExpand(campaign._id)}
-                    data={campaign.vote}
-                    title={campaign.title}
-                    author={campaign.author}
-                    synopsis={campaign.synopsis}
-                    key={campaign._id}
-                    styles={{opacity:1}}
-                    // text={customText}
-                    onCreate={this.onCreate}
-                    onUpvote={this.onUpvote}
-                    onClose={this.onClose}
-                    onReset={this.onReset}
-                    onDownvote={this.onDownvote}
-                    onExpand={this.onExpand}
-                    onEdit={this.onEdit}
-                    isAdmin={true}
-                    clientId={this.state.userId}
-                    />
-                  ) 
-                ))
-              )}
-            </div>
-          </CardOutline>
-        </div>
-      ) : (
-        <div>
-          <SubTitle 
-            subTitleText="Trending Ideas"
-          />
-          <CardOutline
-            colSize={ "12" } 
-            cardColor={ "" }
-            cardTextColor={ "" }
-          >
-            <div>
-              {campaignClicked.vote.length  > 1 ? (
-                console.log('campaign it' + campaignClicked.vote[0]._id),
-                <CampaignDisplay
-                // handleData={()=>this.handleData(campaign.vote[0]._id, campaign._id)}
-                // campaignExpand={() => this.campaignExpand(campaign._id)}
-                data={campaignClicked.vote}
-                title={campaignClicked.title}
-                author={campaignClicked.author}
-                synopsis={campaignClicked.synopsis}
-                key={campaignClicked._id}
-                styles={{opacity:1}}
-                // text={customText}
-                onCreate={this.onCreate}
-                onUpvote={this.onUpvote}
-                onClose={this.onClose}
-                onReset={this.onReset}
-                onDownvote={this.onDownvote}
-                onExpand={this.onExpand}
-                onEdit={this.onEdit}
-                isAdmin={true}
-                clientId={this.state.userId}
-                />
-              ):(
-                <div>
-                  <button onClick={this.unFocusCampaign}>Back</button>
+      <div>
+        <SubTitle 
+          subTitleText="Trending Ideas"
+        />
+        <CardOutline
+          colSize={ "12" } 
+          cardColor={ "" }
+          cardTextColor={ "" }
+        >
+          <div>
+            {campaignsFromDB.map(campaign =>
+              campaign.map(campaign => (
+                campaign.vote.length  !== 0 ? (
+                  console.log(campaign.vote[0]._id),
                   <CampaignDisplay
-                  // handleData={()=>this.handleData(campaign.vote._id, campaign._id)}
-                  // campaignExpand={() => this.campaignExpand(campaign._id)}
-                  data={campaignClicked.vote}
-                  title={campaignClicked.title}
-                  author={campaignClicked.author}
-                  synopsis={campaignClicked.synopsis}
-                  key={campaignClicked._id}
+                  campaignClickable={true}
+                  handleData={()=>this.handleData(campaign.vote[0]._id, campaign._id)}
+                  data={campaign.vote}
+                  title={campaign.title}
+                  author={campaign.author}
+                  synopsis={campaign.synopsis}
+                  key={campaign._id}
                   styles={{opacity:1}}
                   // text={customText}
                   onCreate={this.onCreate}
@@ -263,24 +165,33 @@ class TrendingVoteIdeas extends Component {
                   isAdmin={true}
                   clientId={this.state.userId}
                   />
-                  <DiscussionForm 
-                  discussionSubmit={this.handleDiscussionSubmit}
-                  discussionFormChange={this.handleChange}
-                  discussionTitleInput={this.state.discussionTitleInput}
-                  discussionAuthorInput={this.state.discussionAuthorInput}
-                  discussInputArea={this.state.discussInputArea}/>
-                  {campaignClicked.comments.map((discussion, index) => 
-                    <DiscussionDisplay
-                    key={index}
-                    discussionData={discussion}
-                    />
-                  )}
-                </div>
-              )}
-            </div>          
-          </CardOutline>
-        </div>
-      )
+                ):(
+                  <CampaignDisplay
+                  campaignClickable={true}
+                  handleData={()=>this.handleData(campaign.vote._id, campaign._id)}
+                  data={campaign.vote}
+                  title={campaign.title}
+                  author={campaign.author}
+                  synopsis={campaign.synopsis}
+                  key={campaign._id}
+                  styles={{opacity:1}}
+                  // text={customText}
+                  onCreate={this.onCreate}
+                  onUpvote={this.onUpvote}
+                  onClose={this.onClose}
+                  onReset={this.onReset}
+                  onDownvote={this.onDownvote}
+                  onExpand={this.onExpand}
+                  onEdit={this.onEdit}
+                  isAdmin={true}
+                  clientId={this.state.userId}
+                  />
+                )
+              ))
+            )}
+          </div>
+        </CardOutline>
+      </div>
     )
   }
 }
