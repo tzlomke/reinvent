@@ -10,7 +10,7 @@ const CampaignDisplay = (props) => {
   const profileRoute = `/profile/${author}`;
 
   return(
-    <div onClick={handleData}>
+    <div className="onClickDiv" onClick={handleData}>
       <div className="row">
       {/* Added title attribute to both a tags. It's a simple tooltip setup */}
           <section id="campaignDisplay" className="col s9">
