@@ -1,11 +1,4 @@
-.modal-shown {
-	display: block;
-}
-
-.modal-hidden {
-	display: none;
-}
-
+/* Profile Image Container */
 @import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
 .profile-image-container {
   position: relative;
@@ -107,4 +100,19 @@
 .profile-image-container.hover:after {
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
+}
+
+/* Image Upload Modal */
+.modal-container {
+  float: right;
+  width: 700px;
+  /* height: 1000px; */
+}
+
+.modal-shown {
+	display: block;
+}
+
+.modal-hidden {
+	display: none;
 }
