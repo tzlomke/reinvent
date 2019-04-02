@@ -12,7 +12,6 @@ import { Col, Row, Container } from "../../components/Grid";
 import { Title, SubTitle } from "../../components/Title";
 import { CardOutline } from "../../components/NewsCard";
 
-
 class UserProfile extends Component {
 
 	state = {
