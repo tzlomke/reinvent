@@ -3,7 +3,7 @@ import CampaignDisplay from "../../components/CampaignDisplay";
 import { SubTitle } from "../../components/Title";
 import { CardOutline } from "../../components/NewsCard";
 import DiscussionDisplay from "../../components/DiscussionDisplay";
-import DiscussionForm from "../../components/DiscussionDisplay";
+import DiscussionForm from "../../components/DiscussionForm";
 import API from "../../utils/API";
 import voteAPI from "../../utils/API";
 import PropTypes from "prop-types";
@@ -24,22 +24,23 @@ class IdeaDiscussion extends Component {
 		API.getUserById(authenticatedUserId)
 			.then(response => {
         let userData = response.data[0]
-        this.loadCampaign(userData);
-        return this.state.discussionAuthorInput;
+        this.setState({
+          userId: userData._id,
+          discussionAuthorInput: userData.username
+        });
+        return 'Complete!';
       });
 	};
 
-  loadCampaign = (userData) => {
+  loadCampaign = () => {
     const urlSplit = window.location.href.split('/');
     const campaignId = urlSplit[4];
     API.campaignGet(campaignId)
       .then(response => {
         const resDat = response.data[0];
         this.setState({
-          campaignClicked: resDat,
-          userId: userData._id,
-          discussionAuthorInput: userData.username 
-        });
+          campaignClicked: resDat
+        })
       });
   };
 
@@ -92,6 +93,7 @@ class IdeaDiscussion extends Component {
 
   componentDidMount = () => {
     this.loadUser();
+    this.loadCampaign();
   };
 
   handleDiscussionSubmit = (event) => {
@@ -105,11 +107,10 @@ class IdeaDiscussion extends Component {
         return response.status;
       });
     this.setState({
-      discussionAuthorInput: '',
       discussInputArea: ''
     });
     discussionForm.reset();
-    this.campaignExpand(this.state.campaignClicked._id);
+    this.loadCampaign();
   };
 
   handleChange = (event) => {
@@ -121,7 +122,6 @@ class IdeaDiscussion extends Component {
 
   render () {
     const campaignClicked = this.state.campaignClicked;
-    console.log(campaignClicked.vote === undefined || []);
     return (
       <div>
         <SubTitle 
@@ -141,8 +141,8 @@ class IdeaDiscussion extends Component {
             ) : (
               campaignClicked.vote.length  !== 0 ? (
                 <div>
-                  <p>vote</p>
                   <CampaignDisplay
+                  campaignClickable={false}
                   handleData={()=>this.handleData(campaignClicked.vote[0]._id, campaignClicked._id)}
                   data={campaignClicked.vote}
                   title={campaignClicked.title}
@@ -176,10 +176,10 @@ class IdeaDiscussion extends Component {
               </div>
             ):(
               <div>
-                <p>no vote</p>
                 <CampaignDisplay
                 // Commented out. I don't think we need this, and it causes errors since there is now vote on this discussion load
-                handleData={()=>this.handleData(campaignClicked.vote[0]._id, campaignClicked._id)}
+                // handleData={()=>this.handleData(campaignClicked.vote[0]._id, campaignClicked._id)}
+                campaignClickable={false}
                 data={campaignClicked.vote}
                 title={campaignClicked.title}
                 author={campaignClicked.author}

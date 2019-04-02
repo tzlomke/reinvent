@@ -128,13 +128,14 @@ class ActiveVoteIdeas extends Component {
             campaign.map(campaign => (
               campaign.vote.length  !== 0 ? (
                 <CampaignDisplay
+                campaignClickable={true}
                 handleData={()=>this.handleData(campaign.vote[0]._id, campaign._id)}
-                campaignExpand={() => this.campaignExpand(campaign._id)}
                 data={campaign.vote}
                 title={campaign.title}
                 author={campaign.author}
                 synopsis={campaign.synopsis}
                 key={campaign._id}
+                id={campaign._id}
                 styles={{opacity:1}}
                 // text={customText}
                 onCreate={this.onCreate}
@@ -149,13 +150,14 @@ class ActiveVoteIdeas extends Component {
                 />
               ):(
                 <CampaignDisplay
+                campaignClickable={true}
                 handleData={()=>this.handleData(campaign.vote._id, campaign._id)}
-                campaignExpand={() => this.campaignExpand(campaign._id)}
                 data={campaign.vote}
                 title={campaign.title}
                 author={campaign.author}
                 synopsis={campaign.synopsis}
                 key={campaign._id}
+                id={campaign._id}
                 styles={{opacity:1}}
                 // text={customText}
                 onCreate={this.onCreate}

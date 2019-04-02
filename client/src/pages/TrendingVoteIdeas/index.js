@@ -92,15 +92,6 @@ class TrendingVoteIdeas extends Component {
     console.log(this.voteId, this.campaignId);
   };
 
-  // Getting closer, but needs more work
-  campaignExpand = (campaignId) => {
-    API.campaignGet(campaignId)
-      .then(response => {
-        const resDat = response.data[0];
-        this.setState({ campaignClicked: resDat, campaignExpand: true });
-      });
-  };
-
   componentDidMount = () => {
     this.loadCampaigns();
   };
@@ -155,8 +146,8 @@ class TrendingVoteIdeas extends Component {
                 campaign.vote.length  !== 0 ? (
                   console.log(campaign.vote[0]._id),
                   <CampaignDisplay
+                  campaignClickable={true}
                   handleData={()=>this.handleData(campaign.vote[0]._id, campaign._id)}
-                  campaignExpand={() => this.campaignExpand(campaign._id)}
                   data={campaign.vote}
                   title={campaign.title}
                   author={campaign.author}
@@ -176,8 +167,8 @@ class TrendingVoteIdeas extends Component {
                   />
                 ):(
                   <CampaignDisplay
+                  campaignClickable={true}
                   handleData={()=>this.handleData(campaign.vote._id, campaign._id)}
-                  campaignExpand={() => this.campaignExpand(campaign._id)}
                   data={campaign.vote}
                   title={campaign.title}
                   author={campaign.author}
