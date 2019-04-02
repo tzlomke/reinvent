@@ -8,6 +8,12 @@ mongoose.connect(
   "mongodb://localhost/reInvent_Db"
 );
 
+db.Vote
+.remove({})
+.catch(err => {
+  console.error(err);
+  process.exit(0);
+});
 
   const newsSeed = [
     {
@@ -140,7 +146,7 @@ mongoose.connect(
       {
         title : "Staff Party Location",
         author : "John Doe",
-        content : "Please vote on where you would like the staff party to take place. Choices are Pete's, Snarfs or Mod Pizza.",
+        synopsis : "Please vote on where you would like the staff party to take place. Choices are Pete's, Snarfs or Mod Pizza.",
         date: new Date(Date.now()),
         comments : [
           {
@@ -155,7 +161,7 @@ mongoose.connect(
     {
       title : "Resolving parking lot potholes.",
       author : "Jane Doe",
-      content : "Parking lot has developed some potholes over the last several years. Please vote on how we should address the issue. Our choices are redo entire asphault as soon as possible, temporarly fill the holes for now, wait to fit into next year's budget to resolve or do nothing.",
+      synopsis : "Parking lot has developed some potholes over the last several years. Please vote on how we should address the issue. Our choices are redo entire asphault as soon as possible, temporarly fill the holes for now, wait to fit into next year's budget to resolve or do nothing.",
       date: new Date(Date.now()),      
       comments : [
         {
@@ -175,7 +181,7 @@ mongoose.connect(
     {
       title : "Bonus Insentives",
       author : "Daniel Lois",
-      content : "Employees pay doesn't meet expectations. Vote on if bonus insentives should be given to compensate for that.",
+      synopsis : "Employees pay doesn't meet expectations. Vote on if bonus insentives should be given to compensate for that.",
       date: new Date(Date.now()),
       comments : [
         {
@@ -203,6 +209,7 @@ mongoose.connect(
     const usersSeed = [
       /* 1 */
       {
+        "profileImage" : [],
         "isAdmin" : false,
         "userCreated" : new Date(Date.now()),
         "campaigns" : [],
@@ -213,6 +220,7 @@ mongoose.connect(
       },
       /* 2 */
       {
+        "profileImage" : [],
         "isAdmin" : false,
         "userCreated" : new Date(Date.now()),
         "campaigns" : [],
@@ -220,7 +228,18 @@ mongoose.connect(
         "lastName" : "Zlomke",
         "username" : "TaylorZ",
         "password" : "$2a$10$RovehFFCMwak3BidvYoPN.kS9ZUo5VvhuDftV7msKkZQr61g/.ryi",
-      }
+      },
+      /* 3 */
+      {
+        "profileImage" : [],
+        "isAdmin" : false,
+        "userCreated" : new Date(Date.now()),
+        "campaigns" : [],
+        "firstName" : "daniel",
+        "lastName" : "lois",
+        "username" : "daniellois",
+        "password" : "$2a$10$mtgl69L6TCM64jG.FBE09ekICBM7HPiV9n2F4OZ3GD1xtMxNHet0e",
+    }
   ];
 
   db.User
@@ -234,3 +253,4 @@ mongoose.connect(
       console.error(err);
       process.exit(1);
     });
+
