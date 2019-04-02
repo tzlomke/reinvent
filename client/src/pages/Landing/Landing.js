@@ -16,7 +16,6 @@ class Landing extends Component {
 	  
 	componentDidMount() {
 		this.updateWindowDimensions();
-		this.handleScroll();
 		window.addEventListener('resize', this.updateWindowDimensions);
 	}
 	  
@@ -31,8 +30,8 @@ class Landing extends Component {
 	handleScroll () {
         $('html, body').animate({
             scrollTop: $(".about-container").offset().top
-        }, 1000);
-    }
+        }, 2000);
+	}
 
 	render () {
 		return (
@@ -55,25 +54,25 @@ class Landing extends Component {
 									
 									<div className="col s12 center-align links-container">
 										<a className="auth-links button" href="/register"
-												style={{
-													width: "150px",
-													borderRadius: "3px",
-													letterSpacing: "1.5px"
-												}}
-											>
-												Register
-											</a>
-
-											<a className="auth-links button" href="/login"
-												style={{
-													marginLeft: "5rem",
-													width: "150px",
-													borderRadius: "3px",
-													letterSpacing: "1.5px"
-												}}
-											>
-												Log In
-											</a>
+											style={{
+												width: "150px",
+												borderRadius: "3px",
+												letterSpacing: "1.5px"
+											}}
+										>
+											Register
+										</a>
+											
+										<a className="auth-links button" href="/login"
+											style={{
+												marginLeft: "5rem",
+												width: "150px",
+												borderRadius: "3px",
+												letterSpacing: "1.5px"
+											}}
+										>
+											Log In
+										</a>
 									</div>
 									
 									<div className="row">
@@ -110,17 +109,31 @@ class Landing extends Component {
 						
 						{/* Display Font */}
 						<div className="row">
-							<div className="col s12 display-text">
+							<div className="col s12 ">
 								
-									<div>
-										<div className="center">
-											<h1>
-												What's the big idea?!
-											</h1>
+									<div className="display-text">
+										<div>
+											<div id="text">
+												<span>What's the big idea?!</span>
+												<span>What's the big idea?!</span>
+												<span>What's the big idea?!</span>
+											</div>
 										</div>
 									</div>
 								
 							</div>
+
+							{/* <div className="col s6">
+								
+									<div>
+										<div className="center">
+											<h1 className="logo-text-secondary">
+												Re:invent
+											</h1>
+										</div>
+									</div>
+								
+							</div> */}
 						</div>
 						
 						{/* Text Content */}
