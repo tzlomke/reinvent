@@ -1,0 +1,21 @@
+#container404 {
+  margin-top: 15px;
+  /* display: flex; */
+  justify-content: center;
+}
+
+#dead_link {
+  margin-top: 35px;
+  /* position: fixed; */
+  /* bottom: 0px; */
+}
+
+#return_link {
+  background-color: #006064;
+  margin: 1%;
+  padding: 2%;
+  border-radius: 1rem;
+  box-shadow: 5px 5px 5px black;
+  color: white;
+  font-size: 2rem;
+}

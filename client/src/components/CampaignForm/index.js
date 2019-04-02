@@ -2,6 +2,7 @@ import React from 'react';
 import './CampaignForm.css';
 
 function CampaignForm(props)  {
+  console.log(props)
 
     return(
       <div className= "modal" id="campaignFormModal">

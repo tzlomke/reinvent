@@ -16,7 +16,7 @@ function Vote(props){
                 onExpand={props.onExpand}
                 onEdit={props.onEdit}
                 isAdmin={true}
-                clientId={"1"}
+                clientId={props.clientId}
                 />
             </div>
         ) : (
@@ -33,7 +33,7 @@ function Vote(props){
                 onExpand={props.onExpand}
                 onEdit={props.onEdit}
                 isAdmin={true}
-                clientId={"1"}
+                clientId={props.clientId}
                 />
             </div>
         )

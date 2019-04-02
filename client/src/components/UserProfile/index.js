@@ -8,7 +8,9 @@ import $ from 'jquery';
 import ProfileData from "./ProfileData";
 import ProfilePicture from "./ProfilePicture";
 import defaultProfileImage from "../../images/lightbulbCutout.png"
-
+import { Col, Row, Container } from "../../components/Grid";
+import { Title, SubTitle } from "../../components/Title";
+import { CardOutline } from "../../components/NewsCard";
 
 class UserProfile extends Component {
 
@@ -104,7 +106,6 @@ class UserProfile extends Component {
 	loadUser = () => {
 		let userParam = this.props.location.pathname;
 		let username = userParam.split("/")[2];
-		console.log(username)
 		API.getUserByUsername(username)
 			.then(response => {
 				let userData = response.data[0]
@@ -134,31 +135,42 @@ class UserProfile extends Component {
 		const { user } = this.props.auth
 
 		return(
-			<div className="profile-wrapper">
-				<ProfilePicture 
-					handleShowImageUploadModal = {this.handleShowImageUploadModal}
-					handleHideImageUploadModal = {this.handleHideImageUploadModal}
-					showImageUploadModal = {this.state.showImageUploadModal}
-					fileSelectionHandler = {this.fileSelectionHandler}
-					fileUploadHandler = {this.fileUploadHandler}
-					profileImage = {this.state.profileImage}
+			<Container>
+				<Title 
+          			titleText="My Profile"
 				/>
+				<CardOutline
+					colSize={ "12" } 
+					cardColor={ "" }
+					cardTextColor={ "" }
+				>
+					<div className="profile-wrapper">
+						<ProfilePicture 
+							handleShowImageUploadModal = {this.handleShowImageUploadModal}
+							handleHideImageUploadModal = {this.handleHideImageUploadModal}
+							showImageUploadModal = {this.state.showImageUploadModal}
+							fileSelectionHandler = {this.fileSelectionHandler}
+							fileUploadHandler = {this.fileUploadHandler}
+							profileImage = {this.state.profileImage}
+						/>
 
-				{/* <ImageUpload 
-					ocShowAlert = {this.ocShowAlert}
-					fileSelectionHandler = {this.fileSelectionHandler}
-					fileUploadHandler = {this.fileUploadHandler}
-				/> */}
+						{/* <ImageUpload 
+							ocShowAlert = {this.ocShowAlert}
+							fileSelectionHandler = {this.fileSelectionHandler}
+							fileUploadHandler = {this.fileUploadHandler}
+						/> */}
 
-				<ProfileData 
-					authenticatedUserID = {user.id}
-					userID = {this.state.userID}
-					userFullName = {this.state.userFullName}
-					username = {this.state.username}
-					userCampaigns = {this.state.userCampaigns}
-					logout = {this.onLogoutClick}
-				/>
-			</div>
+						<ProfileData 
+							authenticatedUserID = {user.id}
+							userID = {this.state.userID}
+							userFullName = {this.state.userFullName}
+							username = {this.state.username}
+							userCampaigns = {this.state.userCampaigns}
+							logout = {this.onLogoutClick}
+						/>
+					</div>
+				</CardOutline>
+			</Container>
 		)
 	};
 }

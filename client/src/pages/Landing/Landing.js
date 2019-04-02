@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import SpaceGirl from "../../images/Retro-Astronaut2.png";
 import $ from "jquery";
 import "./style.css";
-import { Parallax } from "react-parallax";
 
+import { Parallax } from "react-parallax";
 
 class Landing extends Component {
 	
@@ -89,6 +89,7 @@ class Landing extends Component {
 										
 
 						
+
 						</div>
 						<div className="ripple-background">
 							<div className="circle xxlarge shade1"></div>

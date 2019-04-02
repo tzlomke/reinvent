@@ -3,16 +3,35 @@ import React, {Component} from "react";
 import CampaignDisplay from "../../components/CampaignDisplay";
 import API from "../../utils/API";
 import voteAPI from "../../utils/API";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { Col, Row, Container } from "../../components/Grid";
+import { Title, SubTitle } from "../../components/Title";
+import { CardOutline } from "../../components/NewsCard";
 
 class ClosedVoteIdeas extends Component {
 
   state = {
     campaignsFromDB: [],
-    userId: "1",
+    userId: "",
   }
 
   voteId="";
   campaignId="";
+
+  loadUser = () => {
+    let authenticatedUserId = this.props.auth.user.id
+    console.log(this.props.auth.user.id);
+		API.getUserById(authenticatedUserId)
+			.then(response => {
+        let userData = response.data[0]
+        console.log(userData);
+				this.setState({
+					userId: userData._id,
+					discussionAuthorInput: `${userData.username}`,
+				});
+			});
+	};
 
   loadCampaigns = () => {
     const campaignArray = [];
@@ -80,7 +99,15 @@ class ClosedVoteIdeas extends Component {
   render(){
     return (
       <div>
-        {this.state.campaignsFromDB.map(campaign =>
+        <SubTitle 
+          subTitleText="Closed Ideas"
+        />
+        <CardOutline
+          colSize={ "12" } 
+          cardColor={ "" }
+          cardTextColor={ "" }
+        >
+          {this.state.campaignsFromDB.map(campaign =>
           campaign.map(campaign => (
             campaign.vote.length  !== 0 ? (
               console.log(campaign.vote[0]._id),
@@ -101,34 +128,43 @@ class ClosedVoteIdeas extends Component {
               onExpand={this.onExpand}
               onEdit={this.onEdit}
               isAdmin={true}
-              clientId={"1"}
+              clientId={this.state.userId}
               />
             ):(
               <CampaignDisplay
-              handleData={()=>this.handleData(campaign.vote._id, campaign._id)}
-              data={campaign.vote}
-              title={campaign.title}
-              author={campaign.author}
-              synopsis={campaign.synopsis}
-              key={campaign._id}
-              styles={{opacity:1}}
-              // text={customText}
-              onCreate={this.onCreate}
-              onUpvote={this.onUpvote}
-              onClose={this.onClose}
-              onReset={this.onReset}
-              onDownvote={this.onDownvote}
-              onExpand={this.onExpand}
-              onEdit={this.onEdit}
-              isAdmin={true}
-              clientId={"1"}
-              />
-            ) 
-          ))
-        )}
+                handleData={()=>this.handleData(campaign.vote._id, campaign._id)}
+                data={campaign.vote}
+                title={campaign.title}
+                author={campaign.author}
+                synopsis={campaign.synopsis}
+                key={campaign._id}
+                styles={{opacity:1}}
+                // text={customText}
+                onCreate={this.onCreate}
+                onUpvote={this.onUpvote}
+                onClose={this.onClose}
+                onReset={this.onReset}
+                onDownvote={this.onDownvote}
+                onExpand={this.onExpand}
+                onEdit={this.onEdit}
+                isAdmin={true}
+                clientId={this.state.userId}
+                />
+              ) 
+            ))
+          )}
+        </CardOutline>
       </div>
     )
   }
 }
 
-export default ClosedVoteIdeas;
+ClosedVoteIdeas.propTypes = {
+	auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+
+export default connect(mapStateToProps)(ClosedVoteIdeas);

@@ -1,3 +1,8 @@
-#calendarDisplay{
+#calendarDisplay {
     height: 500px;
 }
+
+.rbc-event-label{
+    display: none;
+}
+

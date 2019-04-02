@@ -3,16 +3,13 @@ import axios from 'axios';
 export default {
   // Get User Data
   getUserByUsername: (username) => {
-    console.log(username);
     return axios.get('/api/profile/' + username);
   },
   getUserById: (userId) => {
-    console.log(userId);
     return axios.get('/api/profile/find/' + userId);
   },
   // Post Profile Image
   profileImageUpload: (username) => {
-    console.log(username);
     return axios.post('/api/:username/profile-image-upload');
   },
   // Post a campaign
@@ -31,13 +28,16 @@ export default {
   closedCampaignGet: () => {
     return axios.get("/api/campaign/closed")
   },
+  trendingCampaignGet: () => {
+    return axios.get("/api/campaign/trending");
+  },
   // update campaigns
   campaignPut: (id, campaignUpdate) => {
     return axios.put('/api/campaign/' + id, campaignUpdate)
   },
   // Post discussions
   discussionPost: (discussion) => {
-    return axios.post('/api/campaign/discussion', discussion);
+    return axios.put(`/api/campaign/discussion/${discussion.id}`, discussion);
   },
   // Gets all votes
   getVotes: function () {
@@ -58,21 +58,9 @@ export default {
   discussionGet: () => {
     return axios.get('/api/discussion');
   },
-  // Gets all votes
-  getVotes: function () {
-    return axios.get("/api/vote");
-  },
   // Gets the vote with the given id
   getVote: function (id) {
     return axios.get("/api/vote/" + id);
-  },
-  // Deletes the vote with the given id
-  deleteVote: function (id) {
-    return axios.delete("/api/vote/" + id);
-  },
-  // Saves a vote to the database
-  saveVote: function (voteData) {
-    return axios.post("/api/vote", voteData);
   },
   // updates a vote
   updateVote: function (id, voteData) {
@@ -99,13 +87,13 @@ export default {
 
   // Load News Articles Feed
   getArticles: function() {
-    console.log("im here");
     return axios.get("/api/news-feed");
+  },
+  // Gets an article with the given id
+  getArticle: function(id) {
+    // console.log("im at single article");
+    return axios.get("/api/news-feed/" + id);
   }
-  // // Gets an article with the given id
-  // getArticle: function(id) {
-  //   return axios.get("/api/articles/" + id);
-  // },
   // // Deletes the artile with the given id
   // deleteArticle: function(id) {
   //   return axios.delete("/api/articles/" + id);

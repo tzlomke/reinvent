@@ -17,6 +17,9 @@ router.route("/active")
 router.route("/closed")
   .get(campaignController.getClosedCampaigns);
 
+router.route("/trending")
+  .get(campaignController.getTrendingCampaigns);
+
   // A route for posting campaigns
 router.route('/discussion/:id')
   .put(campaignController.createDiscussion);

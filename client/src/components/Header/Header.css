@@ -1,5 +1,29 @@
+/* Fonts */
+@font-face {
+  font-family: "Arkipelago";
+  src: url("../../fonts/Arkipelago.otf") format("opentype");
+}
+@font-face {
+  font-family: "FatFont";
+  src: url("../../fonts/FATFONT/WEB/FREEFATFONT-Regular.woff2")
+}
+.logo-text1 {
+  font-family: "Arkipelago";
+  color: #ececec;
+  font-size: 42px !important;
+  text-align:center;
+  /* text-shadow: 0 0px 0 #333,
+    0 6px 8px rgba(0,0,0,.4),
+    0 9px 10px rgba(0,0,0,.15),
+    0 30px 10px rgba(0,0,0,.18),
+    0 15px 10px rgba(0,0,0,.21); */
+}
+.header-nav {
+  background-image: url(https://designshack.net/wp-content/uploads/black-texture-background.jpg);
+}
 .header {
-    background: #006064;
+    /* background: #006064; */
+    background-image: url(https://designshack.net/wp-content/uploads/black-texture-background.jpg);
     min-height: 70px;
     font-size: 18px;
     padding: 20px 0;
@@ -12,7 +36,7 @@
   }
   
   .header div {
-    text-align: center;
+    text-align: left;
     margin-bottom: 20px;
     width: 100%;
   }
@@ -23,58 +47,27 @@
   }
   
   .pipe {
-    margin: 0 10px;
+    margin: 0 20px;
   }
   
-  .correct {
-    animation: correctGuess 0.5s;
-  }
-  .incorrect {
-    animation: incorrectGuess 0.5s;
-  }
   
-  @keyframes incorrectGuess {
-    0% {
-      color: white;
-    }
-    25% {
-      color: red;
-    }
-    75% {
-      color: red;
-    }
-    100% {
-      color: white;
-    }
-  }
-  
-  @keyframes correctGuess {
-    0% {
-      color: white;
-    }
-    25% {
-      color: green;
-    }
-    75% {
-      color: green;
-    }
-    100% {
-      color: white;
-    }
-  }
   
   @media (min-width: 576px) {
     .header {
+      background-image: url(https://designshack.net/wp-content/uploads/black-texture-background.jpg);
       display: flex;
       /* position: fixed; */
-      justify-content: space-around;
+      justify-content: left;
       font-size: calc(10px + 14 * (100vw - 320px) / 800);
     }
   
     .header div {
       margin-bottom: 0;
-      text-align: center;
+      margin-left: 5px;
+      /* margin-right: 700px; */
+      text-align: left;
       width: 33.333%;
     }
   }
+
   
