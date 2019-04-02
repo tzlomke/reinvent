@@ -154,12 +154,6 @@ class UserProfile extends Component {
 							profileImage = {this.state.profileImage}
 						/>
 
-						{/* <ImageUpload 
-							ocShowAlert = {this.ocShowAlert}
-							fileSelectionHandler = {this.fileSelectionHandler}
-							fileUploadHandler = {this.fileUploadHandler}
-						/> */}
-
 						<ProfileData 
 							authenticatedUserID = {user.id}
 							userID = {this.state.userID}
