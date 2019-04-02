@@ -11,7 +11,7 @@
 
 @font-face {
   font-family: "SpaceGrotesk";
-  src: url("../../fonts/SpaceGrotesk/SpaceGrotesk-Regular.woff");
+  src: url("../../fonts/SpaceGrotesk/SpaceGrotesk-SemiBold.woff");
 }
 
 /* General Styles */
@@ -140,17 +140,17 @@
 }
 
     .display-text {
-      font-family: "Arkipelago";
+      font-family: "SpaceGrotesk";
       display: flex;
       height: 400px;
       height: 300px;
       color: black;
       position: relative;
-      text-shadow: 0 0px 0 #333,
+      /* text-shadow: 0 0px 0 #333,
         0 3px 4px rgba(0,0,0,.4),
         0 4.5px 5px rgba(0,0,0,.15),
         0 15px 5px rgba(0,0,0,.18),
-        0 7.5px 5px rgba(0,0,0,.21);
+        0 7.5px 5px rgba(0,0,0,.21); */
         float: left;
         margin-left: 150px;
     }
