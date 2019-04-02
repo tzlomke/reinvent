@@ -47,7 +47,6 @@ class IdeaDiscussion extends Component {
     setTimeout(()=>(
     voteAPI.updateVote(this.voteId, data).then(res =>{
       return res.data;
-        return res.data;
     })),1)
   };
 
