@@ -102,11 +102,16 @@ class Calendar extends Component {
         });
     }
 
-    onShowMore = () => {
+    rebuildTooltip = () => {
         setTimeout(() => {
             ReactTooltip.rebuild();
+            console.log("rebuilt")
         }, 500)
-    }
+    };
+
+    componentDidUpdate = () => {
+        this.rebuildTooltip();
+    };
 
     render = () => (
 
@@ -137,9 +142,9 @@ class Calendar extends Component {
                     />
                     <div id="calendarDisplay">
                         <MyCalendar
-                        onShowMore={this.onShowMore}
+                        rebuildTooltip={this.rebuildTooltip}
                         events={this.state.events}
-                        onView={this.onView}/>
+                        />
                     </div>
                     {this.state.events.map(event =>(
                         <ReactTooltip 
