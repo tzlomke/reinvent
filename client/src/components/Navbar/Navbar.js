@@ -10,22 +10,27 @@ const Navbar = props => (
 			to="/News-Feed"
 			className="col s5 brand-logo center white-text nav-link"> News Feed
 		</Link>
+		<span className="pipe">|</span>
 		<Link
 			to="/ideas"
 			className="col s5 brand-logo center white-text nav-link"> Ideas
 		</Link>
+		<span className="pipe">|</span>
 		<Link
 			to="/calendar"
 			className="col s5 brand-logo center white-text nav-link"> Calendar
 		</Link>
+		<span className="pipe">|</span>
         <Link
 	    to="/resources"
 		className="col s5 brand-logo center white-text nav-link"> Resources
 		</Link>
+		<span className="pipe">|</span>
 		<Link
 			to={props.profileRoute}
 			className="col s5 brand-logo center white-text nav-link"> Profile
 		</Link>
+		<span className="pipe">|</span>
 		<Link
 			onClick={props.onLogoutClick}
 			to="/dashboard"

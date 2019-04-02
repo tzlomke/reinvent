@@ -12,7 +12,7 @@ const PrivateRoute = ({ component: Component, auth, ...rest }) => (
 			auth.isAuthenticated === true ? (
 				<div>
 					<Header />
-					<DynamicNavbar />
+					{/* <DynamicNavbar /> */}
 					<Component {...props} />
 				</div>
 			) : (
