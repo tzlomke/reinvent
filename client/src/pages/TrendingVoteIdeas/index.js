@@ -93,7 +93,7 @@ class TrendingVoteIdeas extends Component {
   handleData = (voteId, campaignId) => {
     this.voteId = voteId;
     this.campaignId = campaignId;
-    // console.log(this.voteId, this.campaignId);
+    console.log(this.voteId, this.campaignId);
   };
 
   // Getting closer, but needs more work

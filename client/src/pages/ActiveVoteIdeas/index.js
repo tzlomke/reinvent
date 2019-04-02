@@ -51,6 +51,7 @@ class ActiveVoteIdeas extends Component {
   updateVote = (data) => {
     setTimeout(()=>(
     voteAPI.updateVote(this.voteId, data).then(res =>{
+      console.log(res.data);
         return res.data;
     })),1)
   };
@@ -92,6 +93,7 @@ class ActiveVoteIdeas extends Component {
   handleData = (voteId, campaignId) => {
     this.voteId = voteId;
     this.campaignId = campaignId;
+    console.log(voteId,campaignId)
   };
 
   campaignExpand = (campaignId) => {
