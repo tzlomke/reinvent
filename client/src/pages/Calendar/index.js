@@ -64,56 +64,42 @@ class Calendar extends Component {
     componentDidMount = () => {
         this.loadEvents();
 
-        window.$('.modal').modal();
-        
-        document.addEventListener('DOMContentLoaded', () => {
-            var elems = document.querySelectorAll('.startdatepicker');
-            var instances = window.M.Datepicker.init(elems, {
-                onSelect:(date)=>(this.setState({startDate: moment(date).format("MM-DD-YYYY")}))
-            });
+        window.$('.modal').modal({
+            onOpenEnd:()=>{
+                window.$('.startdatepicker').datepicker({
+                    onSelect:(date)=>(this.setState({startDate: moment(date).format("MM-DD-YYYY")}))
+                });
+                window.$('.enddatepicker').datepicker({
+                    onSelect:(date)=>(this.setState({endDate: moment(date).format("MM-DD-YYYY")}))
+                });
+                window.$('.starttimepicker').timepicker({
+                    onSelect:(hours, mins)=>{
+                        if ( hours.toString().length === 1 ) {
+                            hours = "0" + hours;
+                        };
+                        if ( mins.toString().length === 1 ) {
+                            mins = "0" + mins;
+                        };
+                        const time = hours + ":" + mins
+                        this.setState({startTime: time})
+                    },
+                    twelveHour: false
+                });
+                window.$('.endtimepicker').timepicker({
+                    onSelect:(hours, mins)=>{
+                        if ( hours.toString().length === 1 ) {
+                            hours = "0" + hours;
+                        };
+                        if ( mins.toString().length === 1 ) {
+                            mins = "0" + mins;
+                        };
+                        const time = hours + ":" + mins
+                        this.setState({endTime: time})
+                    },
+                    twelveHour: false
+                });
+            }
         });
-
-        document.addEventListener('DOMContentLoaded', () => {
-            var elems = document.querySelectorAll('.enddatepicker');
-            var instances = window.M.Datepicker.init(elems, {
-                onSelect:(date)=>(this.setState({endDate: moment(date).format("MM-DD-YYYY")}))
-            });
-        });
-
-        document.addEventListener('DOMContentLoaded', () => {
-            var elems = document.querySelectorAll('.starttimepicker');
-            var instances = window.M.Timepicker.init(elems, {
-                onSelect:(hours, mins)=>{
-                    if ( hours.toString().length === 1 ) {
-                        hours = "0" + hours;
-                    };
-                    if ( mins.toString().length === 1 ) {
-                        mins = "0" + mins;
-                    };
-                    const time = hours + ":" + mins
-                    this.setState({endTime: time})
-                },
-                twelveHour: false
-            });
-        });
-
-        document.addEventListener('DOMContentLoaded', () => {
-            var elems = document.querySelectorAll('.endtimepicker');
-            var instances = window.M.Timepicker.init(elems, {
-                onSelect:(hours, mins)=>{
-                    if ( hours.toString().length === 1 ) {
-                        hours = "0" + hours;
-                    };
-                    if ( mins.toString().length === 1 ) {
-                        mins = "0" + mins;
-                    };
-                    const time = hours + ":" + mins
-                    this.setState({endTime: time})
-                },
-                twelveHour: false
-            });
-        });
-        
     }
 
     onShowMore = () => {
@@ -171,7 +157,6 @@ class Calendar extends Component {
                     ))}
                 </div>
             </CardOutline>
-   
         </Container>
     );
 };
