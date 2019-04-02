@@ -1,60 +1,144 @@
-import React from "react";
-import lightbulbCutout from "../../images/lightbulbCutout.png";
+import React, { Component } from "react";
+import SpaceGirl from "../../images/Retro-Astronaut2.png";
+import $ from "jquery";
 import "./style.css";
-import { Col, Row, Container } from "../../components/Grid";
-import { Title, SubTitle } from "../../components/Title";
 
-const Landing = (props) => {
+import { Parallax } from "react-parallax";
+
+class Landing extends Component {
 	
-	return (
-		<Container>
-				<br />
-				{/* The two following div tags were changed from class to className */}
-				<Row>
-					<Col size="12">
+	constructor(props) {
+		super(props);
+		this.state = { width: 0, height: 0 };
+		this.handleScroll = this.handleScroll.bind(this);
+		this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
+	}
+	  
+	componentDidMount() {
+		this.updateWindowDimensions();
+		this.handleScroll();
+		window.addEventListener('resize', this.updateWindowDimensions);
+	}
+	  
+	componentWillUnmount() {
+		window.removeEventListener('resize', this.updateWindowDimensions);
+	}
+	  
+	updateWindowDimensions() {
+		this.setState({ width: window.innerWidth, height: window.innerHeight });
+	}
 
-						<img className="logoImage" src={lightbulbCutout} alt="Light Bulb"></img>
-						{/* <h1 className="logoHatch center-align">Re:invent</h1>
-						<hr /> */}
-						<Title 
-							titleText="Re:invent"
-						/>
-						<div className="logoTextContainer center-align">
-							{/* <h1 className="logoOutline center-align">Re:invent</h1> */}
+	handleScroll () {
+        $('html, body').animate({
+            scrollTop: $(".about-container").offset().top
+        }, 1000);
+    }
+
+	render () {
+		return (
+			
+			<div className="landing-page-container">
+				<Parallax
+					bgImage={SpaceGirl}
+					bgImageAlt="Girl in Space Helmet"
+					strength={310}
+				>
+					{/* Splash Page */}
+					<div className="background-container">
+						{/* Animated Background */}
+						<div>
+							<div className="container valign-wrapper splash-container">
+								<div className="row">
+									<div className="col s12 center-align">
+										<p className="logo-text">Re:invent</p>
+									</div>
+									
+									<div className="col s12 center-align links-container">
+										<a className="auth-links button" href="/register"
+												style={{
+													width: "150px",
+													borderRadius: "3px",
+													letterSpacing: "1.5px"
+												}}
+											>
+												Register
+											</a>
+
+											<a className="auth-links button" href="/login"
+												style={{
+													marginLeft: "5rem",
+													width: "150px",
+													borderRadius: "3px",
+													letterSpacing: "1.5px"
+												}}
+											>
+												Log In
+											</a>
+									</div>
+									
+									<div className="row">
+										<div className="col s12 center-align">
+											<a href="#" className="scroll-click" onClick={() => {this.handleScroll()}}>
+												&#8609;
+											</a>
+										</div>
+									</div>
+								</div>
+								
+							</div>
+
+										
+
+						
 						</div>
-					</Col>
-				</Row>
-				<br />
-				<div style={{ height: "5vh" }} className=" valign-wrapper">
-					<Row>
-						<Col size="12">
-							<br />
-							<a href="/register"
-								style={{
-									width: "150px",
-									borderRadius: "3px",
-									letterSpacing: "1.5px"
-								}}
-								className="btn btn-large waves-effect waves-light hoverable blue accent-3"
-							>
-								Register
-							</a>
-							<a href="/login"
-								style={{
-									marginLeft: "2rem",
-									width: "150px",
-									borderRadius: "3px",
-									letterSpacing: "1.5px"
-								}}
-								className="btn btn-large waves-effect white hoverable black-text"
-							>
-								Log In
-							</a>
-						</Col>
-					</Row>
+						<div className="ripple-background">
+							<div className="circle xxlarge shade1"></div>
+							<div className="circle xlarge shade2"></div>
+							<div className="circle large shade3"></div>
+							<div className="circle medium shade4"></div>
+							<div className="circle small shade5"></div>
+						</div>
+
+						
+					</div>
+				</Parallax>
+
+
+				{/* About Page */}
+				<div className="about-container" ref={this.myRef}>
+					<div className="container">
+						
+						{/* Display Font */}
+						<div className="row">
+							<div className="col s12 display-text">
+								
+									<div>
+										<div className="center">
+											<h1>
+												What's the big idea?!
+											</h1>
+										</div>
+									</div>
+								
+							</div>
+						</div>
+						
+						{/* Text Content */}
+						<div className="row">
+							<p className="text-content">
+								Hello
+							</p>
+						</div>
+
+					</div>
 				</div>
-			</Container>
-	);
+
+			</div>
+
+			
+			
+		);
+	}
 }
 
 
