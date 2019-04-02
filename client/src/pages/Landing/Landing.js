@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import SpaceGirl from "../../images/Retro-Astronaut2.png";
 import $ from "jquery";
 import "./style.css";
-import { Parallax } from "react-parallax";
 
+import { Parallax } from "react-parallax";
 
 class Landing extends Component {
 	
@@ -32,11 +32,7 @@ class Landing extends Component {
         $('html, body').animate({
             scrollTop: $(".about-container").offset().top
         }, 1000);
-	}
-	
-	// setTopOnMount () {
-	// 	window.scrollTo(0, 0);
-	// }
+    }
 
 	render () {
 		return (
@@ -94,6 +90,7 @@ class Landing extends Component {
 										
 
 						
+
 						</div>
 						<div className="ripple-background">
 							<div className="circle xxlarge shade1"></div>
