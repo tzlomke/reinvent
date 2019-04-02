@@ -1,5 +1,5 @@
 import React from 'react';
-import donotpass from '../../images/none_shall_pass.jpg';
+import donotpass from '../../images/none_shall_pass.png';
 import './style.css';
 import Header from '../../components/Header';
 import { Col, Row, Container } from "../../components/Grid";

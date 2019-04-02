@@ -3,20 +3,25 @@ import Vote from "../Vote";
 import "./styles.css";
 
 const CampaignDisplay = (props) => {
-  const { title, author, synopsis, styles, onCreate, onUpvote,
+  const { title, author, synopsis, id, styles, onCreate, onUpvote,
     onClose, onReset, onDownvote, onExpand, onEdit, isAdmin,
-    clientId, data, handleData, campaignExpand } = props;
+    clientId, data, handleData, campaignClickable } = props;
 
   const profileRoute = `/profile/${author}`;
+  const ideaRoute = `/ideas/${id}`
 
   return(
     <div className="onClickDiv" onClick={handleData}>
       <div className="row">
       {/* Added title attribute to both a tags. It's a simple tooltip setup */}
           <section id="campaignDisplay" className="col s9">
-            <a title="Click to Expand Campaign" href="javascript:void(0)" onClick={campaignExpand} className="campaignAnchor">
+            {campaignClickable ? (
+              <a title="Click to Expand Campaign" href={ideaRoute} className="campaignAnchor">
+                <h2>{title}</h2>
+              </a>
+            ) : (
               <h2>{title}</h2>
-            </a>
+            )}
             <a title="Click to Visit Profile" href={profileRoute}>
               <h5> {author}</h5>
             </a>

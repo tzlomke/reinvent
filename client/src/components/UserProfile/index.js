@@ -108,6 +108,10 @@ class UserProfile extends Component {
 		let username = userParam.split("/")[2];
 		API.getUserByUsername(username)
 			.then(response => {
+				// This will prevent redirecting to a dead userprofile if the name is clicked on the ideas page. 
+				if(response.data.length === 0) {
+					return window.location = `/404`;
+				};
 				let userData = response.data[0]
 				this.setState({
 					userID: userData._id,
