@@ -8,6 +8,15 @@ mongoose.connect(
   "mongodb://localhost/reInvent_Db"
 );
 
+(async function (){
+  
+  try{
+    const vote = await db.Vote
+    .remove({})
+    .then(() => console.log("Votes records cleared!"));
+  } catch(err) {
+    console.log(err);
+  }
 
   const newsSeed = [
     {
@@ -123,39 +132,38 @@ mongoose.connect(
       date: new Date(Date.now())
     }
   ];
+ 
+  try{
+    const article = await db.Article
+      .remove({})
+      .then(() => db.Article.collection.insertMany(newsSeed))
+      .then(data => {
+        console.log(data.result.n + " records inserted into Articles!");
+      });
+  } catch (err) {
+    console.log(err);
+  }
   
-  db.Article
-    .remove({})
-    .then(() => db.Article.collection.insertMany(newsSeed))
-    .then(data => {
-      console.log(data.result.n + " records inserted!");
-      process.exit(0);
-    })
-    .catch(err => {
-      console.error(err);
-      process.exit(1);
-    });
-
-    const campaignSeed = [
-      {
-        title : "Staff Party Location",
-        author : "John Doe",
-        content : "Please vote on where you would like the staff party to take place. Choices are Pete's, Snarfs or Mod Pizza.",
-        date: new Date(Date.now()),
-        comments : [
-          {
-            author: "Jack",
-            body: "I like food",
-            date: new Date(Date.now())
-          }
-        ],
-        vote : []
+  const campaignSeed = [
+    {
+      title : "Staff Party Location",
+      author : "John Doe",
+      synopsis : "Please vote on where you would like the staff party to take place. Choices are Pete's, Snarfs or Mod Pizza.",
+      date: new Date(Date.now()),
+      comments : [
+        {
+          author: "Jack",
+          body: "I like food",
+          date: new Date(Date.now())
+        }
+      ],
+      vote : []
     },
     /* 2 */
     {
       title : "Resolving parking lot potholes.",
       author : "Jane Doe",
-      content : "Parking lot has developed some potholes over the last several years. Please vote on how we should address the issue. Our choices are redo entire asphault as soon as possible, temporarly fill the holes for now, wait to fit into next year's budget to resolve or do nothing.",
+      synopsis : "Parking lot has developed some potholes over the last several years. Please vote on how we should address the issue. Our choices are redo entire asphault as soon as possible, temporarly fill the holes for now, wait to fit into next year's budget to resolve or do nothing.",
       date: new Date(Date.now()),      
       comments : [
         {
@@ -175,7 +183,7 @@ mongoose.connect(
     {
       title : "Bonus Insentives",
       author : "Daniel Lois",
-      content : "Employees pay doesn't meet expectations. Vote on if bonus insentives should be given to compensate for that.",
+      synopsis : "Employees pay doesn't meet expectations. Vote on if bonus insentives should be given to compensate for that.",
       date: new Date(Date.now()),
       comments : [
         {
@@ -188,49 +196,63 @@ mongoose.connect(
     }
   ];
 
-  db.Campaign
-    .remove({})
-    .then(() => db.Campaign.collection.insertMany(campaignSeed))
-    .then(data => {
-      console.log(data.result.n + " records inserted!");
-      process.exit(0);
-    })
-    .catch(err => {
-      console.error(err);
-      process.exit(1);
-    });
+  try {
+    const campaign = await db.Campaign
+      .remove({})
+      .then(() => db.Campaign.collection.insertMany(campaignSeed))
+      .then(data => {
+        console.log(data.result.n + " records inserted into Campaigns!");
+      });
+  } catch (err) {
+    console.log(err);
+  }
 
-    const usersSeed = [
-      /* 1 */
-      {
-        "isAdmin" : false,
-        "userCreated" : new Date(Date.now()),
-        "campaigns" : [],
-        "firstName" : "Jack",
-        "lastName" : "Karapetyan",
-        "username" : "Jack87",
-        "password" : "$2a$10$6pQNxeRBQPnyWxsXF5rg9.EaqYFUsa88pQXHVtN/MdPrq.F2/HCXK",
-      },
-      /* 2 */
-      {
-        "isAdmin" : false,
-        "userCreated" : new Date(Date.now()),
-        "campaigns" : [],
-        "firstName" : "Taylor",
-        "lastName" : "Zlomke",
-        "username" : "TaylorZ",
-        "password" : "$2a$10$RovehFFCMwak3BidvYoPN.kS9ZUo5VvhuDftV7msKkZQr61g/.ryi",
-      }
+  const usersSeed = [
+        /* 1 */
+    {
+      "profileImage" : [],
+      "isAdmin" : false,
+      "userCreated" : new Date(Date.now()),
+      "campaigns" : [],
+      "firstName" : "Jack",
+      "lastName" : "Karapetyan",
+      "username" : "Jack87",
+      "password" : "$2a$10$6pQNxeRBQPnyWxsXF5rg9.EaqYFUsa88pQXHVtN/MdPrq.F2/HCXK",
+    },
+    /* 2 */
+    {
+      "profileImage" : [],
+      "isAdmin" : false,
+      "userCreated" : new Date(Date.now()),
+      "campaigns" : [],
+      "firstName" : "Taylor",
+      "lastName" : "Zlomke",
+      "username" : "TaylorZ",
+      "password" : "$2a$10$RovehFFCMwak3BidvYoPN.kS9ZUo5VvhuDftV7msKkZQr61g/.ryi",
+    },
+    /* 3 */
+    {
+      "profileImage" : [],
+      "isAdmin" : false,
+      "userCreated" : new Date(Date.now()),
+      "campaigns" : [],
+      "firstName" : "daniel",
+      "lastName" : "lois",
+      "username" : "daniellois",
+      "password" : "$2a$10$mtgl69L6TCM64jG.FBE09ekICBM7HPiV9n2F4OZ3GD1xtMxNHet0e",
+    }
   ];
+  
+  try {
+    const user = await db.User
+      .remove({})
+      .then(() => db.User.collection.insertMany(usersSeed))
+      .then(data => {
+        console.log(data.result.n + " records inserted into Users!");
+      })
+  } catch (err) {
+    console.log(err);
+  }
 
-  db.User
-    .remove({})
-    .then(() => db.User.collection.insertMany(usersSeed))
-    .then(data => {
-      console.log(data.result.n + " records inserted!");
-      process.exit(0);
-    })
-    .catch(err => {
-      console.error(err);
-      process.exit(1);
-    });
+  process.exit(0)
+})();

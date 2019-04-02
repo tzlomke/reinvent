@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Col, Row, Container } from "../../components/Grid";
 import { Title, SubTitle } from "../../components/Title";
-
+import { CardOutline } from "../../components/NewsCard";
 
 class ClosedVoteIdeas extends Component {
 
@@ -102,7 +102,12 @@ class ClosedVoteIdeas extends Component {
         <SubTitle 
           subTitleText="Closed Ideas"
         />
-        {this.state.campaignsFromDB.map(campaign =>
+        <CardOutline
+          colSize={ "12" } 
+          cardColor={ "" }
+          cardTextColor={ "" }
+        >
+          {this.state.campaignsFromDB.map(campaign =>
           campaign.map(campaign => (
             campaign.vote.length  !== 0 ? (
               console.log(campaign.vote[0]._id),
@@ -127,27 +132,28 @@ class ClosedVoteIdeas extends Component {
               />
             ):(
               <CampaignDisplay
-              handleData={()=>this.handleData(campaign.vote._id, campaign._id)}
-              data={campaign.vote}
-              title={campaign.title}
-              author={campaign.author}
-              synopsis={campaign.synopsis}
-              key={campaign._id}
-              styles={{opacity:1}}
-              // text={customText}
-              onCreate={this.onCreate}
-              onUpvote={this.onUpvote}
-              onClose={this.onClose}
-              onReset={this.onReset}
-              onDownvote={this.onDownvote}
-              onExpand={this.onExpand}
-              onEdit={this.onEdit}
-              isAdmin={true}
-              clientId={"1"}
-              />
-            ) 
-          ))
-        )}
+                handleData={()=>this.handleData(campaign.vote._id, campaign._id)}
+                data={campaign.vote}
+                title={campaign.title}
+                author={campaign.author}
+                synopsis={campaign.synopsis}
+                key={campaign._id}
+                styles={{opacity:1}}
+                // text={customText}
+                onCreate={this.onCreate}
+                onUpvote={this.onUpvote}
+                onClose={this.onClose}
+                onReset={this.onReset}
+                onDownvote={this.onDownvote}
+                onExpand={this.onExpand}
+                onEdit={this.onEdit}
+                isAdmin={true}
+                clientId={this.state.userId}
+                />
+              ) 
+            ))
+          )}
+        </CardOutline>
       </div>
     )
   }
@@ -158,7 +164,7 @@ ClosedVoteIdeas.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  	auth: state.auth
+  auth: state.auth
 });
 
 export default connect(mapStateToProps)(ClosedVoteIdeas);

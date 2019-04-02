@@ -10,6 +10,7 @@ import ProfilePicture from "./ProfilePicture";
 import defaultProfileImage from "../../images/lightbulbCutout.png"
 import { Col, Row, Container } from "../../components/Grid";
 import { Title, SubTitle } from "../../components/Title";
+import { CardOutline } from "../../components/NewsCard";
 
 class UserProfile extends Component {
 
@@ -142,31 +143,37 @@ class UserProfile extends Component {
 				<Title 
           			titleText="My Profile"
 				/>
-				<div className="profile-wrapper">
-					<ProfilePicture 
-						handleShowImageUploadModal = {this.handleShowImageUploadModal}
-						handleHideImageUploadModal = {this.handleHideImageUploadModal}
-						showImageUploadModal = {this.state.showImageUploadModal}
-						fileSelectionHandler = {this.fileSelectionHandler}
-						fileUploadHandler = {this.fileUploadHandler}
-						profileImage = {this.state.profileImage}
-					/>
+				<CardOutline
+					colSize={ "12" } 
+					cardColor={ "" }
+					cardTextColor={ "" }
+				>
+					<div className="profile-wrapper">
+						<ProfilePicture 
+							handleShowImageUploadModal = {this.handleShowImageUploadModal}
+							handleHideImageUploadModal = {this.handleHideImageUploadModal}
+							showImageUploadModal = {this.state.showImageUploadModal}
+							fileSelectionHandler = {this.fileSelectionHandler}
+							fileUploadHandler = {this.fileUploadHandler}
+							profileImage = {this.state.profileImage}
+						/>
 
-					{/* <ImageUpload 
-						ocShowAlert = {this.ocShowAlert}
-						fileSelectionHandler = {this.fileSelectionHandler}
-						fileUploadHandler = {this.fileUploadHandler}
-					/> */}
+						{/* <ImageUpload 
+							ocShowAlert = {this.ocShowAlert}
+							fileSelectionHandler = {this.fileSelectionHandler}
+							fileUploadHandler = {this.fileUploadHandler}
+						/> */}
 
-					<ProfileData 
-						authenticatedUserID = {user.id}
-						userID = {this.state.userID}
-						userFullName = {this.state.userFullName}
-						username = {this.state.username}
-						userCampaigns = {this.state.userCampaigns}
-						logout = {this.onLogoutClick}
-					/>
-				</div>
+						<ProfileData 
+							authenticatedUserID = {user.id}
+							userID = {this.state.userID}
+							userFullName = {this.state.userFullName}
+							username = {this.state.username}
+							userCampaigns = {this.state.userCampaigns}
+							logout = {this.onLogoutClick}
+						/>
+					</div>
+				</CardOutline>
 			</Container>
 		)
 	};

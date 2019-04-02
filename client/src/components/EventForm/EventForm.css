@@ -10,16 +10,22 @@
 
 .header {
     font-display: bold;
+    padding-left: 25px !important;
 }
 
 label {
     font-size: 16px;
+    padding: 10px;
 }
 
 textarea {
-    height: 5em;
+    height: 8em;
 }
 
 #submitEvent {
     margin-left: 10px;
+}
+
+#eventFormModal {
+    padding: 25px;
 }
