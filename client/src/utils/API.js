@@ -53,7 +53,7 @@ export default {
   },
   // Saves a vote to the database
   saveVote: function (voteData) {
-      return axios.post("/api/vote", voteData);
+      return axios.post("/api/vote/", voteData);
   },
   discussionGet: () => {
     return axios.get('/api/discussion');
