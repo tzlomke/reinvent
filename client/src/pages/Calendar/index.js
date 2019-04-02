@@ -65,13 +65,15 @@ class Calendar extends Component {
         this.loadEvents();
 
         window.$('.modal').modal();
-        
-        document.addEventListener('DOMContentLoaded', () => {
-            var elems = document.querySelectorAll('.startdatepicker');
-            var instances = window.M.Datepicker.init(elems, {
-                onSelect:(date)=>(this.setState({startDate: moment(date).format("MM-DD-YYYY")}))
-            });
+        window.$('.startdatepicker').datepicker({
+            onSelect:(date)=>(this.setState({startDate: moment(date).format("MM-DD-YYYY")}))
         });
+        // document.addEventListener('DOMContentLoaded', () => {
+        //     var elems = document.querySelectorAll('.startdatepicker');
+        //     var instances = window.M.Datepicker.init(elems, {
+        //         onSelect:(date)=>(this.setState({startDate: moment(date).format("MM-DD-YYYY")}))
+        //     });
+        // });
 
         document.addEventListener('DOMContentLoaded', () => {
             var elems = document.querySelectorAll('.enddatepicker');
