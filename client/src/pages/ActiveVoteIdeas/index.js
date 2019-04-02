@@ -171,7 +171,7 @@ class ActiveVoteIdeas extends Component {
                   onExpand={this.onExpand}
                   onEdit={this.onEdit}
                   isAdmin={true}
-                  clientId={"1"}
+                  clientId={this.state.userId}
                   />
                 ):(
                   <CampaignDisplay
@@ -192,7 +192,7 @@ class ActiveVoteIdeas extends Component {
                   onExpand={this.onExpand}
                   onEdit={this.onEdit}
                   isAdmin={true}
-                  clientId={"1"}
+                  clientId={this.state.userId}
                   />
                 ) 
               ))
@@ -244,7 +244,7 @@ class ActiveVoteIdeas extends Component {
               <div>
                 <CampaignDisplay
                 // Commented out. I don't think we need this, and it causes errors since there is now vote on this discussion load
-                // handleData={()=>this.handleData(campaignClicked.vote[0]._id, campaignClicked._id)}
+                handleData={()=>this.handleData(campaignClicked.vote[0]._id, campaignClicked._id)}
                 data={campaignClicked.vote}
                 title={campaignClicked.title}
                 author={campaignClicked.author}
@@ -260,7 +260,7 @@ class ActiveVoteIdeas extends Component {
                 onExpand={this.onExpand}
                 onEdit={this.onEdit}
                 isAdmin={true}
-                clientId={"1"}
+                clientId={this.state.userId}
                 />
                 {campaignClicked.comments.map((discussion, index) => 
                   <DiscussionDisplay
@@ -288,7 +288,7 @@ ActiveVoteIdeas.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  	auth: state.auth
+  auth: state.auth
 });
 
 export default connect(mapStateToProps)(ActiveVoteIdeas);
