@@ -14,8 +14,8 @@ const Navbar = props => (
 			to="/ideas"
 			className="col s5 brand-logo center white-text nav-link"> Ideas
 		</Link>
-        	<Link
-	    		to="/calendar"
+		<Link
+			to="/calendar"
 			className="col s5 brand-logo center white-text nav-link"> Calendar
 		</Link>
         <Link
@@ -28,7 +28,7 @@ const Navbar = props => (
 		</Link>
 		<Link
 			onClick={props.onLogoutClick}
-			to="/"
+			to="/dashboard"
 			className="col s5 brand-logo center white-text nav-link"> Logout
 		</Link>
 		

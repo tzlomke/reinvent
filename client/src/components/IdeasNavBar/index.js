@@ -10,15 +10,15 @@ function Navbar(props){
   
 		<Link
 			to="/ideas/active"
-			className="btn-large brand-logo center black-text nav-link"> Active Ideas
+			className="btn-small brand-logo center white-text nav-link"> Active Ideas
 		</Link>
 		<Link
 			to="/ideas/closed"
-			className="btn-large brand-logo center black-text nav-link"> Closed Ideas
+			className="btn-small brand-logo center white-text nav-link"> Closed Ideas
 		</Link>
 		<Link
 			to="/ideas/trending"
-			className="btn-large brand-logo center black-text nav-link">Trending Ideas
+			className="btn-small brand-logo center white-text nav-link">Trending Ideas
 		</Link>
 		
 		{/* <div className="navbar-fixed">
@@ -40,7 +40,7 @@ function Navbar(props){
 					        </Link>
                         </li> */}
                         {/* <li> */}
-                            <a className="btn-large brand-logo center black-text btn-lrg modal-trigger" href="#campaignFormModal"> New Idea +</a>
+                            <a className="btn-small brand-logo center white-text btn-lrg modal-trigger" href="#campaignFormModal"> New Idea +</a>
                         {/* </li> */}
                     {/* </ul> */}
 				</div>

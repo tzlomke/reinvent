@@ -4,6 +4,7 @@ import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
 import Calendar from "./pages/Calendar";
+import page404 from "./pages/404";
 
 import "./App.css";
 
@@ -20,6 +21,7 @@ import Resources from "./pages/Resources";
 
 // Page Imports
 import NewsList from "./pages/NewsList";
+import Article from "./pages/Article";
 import Ideas from "./pages/Ideas";
 
 
@@ -49,17 +51,20 @@ class App extends Component {
 			<Provider store={store}>
 				<Router>
 					<div className="App">
-						<Route exact path="/" component={Landing} />
-						<Route exact path="/register" component={Register} />
-						<Route exact path="/login" component={Login} />
+					{/* Moved all routes into the switch so that 404 would render correctly */}
 						<Switch>
+							<Route exact path="/" component={Landing} />
+							<Route exact path="/register" component={Register} />
+							<Route exact path="/login" component={Login} />
 							<PrivateRoute exact path="/dashboard" component={Dashboard} />
 							<PrivateRoute path="/ideas" component={Ideas} />
 							<PrivateRoute exact path="/profile/:username" component={UserProfile} />
 							<PrivateRoute exact path="/calendar" component={Calendar} />
 							<PrivateRoute exact path="/news-feed" component={NewsList} />
+							<PrivateRoute exact path="/articles/:id" component={Article} />
 							<PrivateRoute exact path="/resources" component={Resources}/>
-	        			</Switch>	
+							<Route component={page404} />
+						</Switch>	
 					</div>
 				</Router>
 			</Provider>

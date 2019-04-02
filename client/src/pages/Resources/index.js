@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import ResourceForm from "../../components/ResourcesForm";
+import { Title, SubTitle } from "../../components/Title";
+
+
 
 class Resources extends Component {
     state = {
@@ -22,7 +24,6 @@ class Resources extends Component {
         API.getResources()
         .then(res => {
             this.setState({ resources: res.data });
-            console.log(res.data);
         })
         .catch(err => console.log(err));
     };
@@ -55,6 +56,10 @@ class Resources extends Component {
     render() {
         return (
         <Container>
+            <button data-target="resourceFormModal" className="btn modal-trigger">Add a Resource Link</button>
+            <Title 
+                titleText="Resources"
+            />
             <ResourceForm
             title={this.state.title}
             link={this.state.link}
@@ -63,8 +68,8 @@ class Resources extends Component {
             />
             <Row>
                 <Col size="12">
-                    <button data-target="resourceFormModal" className="btn modal-trigger">Add a Resource Link</button>
-                    <h1>Resources</h1>
+
+                    {/* <h1>Resources</h1> */}
                     {this.state.resources.length ? (
                         <List>
                             {this.state.resources.map(resource => (

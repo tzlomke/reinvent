@@ -5,35 +5,42 @@ import API from "../../utils/API";
 import ReactTooltip from 'react-tooltip';
 import moment from "moment";
 import "./style.css"
+import { Col, Row, Container } from "../../components/Grid";
+import { Title, SubTitle } from "../../components/Title";
+
+
 
 
 class Calendar extends Component {
     state = {
         eventTitle: "",
-        startDate: new Date(),
-        endDate: new Date (),
+        startDate: "",
+        endDate: "",
+        startTime: "",
+        endTime: "",
         eventDescription: "",
         events: []
     };
 
-    startChange = date => this.setState({ startDate: date });
-
-    endChange =  date => this.setState({ endDate: date });
-
     handleChange = (event) => {
         const { name, value } = event.target;
+        console.log("change")
         this.setState({ 
             [name]: value 
         });
     };
+
+    onSelect = (dateTime) =>{
+        console.log(dateTime)
+    }
 
     handleFormSubmit = (event) => {
         event.preventDefault();
         const eventForm = document.getElementById('eventForm');
         API.createEvent({
             title: this.state.eventTitle,
-            start: this.state.startDate,
-            end: this.state.endDate,
+            start: "" + this.state.startDate + " " + this.state.startTime + "",
+            end: "" + this.state.endDate + " " + this.state.endTime+ "",
             description: this.state.eventDescription
         })
         .then(response => {
@@ -42,8 +49,10 @@ class Calendar extends Component {
         });
         this.setState({
             eventTitle: "",
-            startDate: new Date(),
-            endDate: new Date (),
+            startDate: "",
+            endDate: "",
+            startTime: "",
+            endTime: "",
             eventDescription: ""
         })
         eventForm.reset();
@@ -56,48 +65,109 @@ class Calendar extends Component {
 
     componentDidMount = () => {
         this.loadEvents();
+
         window.$('.modal').modal();
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            var elems = document.querySelectorAll('.startdatepicker');
+            var instances = window.M.Datepicker.init(elems, {
+                onSelect:(date)=>(this.setState({startDate: moment(date).format("MM-DD-YYYY")}))
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            var elems = document.querySelectorAll('.enddatepicker');
+            var instances = window.M.Datepicker.init(elems, {
+                onSelect:(date)=>(this.setState({endDate: moment(date).format("MM-DD-YYYY")}))
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            var elems = document.querySelectorAll('.starttimepicker');
+            var instances = window.M.Timepicker.init(elems, {
+                onSelect:(hours, mins)=>{
+                    if ( hours.toString().length === 1 ) {
+                        hours = "0" + hours;
+                    };
+                    if ( mins.toString().length === 1 ) {
+                        mins = "0" + mins;
+                    };
+                    const time = hours + ":" + mins
+                    this.setState({endTime: time})
+                },
+                twelveHour: false
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            var elems = document.querySelectorAll('.endtimepicker');
+            var instances = window.M.Timepicker.init(elems, {
+                onSelect:(hours, mins)=>{
+                    if ( hours.toString().length === 1 ) {
+                        hours = "0" + hours;
+                    };
+                    if ( mins.toString().length === 1 ) {
+                        mins = "0" + mins;
+                    };
+                    const time = hours + ":" + mins
+                    this.setState({endTime: time})
+                },
+                twelveHour: false
+            });
+        });
         
     }
 
-    componentDidUpdate =() => {
+    onShowMore = () => {
         setTimeout(() => {
             ReactTooltip.rebuild();
-        }, 100)
+        }, 500)
     }
 
     render = () => (
-        <div className="container">
+
+        <Container>
             <button data-target="eventFormModal" className="btn modal-trigger">Add an Event</button>
-            <EventForm
-            eventTitle={this.state.eventTitle}
-            startDate={this.state.startDate}
-            endDate={this.state.endDate}
-            eventDescription={this.state.eventDescription}
-            startChange={this.startChange}
-            endChange={this.endChange}
-            handleChange={this.handleChange}
-            handleFormSubmit={this.handleFormSubmit}
+            <Title 
+                titleText="Calendar"
             />
-            <div id="calendarDisplay">
-                <MyCalendar
-                events={this.state.events}/>
-            </div>
-            {this.state.events.map(event =>(
-                <ReactTooltip 
-                key={event._id}
-                id={event._id}
-                globalEventOff="click"
-                effect="solid"
-                >
-                    <span>{event.title}</span>
-                    <br></br>
-                    <span>{moment(event.start).format("h:mm A")}-{moment(event.end).format("h:mm A")}</span>
-                    <br></br>
-                    <span>{event.description}</span>
-                </ReactTooltip>
-            ))}
-        </div>
+            <div className="">
+                <br></br>    
+                <EventForm
+                onSelect={this.onSelect}
+                eventTitle={this.state.eventTitle}
+                startDate={this.state.startDate}
+                endDate={this.state.endDate}
+                startTime={this.state.startTime}
+                endTime={this.state.endTime}
+                eventDescription={this.state.eventDescription}
+                startChange={this.startChange}
+                endChange={this.endChange}
+                handleChange={this.handleChange}
+                handleFormSubmit={this.handleFormSubmit}
+                />
+                <div id="calendarDisplay">
+                    <MyCalendar
+                    onShowMore={this.onShowMore}
+                    events={this.state.events}
+                    onView={this.onView}/>
+                </div>
+                {this.state.events.map(event =>(
+                    <ReactTooltip 
+                    key={event._id}
+                    id={event._id}
+                    globalEventOff="click"
+                    effect="solid"
+                    >
+                        <span>{event.title}</span>
+                        <br></br>
+                        <span>{moment(event.start).format("h:mm A")}-{moment(event.end).format("h:mm A")}</span>
+                        <br></br>
+                        <span>{event.description}</span>
+                    </ReactTooltip>
+                ))}
+            </div>   
+        </Container>
     );
 };
 

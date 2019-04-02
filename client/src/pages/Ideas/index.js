@@ -5,9 +5,11 @@ import { connect } from "react-redux";
 import { logoutUser } from "../../actions/authActions";
 import IdeasNavBar from "../../components/IdeasNavBar";
 import ActiveVoteIdeas from "../ActiveVoteIdeas";
-import ClosedVoteIdeas from "../ClosedVoteIdeas"
+import ClosedVoteIdeas from "../ClosedVoteIdeas";
+import TrendingVoteIdeas from "../TrendingVoteIdeas";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import CampaignForm from "../../components/CampaignForm";
+import { Container } from "../../components/Grid";
 
 class Ideas extends Component {
 
@@ -50,6 +52,8 @@ class Ideas extends Component {
       campaignInputArea: ''
     });
     campaignForm.reset();
+    // Add window.location.reload() to allow the ideas to auto refresh
+    window.location.reload();
   };
 
   handleChange = (event) => {
@@ -67,7 +71,10 @@ class Ideas extends Component {
   render(){ 
 
     return (
-      <div>
+        <Container>
+          {/* <br />
+          <h1>Ideas</h1>
+          <hr /> */}
         <CampaignForm
           titleInput={this.state.titleInput}
           authorInput={this.state.authorInput}
@@ -79,20 +86,20 @@ class Ideas extends Component {
           <Switch>
             <Route exact path="/ideas/active" component={ActiveVoteIdeas} />
             <Route exact path="/ideas/closed" component={ClosedVoteIdeas} />
+            <Route exact path="/ideas/trending" component={TrendingVoteIdeas} />
           </Switch> 
         </Router>
-      </div>
+      </Container>
     )
   }
 }
 
 Ideas.propTypes = {
-	logoutUser: PropTypes.func.isRequired,
 	auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  	auth: state.auth
+  auth: state.auth
 });
 
 export default connect(mapStateToProps, { logoutUser })(Ideas);

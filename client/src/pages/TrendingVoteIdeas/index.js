@@ -11,7 +11,7 @@ import { Title, SubTitle } from "../../components/Title";
 
 
 
-class ActiveVoteIdeas extends Component {
+class TrendingVoteIdeas extends Component {
 
   state = {
     campaignsFromDB: [],
@@ -31,18 +31,17 @@ class ActiveVoteIdeas extends Component {
 		API.getUserById(authenticatedUserId)
 			.then(response => {
         let userData = response.data[0]
-        console.log(userData.username);
+        console.log(userData);
 				this.setState({
 					userId: userData._id,
 					discussionAuthorInput: `${userData.username}`,
-        });
-        console.log('Hey' + this.state.discussionAuthorInput)
+				});
 			});
 	};
 
   loadCampaigns = () => {
     const campaignArray = [];
-    API.activeCampaignGet()
+    API.trendingCampaignGet()
       .then(response => {
         campaignArray.push(response.data);
         this.setState({ campaignsFromDB: campaignArray });
@@ -60,8 +59,10 @@ class ActiveVoteIdeas extends Component {
     setTimeout(() =>{
       data.campaign =[this.campaignId];
       voteAPI.saveVote(data).then(res => {
+          console.log(res.data._id);
+          console.log(res.data);
           API.campaignPut(this.campaignId, {vote: res.data._id})
-          .then(res=> res.data)
+          .then(res=>console.log(res.data))
       });
     },1);
   };
@@ -93,8 +94,10 @@ class ActiveVoteIdeas extends Component {
   handleData = (voteId, campaignId) => {
     this.voteId = voteId;
     this.campaignId = campaignId;
+    // console.log(this.voteId, this.campaignId);
   };
 
+  // Getting closer, but needs more work
   campaignExpand = (campaignId) => {
     API.campaignGet(campaignId)
       .then(response => {
@@ -105,7 +108,6 @@ class ActiveVoteIdeas extends Component {
 
   componentDidMount = () => {
     this.loadCampaigns();
-    this.loadUser();
   };
 
   // All the discussion stuff
@@ -147,12 +149,13 @@ class ActiveVoteIdeas extends Component {
       !this.state.campaignExpand ? (
         <div>
           <SubTitle 
-            subTitleText="Active Ideas"
+            subTitleText="Trending Ideas"
           />
           <div>
             {campaignsFromDB.map(campaign =>
               campaign.map(campaign => (
                 campaign.vote.length  !== 0 ? (
+                  console.log(campaign.vote[0]._id),
                   <CampaignDisplay
                   handleData={()=>this.handleData(campaign.vote[0]._id, campaign._id)}
                   campaignExpand={() => this.campaignExpand(campaign._id)}
@@ -202,14 +205,37 @@ class ActiveVoteIdeas extends Component {
       ) : (
         <div>
           <SubTitle 
-            subTitleText="Active Ideas"
+            subTitleText="Trending Ideas"
           />
           <div>
-            <button onClick={this.unFocusCampaign}>Back</button>
-            {campaignClicked.vote.length  !== 0 ? (
+            {campaignClicked.vote.length  > 1 ? (
+              console.log('campaign it' + campaignClicked.vote[0]._id),
+              <CampaignDisplay
+              // handleData={()=>this.handleData(campaign.vote[0]._id, campaign._id)}
+              // campaignExpand={() => this.campaignExpand(campaign._id)}
+              data={campaignClicked.vote}
+              title={campaignClicked.title}
+              author={campaignClicked.author}
+              synopsis={campaignClicked.synopsis}
+              key={campaignClicked._id}
+              styles={{opacity:1}}
+              // text={customText}
+              onCreate={this.onCreate}
+              onUpvote={this.onUpvote}
+              onClose={this.onClose}
+              onReset={this.onReset}
+              onDownvote={this.onDownvote}
+              onExpand={this.onExpand}
+              onEdit={this.onEdit}
+              isAdmin={true}
+              clientId={"1"}
+              />
+            ):(
               <div>
+                <button onClick={this.unFocusCampaign}>Back</button>
                 <CampaignDisplay
-                handleData={()=>this.handleData(campaignClicked.vote[0]._id, campaignClicked._id)}
+                // handleData={()=>this.handleData(campaign.vote._id, campaign._id)}
+                // campaignExpand={() => this.campaignExpand(campaign._id)}
                 data={campaignClicked.vote}
                 title={campaignClicked.title}
                 author={campaignClicked.author}
@@ -227,53 +253,18 @@ class ActiveVoteIdeas extends Component {
                 isAdmin={true}
                 clientId={this.state.userId}
                 />
-                {campaignClicked.comments.map((discussion, index) => 
-                  <DiscussionDisplay
-                  key={index}
-                  discussionData={discussion}
-                  />
-                )}
                 <DiscussionForm 
                 discussionSubmit={this.handleDiscussionSubmit}
                 discussionFormChange={this.handleChange}
                 discussionTitleInput={this.state.discussionTitleInput}
                 discussionAuthorInput={this.state.discussionAuthorInput}
                 discussInputArea={this.state.discussInputArea}/>
-              </div>
-            ):(
-              <div>
-                <CampaignDisplay
-                // Commented out. I don't think we need this, and it causes errors since there is now vote on this discussion load
-                // handleData={()=>this.handleData(campaignClicked.vote[0]._id, campaignClicked._id)}
-                data={campaignClicked.vote}
-                title={campaignClicked.title}
-                author={campaignClicked.author}
-                synopsis={campaignClicked.synopsis}
-                key={campaignClicked._id}
-                styles={{opacity:1}}
-                // text={customText}
-                onCreate={this.onCreate}
-                onUpvote={this.onUpvote}
-                onClose={this.onClose}
-                onReset={this.onReset}
-                onDownvote={this.onDownvote}
-                onExpand={this.onExpand}
-                onEdit={this.onEdit}
-                isAdmin={true}
-                clientId={"1"}
-                />
                 {campaignClicked.comments.map((discussion, index) => 
                   <DiscussionDisplay
                   key={index}
                   discussionData={discussion}
                   />
                 )}
-                <DiscussionForm 
-                discussionSubmit={this.handleDiscussionSubmit}
-                discussionFormChange={this.handleChange}
-                discussionTitleInput={this.state.discussionTitleInput}
-                discussionAuthorInput={this.state.discussionAuthorInput}
-                discussInputArea={this.state.discussInputArea}/>
               </div>
             )}
           </div>
@@ -283,7 +274,7 @@ class ActiveVoteIdeas extends Component {
   }
 }
 
-ActiveVoteIdeas.propTypes = {
+TrendingVoteIdeas.propTypes = {
 	auth: PropTypes.object.isRequired
 };
 
@@ -291,4 +282,4 @@ const mapStateToProps = state => ({
   	auth: state.auth
 });
 
-export default connect(mapStateToProps)(ActiveVoteIdeas);
+export default connect(mapStateToProps)(TrendingVoteIdeas);

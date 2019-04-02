@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import SpaceGirl from "../../images/Retro-Astronaut2.png";
 import $ from "jquery";
 import "./style.css";
-import { Parallax } from "react-parallax";
 
+import { Parallax } from "react-parallax";
 
 class Landing extends Component {
 	
