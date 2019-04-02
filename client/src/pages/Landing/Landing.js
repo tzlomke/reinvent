@@ -16,7 +16,6 @@ class Landing extends Component {
 	  
 	componentDidMount() {
 		this.updateWindowDimensions();
-		this.handleScroll();
 		window.addEventListener('resize', this.updateWindowDimensions);
 	}
 	  
