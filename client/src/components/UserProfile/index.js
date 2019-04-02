@@ -16,6 +16,7 @@ import "./style.css";
 class UserProfile extends Component {
 
 	state = {
+		userID: "",
 		userFullName: "",
 		username: "",
 		userCampaigns: [],
