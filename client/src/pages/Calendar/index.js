@@ -7,9 +7,7 @@ import moment from "moment";
 import "./style.css"
 import { Col, Row, Container } from "../../components/Grid";
 import { Title, SubTitle } from "../../components/Title";
-
-
-
+import { CardOutline } from "../../components/NewsCard";
 
 class Calendar extends Component {
     state = {
@@ -131,42 +129,49 @@ class Calendar extends Component {
             <Title 
                 titleText="Calendar"
             />
-            <div className="">
-                <br></br>    
-                <EventForm
-                onSelect={this.onSelect}
-                eventTitle={this.state.eventTitle}
-                startDate={this.state.startDate}
-                endDate={this.state.endDate}
-                startTime={this.state.startTime}
-                endTime={this.state.endTime}
-                eventDescription={this.state.eventDescription}
-                startChange={this.startChange}
-                endChange={this.endChange}
-                handleChange={this.handleChange}
-                handleFormSubmit={this.handleFormSubmit}
-                />
-                <div id="calendarDisplay">
-                    <MyCalendar
-                    onShowMore={this.onShowMore}
-                    events={this.state.events}
-                    onView={this.onView}/>
+            <CardOutline
+                colSize={ "12" } 
+                cardColor={ "" }
+                cardTextColor={ "" }
+            >
+                <div className="">
+                    <br></br>    
+                    <EventForm
+                    onSelect={this.onSelect}
+                    eventTitle={this.state.eventTitle}
+                    startDate={this.state.startDate}
+                    endDate={this.state.endDate}
+                    startTime={this.state.startTime}
+                    endTime={this.state.endTime}
+                    eventDescription={this.state.eventDescription}
+                    startChange={this.startChange}
+                    endChange={this.endChange}
+                    handleChange={this.handleChange}
+                    handleFormSubmit={this.handleFormSubmit}
+                    />
+                    <div id="calendarDisplay">
+                        <MyCalendar
+                        onShowMore={this.onShowMore}
+                        events={this.state.events}
+                        onView={this.onView}/>
+                    </div>
+                    {this.state.events.map(event =>(
+                        <ReactTooltip 
+                        key={event._id}
+                        id={event._id}
+                        globalEventOff="click"
+                        effect="solid"
+                        >
+                            <span>{event.title}</span>
+                            <br></br>
+                            <span>{moment(event.start).format("h:mm A")}-{moment(event.end).format("h:mm A")}</span>
+                            <br></br>
+                            <span>{event.description}</span>
+                        </ReactTooltip>
+                    ))}
                 </div>
-                {this.state.events.map(event =>(
-                    <ReactTooltip 
-                    key={event._id}
-                    id={event._id}
-                    globalEventOff="click"
-                    effect="solid"
-                    >
-                        <span>{event.title}</span>
-                        <br></br>
-                        <span>{moment(event.start).format("h:mm A")}-{moment(event.end).format("h:mm A")}</span>
-                        <br></br>
-                        <span>{event.description}</span>
-                    </ReactTooltip>
-                ))}
-            </div>   
+            </CardOutline>
+   
         </Container>
     );
 };
