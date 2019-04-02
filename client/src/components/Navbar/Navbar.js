@@ -11,7 +11,7 @@ const Navbar = props => (
 			className="col s5 brand-logo center white-text nav-link"> News Feed
 		</Link>
 		<Link
-			to="/ideas"
+			to="/ideas/active"
 			className="col s5 brand-logo center white-text nav-link"> Ideas
 		</Link>
 		<Link
