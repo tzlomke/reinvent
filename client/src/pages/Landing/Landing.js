@@ -123,24 +123,16 @@ class Landing extends Component {
 									</div>
 								
 							</div>
-
-							{/* <div className="col s6">
-								
-									<div>
-										<div className="center">
-											<h1 className="logo-text-secondary">
-												Re:invent
-											</h1>
-										</div>
-									</div>
-								
-							</div> */}
 						</div>
 						
 						{/* Text Content */}
 						<div className="row">
 							<p className="text-content">
-								Hello
+								No matter what business you're in, the landscape is changing. The internet has created an ecosystem in which your ability to innovate can make or break your company.
+								Your two-year product development timeline? <span>Too slow.</span> Your top-down hierarchy? <span>Too rigid.</span> You know it, your competitors know it, 
+								and, perhaps most importantly, your employees know it. How are you going to keep up?
+
+								That's what we're here for. Re:invent is an innovation-management platform designed to source ideas from every level of your company. The best ideas will rise to the top.
 							</p>
 						</div>
 

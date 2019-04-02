@@ -20,7 +20,11 @@ const ProfilePicture = (props) => {
 						<p className="text-muted" style={{ marginLeft: '12px' }}>Max upload size: 2mb</p>
 					</div>
 					<div className="card-body">
-						<input type="file" onChange={fileSelectionHandler}/>
+						{/* <input type="file" onChange={fileSelectionHandler}/> */}
+						<div class="file-upload">
+							<label for="upload" class="file-upload__label">Select a file</label>
+							<input onChane={fileSelectionHandler} id="upload" class="file-upload__input" type="file" name="file-upload" />
+						</div>
 						<div className="mt-5">
 							<button className="btn btn-info" onClick={fileUploadHandler} style={{margin: "12px"}}>Submit</button>
 						</div>

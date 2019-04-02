@@ -116,3 +116,33 @@
 .modal-hidden {
 	display: none;
 }
+
+.file-upload {
+	position: relative;
+	display: inline-block;
+}
+
+.file-upload__label {
+  display: block;
+  padding: 1em 2em;
+  color: #fff;
+  background: #222;
+  border-radius: .4em;
+  transition: background .3s;
+}
+
+.file-upload__label:hover {
+    cursor: pointer;
+}
+    
+.file-upload__input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 1;
+    width:0;
+    height: 100%;
+    opacity: 0;
+}
