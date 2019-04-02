@@ -93,7 +93,7 @@ class TrendingVoteIdeas extends Component {
   handleData = (voteId, campaignId) => {
     this.voteId = voteId;
     this.campaignId = campaignId;
-    // console.log(this.voteId, this.campaignId);
+    console.log(this.voteId, this.campaignId);
   };
 
   // Getting closer, but needs more work
@@ -178,7 +178,7 @@ class TrendingVoteIdeas extends Component {
                     onExpand={this.onExpand}
                     onEdit={this.onEdit}
                     isAdmin={true}
-                    clientId={"1"}
+                    clientId={this.state.userId}
                     />
                   ):(
                     <CampaignDisplay
@@ -199,7 +199,7 @@ class TrendingVoteIdeas extends Component {
                     onExpand={this.onExpand}
                     onEdit={this.onEdit}
                     isAdmin={true}
-                    clientId={"1"}
+                    clientId={this.state.userId}
                     />
                   ) 
                 ))
@@ -238,7 +238,7 @@ class TrendingVoteIdeas extends Component {
                 onExpand={this.onExpand}
                 onEdit={this.onEdit}
                 isAdmin={true}
-                clientId={"1"}
+                clientId={this.state.userId}
                 />
               ):(
                 <div>
@@ -290,7 +290,7 @@ TrendingVoteIdeas.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  	auth: state.auth
+  auth: state.auth
 });
 
 export default connect(mapStateToProps)(TrendingVoteIdeas);

@@ -150,7 +150,7 @@ class ClosedVoteIdeas extends Component {
               onExpand={this.onExpand}
               onEdit={this.onEdit}
               isAdmin={true}
-              clientId={"1"}
+              clientId={this.state.userId}
               />
             ) 
           ))
@@ -165,7 +165,7 @@ ClosedVoteIdeas.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  	auth: state.auth
+  auth: state.auth
 });
 
 export default connect(mapStateToProps)(ClosedVoteIdeas);
