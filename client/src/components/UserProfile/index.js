@@ -9,8 +9,9 @@ import ProfileData from "./ProfileData";
 import ProfilePicture from "./ProfilePicture";
 import defaultProfileImage from "../../images/lightbulbCutout.png"
 import { Col, Row, Container } from "../../components/Grid";
-import { Title, SubTitle } from "../../components/Title";
+// import { Title, SubTitle } from "../../components/Title";
 import { CardOutline } from "../../components/NewsCard";
+import "./style.css";
 
 class UserProfile extends Component {
 
@@ -136,9 +137,9 @@ class UserProfile extends Component {
 
 		return(
 			<Container>
-				<Title 
+				{/* <Title 
           			titleText="My Profile"
-				/>
+				/> */}
 				<CardOutline
 					colSize={ "12" } 
 					cardColor={ "" }
@@ -152,6 +153,8 @@ class UserProfile extends Component {
 							fileSelectionHandler = {this.fileSelectionHandler}
 							fileUploadHandler = {this.fileUploadHandler}
 							profileImage = {this.state.profileImage}
+							userId = {this.state.userID}
+							authenticatedUserID = {user.id}
 						/>
 
 						<ProfileData 

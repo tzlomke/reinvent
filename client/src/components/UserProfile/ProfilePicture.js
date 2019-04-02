@@ -1,14 +1,15 @@
 import React from "react";
 
 const ProfilePicture = (props) => {
-	const { profileImage, handleShowImageUploadModal, handleHideImageUploadModal, fileSelectionHandler, fileUploadHandler, showImageUploadModal } = props;
+	const { profileImage, handleShowImageUploadModal, handleHideImageUploadModal, fileSelectionHandler, fileUploadHandler, showImageUploadModal, userId, authenticatedUserId } = props;
+	
 	return(
 		<div>
-			<div className="profile-image-container">
-				<img className="profile-image" src={profileImage} alt="Profile Pic" height="150" width ="150"></img>
-				<button type="button" onClick={handleShowImageUploadModal}>+</button>
-			</div>
-
+			<figure class="profile-image-container">
+				<img src={profileImage} alt="Profile Pic" />
+				<figcaption><i class="ion-android-add"></i></figcaption>
+				<a href="#" onClick={handleShowImageUploadModal}></a>
+			</figure>
 			
 			<div className="container" style={ showImageUploadModal ? { display: "block" } : { display: "none" }}>
 				<div id="oc-alert-container"></div>
