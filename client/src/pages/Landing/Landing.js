@@ -11,27 +11,13 @@ class Landing extends Component {
 		super(props);
 		this.state = { width: 0, height: 0 };
 		this.handleScroll = this.handleScroll.bind(this);
-		this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
-	}
-	  
-	componentDidMount() {
-		this.updateWindowDimensions();
-		window.addEventListener('resize', this.updateWindowDimensions);
-	}
-	  
-	componentWillUnmount() {
-		window.removeEventListener('resize', this.updateWindowDimensions);
-	}
-	  
-	updateWindowDimensions() {
-		this.setState({ width: window.innerWidth, height: window.innerHeight });
-	}
+	};
 
 	handleScroll () {
         $('html, body').animate({
             scrollTop: $(".about-container").offset().top
         }, 2200);
-	}
+	};
 
 	render () {
 		return (
