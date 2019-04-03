@@ -137,26 +137,27 @@ class UserProfile extends Component {
 		event.preventDefault()
 		const campaignForm = document.getElementById('newCampaign');
 		API.campaignPost({
-		  title: this.state.titleInput,
-		  author: this.state.authorInput,
-		  userId: this.state.userId,
-		  synopsis: this.state.campaignInputArea})
-		  .then(response => {
-			(console.log(`You successfully uploaded: ${response.data.title}`));
-		  });
+				title: this.state.titleInput,
+				author: this.state.authorInput,
+				userId: this.state.userId,
+				synopsis: this.state.campaignInputArea
+			})
+			.then(response => {
+				(console.log(`You successfully uploaded: ${response.data.title}`));
+			});
 		this.setState({
-		  titleInput: '',
-		  campaignInputArea: ''
+			titleInput: '',
+			campaignInputArea: ''
 		});
 		campaignForm.reset();
 		// Add window.location.reload() to allow the ideas to auto refresh
 		window.location.reload();
-	  };
+	};
 	
-	  componentDidMount =() => {
-		  this.loadUser()
-		  window.$('.modal').modal();
-	  };
+	componentDidMount =() => {
+		this.loadUser()
+		window.$('.modal').modal();
+	};
 
 	// shouldComponentUpdate = () => {
 	// 	this.loadUser();

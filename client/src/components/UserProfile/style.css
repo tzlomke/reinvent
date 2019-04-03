@@ -169,6 +169,10 @@
   background-color: rgba(69, 69, 69);
 }
 
+.image-upload-modal-button:focus {
+  background-color: rgba(69, 69, 69);
+}
+
 .file-upload {
   position: relative;
   margin-left: 12px;
@@ -254,7 +258,7 @@
 .profile-campaign-list {
   margin-left: 10px;
   padding-right: 30px;
-  height: 33vh;
+  height: 31vh;
   overflow-y: scroll;
 }
 
@@ -276,5 +280,7 @@
 .campaign-link {
   color: rgba(69, 69, 69);
 }
+
+/* New Idea Button */
 
 
