@@ -28,7 +28,7 @@ class Landing extends Component {
 			transform: "translate(-50%,-50%) skewY(0deg) skewX(0deg)",
 			left: "0",
 			top: "0",
-			transitionDelay: "2s"
+			transitionDelay: "1.9s"
 		});
 	};
 

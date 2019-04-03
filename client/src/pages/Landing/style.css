@@ -171,8 +171,7 @@
 			perspective: 800px;
 			left: 0;
       top: 0;
-      transition-delay: 8s;
-			transition: all 3s ease;
+			transition: all .9s ease;
 		}
 		#text :nth-child(1) {
 			color: rgb(47, 47, 47);
