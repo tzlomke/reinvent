@@ -1,6 +1,20 @@
 import React from 'react';
 
 const DiscussionForm = ({ discussionSubmit, discussionFormChange, discussionAuthorInput, discussInputArea }) => {
+  let buttonText;
+  (function noEmptyForms() {
+    const submitButton = document.getElementById('submitDiscussion');
+    if (submitButton === null) {
+      console.log("hey")
+    } else if (discussInputArea === "") {
+      buttonText = "Please Enter all Information"
+      submitButton.disabled = true;
+    } else {
+      submitButton.disabled = false;
+      buttonText = "Submit"
+    };
+  })();
+
   return(
     <div>
       <header>Discussion</header>
@@ -14,7 +28,7 @@ const DiscussionForm = ({ discussionSubmit, discussionFormChange, discussionAuth
               <label htmlFor="discussIt">New Discussion Here</label>
               <textarea id="discussIt" name="discussInputArea" value={discussInputArea} onChange={discussionFormChange}></textarea>
             </section>
-              <button id="submitDiscussion" type="submit" onClick = {discussionSubmit}>Submit</button>
+              <button className="btn btn-dark" id="submitDiscussion" type="submit" onClick = {discussionSubmit}>{buttonText}</button>
             </form>
           </section>
     </div>

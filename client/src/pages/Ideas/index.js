@@ -8,9 +8,10 @@ import ActiveVoteIdeas from "../ActiveVoteIdeas";
 import ClosedVoteIdeas from "../ClosedVoteIdeas";
 import TrendingVoteIdeas from "../TrendingVoteIdeas";
 import IdeaDiscussion from "../IdeaDiscussion";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import CampaignForm from "../../components/CampaignForm";
 import { Container } from "../../components/Grid";
+import page404 from "../404";
 
 class Ideas extends Component {
 
@@ -89,6 +90,7 @@ class Ideas extends Component {
             <Route exact path="/ideas/closed" component={ClosedVoteIdeas} />
             <Route exact path="/ideas/trending" component={TrendingVoteIdeas} />
             <Route exact path="/ideas/:id" component={IdeaDiscussion} />
+            <Route component={page404} />
           </Switch> 
         </Router>
       </Container>

@@ -1,13 +1,6 @@
-#container404 {
-  margin-top: 15px;
-  /* display: flex; */
-  justify-content: center;
-}
-
 #dead_link {
-  margin-top: 35px;
-  /* position: fixed; */
-  /* bottom: 0px; */
+  border-radius: 0.5rem;
+  box-shadow: 0px 0px 10px black;
 }
 
 #return_link {
