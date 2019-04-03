@@ -7,6 +7,20 @@ import { Title, SubTitle } from "../../components/Title";
 import { CardOutline } from "../../components/NewsCard";
 import { Link } from "react-router-dom";
 
+// This function was added due to problems with the idea route not properly loading 404 errors
+(() => {
+  const currentPath = window.location.pathname;
+  console.log(currentPath)
+  if(currentPath === "/" || currentPath === "/login" || currentPath === "/register") {
+    return "User is on the right path";
+  } else if (currentPath !== "/404") {
+    const regExReadyPath = currentPath.replace(/\//g, "\\/");
+    const regExPath = new RegExp(regExReadyPath);
+    const newURL = currentPath.replace(regExPath, "/404")
+    window.location.pathname = newURL;
+  };
+})();
+
 const page404 = () => {
   return(
     <div>
