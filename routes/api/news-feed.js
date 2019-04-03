@@ -5,13 +5,12 @@ const articlesController = require("../../controllers/articlesController");
 // Matches with "/api/news-feed"
 router.route("/")
   .get(articlesController.findAll)
-  // .post(articlesController.create);
+  .post(articlesController.create);
 
 // Matches with "/api/news-feed/:id"
-router
-  .route("/:id")
+router.route("/:id")
   .get(articlesController.findById)
-  // .put(articlesController.update)
+  .put(articlesController.update)
   .delete(articlesController.remove);
 
 module.exports = router;

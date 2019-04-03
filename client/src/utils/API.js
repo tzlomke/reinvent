@@ -112,7 +112,7 @@ export default {
     return axios.delete("/api/news-feed/" + id);
   },
   // // Saves an article to the database
-  // saveArticle: function(id, articlesData) {
-  // return axios.post("/api/articles/" + id, articlesData);
-  // } 
+  saveArticle: function(articlesData) {
+  return axios.post("/api/news-feed",  articlesData);
+  } 
 };

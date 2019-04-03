@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { logoutUser } from "../../actions/authActions";
+import ArticleForm from "../../components/ArticleForm";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
@@ -17,14 +21,27 @@ class NewsFeed extends Component {
     title: "",
     author: "",
     content: "",
-    date: ""
-
+    date: "",
+    userId: "",
+    authorInput: "",
   };
 
-  componentDidMount = () => {
-    this.loadFeed();
-  }
-
+  loadUser = () => {
+    let authenticatedUserId = this.props.auth.user.id
+    console.log(this.props.auth.user.id);
+		API.getUserById(authenticatedUserId)
+			.then(response => {
+        let userData = response.data[0]
+        console.log(userData);
+				this.setState({
+          userId: userData._id,
+          // userName: 
+          authorInput: `${userData.username}`,
+          author: `${userData.firstName}` + " " + `${userData.lastName}`
+				});
+			});
+  };
+  
   loadFeed = () => {
     API.getArticles()
       .then(res =>
@@ -32,6 +49,40 @@ class NewsFeed extends Component {
         console.log(res.data)}
       )
       .catch(err => console.log(err));
+  };
+
+  componentDidMount = () => {
+    this.loadUser();
+    this.loadFeed();
+    window.$('.modal').modal();
+  }
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+        [name]: value
+    });
+  };
+
+  handleFormSubmit = (event) => {
+    event.preventDefault()
+    const articleForm = document.getElementById('newArticle');
+    API.saveArticle({
+      title: this.state.titleInput,
+      // authorInput: this.state.authorInput,
+      author: this.state.authorName,
+      // userId: this.state.userId,
+      content: this.state.articleInput})
+      .then(response => {
+        (console.log(`You successfully posted: ${response.data.title}`));
+      });
+    this.setState({
+      titleInput: '',
+      articleInput: ''
+    });
+    articleForm.reset();
+    // Add window.location.reload() to allow the ideas to auto refresh
+    // window.location.reload();
   };
 
   // deleteArticle = id => {
@@ -63,7 +114,14 @@ class NewsFeed extends Component {
   render() {
     return (
       <Container>
-        <button data-target="eventFormModal" className="btn modal-trigger">Post an Article</button>
+        <button data-target="articleFormModal" className="btn modal-trigger">Post an Article</button>
+        <ArticleForm
+          titleInput={this.state.titleInput}
+          authorInput={this.state.authorInput}
+          authorName={this.state.author}
+          articleInput={this.state.articleInput}
+          handleFormSubmit={this.handleFormSubmit}
+          handleChange={this.handleChange}/>
         <Title 
           titleText="Latest News"
         />
@@ -115,4 +173,13 @@ class NewsFeed extends Component {
   }
 }
 
-export default NewsFeed;
+// export default NewsFeed;
+
+NewsFeed.propTypes = {
+	auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+export default connect(mapStateToProps, { logoutUser })(NewsFeed);
