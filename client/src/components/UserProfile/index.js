@@ -133,9 +133,30 @@ class UserProfile extends Component {
 			});
 	};
 
-	componentDidMount = () => {
-		this.loadUser();
-	};
+	handleFormSubmit = (event) => {
+		event.preventDefault()
+		const campaignForm = document.getElementById('newCampaign');
+		API.campaignPost({
+		  title: this.state.titleInput,
+		  author: this.state.authorInput,
+		  userId: this.state.userId,
+		  synopsis: this.state.campaignInputArea})
+		  .then(response => {
+			(console.log(`You successfully uploaded: ${response.data.title}`));
+		  });
+		this.setState({
+		  titleInput: '',
+		  campaignInputArea: ''
+		});
+		campaignForm.reset();
+		// Add window.location.reload() to allow the ideas to auto refresh
+		window.location.reload();
+	  };
+	
+	  componentDidMount =() => {
+		  this.loadUser()
+		  window.$('.modal').modal();
+	  };
 
 	// shouldComponentUpdate = () => {
 	// 	this.loadUser();
@@ -172,7 +193,11 @@ class UserProfile extends Component {
 							userFullName = {this.state.userFullName}
 							username = {this.state.username}
 							userCampaigns = {this.state.userCampaigns}
-							logout = {this.onLogoutClick}
+							titleInput={this.state.titleInput}
+							authorInput={this.state.authorInput}
+							campaignInput={this.state.campaignInputArea}
+							handleFormSubmit={this.handleFormSubmit}
+							handleChange={this.handleChange}
 						/>
 					</div>
 				</CardOutline>
