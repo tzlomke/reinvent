@@ -113,6 +113,6 @@ export default {
   },
   // // Saves an article to the database
   saveArticle: function(articlesData) {
-  return axios.post("/api/news-feed",  articlesData);
+  return axios.post("/api/news-feed", articlesData);
   } 
 };

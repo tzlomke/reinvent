@@ -23,7 +23,10 @@ class NewsFeed extends Component {
     content: "",
     date: "",
     userId: "",
-    authorInput: "",
+    userName: "",
+    inputTitle: "",
+    inputAuthor: "",
+    inputContent: "",
   };
 
   loadUser = () => {
@@ -35,9 +38,8 @@ class NewsFeed extends Component {
         console.log(userData);
 				this.setState({
           userId: userData._id,
-          // userName: 
-          authorInput: `${userData.username}`,
-          author: `${userData.firstName}` + " " + `${userData.lastName}`
+          userName: `${userData.username}`,
+          inputAuthor: `${userData.firstName}` + " " + `${userData.lastName}`
 				});
 			});
   };
@@ -51,10 +53,10 @@ class NewsFeed extends Component {
       .catch(err => console.log(err));
   };
 
-  componentDidMount = () => {
-    this.loadUser();
-    this.loadFeed();
-    window.$('.modal').modal();
+  componentDidMount () {
+   this.loadUser();
+   this.loadFeed();
+   window.$('.modal').modal();
   }
 
   handleInputChange = event => {
@@ -64,26 +66,32 @@ class NewsFeed extends Component {
     });
   };
 
-  handleFormSubmit = (event) => {
-    event.preventDefault()
-    const articleForm = document.getElementById('newArticle');
+handleFormSubmit = event => {
+  event.preventDefault();
+  console.log("pressed")
+  // const articleForm = document.getElementById('newArticle');
+  if (this.state.inputTitle && this.state.inputAuthor) {
     API.saveArticle({
-      title: this.state.titleInput,
-      // authorInput: this.state.authorInput,
-      author: this.state.authorName,
-      // userId: this.state.userId,
-      content: this.state.articleInput})
-      .then(response => {
-        (console.log(`You successfully posted: ${response.data.title}`));
-      });
-    this.setState({
-      titleInput: '',
-      articleInput: ''
-    });
-    articleForm.reset();
-    // Add window.location.reload() to allow the ideas to auto refresh
-    // window.location.reload();
-  };
+      title: this.state.inputTitle,
+      author: this.state.inputAuthor,
+      content: this.state.inputContent,
+      userId: this.state.userId
+    })
+      .then(res => {
+        this.loadFeed()
+        this.setState({
+          inputTitle: '',
+          inputContent: ''
+        });
+        // window.location.reload();  
+      })
+      // .then(response => {
+      //   (console.log(`You successfully posted: ${response.data.title}`));
+      // })
+      .catch(err => console.log(err));
+  }
+  // articleForm.reset();
+};
 
   // deleteArticle = id => {
   //   API.deleteArticle(id)
@@ -91,37 +99,16 @@ class NewsFeed extends Component {
   //     .catch(err => console.log(err));
   // };
 
-//   handleInputChange = event => {
-//     const { name, value } = event.target;
-//     this.setState({
-//       [name]: value
-//     });
-//   };
-
-//   handleFormSubmit = event => {
-//     event.preventDefault();
-//     if (this.state.title && this.state.author) {
-//       API.saveBook({
-//         title: this.state.title,
-//         author: this.state.author,
-//         content: this.state.content
-//       })
-//         .then(res => this.loadBooks())
-//         .catch(err => console.log(err));
-//     }
-//   };
-
   render() {
     return (
       <Container>
         <button data-target="articleFormModal" className="btn modal-trigger">Post an Article</button>
         <ArticleForm
-          titleInput={this.state.titleInput}
-          authorInput={this.state.authorInput}
-          authorName={this.state.author}
-          articleInput={this.state.articleInput}
+          inputTitle={this.state.inputTitle}
+          inputAuthor={this.state.inputAuthor}
+          inputContent={this.state.inputContent}
           handleFormSubmit={this.handleFormSubmit}
-          handleChange={this.handleChange}/>
+          handleInputChange={this.handleInputChange}/>
         <Title 
           titleText="Latest News"
         />

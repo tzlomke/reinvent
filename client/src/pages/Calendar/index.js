@@ -5,8 +5,8 @@ import API from "../../utils/API";
 import ReactTooltip from 'react-tooltip';
 import moment from "moment";
 import "./style.css"
-import { Col, Row, Container } from "../../components/Grid";
-import { Title, SubTitle } from "../../components/Title";
+import { Container } from "../../components/Grid";
+import { Title } from "../../components/Title";
 import { CardOutline } from "../../components/NewsCard";
 import DeleteBtn from "../../components/DeleteBtn";
 
