@@ -9,7 +9,7 @@ import ProfileData from "./ProfileData";
 import ProfilePicture from "./ProfilePicture";
 import defaultProfileImage from "../../images/lightbulbCutout.png"
 import { Col, Row, Container } from "../../components/Grid";
-// import { Title, SubTitle } from "../../components/Title";
+import CampaignForm from "../CampaignForm";
 import { CardOutline } from "../../components/NewsCard";
 import "./style.css";
 
@@ -22,7 +22,10 @@ class UserProfile extends Component {
 		userCampaigns: [],
 		profileImage: "",
 		selectedFile: null,
-		showImageUploadModal: false
+		showImageUploadModal: false,
+		titleInput: '',
+		authorInput: '',
+		campaignInputArea: ''
 	};
 
 	handleShowImageUploadModal = () => {
@@ -120,7 +123,7 @@ class UserProfile extends Component {
 					userFullName: `${userData.firstName} ${userData.lastName}`,
 					username: userData.username,
 					userCampaigns: userData.campaigns,
-				})
+				});
 				if (userData.profileImage[0] !== undefined) {
 					this.setState({
 						profileImage: userData.profileImage[userData.profileImage.length-1]
@@ -177,6 +180,14 @@ class UserProfile extends Component {
 					cardTextColor={ "" }
 				>
 					<div className="profile-wrapper">
+						<CampaignForm
+							titleInput={this.state.titleInput}
+							authorInput={this.state.authorInput}
+							campaignInput={this.state.campaignInputArea}
+							handleFormSubmit={this.handleFormSubmit}
+							handleChange={this.handleChange}
+						/>
+
 						<ProfilePicture 
 							handleShowImageUploadModal = {this.handleShowImageUploadModal}
 							handleHideImageUploadModal = {this.handleHideImageUploadModal}
@@ -194,11 +205,6 @@ class UserProfile extends Component {
 							userFullName = {this.state.userFullName}
 							username = {this.state.username}
 							userCampaigns = {this.state.userCampaigns}
-							titleInput={this.state.titleInput}
-							authorInput={this.state.authorInput}
-							campaignInput={this.state.campaignInputArea}
-							handleFormSubmit={this.handleFormSubmit}
-							handleChange={this.handleChange}
 						/>
 					</div>
 				</CardOutline>

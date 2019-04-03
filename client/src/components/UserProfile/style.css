@@ -281,6 +281,18 @@
   color: rgba(69, 69, 69);
 }
 
-/* New Idea Button */
+/* New Idea Modal */
+.modal {
+  -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+ box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+ padding: 5px;
+}
 
+.header {
+ font-display: bold;
+}
+
+#submitCampaign {
+ margin-left: 10px;
+}
 

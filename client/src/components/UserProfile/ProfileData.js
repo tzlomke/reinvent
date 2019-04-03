@@ -16,7 +16,7 @@ const ProfileData = (props) => {
 						<div className="user-campaigns">
 							<h3 style={{fontFamily: "FatFont", display: "inline-block"}}>My Ideas</h3>
 							<div className="mt-5" style={{display: "inline-block"}}>
-								<button className="btn image-upload-modal-button"  style={{marginLeft: "680px", display: "inline-block", height: "32px", float: "right"}}>+</button>
+								<button className="btn image-upload-modal-button modal-trigger" data-target="campaign-form-modal" style={{marginLeft: "620px", paddingBottom: "35px", display: "inline-block", height: "32px", float: "right"}}>New Idea +</button>
 							</div>
 							<ul className="profile-campaign-list">
 								{userCampaigns.map(campaign => (
@@ -37,7 +37,7 @@ const ProfileData = (props) => {
 				</div>
 				
 				{/* New Idea Modal */}
-				<div className= "modal" id="campaignFormModal">
+				{/* <div className= "modal" id="campaignFormModal">
 					<header className ="header">New Idea</header>
 					<section id="campaignEntry">
 						<form id="newCampaign">
@@ -55,7 +55,7 @@ const ProfileData = (props) => {
 							<button id="submitCampaign" type="submit" className="btn btn-dark modal-close" onClick = {handleFormSubmit}>Submit</button>
 						</form>
 					</section>
-				</div>
+				</div> */}
 
 			</div>
 		);
