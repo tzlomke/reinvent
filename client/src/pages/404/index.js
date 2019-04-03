@@ -2,7 +2,7 @@ import React from 'react';
 import ast404ronaut from '../../images/astro-selfie-bw.png';
 import './style.css';
 import Header from '../../components/Header';
-import { Col, Row, Container } from "../../components/Grid";
+import { Container } from "../../components/Grid";
 import { Title, SubTitle } from "../../components/Title";
 import { CardOutline } from "../../components/NewsCard";
 import { Link } from "react-router-dom";

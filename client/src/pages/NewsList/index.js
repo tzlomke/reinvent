@@ -9,7 +9,7 @@ import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { NewsCard, CardOutline } from "../../components/NewsCard";
 import moment from 'moment';
-import { Title, SubTitle } from "../../components/Title";
+import { Title } from "../../components/Title";
 
 import "./style.css";
 
