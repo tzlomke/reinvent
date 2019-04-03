@@ -52,3 +52,17 @@
 .auth-button:focus {
 	background-color: rgba(69, 69, 69);
 }
+
+/* Input fields */
+.input-field input[type=text]:focus+label,
+.input-field input[type=password]:focus+label,
+.materialize-textarea:focus:not([readonly])+label {
+	color: rgba(69, 69, 69) !important;
+}
+
+.input-field input[type=text]:focus,
+.input-field input[type=password]:focus,
+.materialize-textarea:focus:not([readonly]) {
+	border-bottom: 1px solid rgba(69, 69, 69) !important;
+	box-shadow: 0 1px 0 0 rgba(69, 69, 69) !important;
+}
