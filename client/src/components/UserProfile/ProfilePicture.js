@@ -36,7 +36,7 @@ const ProfilePicture = (props) => {
 	} else {
 		return (
 			<div>
-				<figure class="profile-image-container">
+				<figure class="not-my-profile-image-container">
 					<img src={profileImage} alt="Profile Pic" style={{height: "190px", width: "190px"}}/>
 				</figure>
 			</div>
