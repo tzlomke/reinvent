@@ -183,7 +183,7 @@ class UserProfile extends Component {
 							fileSelectionHandler = {this.fileSelectionHandler}
 							fileUploadHandler = {this.fileUploadHandler}
 							profileImage = {this.state.profileImage}
-							userId = {this.state.userID}
+							userID = {this.state.userID}
 							authenticatedUserID = {user.id}
 						/>
 

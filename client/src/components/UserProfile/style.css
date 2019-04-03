@@ -1,6 +1,7 @@
 /* Profile Image Container */
 @import url(https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css);
 
+/* User's Profile Image */
 .profile-image-container {
   position: relative;
   display: inline-block;
@@ -105,11 +106,9 @@
 }
 
 /* Image Upload Modal */
-
 .modal-container {
   float: right;
   width: 700px;
-  /* height: 1000px; */
 }
 
 .modal-shown {
@@ -200,6 +199,54 @@
   width: 0;
   height: 100%;
   opacity: 0;
+}
+
+/* Other User's Profile Image */
+.not-my-profile-image-container {
+  position: relative;
+  display: inline-block;
+  margin: 20px;
+  margin-left: 0px;
+  max-width: 190px;
+  width: 100%;
+  color: #bbb;
+  font-size: 16px;
+  box-shadow: none !important;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.not-my-profile-image-container *,
+.not-my-profile-image-container:before,
+.not-my-profile-image-container:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.not-my-rofile-image-container:before,
+.not-my-profile-image-container:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  border-radius: 50%;
+  content: '';
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: -1;
+  border: 2px solid #bbb;
+  border-color: transparent #bbb;
+}
+
+.not-my-profile-image-container img {
+  max-width: 100%;
+  backface-visibility: hidden;
+  vertical-align: top;
+  border-radius: 50%;
+  padding: 10px;
 }
 
 /* User Data */
