@@ -2,6 +2,11 @@ import React, { Component } from "react";
 import SpaceGirl from "../../images/Retro-Astronaut2.png";
 import $ from "jquery";
 import "./style.css";
+import Daniel from "../../images/Daniel.jpeg";
+import Brant from "../../images/Brant.jpeg";
+import Taylor from "../../images/Taylor.png";
+import Andy from "../../images/Andy.jpeg";
+import Akop from "../../images/Akop.jpeg";
 
 import { Parallax } from "react-parallax";
 
@@ -15,8 +20,16 @@ class Landing extends Component {
 
 	handleScroll () {
         $('html, body').animate({
-            scrollTop: $(".about-container").offset().top
-        }, 2200);
+            scrollTop: $(".about-container").offset().top,
+		}, 2000);
+		
+		$("#text span").css({
+			color: "rgb(47, 47, 47)",
+			transform: "translate(-50%,-50%) skewY(0deg) skewX(0deg)",
+			left: "0",
+			top: "0",
+			transitionDelay: "2s"
+		});
 	};
 
 	render () {
@@ -91,36 +104,103 @@ class Landing extends Component {
 
 
 				{/* About Page */}
-				<div className="about-container" ref={this.myRef}>
+				<div className="about-container">
 					<div className="container">
 						
 						{/* Display Font */}
 						<div className="row">
 							<div className="col s12 ">
 								
-									<div className="display-text">
-										<div>
-											<div id="text">
-												<span>What's the big idea?</span>
-												<span>What's the big idea?</span>
-												<span>What's the big idea?</span>
-											</div>
+								<div className="display-text">
+									<div>
+										<div id="text">
+											<span>What's the big idea?</span>
+											<span>What's the big idea?</span>
+											<span>What's the big idea?</span>
 										</div>
 									</div>
+								</div>
+
+								<p className="text-content" style={{lineHeight: "24px"}}>
+								Your two-year product development timeline? <span style={{fontWeight: "bold", fontSize: "24px"}}>Too slow.</span> Your top-down hierarchy? <span style={{fontWeight: "bold", fontSize: "24px"}}>Too rigid.</span> We're here to change all that. 
+
+								
+								</p>
 								
 							</div>
 						</div>
 						
 						{/* Text Content */}
 						<div className="row">
-							<p className="text-content" style={{lineHeight: "24px"}}>
-								Your two-year product development timeline? <span style={{fontWeight: "bold", fontSize: "24px"}}>Too slow.</span> Your top-down hierarchy? <span style={{fontWeight: "bold", fontSize: "24px"}}>Too rigid.</span> 
-								&nbsp;We're here to change all that. 
-
-								
-							</p>
+						    <div className="col s12">
+								<p className="text-content" style={{lineHeight: "24px"}}>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
+								ncididunt ut labore et dolore magna aliqua. Ut etiam sit amet nisl purus in mollis nunc. Adipiscing 
+								commodo elit at imperdiet dui accumsan sit amet. Turpis nunc eget lorem dolor sed viverra ipsum nunc aliquet.
+								 Egestas sed sed risus pretium. Nec ullamcorper sit amet risus nullam. Non enim praesent elementum facilisis leo vel 
+								 fringilla est ullamcorper. Sed faucibus turpis in eu. Libero nunc consequat interdum varius sit amet mattis vulputate. Hac 
+								<br /><br />
+								 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
+								ncididunt ut labore et dolore magna aliqua. Ut etiam sit amet nisl purus in mollis nunc. Adipiscing 
+								commodo elit at imperdiet dui accumsan sit amet. Turpis nunc eget lorem dolor sed viverra ipsum nunc aliquet.
+								 Egestas sed sed risus pretium. Nec ullamcorper sit amet risus nullam. Non enim praesent elementum facilisis leo vel 
+								 fringilla est ullamcorper. Sed faucibus turpis in eu. Libero nunc consequat interdum varius sit amet mattis vulputate. Hac 
+								</p>
+							</div>
 						</div>
+					</div>
+					
+					<div className="developer-profiles-container">
+						<div className="row dev-profiles-row">
+							<div className="col s12">
 
+								<div className="custom-columns">
+									<figure class="developer-profile">
+										<img src={Brant} alt="Brant Keener" style={{height: "140px", width: "140px"}}/>
+										<figcaption><i class="ion-social-linkedin"></i></figcaption>
+										<a href="https://www.linkedin.com/in/brant-keener-68249bb5/" target="_blank"></a>
+									</figure>
+									<p className="developer-name">Brant Keener</p>
+								</div>
+
+								<div className="custom-columns">
+									<figure class="developer-profile">
+										<img src={Akop} alt="Akop (Jack) Karapetyan" style={{height: "140px", width: "140px"}}/>
+										<figcaption><i class="ion-social-linkedin"></i></figcaption>
+										<a href="https://www.linkedin.com/in/akopkarapetyan/" target="_blank"></a>
+									</figure>
+									<p className="developer-name">Akop Karapetyan</p>
+								</div>
+
+								<div className="custom-columns">
+									<figure class="developer-profile">
+										<img src={Taylor} alt="Taylor Zlomke" style={{height: "140px", width: "140px"}}/>
+										<figcaption><i class="ion-social-linkedin"></i></figcaption>
+										<a href="https://www.linkedin.com/in/taylorzlomke/" target="_blank"></a>
+									</figure>
+									<p className="developer-name">Taylor Zlomke</p>
+								</div>
+
+								<div className="custom-columns">
+									<figure class="developer-profile">
+										<img src={Andy} alt="Andrew Marshall" style={{height: "140px", width: "140px"}}/>
+										<figcaption><i class="ion-social-linkedin"></i></figcaption>
+										<a href="https://www.linkedin.com/in/andrewmarshall85/" target="_blank"></a>
+									</figure>
+									<p className="developer-name">Andrew Marshall</p>
+								</div>
+								
+								<div className="custom-columns">
+									<figure class="developer-profile">
+										<img src={Daniel} alt="Daniel Lois" style={{height: "140px", width: "140px"}}/>
+										<figcaption><i class="ion-social-linkedin"></i></figcaption>
+										<a href="https://www.linkedin.com/in/daniel-lois-53759569/" target="_blank"></a>
+									</figure>
+									<p className="developer-name">Daniel Lois</p>
+								</div>
+								
+							</div>
+						</div>
 					</div>
 				</div>
 
