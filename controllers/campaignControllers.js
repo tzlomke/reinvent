@@ -103,7 +103,7 @@ module.exports = {
   createDiscussion: (req, res) => {
     console.log(req.body)
     db.Campaign
-      .findOneAndUpdate({ _id: req.params.id }, { $push: { comments: req.body } })
+      .findOneAndUpdate({ _id: req.params.id }, { $push: { comments: req.body } }, { runValidators: true })
       .then(dbDiscussion => res.json(dbDiscussion))
       .catch(err => {res.json(err)})
   },
