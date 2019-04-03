@@ -98,12 +98,13 @@ module.exports = {
         .then(dbModel => dbModel.remove())
         .then(dbModel => res.json(dbModel))
         .catch(err => res.status(422).json(err));
-},
+  },
   // Create a discussion
   createDiscussion: (req, res) => {
     console.log(req.body)
     db.Campaign
-      .findOneAndUpdate({ _id: req.params.id }, { $push: { comments: req.body } })
+      // When utilizing findOneAndUpdate, you must explicitly tell it to runValidators as an option
+      .findOneAndUpdate({ _id: req.params.id }, { $push: { comments: req.body } }, { runValidators: true })
       .then(dbDiscussion => res.json(dbDiscussion))
       .catch(err => {res.json(err)})
   },
