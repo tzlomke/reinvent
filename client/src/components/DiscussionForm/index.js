@@ -28,7 +28,7 @@ const DiscussionForm = ({ discussionSubmit, discussionFormChange, discussionAuth
               <label htmlFor="discussIt">New Discussion Here</label>
               <textarea id="discussIt" name="discussInputArea" value={discussInputArea} onChange={discussionFormChange}></textarea>
             </section>
-              <button class="btn btn-dark" id="submitDiscussion" type="submit" onClick = {discussionSubmit}>{buttonText}</button>
+              <button className="btn btn-dark" id="submitDiscussion" type="submit" onClick = {discussionSubmit}>{buttonText}</button>
             </form>
           </section>
     </div>

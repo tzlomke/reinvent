@@ -125,7 +125,7 @@ class IdeaDiscussion extends Component {
           cardTextColor={ "" }
         >
           <div>
-            <a href="/ideas/active">Back</a>
+            <a className="btn btn-dark" href="/ideas/active">Back</a>
             <DeleteBtn onClick ={this.deleteCampaign}/>
             {campaignClicked.vote === undefined ? (
               <div>
