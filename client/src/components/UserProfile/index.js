@@ -137,6 +137,10 @@ class UserProfile extends Component {
 		this.loadUser();
 	};
 
+	// shouldComponentUpdate = () => {
+	// 	this.loadUser();
+	// };
+
 	render() {
 		const { user } = this.props.auth
 
