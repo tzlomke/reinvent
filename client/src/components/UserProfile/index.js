@@ -40,12 +40,14 @@ class UserProfile extends Component {
 		this.setState({
 			selectedFile: event.target.files[0]
 		});
+
+		$(".image-select-button").text(`${event.target.files[0].name}`);
 	};
 	
 	fileUploadHandler = () => {
 		const data = new FormData();
 		// If file selected
-		if ( this.state.selectedFile ) {
+		if ( this.state.selectedFile ) {	
 			data.append('profileImage', this.state.selectedFile, this.state.selectedFile.name);
 			axios.post(`/api/profile/${this.state.username}/profile-image-upload`, data, {
 				headers: {

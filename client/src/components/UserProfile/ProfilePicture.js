@@ -6,9 +6,9 @@ const ProfilePicture = (props) => {
 	if (userID === authenticatedUserID) {
 		return (
 			<div>
-				<figure class="profile-image-container">
+				<figure className="profile-image-container">
 					<img src={profileImage} alt="Profile Pic" />
-					<figcaption><i class="ion-android-add"></i></figcaption>
+					<figcaption><i className="ion-android-add"></i></figcaption>
 					<a href="#" onClick={handleShowImageUploadModal}></a>
 				</figure>
 				
@@ -22,7 +22,7 @@ const ProfilePicture = (props) => {
 						</div>
 						<div className="card-body">
 							<div class="file-upload">
-								<label for="upload" class="btn image-upload-modal-button">Select a file</label>
+								<label for="upload" class="btn image-upload-modal-button image-select-button">Select a file</label>
 								<input onChange={fileSelectionHandler} id="upload" class="file-upload__input" type="file" name="file-upload" />
 							</div>
 							<div className="mt-5">
@@ -36,7 +36,7 @@ const ProfilePicture = (props) => {
 	} else {
 		return (
 			<div>
-				<figure class="not-my-profile-image-container">
+				<figure className="not-my-profile-image-container">
 					<img src={profileImage} alt="Profile Pic" style={{height: "190px", width: "190px"}}/>
 				</figure>
 			</div>
