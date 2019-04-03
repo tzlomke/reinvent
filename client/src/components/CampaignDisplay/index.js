@@ -1,11 +1,10 @@
 import React from 'react';
-import Vote from "../Vote";
 import "./styles.css";
 
 const CampaignDisplay = (props) => {
   const { title, author, synopsis, id, styles, onCreate, onUpvote,
     onClose, onReset, onDownvote, onExpand, onEdit, isAdmin,
-    clientId, data, handleData, campaignClickable } = props;
+    clientId, data, handleData, campaignClickable, children} = props;
 
   const profileRoute = `/profile/${author}`;
   const ideaRoute = `/ideas/${id}`
@@ -30,18 +29,7 @@ const CampaignDisplay = (props) => {
 
         
           <div className="col s3" id="voteDisplay">
-              <Vote
-                data={data}
-                styles={styles}
-                onCreate={onCreate}
-                onUpvote={onUpvote}
-                onClose={onClose}
-                onReset={onReset}
-                onDownvote={onDownvote}
-                onExpand={onExpand}
-                onEdit={onEdit}
-                isAdmin={isAdmin}
-                clientId={clientId}/>
+            {children}
             </div>
       </div>
       <div className="row">

@@ -4,6 +4,8 @@ import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import ResourceForm from "../../components/ResourcesForm";
 import { Title, SubTitle } from "../../components/Title";
+import DeleteBtn from "../../components/DeleteBtn";
+import { CardOutline } from "../../components/NewsCard";
 
 
 
@@ -53,6 +55,8 @@ class Resources extends Component {
         }
     };
 
+    deleteResource = (resourceId) => API.deleteResource(resourceId).then((this.loadResources()));
+    
     render() {
         return (
         <Container>
@@ -67,8 +71,11 @@ class Resources extends Component {
             handleFormSubmit={this.handleFormSubmit}
             />
             <Row>
-                <Col size="12">
-
+                <CardOutline
+                colSize={ "12" } 
+                cardColor={ "" }
+                cardTextColor={ "" }
+                >
                     {/* <h1>Resources</h1> */}
                     {this.state.resources.length ? (
                         <List>
@@ -79,13 +86,14 @@ class Resources extends Component {
                                         {resource.title}
                                         </strong>
                                     </a>
+                                    <DeleteBtn onClick={() => this.deleteResource(resource._id)}/>
                                 </ListItem>
                             ))}
                         </List>
                     ) : (
                         <h3>No Resources to Display</h3>
                     )}
-                </Col>
+                </CardOutline>
             </Row>
         </Container>
         );

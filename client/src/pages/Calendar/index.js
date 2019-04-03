@@ -8,6 +8,7 @@ import "./style.css"
 import { Col, Row, Container } from "../../components/Grid";
 import { Title, SubTitle } from "../../components/Title";
 import { CardOutline } from "../../components/NewsCard";
+import DeleteBtn from "../../components/DeleteBtn";
 
 class Calendar extends Component {
     state = {
@@ -58,7 +59,10 @@ class Calendar extends Component {
 
     loadEvents = () => {
         API.getEvents()
-        .then(res => this.setState({ events: res.data }));
+        .then(res => {this.setState({ events: res.data })
+        console.log(res.data)
+        })
+        
     };
 
     componentDidMount = () => {
@@ -100,13 +104,20 @@ class Calendar extends Component {
                 });
             }
         });
-    }
+    };
 
-    onShowMore = () => {
+    rebuildTooltip = () => {
         setTimeout(() => {
             ReactTooltip.rebuild();
+            console.log("rebuilt")
         }, 500)
-    }
+    };
+
+    componentDidUpdate = () => {
+        this.rebuildTooltip();
+    };
+
+    deleteEvent = (eventId) => API.deleteEvent(eventId).then(this.loadEvents());
 
     render = () => (
 
@@ -137,9 +148,9 @@ class Calendar extends Component {
                     />
                     <div id="calendarDisplay">
                         <MyCalendar
-                        onShowMore={this.onShowMore}
+                        rebuildTooltip={this.rebuildTooltip}
                         events={this.state.events}
-                        onView={this.onView}/>
+                        />
                     </div>
                     {this.state.events.map(event =>(
                         <ReactTooltip 
@@ -147,7 +158,9 @@ class Calendar extends Component {
                         id={event._id}
                         globalEventOff="click"
                         effect="solid"
+                        clickable={true}
                         >
+                            <DeleteBtn onClick={() => this.deleteEvent(event._id)}/>
                             <span>{event.title}</span>
                             <br></br>
                             <span>{moment(event.start).format("h:mm A")}-{moment(event.end).format("h:mm A")}</span>

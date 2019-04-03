@@ -8,8 +8,9 @@ const localizer = BigCalendar.momentLocalizer(moment);
 
 const MyCalendar = props => (
     <BigCalendar
-    onView={props.onView}
-    onShowMore={props.onShowMore}
+    onView={props.rebuildTooltip}
+    onShowMore={props.rebuildTooltip}
+    onNavigate={props.rebuildTooltip}
     popup={true}
     localizer={localizer}
     events={props.events}

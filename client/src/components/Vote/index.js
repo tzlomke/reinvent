@@ -1,12 +1,14 @@
 import React from "react";
 import ReactVote from "react-vote";
+import "./style.css"
 
 function Vote(props){
     return (
         props.data.length === 0 ? (
             <div>
+                <h5 className="center-align">Vote</h5>
                 <ReactVote
-                styles={{opacity:1}}
+                // styles={}   
                 // text={customText}
                 onCreate={props.onCreate}
                 onUpvote={props.onUpvote}
@@ -21,9 +23,10 @@ function Vote(props){
             </div>
         ) : (
             <div>
+                <h5 className="center-align">Vote</h5>
                 <ReactVote
                 data={props.data[0]}
-                styles={{opacity:1}}
+                // styles={}
                 // text={customText}
                 onCreate={props.onCreate}
                 onUpvote={props.onUpvote}

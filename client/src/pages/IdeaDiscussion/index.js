@@ -7,6 +7,8 @@ import DiscussionForm from "../../components/DiscussionForm";
 import API from "../../utils/API";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import Vote from "../../components/Vote"
+import DeleteBtn from "../../components/DeleteBtn";
 
 class IdeaDiscussion extends Component {
 
@@ -64,30 +66,6 @@ class IdeaDiscussion extends Component {
     },1);
   };
 
-  onUpvote = (data, voteId) => {
-    this.updateVote(data, voteId);
-  };
-
-  onDownvote = (data, voteId) => {
-    this.updateVote(data, voteId);
-  };  
-
-  onClose = (data, voteId) => {
-    this.updateVote(data, voteId);
-  };
-
-  onReset = (data, voteId) => {
-    this.updateVote(data, voteId);
-  };
-
-  onExpand = (data, voteId) => {
-    this.updateVote(data, voteId);
-  };
-
-  onEdit = (data, voteId) => {
-    this.updateVote(data, voteId);
-  };
-
   handleData = (voteId, campaignId) => {
     this.voteId = voteId;
     this.campaignId = campaignId;
@@ -124,6 +102,12 @@ class IdeaDiscussion extends Component {
     });
   };
 
+  deleteCampaign = () => {
+    const urlSplit = window.location.href.split('/');
+    const campaignId = urlSplit[4];
+    API.campaignDelete(campaignId).then(window.location.assign("/ideas/active"));
+  }
+
   render () {
     const campaignClicked = this.state.campaignClicked;
     return (
@@ -138,6 +122,7 @@ class IdeaDiscussion extends Component {
         >
           <div>
             <a href="/ideas/active">Back</a>
+            <DeleteBtn onClick ={this.deleteCampaign}/>
             {campaignClicked.vote === undefined ? (
               <div>
                 <p>Loading...</p>
@@ -148,23 +133,24 @@ class IdeaDiscussion extends Component {
                   <CampaignDisplay
                   campaignClickable={false}
                   handleData={() => {this.handleData(campaignClicked.vote[0]._id, campaignClicked._id)}}
-                  data={campaignClicked.vote}
                   title={campaignClicked.title}
                   author={campaignClicked.author}
                   synopsis={campaignClicked.synopsis}
                   key={campaignClicked._id}
-                  styles={{opacity:1}}
-                  // text={customText}
-                  onCreate={this.onCreate}
-                  onUpvote={this.onUpvote}
-                  onClose={this.onClose}
-                  onReset={this.onReset}
-                  onDownvote={this.onDownvote}
-                  onExpand={this.onExpand}
-                  onEdit={this.onEdit}
-                  isAdmin={true}
-                  clientId={this.state.userId}
-                  />
+                  >
+                    <Vote
+                    data={campaignClicked.vote}
+                    onCreate={this.onCreate}
+                    onUpvote={this.updateVote}
+                    onClose={this.updateVote}
+                    onReset={this.updateVote}
+                    onDownvote={this.updateVote}
+                    onExpand={this.updateVote}
+                    onEdit={this.updateVote}
+                    isAdmin={true}
+                    clientId={this.state.userId}
+                    />
+                  </CampaignDisplay>
                   {campaignClicked.comments.map((discussion, index) => 
                   <DiscussionDisplay
                   key={index}
@@ -181,27 +167,27 @@ class IdeaDiscussion extends Component {
             ):(
               <div>
                 <CampaignDisplay
-                // Commented out. I don't think we need this, and it causes errors since there is now vote on this discussion load
-                handleData={()=>this.handleData(campaignClicked.vote._id, campaignClicked._id)}
-                campaignClickable={false}
-                data={campaignClicked.vote}
-                title={campaignClicked.title}
-                author={campaignClicked.author}
-                synopsis={campaignClicked.synopsis}
-                key={campaignClicked._id}
-                styles={{opacity:1}}
-                // text={customText}
-                onCreate={this.onCreate}
-                onUpvote={this.onUpvote}
-                onClose={this.onClose}
-                onReset={this.onReset}
-                onDownvote={this.onDownvote}
-                onExpand={this.onExpand}
-                onEdit={this.onEdit}
-                isAdmin={true}
-                clientId={this.state.userId}
-                />
-                 {campaignClicked.comments.map((discussion, index) => 
+                  campaignClickable={false}
+                  handleData={() => {this.handleData(undefined, campaignClicked._id)}}
+                  title={campaignClicked.title}
+                  author={campaignClicked.author}
+                  synopsis={campaignClicked.synopsis}
+                  key={campaignClicked._id}
+                  >
+                    <Vote
+                    data={campaignClicked.vote}
+                    onCreate={this.onCreate}
+                    onUpvote={this.updateVote}
+                    onClose={this.updateVote}
+                    onReset={this.updateVote}
+                    onDownvote={this.updateVote}
+                    onExpand={this.updateVote}
+                    onEdit={this.updateVote}
+                    isAdmin={true}
+                    clientId={this.state.userId}
+                    />
+                  </CampaignDisplay>
+                  {campaignClicked.comments.map((discussion, index) => 
                   <DiscussionDisplay
                   key={index}
                   discussionData={discussion}

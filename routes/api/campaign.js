@@ -9,7 +9,8 @@ router.route('/')
 
 router
   .route("/:id")
-  .put(campaignController.updateCampaign);
+  .put(campaignController.updateCampaign)
+  .delete(campaignController.deleteCampaign)
 
 router.route("/active")
   .get(campaignController.getActiveCampaigns);
