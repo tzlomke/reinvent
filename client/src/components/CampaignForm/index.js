@@ -2,7 +2,21 @@ import React from 'react';
 import './CampaignForm.css';
 
 function CampaignForm(props)  {
-  console.log(props)
+  let buttonText;
+  (function noEmptyForms() {
+    const submitButton = document.getElementById('submitCampaign');
+    if (submitButton === null) {
+      console.log("hey")
+    } else if (props.campaignInput === "" || props.campaignInput === "") {
+      buttonText = "Please Enter all Information"
+      submitButton.disabled = true;
+    } else {
+      submitButton.disabled = false;
+      buttonText = "Submit"
+    };
+  })();
+
+  
 
     return(
       <div className= "modal" id="campaignFormModal">
@@ -20,7 +34,7 @@ function CampaignForm(props)  {
                 <label htmlFor="campaignIt">New Idea Here</label>
                 <textarea id="campaignIt" name="campaignInputArea" value={props.campaignInput} onChange={props.handleChange}></textarea>
               </section>
-                <button id="submitCampaign" type="submit" className="btn btn-dark modal-close" onClick = {props.handleFormSubmit}>Submit</button>
+                <button id="submitCampaign" type="submit" className="btn btn-dark modal-close" onClick = {props.handleFormSubmit}>{buttonText}</button>
               </form>
             </section>
       </div>
