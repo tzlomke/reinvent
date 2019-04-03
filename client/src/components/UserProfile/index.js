@@ -121,6 +121,7 @@ class UserProfile extends Component {
 				this.setState({
 					userID: userData._id,
 					userFullName: `${userData.firstName} ${userData.lastName}`,
+					authorInput: userData.username,
 					username: userData.username,
 					userCampaigns: userData.campaigns,
 				});
@@ -142,7 +143,7 @@ class UserProfile extends Component {
 		API.campaignPost({
 				title: this.state.titleInput,
 				author: this.state.authorInput,
-				userId: this.state.userId,
+				userID: this.state.userID,
 				synopsis: this.state.campaignInputArea
 			})
 			.then(response => {
@@ -162,9 +163,13 @@ class UserProfile extends Component {
 		window.$('.modal').modal();
 	};
 
-	// shouldComponentUpdate = () => {
-	// 	this.loadUser();
-	// };
+	componentDidUpdate() {
+		let userParam = this.props.location.pathname;
+		let usernameParam = userParam.split("/")[2];
+		if (this.state.username !== usernameParam) {
+			this.loadUser();
+		};
+   	};
 
 	render() {
 		const { user } = this.props.auth

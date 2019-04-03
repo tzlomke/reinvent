@@ -35,28 +35,6 @@ const ProfileData = (props) => {
 						</div>
 					</section>
 				</div>
-				
-				{/* New Idea Modal */}
-				{/* <div className= "modal" id="campaignFormModal">
-					<header className ="header">New Idea</header>
-					<section id="campaignEntry">
-						<form id="newCampaign">
-						<section id="newCampTitle">
-							<label htmlFor="titleIt">Title</label>
-							<input type="text" id="titleIt" name="titleInput" value={titleInput} onChange={handleChange}></input>
-						</section>
-						<section id="newCampAuthor">
-							<h6 id="authorIt" name="authorInput">{authorInput}</h6>
-						</section>
-						<section id="newCampSynop">
-							<label htmlFor="campaignIt">New Idea Here</label>
-							<textarea id="campaignIt" name="campaignInputArea" value={campaignInput} onChange={handleChange}></textarea>
-						</section>
-							<button id="submitCampaign" type="submit" className="btn btn-dark modal-close" onClick = {handleFormSubmit}>Submit</button>
-						</form>
-					</section>
-				</div> */}
-
 			</div>
 		);
 	} else {
