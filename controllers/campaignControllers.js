@@ -89,6 +89,16 @@ module.exports = {
     .then(dbCampaign => res.json(dbCampaign))
     .catch(err => res.json(err));
   },
+  // delete campaign
+  deleteCampaign: function (req, res) {
+    db.Campaign
+        .findById({
+            _id: req.params.id
+        })
+        .then(dbModel => dbModel.remove())
+        .then(dbModel => res.json(dbModel))
+        .catch(err => res.status(422).json(err));
+},
   // Create a discussion
   createDiscussion: (req, res) => {
     console.log(req.body)

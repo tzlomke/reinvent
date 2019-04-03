@@ -8,6 +8,7 @@ import "./style.css"
 import { Col, Row, Container } from "../../components/Grid";
 import { Title, SubTitle } from "../../components/Title";
 import { CardOutline } from "../../components/NewsCard";
+import DeleteBtn from "../../components/DeleteBtn";
 
 class Calendar extends Component {
     state = {
@@ -116,6 +117,8 @@ class Calendar extends Component {
         this.rebuildTooltip();
     };
 
+    deleteEvent = (eventId) => API.deleteEvent(eventId).then(this.loadEvents());
+
     render = () => (
 
         <Container>
@@ -155,7 +158,9 @@ class Calendar extends Component {
                         id={event._id}
                         globalEventOff="click"
                         effect="solid"
+                        clickable={true}
                         >
+                            <DeleteBtn onClick={() => this.deleteEvent(event._id)}/>
                             <span>{event.title}</span>
                             <br></br>
                             <span>{moment(event.start).format("h:mm A")}-{moment(event.end).format("h:mm A")}</span>

@@ -8,6 +8,7 @@ import API from "../../utils/API";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Vote from "../../components/Vote"
+import DeleteBtn from "../../components/DeleteBtn";
 
 class IdeaDiscussion extends Component {
 
@@ -65,30 +66,6 @@ class IdeaDiscussion extends Component {
     },1);
   };
 
-  onUpvote = (data, voteId) => {
-    this.updateVote(data, voteId);
-  };
-
-  onDownvote = (data, voteId) => {
-    this.updateVote(data, voteId);
-  };  
-
-  onClose = (data, voteId) => {
-    this.updateVote(data, voteId);
-  };
-
-  onReset = (data, voteId) => {
-    this.updateVote(data, voteId);
-  };
-
-  onExpand = (data, voteId) => {
-    this.updateVote(data, voteId);
-  };
-
-  onEdit = (data, voteId) => {
-    this.updateVote(data, voteId);
-  };
-
   handleData = (voteId, campaignId) => {
     this.voteId = voteId;
     this.campaignId = campaignId;
@@ -125,6 +102,12 @@ class IdeaDiscussion extends Component {
     });
   };
 
+  deleteCampaign = () => {
+    const urlSplit = window.location.href.split('/');
+    const campaignId = urlSplit[4];
+    API.campaignDelete(campaignId).then(window.location.assign("/ideas/active"));
+  }
+
   render () {
     const campaignClicked = this.state.campaignClicked;
     return (
@@ -139,6 +122,7 @@ class IdeaDiscussion extends Component {
         >
           <div>
             <a href="/ideas/active">Back</a>
+            <DeleteBtn onClick ={this.deleteCampaign}/>
             {campaignClicked.vote === undefined ? (
               <div>
                 <p>Loading...</p>

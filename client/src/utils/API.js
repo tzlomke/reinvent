@@ -26,14 +26,18 @@ export default {
   },
   // get closed campaigns
   closedCampaignGet: () => {
-    return axios.get("/api/campaign/closed")
+    return axios.get("/api/campaign/closed");
   },
   trendingCampaignGet: () => {
     return axios.get("/api/campaign/trending");
   },
   // update campaigns
   campaignPut: (id, campaignUpdate) => {
-    return axios.put('/api/campaign/' + id, campaignUpdate)
+    return axios.put('/api/campaign/' + id, campaignUpdate);
+  },
+  // delete campaign
+  campaignDelete: (id) => {
+    return axios.delete('/api/campaign/' + id);
   },
   // Post discussions
   discussionPost: (discussion) => {
@@ -75,6 +79,10 @@ export default {
     return axios.get("/api/event");
   },
 
+  deleteEvent: (id) => {
+    return axios.delete("/api/event/"+id);
+  },
+
   // create a resource
   createResource: (resourceData) => {
     return axios.post("/api/resource", resourceData);
@@ -85,6 +93,11 @@ export default {
     return axios.get("/api/resource");
   },
 
+  // delete resource 
+  deleteResource: (id) => {
+    return axios.delete("/api/resource/" + id);
+  },
+
   // Load News Articles Feed
   getArticles: function() {
     return axios.get("/api/news-feed");
@@ -93,11 +106,11 @@ export default {
   getArticle: function(id) {
     // console.log("im at single article");
     return axios.get("/api/news-feed/" + id);
-  }
+  },
   // // Deletes the artile with the given id
-  // deleteArticle: function(id) {
-  //   return axios.delete("/api/articles/" + id);
-  // },
+  deleteArticle: function(id) {
+    return axios.delete("/api/news-feed/" + id);
+  },
   // // Saves an article to the database
   // saveArticle: function(id, articlesData) {
   // return axios.post("/api/articles/" + id, articlesData);
