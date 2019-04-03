@@ -63,6 +63,7 @@ class NewsFeed extends Component {
   render() {
     return (
       <Container>
+        <button data-target="eventFormModal" className="btn modal-trigger">Post an Article</button>
         <Title 
           titleText="Latest News"
         />
