@@ -66,7 +66,7 @@ class UserProfile extends Component {
 						// Success
 						let fileName = response.data;
 						console.log( 'fileName', fileName );
-						this.ocShowAlert( 'File Uploaded', '#3089cf' );
+						this.ocShowAlert( 'File Uploaded', 'rgba(69, 69, 69, .5)' );
 						setTimeout(() => {
 							this.handleHideImageUploadModal();
 						}, 500)
@@ -84,7 +84,7 @@ class UserProfile extends Component {
 	};
 
 	// ShowAlert Function
-	ocShowAlert = (message, background = '#3089cf') => {
+	ocShowAlert = (message, background = 'rgba(69, 69, 69, .5)') => {
 		let alertContainer = document.querySelector('#oc-alert-container'),
 		alertEl = document.createElement('div'),
 		textNode = document.createTextNode(message);

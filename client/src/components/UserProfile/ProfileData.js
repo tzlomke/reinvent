@@ -14,10 +14,12 @@ const ProfileData = (props) => {
 						<h3>My Ideas</h3>
 						<ul className="campaign-list">
 							{userCampaigns.map(campaign => (
-								// This is corrected to campaign._id to allow it to be a valid key
-									<li className="campaign" key={campaign._id}>
-										{campaign.title}
-									</li>
+								<li className="campaign" key={campaign._id}>
+									<div className="profile-campaign-item">
+										<h4>{campaign.title}</h4>
+										<p>{campaign.synopsis}</p>
+									</div>
+								</li>
 							))}		
 						</ul>
 					</div>
