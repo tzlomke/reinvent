@@ -8,6 +8,8 @@ import { CardOutline } from "../../components/NewsCard";
 import { Link } from "react-router-dom";
 
 // This function was added due to problems with the idea route not properly loading 404 errors
+// Before this function, since ideas is not an exact path, 404 would load the header twice
+// Once in the ideas page, and once in the 404 page.
 (() => {
   const currentPath = window.location.pathname;
   console.log(currentPath)
