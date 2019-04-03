@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
 import classNames from "classnames";
+import "./style.css"
 
 class Login extends Component {
 
@@ -149,7 +150,7 @@ class Login extends Component {
 										marginTop: "1rem"
 									}}
 									type="submit"
-									className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+									className="btn auth-button"
 								>
 									Login
 								</button>
