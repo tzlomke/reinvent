@@ -16,8 +16,6 @@ function CampaignForm(props)  {
     };
   })();
 
-  
-
     return(
       <div className= "modal" id="campaignFormModal">
         <header className ="header">New Idea</header>
