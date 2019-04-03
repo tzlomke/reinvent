@@ -41,10 +41,14 @@ class IdeaDiscussion extends Component {
     const campaignId = urlSplit[4];
     API.campaignGet(campaignId)
       .then(response => {
-        const resDat = response.data[0];
-        this.setState({
-          campaignClicked: resDat
-        })
+        if(response.data.name === "CastError") {
+          window.location.pathname = "404"
+        } else {
+          const resDat = response.data[0];
+          this.setState({
+            campaignClicked: resDat
+          });
+        };
       });
   };
 
