@@ -3,7 +3,7 @@ import { Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Header from "../Header";
-import DynamicNavbar from "../Navbar"
+// import DynamicNavbar from "../Navbar";
 
 const PrivateRoute = ({ component: Component, auth, ...rest }) => (
 	<Route

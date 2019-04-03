@@ -74,7 +74,7 @@ class IdeaDiscussion extends Component {
     this.voteId = voteId;
     this.campaignId = campaignId;
     console.log(voteId,campaignId)
-    return voteId,campaignId;
+    return (voteId, campaignId);
   };
 
   componentDidMount = () => {

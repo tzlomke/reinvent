@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { logoutUser } from "../../actions/authActions";
+import ArticleForm from "../../components/ArticleForm";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { NewsCard, CardOutline } from "../../components/NewsCard";
 import moment from 'moment';
-import { Title, SubTitle } from "../../components/Title";
+import { Title } from "../../components/Title";
 
 import "./style.css";
 
@@ -17,14 +21,29 @@ class NewsFeed extends Component {
     title: "",
     author: "",
     content: "",
-    date: ""
-
+    date: "",
+    userId: "",
+    userName: "",
+    inputTitle: "",
+    inputAuthor: "",
+    inputContent: "",
   };
 
-  componentDidMount = () => {
-    this.loadFeed();
-  }
-
+  loadUser = () => {
+    let authenticatedUserId = this.props.auth.user.id
+    console.log(this.props.auth.user.id);
+		API.getUserById(authenticatedUserId)
+			.then(response => {
+        let userData = response.data[0]
+        console.log(userData);
+				this.setState({
+          userId: userData._id,
+          userName: `${userData.username}`,
+          inputAuthor: `${userData.firstName}` + " " + `${userData.lastName}`
+				});
+			});
+  };
+  
   loadFeed = () => {
     API.getArticles()
       .then(res =>
@@ -34,35 +53,62 @@ class NewsFeed extends Component {
       .catch(err => console.log(err));
   };
 
+  componentDidMount () {
+   this.loadUser();
+   this.loadFeed();
+   window.$('.modal').modal();
+  }
+
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+        [name]: value
+    });
+  };
+
+handleFormSubmit = event => {
+  event.preventDefault();
+  console.log("pressed")
+  // const articleForm = document.getElementById('newArticle');
+  if (this.state.inputTitle && this.state.inputAuthor) {
+    API.saveArticle({
+      title: this.state.inputTitle,
+      author: this.state.inputAuthor,
+      content: this.state.inputContent,
+      userId: this.state.userId
+    })
+      .then(res => {
+        this.loadFeed()
+        this.setState({
+          inputTitle: '',
+          inputContent: ''
+        });
+        // window.location.reload();  
+      })
+      // .then(response => {
+      //   (console.log(`You successfully posted: ${response.data.title}`));
+      // })
+      .catch(err => console.log(err));
+  }
+  // articleForm.reset();
+};
+
   // deleteArticle = id => {
   //   API.deleteArticle(id)
   //     .then(res => this.loadArticles())
   //     .catch(err => console.log(err));
   // };
 
-//   handleInputChange = event => {
-//     const { name, value } = event.target;
-//     this.setState({
-//       [name]: value
-//     });
-//   };
-
-//   handleFormSubmit = event => {
-//     event.preventDefault();
-//     if (this.state.title && this.state.author) {
-//       API.saveBook({
-//         title: this.state.title,
-//         author: this.state.author,
-//         content: this.state.content
-//       })
-//         .then(res => this.loadBooks())
-//         .catch(err => console.log(err));
-//     }
-//   };
-
   render() {
     return (
       <Container>
+        <button data-target="articleFormModal" className="btn modal-trigger">Post an Article</button>
+        <ArticleForm
+          inputTitle={this.state.inputTitle}
+          inputAuthor={this.state.inputAuthor}
+          inputContent={this.state.inputContent}
+          handleFormSubmit={this.handleFormSubmit}
+          handleInputChange={this.handleInputChange}/>
         <Title 
           titleText="Latest News"
         />
@@ -114,4 +160,13 @@ class NewsFeed extends Component {
   }
 }
 
-export default NewsFeed;
+// export default NewsFeed;
+
+NewsFeed.propTypes = {
+	auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+export default connect(mapStateToProps, { logoutUser })(NewsFeed);

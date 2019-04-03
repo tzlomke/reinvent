@@ -1,5 +1,5 @@
 import React from "react";
-import { Col, Row, Container } from "../Grid";
+import { Col, Row } from "../Grid";
 
 
 export function NewsCard({ cardTitle, cardText, cardSub, cardSub2, cardTextColor, cardLink, cardColor, cardAction, colSize, children }){

@@ -6,8 +6,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 // import DiscussionForm from '../../components/DiscussionForm';
 // import DiscussionDisplay from "../../components/DiscussionDisplay";
-import { Col, Row, Container } from "../../components/Grid";
-import { Title, SubTitle } from "../../components/Title";
+// import { Col, Row, Container } from "../../components/Grid";
+import { SubTitle } from "../../components/Title";
 import { CardOutline } from "../../components/NewsCard";
 import Vote from "../../components/Vote";
 
