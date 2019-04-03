@@ -41,7 +41,9 @@ class UserProfile extends Component {
 			selectedFile: event.target.files[0]
 		});
 
-		$(".image-select-button").text(`${event.target.files[0].name}`);
+		if (event.target.files[0]) {
+			$(".image-select-button").text(`${event.target.files[0].name}`);
+		};
 	};
 	
 	fileUploadHandler = () => {
