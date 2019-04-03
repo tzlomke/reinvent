@@ -103,6 +103,7 @@ module.exports = {
   createDiscussion: (req, res) => {
     console.log(req.body)
     db.Campaign
+      // When utilizing findOneAndUpdate, you must explicitly tell it to runValidators as an option
       .findOneAndUpdate({ _id: req.params.id }, { $push: { comments: req.body } }, { runValidators: true })
       .then(dbDiscussion => res.json(dbDiscussion))
       .catch(err => {res.json(err)})
