@@ -1,0 +1,38 @@
+#voteDisplay button {
+    color: #fff !important;
+    background-color: #26a69a !important;
+    text-align: center!important;
+    letter-spacing: .5px;
+    border-radius: 2px;
+    display: inline-block;
+    height: 20px;
+    padding: 3px !important;
+    text-transform: uppercase;
+    vertical-align: middle;
+    font-size: 12px !important;
+    margin: 0px 2px 0px 2px;
+
+}
+
+#voteDisplay input[type=checkbox]{
+    opacity: 1 !important;
+    position: relative !important;
+    top: 2px;
+    margin-left: 5px;
+}
+
+#voteDisplay div {
+    text-align: center;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif !important;
+    color: black !important;
+    font-size: 16px;
+}
+
+#voteDisplay label {
+    color: black;
+}
+
+#voteDisplay ::placeholder {
+    opacity: 1;
+    text-align: center;
+}

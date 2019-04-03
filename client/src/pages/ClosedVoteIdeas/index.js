@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import { Col, Row, Container } from "../../components/Grid";
 import { Title, SubTitle } from "../../components/Title";
 import { CardOutline } from "../../components/NewsCard";
+import Vote from "../../components/Vote"
 
 class ClosedVoteIdeas extends Component {
 
@@ -62,30 +63,6 @@ class ClosedVoteIdeas extends Component {
     },1);
   };
 
-  onUpvote = (data, voteId) => {
-    this.updateVote(data, voteId);
-  };
-
-  onDownvote = (data, voteId) => {
-    this.updateVote(data, voteId);
-  };  
-
-  onClose = (data, voteId) => {
-    this.updateVote(data, voteId);
-  };
-
-  onReset = (data, voteId) => {
-    this.updateVote(data, voteId);
-  };
-
-  onExpand = (data, voteId) => {
-    this.updateVote(data, voteId);
-  };
-
-  onEdit = (data, voteId) => {
-    this.updateVote(data, voteId);
-  };
-
   handleData = (voteId, campaignId) => {
     this.voteId = voteId;
     this.campaignId = campaignId;
@@ -110,46 +87,39 @@ class ClosedVoteIdeas extends Component {
           {this.state.campaignsFromDB.map(campaign =>
           campaign.map(campaign => (
             campaign.vote.length  !== 0 ? (
-              console.log(campaign.vote[0]._id),
               <CampaignDisplay
+              campaignClickable={true}
               handleData={()=>this.handleData(campaign.vote[0]._id, campaign._id)}
+              title={campaign.title}
+              author={campaign.author}
+              synopsis={campaign.synopsis}
+              key={campaign._id}
+              id={campaign._id}
+              >
+                <Vote
+                  onCreate={this.onCreate}
+                  onUpvote={this.updateVote}
+                  onClose={this.updateVote}
+                  onReset={this.updateVote}
+                  onDownvote={this.updateVote}
+                  onExpand={this.updateVote}
+                  onEdit={this.updateVote}
+                  isAdmin={true}
+                  clientId={this.state.userId}
+                  data={campaign.vote}
+                  />
+              </CampaignDisplay>
+            ):(
+              <CampaignDisplay
+              campaignClickable={true}
+              handleData={()=>this.handleData(campaign.vote._id, campaign._id)}
               data={campaign.vote}
               title={campaign.title}
               author={campaign.author}
               synopsis={campaign.synopsis}
               key={campaign._id}
-              styles={{opacity:1}}
-              // text={customText}
-              onCreate={this.onCreate}
-              onUpvote={this.onUpvote}
-              onClose={this.onClose}
-              onReset={this.onReset}
-              onDownvote={this.onDownvote}
-              onExpand={this.onExpand}
-              onEdit={this.onEdit}
-              isAdmin={true}
-              clientId={this.state.userId}
+              id={campaign._id}
               />
-            ):(
-              <CampaignDisplay
-                handleData={()=>this.handleData(campaign.vote._id, campaign._id)}
-                data={campaign.vote}
-                title={campaign.title}
-                author={campaign.author}
-                synopsis={campaign.synopsis}
-                key={campaign._id}
-                styles={{opacity:1}}
-                // text={customText}
-                onCreate={this.onCreate}
-                onUpvote={this.onUpvote}
-                onClose={this.onClose}
-                onReset={this.onReset}
-                onDownvote={this.onDownvote}
-                onExpand={this.onExpand}
-                onEdit={this.onEdit}
-                isAdmin={true}
-                clientId={this.state.userId}
-                />
               ) 
             ))
           )}

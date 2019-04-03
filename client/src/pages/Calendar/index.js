@@ -58,7 +58,10 @@ class Calendar extends Component {
 
     loadEvents = () => {
         API.getEvents()
-        .then(res => this.setState({ events: res.data }));
+        .then(res => {this.setState({ events: res.data })
+        console.log(res.data)
+        })
+        
     };
 
     componentDidMount = () => {
@@ -100,7 +103,7 @@ class Calendar extends Component {
                 });
             }
         });
-    }
+    };
 
     rebuildTooltip = () => {
         setTimeout(() => {
