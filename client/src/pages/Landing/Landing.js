@@ -113,12 +113,11 @@ class Landing extends Component {
 						
 						{/* Text Content */}
 						<div className="row">
-							<p className="text-content">
-								No matter what business you're in, the landscape is changing. The internet has created an ecosystem in which your ability to innovate can make or break your company.
-								Your two-year product development timeline? <span>Too slow.</span> Your top-down hierarchy? <span>Too rigid.</span> You know it, your competitors know it, 
-								and, perhaps most importantly, your employees know it. How are you going to keep up?
+							<p className="text-content" style={{lineHeight: "24px"}}>
+								Your two-year product development timeline? <span style={{fontWeight: "bold", fontSize: "24px"}}>Too slow.</span> Your top-down hierarchy? <span style={{fontWeight: "bold", fontSize: "24px"}}>Too rigid.</span> 
+								&nbsp;We're here to change all that. 
 
-								That's what we're here for. Re:invent is an innovation-management platform designed to source ideas from every level of your company. The best ideas will rise to the top.
+								
 							</p>
 						</div>
 

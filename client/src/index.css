@@ -1,6 +1,25 @@
 @font-face {
   font-family: "SpaceGrotesk";
   src: url("../src/fonts/SpaceGrotesk/SpaceGrotesk-Light.woff");
+  font-weight: light;
+}
+
+@font-face {
+  font-family: "SpaceGrotesk";
+  src: url("../src/fonts/SpaceGrotesk/SpaceGrotesk-Regular.woff");
+  font-weight: regular;
+}
+
+@font-face {
+  font-family: "SpaceGrotesk";
+  src: url("../src/fonts/SpaceGrotesk/SpaceGrotesk-Medium.woff");
+  font-weight: medium;
+}
+
+@font-face {
+  font-family: "SpaceGrotesk";
+  src: url("../src/fonts/SpaceGrotesk/SpaceGrotesk-Bold.woff");
+  font-weight: bold;
 }
 
 body {

@@ -92,7 +92,7 @@ class Login extends Component {
 
 						<div className="col s12" style={{ paddingLeft: "11.250px" }}>
 							<h4>
-								<b>Login</b> below
+								<span style={{fontSize: "45px"}}>Log in</span>  below
 							</h4>
 							<p className="grey-text text-darken-1">
 								Don't have an account? <Link to="/register">Register</Link>
@@ -152,7 +152,7 @@ class Login extends Component {
 									type="submit"
 									className="btn auth-button"
 								>
-									Login
+									Log in
 								</button>
 							</div>
 						</form>
