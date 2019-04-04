@@ -8,7 +8,7 @@ import $ from 'jquery';
 import ProfileData from "./ProfileData";
 import ProfilePicture from "./ProfilePicture";
 import defaultProfileImage from "../../images/DefaultProfilePic.png";
-import { /* Col, Row, */Container } from "../../components/Grid";
+import { /* Col, Row, */ Container } from "../../components/Grid";
 import CampaignForm from "../CampaignForm";
 import { CardOutline } from "../../components/NewsCard";
 import "./style.css";
