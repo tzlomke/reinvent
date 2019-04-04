@@ -7,7 +7,7 @@ function CampaignForm(props)  {
     const submitButton = document.getElementById('submitCampaign');
     if (submitButton === null) {
       console.log("hey")
-    } else if (props.campaignInput === "" || props.campaignInput === "") {
+    } else if (props.titleInput === "" || props.campaignInput === "") {
       buttonText = "Please Enter all Information"
       submitButton.disabled = true;
     } else {
