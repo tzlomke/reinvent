@@ -9,7 +9,7 @@ function EventForm (props)  {
       const submitButton = document.getElementById('submitEvent');
       if (submitButton === null) {
         return "User is on the rigth path."
-      } else if (props.eventTitle === "" || props.startDate === "") {
+      } else if (props.eventTitle === "" || props.startDate === "" || props.startTime === "" || props.endDate === "" || props.endTime === "" || props.eventInput === "") {
         buttonText = "Please Enter all Information"
         submitButton.disabled = true;
       } else {
@@ -41,7 +41,7 @@ function EventForm (props)  {
                     </section>
                     <section id="eventDescriptionSection">
                         <label htmlFor="eventDescription">Event Description</label>
-                        <textarea id="eventDescription" name="eventDescription" value={props.campaignInput} onChange={props.handleChange}></textarea>
+                        <textarea id="eventDescription" name="eventDescription" value={props.eventInput} onChange={props.handleChange}></textarea>
                     </section>
                     <button id="submitEvent" type="submit" className="btn btn-dark modal-close" onClick = {props.handleFormSubmit}>{buttonText}</button>
                 </form>
