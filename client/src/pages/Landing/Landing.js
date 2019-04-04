@@ -122,7 +122,7 @@ class Landing extends Component {
 								</div>
 
 								<p className="text-content" style={{lineHeight: "24px"}}>
-								Your two-year product development timeline? <span style={{fontWeight: "bold", fontSize: "24px"}}>Too slow.</span> Your top-down hierarchy? <span style={{fontWeight: "bold", fontSize: "24px"}}>Too rigid.</span> We're here to change all that. 
+								Your two-year product development timeline? <span style={{fontWeight: "bold", fontSize: "24px"}}>Too slow.</span> Your top-down hierarchy? <span style={{fontWeight: "bold", fontSize: "24px"}}>Too rigid.</span> We're here to <span style={{fontWeight: "bold", fontSize: "24px"}}>change that.</span> 
 
 								
 								</p>
