@@ -85,10 +85,6 @@ class Landing extends Component {
 								
 							</div>
 
-										
-
-						
-
 						</div>
 						<div className="ripple-background">
 							<div className="circle xxlarge shade1"></div>
