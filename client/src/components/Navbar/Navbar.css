@@ -4,8 +4,8 @@
   src: url("../../fonts/Arkipelago.otf") format("opentype");
 }
 @font-face {
-  font-family: "FatFont";
-  src: url("../../fonts/FATFONT/WEB/FREEFATFONT-Regular.woff2")
+  font-family: "Makhina";
+  src: url("../../fonts/makhina.ttf")
 }
 
 
