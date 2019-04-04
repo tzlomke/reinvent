@@ -147,7 +147,7 @@ mongoose.connect(
   const campaignSeed = [
     {
       title : "Staff Party Location",
-      author : "John Doe",
+      author : "Jack87",
       synopsis : "Please vote on where you would like the staff party to take place. Choices are Pete's, Snarfs or Mod Pizza.",
       date: new Date(Date.now()),
       comments : [
@@ -162,7 +162,7 @@ mongoose.connect(
     /* 2 */
     {
       title : "Resolving parking lot potholes.",
-      author : "Jane Doe",
+      author : "daniellois",
       synopsis : "Parking lot has developed some potholes over the last several years. Please vote on how we should address the issue. Our choices are redo entire asphault as soon as possible, temporarly fill the holes for now, wait to fit into next year's budget to resolve or do nothing.",
       date: new Date(Date.now()),      
       comments : [
@@ -182,7 +182,7 @@ mongoose.connect(
     /* 3 */
     {
       title : "Bonus Insentives",
-      author : "Daniel Lois",
+      author : "TaylorZ",
       synopsis : "Employees pay doesn't meet expectations. Vote on if bonus insentives should be given to compensate for that.",
       date: new Date(Date.now()),
       comments : [

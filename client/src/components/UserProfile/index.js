@@ -7,20 +7,25 @@ import axios from 'axios';
 import $ from 'jquery';
 import ProfileData from "./ProfileData";
 import ProfilePicture from "./ProfilePicture";
-import defaultProfileImage from "../../images/lightbulbCutout.png"
+import defaultProfileImage from "../../images/DefaultProfilePic.png";
 import { Col, Row, Container } from "../../components/Grid";
-import { Title, SubTitle } from "../../components/Title";
+import CampaignForm from "../CampaignForm";
 import { CardOutline } from "../../components/NewsCard";
+import "./style.css";
 
 class UserProfile extends Component {
 
 	state = {
+		userID: "",
 		userFullName: "",
 		username: "",
 		userCampaigns: [],
 		profileImage: "",
 		selectedFile: null,
-		showImageUploadModal: false
+		showImageUploadModal: false,
+		titleInput: '',
+		authorInput: '',
+		campaignInputArea: ''
 	};
 
 	handleShowImageUploadModal = () => {
@@ -35,12 +40,16 @@ class UserProfile extends Component {
 		this.setState({
 			selectedFile: event.target.files[0]
 		});
+
+		if (event.target.files[0]) {
+			$(".image-select-button").text(`${event.target.files[0].name}`);
+		};
 	};
 	
 	fileUploadHandler = () => {
 		const data = new FormData();
 		// If file selected
-		if ( this.state.selectedFile ) {
+		if ( this.state.selectedFile ) {	
 			data.append('profileImage', this.state.selectedFile, this.state.selectedFile.name);
 			axios.post(`/api/profile/${this.state.username}/profile-image-upload`, data, {
 				headers: {
@@ -64,7 +73,7 @@ class UserProfile extends Component {
 						// Success
 						let fileName = response.data;
 						console.log( 'fileName', fileName );
-						this.ocShowAlert( 'File Uploaded', '#3089cf' );
+						this.ocShowAlert( 'File Uploaded', 'rgba(69, 69, 69, .5)' );
 						setTimeout(() => {
 							this.handleHideImageUploadModal();
 						}, 500)
@@ -82,7 +91,7 @@ class UserProfile extends Component {
 	};
 
 	// ShowAlert Function
-	ocShowAlert = (message, background = '#3089cf') => {
+	ocShowAlert = (message, background = 'rgba(69, 69, 69, .5)') => {
 		let alertContainer = document.querySelector('#oc-alert-container'),
 		alertEl = document.createElement('div'),
 		textNode = document.createTextNode(message);
@@ -116,9 +125,10 @@ class UserProfile extends Component {
 				this.setState({
 					userID: userData._id,
 					userFullName: `${userData.firstName} ${userData.lastName}`,
+					authorInput: userData.username,
 					username: userData.username,
 					userCampaigns: userData.campaigns,
-				})
+				});
 				if (userData.profileImage[0] !== undefined) {
 					this.setState({
 						profileImage: userData.profileImage[userData.profileImage.length-1]
@@ -131,24 +141,62 @@ class UserProfile extends Component {
 			});
 	};
 
-	componentDidMount = () => {
-		this.loadUser();
+	handleFormSubmit = (event) => {
+		event.preventDefault()
+		const campaignForm = document.getElementById('newCampaign');
+		API.campaignPost({
+				title: this.state.titleInput,
+				author: this.state.authorInput,
+				userID: this.state.userID,
+				synopsis: this.state.campaignInputArea
+			})
+			.then(response => {
+				(console.log(`You successfully uploaded: ${response.data.title}`));
+			});
+		this.setState({
+			titleInput: '',
+			campaignInputArea: ''
+		});
+		campaignForm.reset();
+		// Add window.location.reload() to allow the ideas to auto refresh
+		window.location.reload();
 	};
+	
+	componentDidMount =() => {
+		this.loadUser()
+		window.$('.modal').modal();
+	};
+
+	componentDidUpdate() {
+		let userParam = this.props.location.pathname;
+		let usernameParam = userParam.split("/")[2];
+		if (this.state.username !== usernameParam) {
+			this.loadUser();
+		};
+   	};
 
 	render() {
 		const { user } = this.props.auth
 
 		return(
 			<Container>
-				<Title 
+				{/* <Title 
           			titleText="My Profile"
-				/>
+				/> */}
 				<CardOutline
 					colSize={ "12" } 
 					cardColor={ "" }
 					cardTextColor={ "" }
 				>
 					<div className="profile-wrapper">
+						<CampaignForm
+							titleInput={this.state.titleInput}
+							authorInput={this.state.authorInput}
+							campaignInput={this.state.campaignInputArea}
+							handleFormSubmit={this.handleFormSubmit}
+							handleChange={this.handleChange}
+						/>
+
 						<ProfilePicture 
 							handleShowImageUploadModal = {this.handleShowImageUploadModal}
 							handleHideImageUploadModal = {this.handleHideImageUploadModal}
@@ -156,13 +204,9 @@ class UserProfile extends Component {
 							fileSelectionHandler = {this.fileSelectionHandler}
 							fileUploadHandler = {this.fileUploadHandler}
 							profileImage = {this.state.profileImage}
+							userID = {this.state.userID}
+							authenticatedUserID = {user.id}
 						/>
-
-						{/* <ImageUpload 
-							ocShowAlert = {this.ocShowAlert}
-							fileSelectionHandler = {this.fileSelectionHandler}
-							fileUploadHandler = {this.fileUploadHandler}
-						/> */}
 
 						<ProfileData 
 							authenticatedUserID = {user.id}
@@ -170,7 +214,6 @@ class UserProfile extends Component {
 							userFullName = {this.state.userFullName}
 							username = {this.state.username}
 							userCampaigns = {this.state.userCampaigns}
-							logout = {this.onLogoutClick}
 						/>
 					</div>
 				</CardOutline>
