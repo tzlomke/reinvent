@@ -8,7 +8,7 @@ const Navbar = props => (
 	<div className="navbar-right ">
 		<Link
 			to="/News-Feed"
-			className="col s5 brand-logo center white-text nav-link"> News Feed
+			className="col s5 brand-logo center white-text nav-link"> News
 		</Link>
 		<span className="pipe">|</span>
 		<Link

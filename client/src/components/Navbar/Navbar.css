@@ -9,6 +9,16 @@
 }
 
 
+@media screen and (max-width:600px){
+  .navbar-right{
+    position:relative;
+    margin: 0 auto;
+    margin-bottom: 5px;
+  }
+  }
+.navbar-right {
+  margin-left: 5px;
+}
 .navbar {
   /* font-family: "Arkipelago"; */
   color: #ececec;
