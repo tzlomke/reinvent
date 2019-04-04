@@ -138,7 +138,7 @@ class ActiveVoteIdeas extends Component {
                 />
               ) 
             ))
-          )};
+          )}
         </div>
         </CardOutline>
       </div>

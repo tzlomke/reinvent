@@ -8,7 +8,7 @@ function Vote(props){
             <div>
                 <h5 className="center-align">Vote</h5>
                 <ReactVote
-                // styles={}   
+                styles={ {voteTitle: "voteTitle" } }  
                 // text={customText}
                 onCreate={props.onCreate}
                 onUpvote={props.onUpvote}
@@ -26,7 +26,7 @@ function Vote(props){
                 <h5 className="center-align">Vote</h5>
                 <ReactVote
                 data={props.data[0]}
-                // styles={}
+                styles={{voteTitle: {fontSize: "20px" }}}
                 // text={customText}
                 onCreate={props.onCreate}
                 onUpvote={props.onUpvote}
