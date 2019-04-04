@@ -73,7 +73,6 @@ class IdeaDiscussion extends Component {
   handleData = (voteId, campaignId) => {
     this.voteId = voteId;
     this.campaignId = campaignId;
-    console.log(voteId,campaignId)
     return (voteId, campaignId);
   };
 

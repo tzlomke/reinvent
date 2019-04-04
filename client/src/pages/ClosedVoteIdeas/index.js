@@ -22,11 +22,9 @@ class ClosedVoteIdeas extends Component {
 
   loadUser = () => {
     let authenticatedUserId = this.props.auth.user.id
-    console.log(this.props.auth.user.id);
 		API.getUserById(authenticatedUserId)
 			.then(response => {
         let userData = response.data[0]
-        console.log(userData);
 				this.setState({
 					userId: userData._id,
 					discussionAuthorInput: `${userData.username}`,
@@ -40,7 +38,6 @@ class ClosedVoteIdeas extends Component {
       .then(response => {
         campaignArray.push(response.data);
         this.setState({ campaignsFromDB: campaignArray });
-        console.log(response.data);
       });
   };
 
@@ -55,8 +52,6 @@ class ClosedVoteIdeas extends Component {
     setTimeout(() =>{
       data.campaign =[this.campaignId];
       voteAPI.saveVote(data).then(res => {
-          console.log(res.data._id);
-          console.log(res.data);
           API.campaignPut(this.campaignId, {vote: res.data._id})
           .then(res=>console.log(res.data))
       });
@@ -66,7 +61,6 @@ class ClosedVoteIdeas extends Component {
   handleData = (voteId, campaignId) => {
     this.voteId = voteId;
     this.campaignId = campaignId;
-    console.log(this.voteId, this.campaignId);
   };
 
   componentDidMount = () => {

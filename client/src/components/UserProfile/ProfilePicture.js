@@ -9,7 +9,7 @@ const ProfilePicture = (props) => {
 				<figure className="profile-image-container">
 					<img src={profileImage} alt="Profile Pic" style={{height: "190px", width: "190px"}}/>
 					<figcaption><i className="ion-android-add"></i></figcaption>
-					<a href="#" onClick={handleShowImageUploadModal}></a>
+					<a href="#" onClick={handleShowImageUploadModal} style={{opacity: "0"}}>Profile Pic</a>
 				</figure>
 				
 				<div className="modal-container" style={ showImageUploadModal ? {display: "inline-block"} : {display: "none"} }>

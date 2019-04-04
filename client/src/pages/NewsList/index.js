@@ -31,15 +31,13 @@ class NewsFeed extends Component {
 
   loadUser = () => {
     let authenticatedUserId = this.props.auth.user.id
-    console.log(this.props.auth.user.id);
 		API.getUserById(authenticatedUserId)
 			.then(response => {
         let userData = response.data[0]
-        console.log(userData);
 				this.setState({
           userId: userData._id,
           userName: `${userData.username}`,
-          inputAuthor: `${userData.firstName}` + " " + `${userData.lastName}`
+          inputAuthor: `${userData.firstName} ${userData.lastName}`
 				});
 			});
   };
@@ -47,8 +45,7 @@ class NewsFeed extends Component {
   loadFeed = () => {
     API.getArticles()
       .then(res =>
-        {this.setState({ articles: res.data, title: "", author: "", content: "", date: "" })
-        console.log(res.data)}
+        {this.setState({ articles: res.data, title: "", author: "", content: "", date: "" })}
       )
       .catch(err => console.log(err));
   };
