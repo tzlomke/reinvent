@@ -23,16 +23,14 @@ class ActiveVoteIdeas extends Component {
 
   loadUser = () => {
     let authenticatedUserId = this.props.auth.user.id
-    console.log(this.props.auth.user.id);
 		API.getUserById(authenticatedUserId)
 			.then(response => {
         let userData = response.data[0]
-        console.log(userData.username);
 				this.setState({
 					userId: userData._id,
 					discussionAuthorInput: `${userData.username}`,
         });
-        console.log('Hey' + this.state.discussionAuthorInput)
+        console.log('Hey ' + this.state.discussionAuthorInput)
 			});
 	};
 
@@ -65,7 +63,6 @@ class ActiveVoteIdeas extends Component {
   handleData = (voteId, campaignId) => {
     this.voteId = voteId;
     this.campaignId = campaignId;
-    console.log(voteId,campaignId)
   };
 
   componentDidMount = () => {
@@ -138,7 +135,7 @@ class ActiveVoteIdeas extends Component {
                 />
               ) 
             ))
-          )};
+          )}
         </div>
         </CardOutline>
       </div>

@@ -2,9 +2,7 @@ import React from 'react';
 import "./styles.css";
 
 const CampaignDisplay = (props) => {
-  const { title, author, synopsis, id, styles, onCreate, onUpvote,
-    onClose, onReset, onDownvote, onExpand, onEdit, isAdmin,
-    clientId, data, handleData, campaignClickable, children} = props;
+  const { title, author, synopsis, id, handleData, campaignClickable, children} = props;
 
   const profileRoute = `/profile/${author}`;
   const ideaRoute = `/ideas/${id}`

@@ -2,8 +2,7 @@ import React from 'react';
 import './ArticleForm.css';
 
 function ArticleForm(props)  {
-  console.log(props)
-
+  
     return(
       <div className= "modal" id="articleFormModal">
         <header className ="header">New Post</header>

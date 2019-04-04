@@ -1,6 +1,6 @@
 import React from 'react';
 import './EventForm.css';
-import { PresignedPost } from 'aws-sdk/clients/s3';
+// import { PresignedPost } from 'aws-sdk/clients/s3';
 
 function EventForm (props)  {
     return(
@@ -19,8 +19,8 @@ function EventForm (props)  {
                         <input type="text" className="starttimepicker" id="startTime" name="startTime" value={props.startTime} onChange={props.handleChange}></input>
                     </section>
                     <section id="endDateTimeSection">
-                    <label htmlFor="EndDate">End Date</label>
-                        <input id="EndDate" type="text" className="enddatepicker" id="endDate" name="endDate" value={props.endDate} onChange={props.handleChange}></input>
+                        <label htmlFor="EndDate">End Date</label>
+                        <input id="EndDate" type="text" className="enddatepicker" name="endDate" value={props.endDate} onChange={props.handleChange}></input>
                         <label htmlFor="EndTime">End Time</label>
                         <input type="text" className="endtimepicker" id="endTime" name="endTime" value={props.endTime} onChange={props.handleChange}></input>
                     </section>

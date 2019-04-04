@@ -2,7 +2,7 @@ import React from "react";
 import moment from "moment";
 
 const ProfileData = (props) => {
-	const { userFullName, username, userId, authenticatedUserID, userCampaigns, titleInput, handleChange, authorInput, campaignInput, handleFormSubmit } = props;
+	const { userFullName, username, userId, authenticatedUserID, userCampaigns } = props;
 	// Needs: Render User Info, Render User Campaign Data as Links, (Other Campaigns User Participates In? Upload and Render Bio?)
 	if (userId === authenticatedUserID) {
 		return(
