@@ -1,9 +1,9 @@
 import React from "react";
 
 const ProfilePicture = (props) => {
-	const { profileImage, handleShowImageUploadModal, handleHideImageUploadModal, fileSelectionHandler, fileUploadHandler, showImageUploadModal, userID, authenticatedUserID } = props;
+	const { profileImage, handleShowImageUploadModal, handleHideImageUploadModal, fileSelectionHandler, fileUploadHandler, showImageUploadModal, userId, authenticatedUserID } = props;
 	
-	if (userID === authenticatedUserID) {
+	if (userId === authenticatedUserID) {
 		return (
 			<div>
 				<figure className="profile-image-container">

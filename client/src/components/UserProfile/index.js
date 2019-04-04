@@ -16,7 +16,7 @@ import "./style.css";
 class UserProfile extends Component {
 
 	state = {
-		userID: "",
+		userId: "",
 		userFullName: "",
 		username: "",
 		userCampaigns: [],
@@ -123,7 +123,7 @@ class UserProfile extends Component {
 				};
 				let userData = response.data[0]
 				this.setState({
-					userID: userData._id,
+					userId: userData._id,
 					userFullName: `${userData.firstName} ${userData.lastName}`,
 					authorInput: userData.username,
 					username: userData.username,
@@ -147,7 +147,7 @@ class UserProfile extends Component {
 		API.campaignPost({
 				title: this.state.titleInput,
 				author: this.state.authorInput,
-				userID: this.state.userID,
+				userId: this.state.userId,
 				synopsis: this.state.campaignInputArea
 			})
 			.then(response => {
@@ -204,13 +204,13 @@ class UserProfile extends Component {
 							fileSelectionHandler = {this.fileSelectionHandler}
 							fileUploadHandler = {this.fileUploadHandler}
 							profileImage = {this.state.profileImage}
-							userID = {this.state.userID}
+							userId = {this.state.userId}
 							authenticatedUserID = {user.id}
 						/>
 
 						<ProfileData 
 							authenticatedUserID = {user.id}
-							userID = {this.state.userID}
+							userId = {this.state.userId}
 							userFullName = {this.state.userFullName}
 							username = {this.state.username}
 							userCampaigns = {this.state.userCampaigns}
