@@ -6,8 +6,8 @@ function CampaignForm(props)  {
   (function noEmptyForms() {
     const submitButton = document.getElementById('submitCampaign');
     if (submitButton === null) {
-      console.log("hey")
-    } else if (props.campaignInput === "" || props.campaignInput === "") {
+      return "User is on the Right Path"
+    } else if (props.titleInput === "" || props.campaignInput === "") {
       buttonText = "Please Enter all Information"
       submitButton.disabled = true;
     } else {

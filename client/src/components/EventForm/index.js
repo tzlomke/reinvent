@@ -3,6 +3,23 @@ import './EventForm.css';
 import { PresignedPost } from 'aws-sdk/clients/s3';
 
 function EventForm (props)  {
+
+    console.log(props)
+
+    let buttonText;
+    (function noEmptyForms() {
+      const submitButton = document.getElementById('submitEvent');
+      if (submitButton === null) {
+        return "User is on the rigth path."
+      } else if (props.eventTitle === "" || props.startDate === "" || props.startTime === "" || props.endDate === "" || props.endTime === "" || props.eventDescription === "") {
+        buttonText = "Please Enter all Information"
+        submitButton.disabled = true;
+      } else {
+        submitButton.disabled = false;
+        buttonText = "Submit"
+      };
+    })();
+
     return(
         <div className="modal" id="eventFormModal">
             <header className="header">New Event</header>
@@ -26,9 +43,9 @@ function EventForm (props)  {
                     </section>
                     <section id="eventDescriptionSection">
                         <label htmlFor="eventDescription">Event Description</label>
-                        <textarea id="eventDescription" name="eventDescription" value={props.campaignInput} onChange={props.handleChange}></textarea>
+                        <textarea id="eventDescription" name="eventDescription" value={props.eventDescription} onChange={props.handleChange}></textarea>
                     </section>
-                    <button id="submitEvent" type="submit" className="btn btn-dark modal-close" onClick = {props.handleFormSubmit}>Submit</button>
+                    <button id="submitEvent" type="submit" className="btn btn-dark modal-close" onClick = {props.handleFormSubmit}>{buttonText}</button>
                 </form>
             </section>
         </div>
