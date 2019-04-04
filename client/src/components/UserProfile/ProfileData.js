@@ -14,9 +14,9 @@ const ProfileData = (props) => {
 					</header>
 					<section className="user-data">
 						<div className="user-campaigns">
-							<h3 style={{fontFamily: "FatFont", display: "inline-block"}}>My Ideas</h3>
+							<h3 style={{fontFamily: "Makhina", display: "inline-block"}}>My Ideas</h3>
 							<div className="mt-5" style={{display: "inline-block"}}>
-								<button className="btn image-upload-modal-button modal-trigger" data-target="campaignFormModal" style={{marginLeft: "620px", paddingBottom: "35px", display: "inline-block", height: "32px", float: "right"}}>New Idea +</button>
+								<button className="btn image-upload-modal-button modal-trigger" data-target="campaignFormModal" style={{marginLeft: "600px", paddingBottom: "35px", display: "inline-block", height: "32px", float: "right"}}>New Idea +</button>
 							</div>
 							<ul className="profile-campaign-list">
 								{userCampaigns.map(campaign => (
