@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
 import classNames from "classnames";
+import "./style.css";
 
 class Register extends Component {
 	
@@ -20,9 +21,9 @@ class Register extends Component {
 	};
 
 	componentDidMount() {
-		// If logged in and user navigates to Register page, should redirect them to dashboard
+		// If logged in and user navigates to Register page, should redirect them to news-feed, can change
 		if (this.props.auth.isAuthenticated) {
-		 	this.props.history.push("/dashboard");
+		 	this.props.history.push("/news-feed");
 		}
 	};
 
@@ -71,12 +72,12 @@ class Register extends Component {
 		event.preventDefault();
 		
 		const newUser = {
-			firstName: this.state.firstName,
-			lastName: this.state.lastName,
-			username: this.state.username,
-			password: this.state.password,
-			confirmPassword: this.state.confirmPassword,
-			fullName: `${this.state.firstName} ${this.state.lastName}`
+			firstName: this.state.firstName.trim(),
+			lastName: this.state.lastName.trim(),
+			username: this.state.username.trim(),
+			password: this.state.password.trim(),
+			confirmPassword: this.state.confirmPassword.trim(),
+			fullName: this.state.firstName.trim() + " " + this.state.lastName.trim()
 		};
 		
 		this.props.registerUser(newUser, this.props.history);
@@ -98,7 +99,7 @@ class Register extends Component {
 						
 						<div className="col s12" style={{ paddingLeft: "11.250px" }}>
 							<h4>
-								<b>Register</b> below
+								<span style={{fontSize: "45px"}}>Register</span> below
 							</h4>
 							<p className="grey-text text-darken-1">
 								Already have an account? <Link to="/login">Log in</Link>
@@ -201,7 +202,7 @@ class Register extends Component {
 										marginTop: "1rem"
 									}}
 									type="submit"
-									className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+									className="btn auth-button"
 								>
 									Sign up
 								</button>

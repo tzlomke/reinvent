@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
 import classNames from "classnames";
+import "./style.css"
 
 class Login extends Component {
 
@@ -17,15 +18,15 @@ class Login extends Component {
 	};
 
 	componentDidMount() {
-		// If logged in and user navigates to Login page, should redirect them to dashboard
+		// If logged in and user navigates to Login page, should redirect them to news-feed
 		if (this.props.auth.isAuthenticated) {
-		  	this.props.history.push("/dashboard");
+		  	this.props.history.push("/news-feed");
 		}
 	};
 
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.auth.isAuthenticated) {
-		  	this.props.history.push("/dashboard"); // push user to dashboard when they login
+		  	this.props.history.push("/news-feed"); // push user to news feed when they login
 		}
 		
 		if (nextProps.errors) {
@@ -91,7 +92,7 @@ class Login extends Component {
 
 						<div className="col s12" style={{ paddingLeft: "11.250px" }}>
 							<h4>
-								<b>Login</b> below
+								<span style={{fontSize: "45px"}}>Log in</span>  below
 							</h4>
 							<p className="grey-text text-darken-1">
 								Don't have an account? <Link to="/register">Register</Link>
@@ -149,9 +150,9 @@ class Login extends Component {
 										marginTop: "1rem"
 									}}
 									type="submit"
-									className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+									className="btn auth-button"
 								>
-									Login
+									Log in
 								</button>
 							</div>
 						</form>
