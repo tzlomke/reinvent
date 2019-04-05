@@ -39,21 +39,21 @@ class Ideas extends Component {
   handleFormSubmit = (event) => {
     event.preventDefault()
     const campaignForm = document.getElementById('newCampaign');
+    const newCampaignId = "";
     API.campaignPost({
       title: this.state.titleInput,
       author: this.state.authorInput,
       userId: this.state.userId,
       synopsis: this.state.campaignInputArea})
       .then(response => {
-        (console.log(`You successfully uploaded: ${response.data.title}`));
+        window.location.assign(`/ideas/${response.data}`);
       });
     this.setState({
       titleInput: '',
       campaignInputArea: ''
     });
     campaignForm.reset();
-    // Add window.location.reload() to allow the ideas to auto refresh
-    window.location.reload();
+
   };
 
   handleChange = (event) => {

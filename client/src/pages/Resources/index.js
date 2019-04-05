@@ -91,7 +91,7 @@ class Resources extends Component {
                             ))}
                         </List>
                     ) : (
-                        <h3>No Resources to Display</h3>
+                        <h3>Loading Resources...</h3>
                     )}
                 </CardOutline>
             </Row>
