@@ -10,6 +10,7 @@ import { List, ListItem } from "../../components/List";
 import { NewsCard, CardOutline } from "../../components/NewsCard";
 import moment from 'moment';
 import { Title } from "../../components/Title";
+import { StyleButton, StyleLink } from "../../components/StyleButton";
 
 import "./style.css";
 
@@ -83,26 +84,26 @@ handleFormSubmit = event => {
           inputTitle: '',
           inputContent: ''
         });
-        // window.location.reload();  
       })
-      // .then(response => {
-      //   (console.log(`You successfully posted: ${response.data.title}`));
-      // })
       .catch(err => console.log(err));
   }
   // articleForm.reset();
 };
 
-  // deleteArticle = id => {
-  //   API.deleteArticle(id)
-  //     .then(res => this.loadArticles())
-  //     .catch(err => console.log(err));
-  // };
-
   render() {
     return (
       <Container>
-        <button data-target="articleFormModal" className="btn modal-trigger">Post an Article</button>
+        {/* <StyleLink
+          btnTxt="test"
+          linkTo="/calendar"
+        /> */}
+        <StyleButton
+          btnTxt="Post an Article"
+          dataTarget="articleFormModal"
+          modal= {true}
+          // modalClose= {true}
+        />
+        {/* <button data-target="articleFormModal" className="btn modal-trigger">Post an Article</button> */}
         <ArticleForm
           inputTitle={this.state.inputTitle}
           inputAuthor={this.state.inputAuthor}

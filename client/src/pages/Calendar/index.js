@@ -9,6 +9,7 @@ import { Container } from "../../components/Grid";
 import { Title } from "../../components/Title";
 import { CardOutline } from "../../components/NewsCard";
 import DeleteBtn from "../../components/DeleteBtn";
+import { StyleButton, StyleLink } from "../../components/StyleButton";
 
 class Calendar extends Component {
     state = {
@@ -122,7 +123,12 @@ class Calendar extends Component {
     render = () => (
 
         <Container>
-            <button data-target="eventFormModal" className="btn modal-trigger">Add an Event</button>
+            {/* <button data-target="eventFormModal" className="btn modal-trigger">Add an Event</button> */}
+            <StyleButton
+                btnTxt="Add an Event"
+                dataTarget="eventFormModal"
+                modal= {true}
+            />
             <Title 
                 titleText="Calendar"
             />

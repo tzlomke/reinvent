@@ -6,6 +6,7 @@ import ResourceForm from "../../components/ResourcesForm";
 import { Title } from "../../components/Title";
 import DeleteBtn from "../../components/DeleteBtn";
 import { CardOutline } from "../../components/NewsCard";
+import { StyleButton } from "../../components/StyleButton";
 
 
 
@@ -60,7 +61,12 @@ class Resources extends Component {
     render() {
         return (
         <Container>
-            <button data-target="resourceFormModal" className="btn modal-trigger">Add a Resource Link</button>
+            {/* <button data-target="resourceFormModal" className="btn modal-trigger">Add a Resource Link</button> */}
+            <StyleButton
+                btnTxt="Add a Resource Link"
+                dataTarget="resourceFormModal"
+                modal= {true}
+            />
             <Title 
                 titleText="Resources"
             />
