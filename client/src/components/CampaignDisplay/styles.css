@@ -10,14 +10,14 @@ button {
 }
 
 /* Interesting shimmer effect */
-.ideaTitle, .ideaAuthor {
+.ideaTitleClick, .ideaAuthor {
   color: black;
   background-position: -500%;
   transition: background-position 1.5s ease-in-out;
 }
 
-.ideaTitle:hover, .ideaAuthor:hover {
-  background: linear-gradient(90deg, white, black);
+.ideaTitleClick:hover, .ideaAuthor:hover {
+  background: linear-gradient(90deg, white, #f46717);
   background-repeat: no-repeat;
   background-size: 80%;
   background-clip: text;
@@ -28,14 +28,38 @@ button {
 .ideaUnderline, .authorUnderline {
   width: 0%;
   height: .2rem;
-  border-bottom: .2rem solid black;
+  border-bottom: .2rem solid #f46717;
   transition: width 1s ease-in-out;
 }
 
-.ideaTitle:hover + .ideaUnderline {
+.ideaTitleClick:hover + .ideaUnderline {
   width: 90%;
 }
 
 .ideaAuthor:hover + .authorUnderline {
   width: 30%;
+}
+
+.ideaSynopsisContainer {
+  width: 5%;
+  padding: 5% 0%;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  border-radius: 1rem;
+  transition: width 1s ease-in-out;
+}
+
+.ideaSynopsis {
+  color: #f46717;
+  font-size: 0rem;
+  padding: 0% 2%;
+  transition: font-size 1s ease-in-out;
+}
+
+.ideaSynopsisContainer:hover {
+  width: 100%;
+}
+
+.ideaSynopsisContainer:hover > .ideaSynopsis {
+  font-size: 1.5rem;
 }

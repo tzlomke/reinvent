@@ -3,16 +3,6 @@ import "./styles.css";
 
 const CampaignDisplay = (props) => {
 
-  // (function addUnderline() {
-  //   const underlineDiv = document.getElementsByClassName("preUnderline");
-  //   if(underlineDiv.length === 0) {
-  //     // addUnderline();
-  //     console.log("zero")
-  //   } else {
-  //     console.log("no longer zero")
-  //   }
-  // })();
-
   const { title, author, synopsis, id, handleData, campaignClickable, children} = props;
 
   const profileRoute = `/profile/${author}`;
@@ -25,7 +15,7 @@ const CampaignDisplay = (props) => {
           <section id="campaignDisplay" className="col s9">
             {campaignClickable ? (
               <a title="Click to Expand Idea" href={ideaRoute} className="campaignAnchor">
-                <h2 className="ideaTitle">{title}</h2>
+                <h2 className="ideaTitleClick">{title}</h2>
                 <div className="ideaUnderline"></div>
               </a>
             ) : (
@@ -35,7 +25,10 @@ const CampaignDisplay = (props) => {
               <h5 className="ideaAuthor"> {author}</h5>
               <div className="authorUnderline"></div>
             </a>
-            <p>{synopsis}</p>
+            <br></br>
+            <section className="ideaSynopsisContainer">
+              <p className="ideaSynopsis">{synopsis}</p>
+            </section>
           </section>
 
         
