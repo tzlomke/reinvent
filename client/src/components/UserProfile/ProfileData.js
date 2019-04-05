@@ -2,9 +2,9 @@ import React from "react";
 import moment from "moment";
 
 const ProfileData = (props) => {
-	const { userFullName, username, userID, authenticatedUserID, userCampaigns, titleInput, handleChange, authorInput, campaignInput, handleFormSubmit } = props;
+	const { userFullName, username, userId, authenticatedUserID, userCampaigns } = props;
 	// Needs: Render User Info, Render User Campaign Data as Links, (Other Campaigns User Participates In? Upload and Render Bio?)
-	if (userID === authenticatedUserID) {
+	if (userId === authenticatedUserID) {
 		return(
 			// User Data
 			<div>
@@ -14,9 +14,9 @@ const ProfileData = (props) => {
 					</header>
 					<section className="user-data">
 						<div className="user-campaigns">
-							<h3 style={{fontFamily: "FatFont", display: "inline-block"}}>My Ideas</h3>
+							<h3 style={{fontFamily: "Makhina", display: "inline-block"}}>My Ideas</h3>
 							<div className="mt-5" style={{display: "inline-block"}}>
-								<button className="btn image-upload-modal-button modal-trigger" data-target="campaignFormModal" style={{marginLeft: "620px", paddingBottom: "35px", display: "inline-block", height: "32px", float: "right"}}>New Idea +</button>
+								<button className="btn image-upload-modal-button modal-trigger" data-target="campaignFormModal" style={{marginLeft: "600px", paddingBottom: "35px", display: "inline-block", height: "32px", float: "right"}}>New Idea +</button>
 							</div>
 							<ul className="profile-campaign-list">
 								{userCampaigns.map(campaign => (

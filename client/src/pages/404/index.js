@@ -3,7 +3,7 @@ import ast404ronaut from '../../images/astro-selfie-bw.png';
 import './style.css';
 import Header from '../../components/Header';
 import { Container } from "../../components/Grid";
-import { Title, SubTitle } from "../../components/Title";
+import { Title, /* SubTitle */ } from "../../components/Title";
 import { CardOutline } from "../../components/NewsCard";
 // import { Link } from "react-router-dom";
 import {  StyleLink } from "../../components/StyleButton";
@@ -13,7 +13,6 @@ import {  StyleLink } from "../../components/StyleButton";
 // Once in the ideas page, and once in the 404 page.
 (() => {
   const currentPath = window.location.pathname;
-  console.log(currentPath.match("/ideas"));
   if(currentPath !== "/ideas") {
   // The if() below is highly problematic, and reroutes like crazy
   // Since the ideas path is really the only path that has issues with 404, the code has been rewritten as above

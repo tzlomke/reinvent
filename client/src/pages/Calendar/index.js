@@ -39,8 +39,8 @@ class Calendar extends Component {
         const eventForm = document.getElementById('eventForm');
         API.createEvent({
             title: this.state.eventTitle,
-            start: "" + this.state.startDate + " " + this.state.startTime + "",
-            end: "" + this.state.endDate + " " + this.state.endTime+ "",
+            start: moment("" + this.state.startDate + " " + this.state.startTime).format("MM-DD-YYYY HH:mm") + "",
+            end: moment("" + this.state.endDate + " " + this.state.endTime).format("MM-DD-YYYY HH:mm") + "",
             description: this.state.eventDescription
         })
         .then(response => {
@@ -78,30 +78,14 @@ class Calendar extends Component {
                     onSelect:(date)=>(this.setState({endDate: moment(date).format("MM-DD-YYYY")}))
                 });
                 window.$('.starttimepicker').timepicker({
-                    onSelect:(hours, mins)=>{
-                        if ( hours.toString().length === 1 ) {
-                            hours = "0" + hours;
-                        };
-                        if ( mins.toString().length === 1 ) {
-                            mins = "0" + mins;
-                        };
-                        const time = hours + ":" + mins
-                        this.setState({startTime: time})
-                    },
-                    twelveHour: false
+                    onCloseEnd: () => this.setState(
+                        {startTime: window.$(".starttimepicker").val()}
+                        )
                 });
                 window.$('.endtimepicker').timepicker({
-                    onSelect:(hours, mins)=>{
-                        if ( hours.toString().length === 1 ) {
-                            hours = "0" + hours;
-                        };
-                        if ( mins.toString().length === 1 ) {
-                            mins = "0" + mins;
-                        };
-                        const time = hours + ":" + mins
-                        this.setState({endTime: time})
-                    },
-                    twelveHour: false
+                    onCloseEnd: () => this.setState(
+                        {endTime: window.$(".endtimepicker").val()}
+                        )
                 });
             }
         });
@@ -169,7 +153,7 @@ class Calendar extends Component {
                             <DeleteBtn onClick={() => this.deleteEvent(event._id)}/>
                             <span>{event.title}</span>
                             <br></br>
-                            <span>{moment(event.start).format("h:mm A")}-{moment(event.end).format("h:mm A")}</span>
+                            <span>{moment(event.start).format("M-D-YY h:mm A")} - {moment(event.end).format("M-D-YY h:mm A")}</span>
                             <br></br>
                             <span>{event.description}</span>
                         </ReactTooltip>

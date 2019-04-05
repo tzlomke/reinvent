@@ -85,10 +85,6 @@ class Landing extends Component {
 								
 							</div>
 
-										
-
-						
-
 						</div>
 						<div className="ripple-background">
 							<div className="circle xxlarge shade1"></div>
@@ -155,46 +151,46 @@ class Landing extends Component {
 							<div className="col s12">
 
 								<div className="custom-columns">
-									<figure class="developer-profile">
+									<figure className="developer-profile">
 										<img src={Brant} alt="Brant Keener" style={{height: "140px", width: "140px"}}/>
-										<figcaption><i class="ion-social-linkedin"></i></figcaption>
-										<a href="https://www.linkedin.com/in/brant-keener-68249bb5/" target="_blank"></a>
+										<figcaption><i className="ion-social-linkedin"></i></figcaption>
+										<a href="https://www.linkedin.com/in/brant-keener-68249bb5/" target="_blank" rel="noopener noreferrer" style={{opacity: "0"}}>Brant</a>
 									</figure>
 									<p className="developer-name">Brant Keener</p>
 								</div>
 
 								<div className="custom-columns">
-									<figure class="developer-profile">
+									<figure className="developer-profile">
 										<img src={Akop} alt="Akop (Jack) Karapetyan" style={{height: "140px", width: "140px"}}/>
-										<figcaption><i class="ion-social-linkedin"></i></figcaption>
-										<a href="https://www.linkedin.com/in/akopkarapetyan/" target="_blank"></a>
+										<figcaption><i className="ion-social-linkedin"></i></figcaption>
+										<a href="https://www.linkedin.com/in/akopkarapetyan/" target="_blank" rel="noopener noreferrer" style={{opacity: "0"}}>Akop</a>
 									</figure>
 									<p className="developer-name">Akop Karapetyan</p>
 								</div>
 
 								<div className="custom-columns">
-									<figure class="developer-profile">
+									<figure className="developer-profile">
 										<img src={Taylor} alt="Taylor Zlomke" style={{height: "140px", width: "140px"}}/>
-										<figcaption><i class="ion-social-linkedin"></i></figcaption>
-										<a href="https://www.linkedin.com/in/taylorzlomke/" target="_blank"></a>
+										<figcaption><i className="ion-social-linkedin"></i></figcaption>
+										<a href="https://www.linkedin.com/in/taylorzlomke/" target="_blank" rel="noopener noreferrer" style={{opacity: "0"}}>Taylor</a>
 									</figure>
 									<p className="developer-name">Taylor Zlomke</p>
 								</div>
 
 								<div className="custom-columns">
-									<figure class="developer-profile">
+									<figure className="developer-profile">
 										<img src={Andy} alt="Andrew Marshall" style={{height: "140px", width: "140px"}}/>
-										<figcaption><i class="ion-social-linkedin"></i></figcaption>
-										<a href="https://www.linkedin.com/in/andrewmarshall85/" target="_blank"></a>
+										<figcaption><i className="ion-social-linkedin"></i></figcaption>
+										<a href="https://www.linkedin.com/in/andrewmarshall85/" target="_blank" rel="noopener noreferrer" style={{opacity: "0"}}>Andy</a>
 									</figure>
 									<p className="developer-name">Andrew Marshall</p>
 								</div>
 								
 								<div className="custom-columns">
-									<figure class="developer-profile">
+									<figure className="developer-profile">
 										<img src={Daniel} alt="Daniel Lois" style={{height: "140px", width: "140px"}}/>
-										<figcaption><i class="ion-social-linkedin"></i></figcaption>
-										<a href="https://www.linkedin.com/in/daniel-lois-53759569/" target="_blank"></a>
+										<figcaption><i className="ion-social-linkedin"></i></figcaption>
+										<a href="https://www.linkedin.com/in/daniel-lois-53759569/" target="_blank" rel="noopener noreferrer" style={{opacity: "0"}}>Daniel</a>
 									</figure>
 									<p className="developer-name">Daniel Lois</p>
 								</div>

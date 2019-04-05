@@ -8,7 +8,7 @@ import ActiveVoteIdeas from "../ActiveVoteIdeas";
 import ClosedVoteIdeas from "../ClosedVoteIdeas";
 import TrendingVoteIdeas from "../TrendingVoteIdeas";
 import IdeaDiscussion from "../IdeaDiscussion";
-import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import CampaignForm from "../../components/CampaignForm";
 import { Container } from "../../components/Grid";
 import page404 from "../404";
@@ -26,11 +26,9 @@ class Ideas extends Component {
 
   loadUser = () => {
     let authenticatedUserId = this.props.auth.user.id
-    console.log(this.props.auth.user.id);
 		API.getUserById(authenticatedUserId)
 			.then(response => {
         let userData = response.data[0]
-        console.log(userData);
 				this.setState({
 					userId: userData._id,
 					authorInput: `${userData.username}`,
@@ -41,21 +39,21 @@ class Ideas extends Component {
   handleFormSubmit = (event) => {
     event.preventDefault()
     const campaignForm = document.getElementById('newCampaign');
+    const newCampaignId = "";
     API.campaignPost({
       title: this.state.titleInput,
       author: this.state.authorInput,
       userId: this.state.userId,
       synopsis: this.state.campaignInputArea})
       .then(response => {
-        (console.log(`You successfully uploaded: ${response.data.title}`));
+        window.location.assign(`/ideas/${response.data}`);
       });
     this.setState({
       titleInput: '',
       campaignInputArea: ''
     });
     campaignForm.reset();
-    // Add window.location.reload() to allow the ideas to auto refresh
-    window.location.reload();
+
   };
 
   handleChange = (event) => {
