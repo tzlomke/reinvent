@@ -9,6 +9,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Vote from "../../components/Vote"
 import DeleteBtn from "../../components/DeleteBtn";
+import { StyleButton, StyleLink } from "../../components/StyleButton";
+
 
 class IdeaDiscussion extends Component {
 
@@ -17,7 +19,8 @@ class IdeaDiscussion extends Component {
     authorInput: '',
     campaignClicked: {},
     discussionAuthorInput: '',
-    discussInputArea: ''
+    discussInputArea: '',
+    inputAuthor: ""
   }
 
   voteId="";
@@ -30,7 +33,8 @@ class IdeaDiscussion extends Component {
         let userData = response.data[0]
         this.setState({
           userId: userData._id,
-          discussionAuthorInput: userData.username
+          discussionAuthorInput: userData.username,
+          inputAuthor: `${userData.firstName} ${userData.lastName}`
         });
         return 'Complete!';
       });
@@ -86,7 +90,8 @@ class IdeaDiscussion extends Component {
     const discussionForm = document.getElementById('newDiscussion');
     API.discussionPost({
       id: this.state.campaignClicked._id,
-      author: this.state.discussionAuthorInput,
+      author: this.state.inputAuthor,
+      userId: this.state.userId,
       body: this.state.discussInputArea})
       .then(response => {
         return response.status;
@@ -125,7 +130,10 @@ class IdeaDiscussion extends Component {
           cardTextColor={ "" }
         >
           <div>
-            <a className="btn btn-dark" href="/ideas/active">Back</a>
+            <StyleLink
+              btnTxt="Back to Ideas"
+              linkTo={"/ideas/active"}
+            />
             <DeleteBtn onClick ={this.deleteCampaign}/>
             {campaignClicked.vote === undefined ? (
               <div>
@@ -201,7 +209,7 @@ class IdeaDiscussion extends Component {
                   discussionSubmit={this.handleDiscussionSubmit}
                   discussionFormChange={this.handleChange}
                   discussionTitleInput={this.state.discussionTitleInput}
-                  discussionAuthorInput={this.state.discussionAuthorInput}
+                  discussionAuthorInput={this.state.inputAuthor}
                   discussInputArea={this.state.discussInputArea}/>
                 </div>
               )

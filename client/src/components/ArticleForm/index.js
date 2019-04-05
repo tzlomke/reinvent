@@ -1,5 +1,6 @@
 import React from 'react';
 import './ArticleForm.css';
+import { StyleButton } from "../../components/StyleButton";
 
 function ArticleForm(props)  {
   
@@ -19,9 +20,14 @@ function ArticleForm(props)  {
                 <label htmlFor="content">Enter Content</label>
                 <textarea id="content" name="inputContent" value={props.inputContent} onChange={props.handleInputChange}></textarea>
               </section>
-                <button id="submitArticle" type="submit" className="btn btn-dark modal-close" onClick = {props.handleFormSubmit}>Submit</button>
-              </form>
-            </section>
+              <StyleButton
+                btnTxt="Post Article"
+                id="submitArticle"
+                onClick={props.handleFormSubmit}
+                modalClose= {true}
+              />
+            </form>
+          </section>
       </div>
     );
 };

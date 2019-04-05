@@ -1,4 +1,7 @@
 import React from 'react';
+import './ResourcesForm.css';
+import { StyleButton } from "../../components/StyleButton";
+
 
 function CampaignForm(props)  {
     return(
@@ -19,6 +22,12 @@ function CampaignForm(props)  {
                         <input type="text" id="resourceCategory" name="category" value={props.authorInput} onChange={props.handleChange}></input>
                     </section> */}
                     <button id="submitResource" type="submit" className="modal-close" onClick = {props.handleFormSubmit}>Add Resource</button>
+                    <StyleButton
+                        btnTxt="Add Resource"
+                        id="submitResource"
+                        onClick={props.handleFormSubmit}
+                        modalClose= {true}
+                    />
                 </form>
             </section>
         </div>
