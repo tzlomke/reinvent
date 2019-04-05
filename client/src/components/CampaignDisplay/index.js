@@ -27,6 +27,7 @@ const CampaignDisplay = (props) => {
             </a>
             <br></br>
             <section className="ideaSynopsisContainer">
+              <p className="synopsisInstructions">Synopsis: Hover to Expand</p>
               <p className="ideaSynopsis">{synopsis}</p>
             </section>
           </section>
