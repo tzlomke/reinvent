@@ -6,7 +6,7 @@ import { StyleButton } from "../../components/StyleButton";
 function CampaignForm(props)  {
     return(
         <div className= "modal" id="resourceFormModal">
-            <header>New Resource</header>
+            <header className ="header">New Resource</header>
             <section id="newResource">
                 <form id="resourceForm">
                     <section id="resourceTitleSection">
@@ -21,7 +21,6 @@ function CampaignForm(props)  {
                         <label htmlFor="resourceCategory"></label>
                         <input type="text" id="resourceCategory" name="category" value={props.authorInput} onChange={props.handleChange}></input>
                     </section> */}
-                    <button id="submitResource" type="submit" className="modal-close" onClick = {props.handleFormSubmit}>Add Resource</button>
                     <StyleButton
                         btnTxt="Add Resource"
                         id="submitResource"

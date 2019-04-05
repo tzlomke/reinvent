@@ -1,15 +1,29 @@
 .modal {
-     -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     padding: 5px;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    max-height: none;
+    overflow: visible;
     /* Ensures modal appears on top */
     z-index: 100;
 }
 
-.header {
-    font-display: bold;
+label {
+    font-size: 16px;
+    padding: 10px;
+}
+
+textarea {
+    height: 10em;
 }
 
 #submitCampaign {
     margin-left: 10px;
+}
+
+#campaignFormModal {
+    padding: 25px;
 }
