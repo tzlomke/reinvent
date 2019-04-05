@@ -81,7 +81,7 @@
 
 .profile-image-container:hover figcaption,
 .profile-image-container.hover figcaption {
-  opacity: 1;
+  opacity: .35;
   -webkit-transform: translateX(0);
   transform: translateX(0);
 }
@@ -259,7 +259,7 @@
   margin-left: 10px;
   padding-right: 30px;
   height: 31vh;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .profile-campaign-item {

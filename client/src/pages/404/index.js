@@ -5,7 +5,8 @@ import Header from '../../components/Header';
 import { Container } from "../../components/Grid";
 import { Title, /* SubTitle */ } from "../../components/Title";
 import { CardOutline } from "../../components/NewsCard";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
+import {  StyleLink } from "../../components/StyleButton";
 
 // This function was added due to problems with the idea route not properly loading 404 errors
 // Before this function, since ideas is not an exact path, 404 would load the header twice
@@ -30,10 +31,14 @@ const page404 = () => {
     <div>
       <Header />
       <Container>
-        <Link
-			    to="/dashboard"
+`      <StyleLink
+          btnTxt="Take Me Home"
+          linkTo="/"
+        />
+        {/* <Link
+			    to="/"
 			    className="btn-large brand-logo center white-text nav-link"> Take Me Home
-		    </Link>
+		    </Link> */}
         <Title
           titleText="Page not Found"
         />
