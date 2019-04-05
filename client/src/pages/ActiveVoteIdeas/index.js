@@ -98,13 +98,13 @@ class ActiveVoteIdeas extends Component {
             campaign.map(campaign => (
               campaign.vote.length  !== 0 ? (
                 <CampaignDisplay
-                campaignClickable={true}
-                handleData={()=>this.handleData(campaign.vote[0]._id, campaign._id)}
-                title={campaign.title}
-                author={campaign.author}
-                synopsis={campaign.synopsis}
-                key={campaign._id}
-                id={campaign._id}
+                  campaignClickable={true}
+                  handleData={()=>this.handleData(campaign.vote[0]._id, campaign._id)}
+                  title={campaign.title}
+                  author={campaign.author}
+                  synopsis={campaign.synopsis}
+                  key={campaign._id}
+                  id={campaign._id}
                 >
                   <Vote
                     onCreate={this.onCreate}
