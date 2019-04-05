@@ -1,5 +1,4 @@
-
-.modal {
+/* .modal {
     -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     padding: 5px;
@@ -8,11 +7,6 @@
     padding-right: 10px;
     max-height: none;
     overflow: visible;
-}
-
-.header {
-    font-display: bold;
-    padding-left: 25px !important;
 }
 
 label {
@@ -24,10 +18,10 @@ textarea {
     height: 10em;
 }
 
-#submitEvent {
+#submitDiscussion {
     margin-left: 10px;
 }
 
-#eventFormModal {
+#discussionFormModal {
     padding: 25px;
-}
+} */
