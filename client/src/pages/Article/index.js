@@ -9,8 +9,6 @@ import { Title } from "../../components/Title";
 
 import "./style.css";
 
-
-
 class Detail extends Component {
   state = {
     article: {},
