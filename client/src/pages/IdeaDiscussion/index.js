@@ -9,6 +9,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Vote from "../../components/Vote"
 import DeleteBtn from "../../components/DeleteBtn";
+import { StyleLink } from "../../components/StyleButton"
 
 class IdeaDiscussion extends Component {
 
@@ -125,7 +126,9 @@ class IdeaDiscussion extends Component {
           cardTextColor={ "" }
         >
           <div>
-            <a className="btn btn-dark" href="/ideas/active">Back</a>
+            <StyleLink 
+              linkTo={"/ideas/active"}
+              btnTxt={"Back"} />
             <DeleteBtn onClick ={this.deleteCampaign}/>
             {campaignClicked.vote === undefined ? (
               <div>
