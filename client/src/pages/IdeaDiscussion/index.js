@@ -18,7 +18,8 @@ class IdeaDiscussion extends Component {
     authorInput: '',
     campaignClicked: {},
     discussionAuthorInput: '',
-    discussInputArea: ''
+    discussInputArea: '',
+    inputAuthor: ""
   }
 
   voteId="";
@@ -31,7 +32,8 @@ class IdeaDiscussion extends Component {
         let userData = response.data[0]
         this.setState({
           userId: userData._id,
-          discussionAuthorInput: userData.username
+          discussionAuthorInput: userData.username,
+          inputAuthor: `${userData.firstName} ${userData.lastName}`
         });
         return 'Complete!';
       });
@@ -87,7 +89,8 @@ class IdeaDiscussion extends Component {
     const discussionForm = document.getElementById('newDiscussion');
     API.discussionPost({
       id: this.state.campaignClicked._id,
-      author: this.state.discussionAuthorInput,
+      author: this.state.inputAuthor,
+      userId: this.state.userId,
       body: this.state.discussInputArea})
       .then(response => {
         return response.status;
@@ -126,9 +129,10 @@ class IdeaDiscussion extends Component {
           cardTextColor={ "" }
         >
           <div>
-            <StyleLink 
+            <StyleLink
+              btnTxt="Back to Ideas"
               linkTo={"/ideas/active"}
-              btnTxt={"Back"} />
+            />
             <DeleteBtn onClick ={this.deleteCampaign}/>
             {campaignClicked.vote === undefined ? (
               <div>
@@ -204,7 +208,7 @@ class IdeaDiscussion extends Component {
                   discussionSubmit={this.handleDiscussionSubmit}
                   discussionFormChange={this.handleChange}
                   discussionTitleInput={this.state.discussionTitleInput}
-                  discussionAuthorInput={this.state.discussionAuthorInput}
+                  discussionAuthorInput={this.state.inputAuthor}
                   discussInputArea={this.state.discussInputArea}/>
                 </div>
               )

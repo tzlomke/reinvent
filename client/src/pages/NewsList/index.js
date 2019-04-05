@@ -90,17 +90,11 @@ handleFormSubmit = event => {
   render() {
     return (
       <Container>
-        {/* <StyleLink
-          btnTxt="test"
-          linkTo="/calendar"
-        /> */}
         <StyleButton
           btnTxt="Post an Article"
           dataTarget="articleFormModal"
           modal= {true}
-          // modalClose= {true}
         />
-        {/* <button data-target="articleFormModal" className="btn modal-trigger">Post an Article</button> */}
         <ArticleForm
           inputTitle={this.state.inputTitle}
           inputAuthor={this.state.inputAuthor}
@@ -117,30 +111,23 @@ handleFormSubmit = event => {
 				>
           <Row>
             <Col size="12">
-                {/* <h1>Latest News</h1> */}
               {this.state.articles.length ? (
                 <List>
                   {this.state.articles.map(article => (
                     <ListItem key={article._id}>
-                      {/* <Link to={"/articles/" + article._id}>
-                        <strong>
-                          {article.title} by {article.author}
-                        </strong>
-                      </Link> */}
                       <NewsCard 
                         colSize={ "12" } 
                         cardTitle={ article.title }
-                        cardSub={ article.author }
+                        cardSub= { "by: " + article.author }
                         cardSub2={ moment( article.date).format("MM-DD-YYYY") }
                         cardText={ article.content }
                         cardTextColor={ "white-text" }
                         cardColor={ "blue-grey" }
                         cardAction={ 
-                          <Link to={"/articles/" + article._id}>
-                            <span>
-                              Read
-                            </span>
-                          </Link> 
+                          <StyleLink
+                          btnTxt="Read"
+                          linkTo={"/articles/" + article._id}
+                          />
                         }
                       > 
                       </NewsCard>

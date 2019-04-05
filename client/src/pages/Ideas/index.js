@@ -11,6 +11,7 @@ import IdeaDiscussion from "../IdeaDiscussion";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import CampaignForm from "../../components/CampaignForm";
 import { Container } from "../../components/Grid";
+
 import page404 from "../404";
 
 class Ideas extends Component {

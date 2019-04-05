@@ -37,7 +37,8 @@ function CampaignForm(props)  {
                   type={"submit"}
                   id={"submitCampaign"}
                   onClick={props.handleFormSubmit}
-                  btnTxt={buttonText}/>
+                  btnTxt={buttonText}
+                />
               </form>
             </section>
       </div>

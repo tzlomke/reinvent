@@ -31,8 +31,6 @@ const CampaignDisplay = (props) => {
               <p className="ideaSynopsis">{synopsis}</p>
             </section>
           </section>
-
-        
           <div className="col s3" id="voteDisplay">
             {children}
             </div>

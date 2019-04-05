@@ -1,5 +1,6 @@
 import React from 'react';
 import './EventForm.css';
+import { StyleButton } from "../../components/StyleButton";
 // import { PresignedPost } from 'aws-sdk/clients/s3';
 import { StyleButton } from "../../components/StyleButton";
 
@@ -50,7 +51,8 @@ function EventForm (props)  {
                         type={"submit"}
                         id={"submitEvent"}
                         onClick={props.handleFormSubmit}
-                        btnTxt={buttonText}/>
+                        btnTxt={buttonText}
+                    />
                 </form>
             </section>
         </div>

@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleButton, StyleLink } from "../../components/StyleButton";
+import { StyleButton } from "../../components/StyleButton";
+import './DiscussionForm.css';
 
 const DiscussionForm = ({ discussionSubmit, discussionFormChange, discussionAuthorInput, discussInputArea }) => {
   let buttonText;
@@ -12,24 +13,29 @@ const DiscussionForm = ({ discussionSubmit, discussionFormChange, discussionAuth
       submitButton.disabled = true;
     } else {
       submitButton.disabled = false;
-      buttonText = "Submit"
+      buttonText = "Post"
     };
   })();
 
   return(
     <div>
-      <header>Discussion</header>
+      <hr />
+      <h4>Add to Discussion</h4>
         <section id="discussionEntry">
           <form id="newDiscussion">
             <section id="newDiscAuthor">
-              <label htmlFor="authorDiscIt">Author</label>
-              <h6 id="authorDiscIt" name="discussionAuthorInput">{discussionAuthorInput}</h6>
+              <label htmlFor="authorDiscIt">post as: </label>
+              <h5 id="authorDiscIt" name="discussionAuthorInput">{discussionAuthorInput}</h5>
             </section>
             <section id="newCampSynop">
               <label htmlFor="discussIt">New Discussion Here</label>
               <textarea id="discussIt" name="discussInputArea" value={discussInputArea} onChange={discussionFormChange}></textarea>
             </section>
-              <button className="btn btn-dark" id="submitDiscussion" type="submit" onClick = {discussionSubmit}>{buttonText}</button>
+              <StyleButton
+                btnTxt={buttonText}
+                id="submitDiscussion"
+                onClick={discussionSubmit}
+              />
             </form>
           </section>
     </div>
