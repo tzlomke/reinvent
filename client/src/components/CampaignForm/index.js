@@ -2,7 +2,6 @@ import React from 'react';
 import './CampaignForm.css';
 import { StyleButton } from "../../components/StyleButton";
 
-
 function CampaignForm(props)  {
   let buttonText;
   (function noEmptyForms() {
@@ -34,11 +33,11 @@ function CampaignForm(props)  {
                 <label htmlFor="campaignIt">New Idea Here</label>
                 <textarea id="campaignIt" name="campaignInputArea" value={props.campaignInput} onChange={props.handleChange}></textarea>
               </section>
-                <StyleButton
-                  btnTxt={buttonText}
-                  id="submitCampaign"
+                <StyleButton 
+                  type={"submit"}
+                  id={"submitCampaign"}
                   onClick={props.handleFormSubmit}
-                  modalClose= {true}
+                  btnTxt={buttonText}
                 />
               </form>
             </section>

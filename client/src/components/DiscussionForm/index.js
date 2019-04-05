@@ -7,7 +7,7 @@ const DiscussionForm = ({ discussionSubmit, discussionFormChange, discussionAuth
   (function noEmptyForms() {
     const submitButton = document.getElementById('submitDiscussion');
     if (submitButton === null) {
-      return "User is on the Right Path"
+      return "Waiting for button"
     } else if (discussInputArea === "") {
       buttonText = "Please Enter all Information"
       submitButton.disabled = true;
