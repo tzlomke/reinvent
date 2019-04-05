@@ -163,17 +163,18 @@ class IdeaDiscussion extends Component {
                     clientId={this.state.userId}
                     />
                   <DiscussionForm 
-                  discussionSubmit={this.handleDiscussionSubmit}
-                  discussionFormChange={this.handleChange}
-                  discussionTitleInput={this.state.discussionTitleInput}
-                  discussionAuthorInput={this.state.discussionAuthorInput}
-                  discussInputArea={this.state.discussInputArea}/>
+                    discussionSubmit={this.handleDiscussionSubmit}
+                    discussionFormChange={this.handleChange}
+                    discussionTitleInput={this.state.discussionTitleInput}
+                    discussionAuthorInput={this.state.discussionAuthorInput}
+                    discussInputArea={this.state.discussInputArea}
+                  />
                   </CampaignDisplay>
                   {campaignClicked.comments.reverse().map((discussion, index) => 
-                  <DiscussionDisplay
-                  key={index}
-                  discussionData={discussion}
-                  />
+                    <DiscussionDisplay
+                      key={index}
+                      discussionData={discussion}
+                    />
                   )}
               </div>
             ):(
@@ -200,16 +201,17 @@ class IdeaDiscussion extends Component {
                     />
                   </CampaignDisplay>
                   <DiscussionForm 
-                  discussionSubmit={this.handleDiscussionSubmit}
-                  discussionFormChange={this.handleChange}
-                  discussionTitleInput={this.state.discussionTitleInput}
-                  discussionAuthorInput={this.state.inputAuthor}
-                  discussInputArea={this.state.discussInputArea}/>
-                  {campaignClicked.comments.reverse().map((discussion, index) => 
-                  <DiscussionDisplay
-                  key={index}
-                  discussionData={discussion}
+                    discussionSubmit={this.handleDiscussionSubmit}
+                    discussionFormChange={this.handleChange}
+                    discussionTitleInput={this.state.discussionTitleInput}
+                    discussionAuthorInput={this.state.inputAuthor}
+                    discussInputArea={this.state.discussInputArea}
                   />
+                  {campaignClicked.comments.reverse().map((discussion, index) => 
+                    <DiscussionDisplay
+                      key={index}
+                      discussionData={discussion}
+                    />
                   )}
                 </div>
               )
