@@ -113,6 +113,7 @@ class IdeaDiscussion extends Component {
 
   render () {
     const campaignClicked = this.state.campaignClicked;
+    console.log(campaignClicked)
     return (
       <div>
         <SubTitle 

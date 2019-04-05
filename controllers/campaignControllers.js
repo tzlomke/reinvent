@@ -6,6 +6,7 @@ module.exports = {
     db.Campaign
       .create(req.body)
       .then(dbCampaign => {
+        res.json(dbCampaign._id)
         return db.User.findOneAndUpdate({ _id: req.body.userId }, {$push : { campaigns: dbCampaign._id } }, { new: true });
       })
       .then(dbCampaign => {
