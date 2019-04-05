@@ -1,14 +1,31 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import './IdeasNavBar.css';
+import { StyleButton, StyleLink } from "../../components/StyleButton";
 
 
 function Navbar(props){
 	return (
 
 		<div className="navbar-ideas">
-  
-		<Link
+		<StyleLink
+          btnTxt="Active Ideas"
+          linkTo="/ideas/active"
+        />
+		<StyleLink
+          btnTxt="Closed Ideas"
+          linkTo="/ideas/closed"
+        />
+		<StyleLink
+          btnTxt="Trending Ideas"
+          linkTo="/ideas/trending"
+        />
+		<StyleButton
+			btnTxt="New Idea +"
+			dataTarget="campaignFormModal"
+			modal= {true}
+        />
+		{/* <Link
 			to="/ideas/active"
 			className="btn-small brand-logo center white-text nav-link"> Active Ideas
 		</Link>
@@ -19,7 +36,7 @@ function Navbar(props){
 		<Link
 			to="/ideas/trending"
 			className="btn-small brand-logo center white-text nav-link">Trending Ideas
-		</Link>
+		</Link> */}
 		
 		{/* <div className="navbar-fixed">
 			<nav className="z-depth-0">
@@ -40,7 +57,7 @@ function Navbar(props){
 					        </Link>
                         </li> */}
                         {/* <li> */}
-                            <a className="btn-small brand-logo center white-text btn-lrg modal-trigger" href="#campaignFormModal"> New Idea +</a>
+                            {/* <a className="btn-small brand-logo center white-text btn-lrg modal-trigger" href="#campaignFormModal"> New Idea +</a> */}
                         {/* </li> */}
                     {/* </ul> */}
 				</div>

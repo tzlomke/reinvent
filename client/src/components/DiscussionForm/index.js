@@ -1,4 +1,5 @@
 import React from 'react';
+import { StyleButton, StyleLink } from "../../components/StyleButton";
 
 const DiscussionForm = ({ discussionSubmit, discussionFormChange, discussionAuthorInput, discussInputArea }) => {
   let buttonText;

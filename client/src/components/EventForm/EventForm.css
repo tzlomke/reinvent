@@ -1,6 +1,8 @@
+
 .modal {
     -webkit-box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    padding: 5px;
     padding: 5px;
     padding-left: 10px;
     padding-right: 10px;
@@ -19,7 +21,7 @@ label {
 }
 
 textarea {
-    height: 8em;
+    height: 10em;
 }
 
 #submitEvent {
@@ -28,4 +30,176 @@ textarea {
 
 #eventFormModal {
     padding: 25px;
+}
+
+.datepicker-date-display {
+    background-color: rgba(69, 69, 69);
+}
+
+.timepicker-digital-display {
+    background-color: rgba(69, 69, 69);
+}
+
+.datepicker-cancel {
+    background-color: rgba(69, 69, 69);
+}
+
+.datepicker-cancel {
+    flex: 1 1 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    transition: .3s;
+    color: #fff;
+}
+
+.datepicker-cancel:after {
+    position: absolute;
+    transition: .3s;
+    content: '';
+    width: 0;
+    left: 50%;
+    bottom: 0;
+    height: 3px;
+    background: #f7f7f7;
+    right: auto;
+    left: 0;
+}
+
+.datepicker-cancel:hover {
+    cursor: pointer;
+    background-color: rgba(69, 69, 69);
+    box-shadow: 0 0px 0 #333,
+        0 6px 8px rgba(0, 0, 0, .4),
+        0 9px 10px rgba(0, 0, 0, .15),
+        0 30px 10px rgba(0, 0, 0, .18),
+        0 15px 10px rgba(0, 0, 0, .21);
+}
+
+.datepicker-cancel:hover:after {
+    width: 100%;
+}
+
+.datepicker-cancel:active {
+    background-color: rgba(69, 69, 69);
+}
+
+.datepicker-cancel:visited {
+    background-color: rgba(69, 69, 69);
+}
+
+.datepicker-cancel:focus {
+    background-color: rgba(69, 69, 69);
+}
+
+.datepicker-done {
+    flex: 1 1 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    transition: .3s;
+    color: #fff;
+    background-color: rgba(69, 69, 69);
+    margin-left: 3px;
+}
+
+.datepicker-done:after {
+    position: absolute;
+    transition: .3s;
+    content: '';
+    width: 0;
+    left: 50%;
+    bottom: 0;
+    height: 3px;
+    background: #f7f7f7;
+    right: auto;
+    left: 0;
+}
+
+.datepicker-done:hover {
+    cursor: pointer;
+    background-color: rgba(69, 69, 69);
+    box-shadow: 0 0px 0 #333,
+        0 6px 8px rgba(0, 0, 0, .4),
+        0 9px 10px rgba(0, 0, 0, .15),
+        0 30px 10px rgba(0, 0, 0, .18),
+        0 15px 10px rgba(0, 0, 0, .21);
+}
+
+.datepicker-done:hover:after {
+    width: 100%;
+}
+
+.datepicker-done:active {
+    background-color: rgba(69, 69, 69);
+}
+
+.datepicker-done:visited {
+    background-color: rgba(69, 69, 69);
+}
+
+.datepicker-done:focus {
+    background-color: rgba(69, 69, 69);
+}
+
+.timepicker-close {
+    background-color: rgba(69, 69, 69);
+}
+
+.timepicker-close {
+    flex: 1 1 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    transition: .3s;
+    color: #fff;
+    margin-left: 3px;
+}
+
+.timepicker-close:after {
+    position: absolute;
+    transition: .3s;
+    content: '';
+    width: 0;
+    left: 50%;
+    bottom: 0;
+    height: 3px;
+    background: #f7f7f7;
+    right: auto;
+    left: 0;
+}
+
+.timepicker-close:hover {
+    cursor: pointer;
+    background-color: rgba(69, 69, 69);
+    box-shadow: 0 0px 0 #333,
+        0 6px 8px rgba(0, 0, 0, .4),
+        0 9px 10px rgba(0, 0, 0, .15),
+        0 30px 10px rgba(0, 0, 0, .18),
+        0 15px 10px rgba(0, 0, 0, .21);
+}
+
+.timepicker-close:hover:after {
+    width: 100%;
+}
+
+.timepicker-close:active {
+    background-color: rgba(69, 69, 69);
+}
+
+.timepicker-close:visited {
+    background-color: rgba(69, 69, 69);
+}
+
+.timepicker-close:focus {
+    background-color: rgba(69, 69, 69);
 }
