@@ -4,9 +4,6 @@ import API from "../../utils/API";
 import voteAPI from "../../utils/API";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-// import DiscussionForm from '../../components/DiscussionForm';
-// import DiscussionDisplay from "../../components/DiscussionDisplay";
-// import { Col, Row, Container } from "../../components/Grid";
 import { SubTitle } from "../../components/Title";
 import { CardOutline } from "../../components/NewsCard";
 import Vote from "../../components/Vote";
@@ -122,25 +119,25 @@ class TrendingVoteIdeas extends Component {
               campaign.map(campaign => (
                 campaign.vote.length  !== 0 ? (
                   <CampaignDisplay
-                campaignClickable={true}
-                handleData={()=>this.handleData(campaign.vote[0]._id, campaign._id)}
-                title={campaign.title}
-                author={campaign.author}
-                synopsis={campaign.synopsis}
-                key={campaign._id}
-                id={campaign._id}
-                >
-                  <Vote
-                    onCreate={this.onCreate}
-                    onUpvote={this.updateVote}
-                    onClose={this.updateVote}
-                    onReset={this.updateVote}
-                    onDownvote={this.updateVote}
-                    onExpand={this.updateVote}
-                    onEdit={this.updateVote}
-                    isAdmin={true}
-                    clientId={this.state.userId}
-                    data={campaign.vote}
+                    campaignClickable={true}
+                    handleData={()=>this.handleData(campaign.vote[0]._id, campaign._id)}
+                    title={campaign.title}
+                    author={campaign.author}
+                    synopsis={campaign.synopsis}
+                    key={campaign._id}
+                    id={campaign._id}
+                  >
+                    <Vote
+                      onCreate={this.onCreate}
+                      onUpvote={this.updateVote}
+                      onClose={this.updateVote}
+                      onReset={this.updateVote}
+                      onDownvote={this.updateVote}
+                      onExpand={this.updateVote}
+                      onEdit={this.updateVote}
+                      isAdmin={true}
+                      clientId={this.state.userId}
+                      data={campaign.vote}
                     />
                 </CampaignDisplay>
                 ):(
