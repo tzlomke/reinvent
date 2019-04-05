@@ -7,8 +7,6 @@
     padding-right: 10px;
     max-height: none;
     overflow: visible;
-    /* Ensures modal appears on top */
-    z-index: 100;
 }
 
 label {
@@ -16,14 +14,10 @@ label {
     padding: 10px;
 }
 
-textarea {
-    height: 10em;
-}
-
-#submitCampaign {
+#submitResource {
     margin-left: 10px;
 }
 
-#campaignFormModal {
+#resourceFormModal {
     padding: 25px;
 }

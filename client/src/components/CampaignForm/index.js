@@ -1,5 +1,7 @@
 import React from 'react';
 import './CampaignForm.css';
+import { StyleButton } from "../../components/StyleButton";
+
 
 function CampaignForm(props)  {
   let buttonText;
@@ -32,7 +34,12 @@ function CampaignForm(props)  {
                 <label htmlFor="campaignIt">New Idea Here</label>
                 <textarea id="campaignIt" name="campaignInputArea" value={props.campaignInput} onChange={props.handleChange}></textarea>
               </section>
-                <button id="submitCampaign" type="submit" className="btn btn-dark modal-close" onClick = {props.handleFormSubmit}>{buttonText}</button>
+                <StyleButton
+                  btnTxt={buttonText}
+                  id="submitCampaign"
+                  onClick={props.handleFormSubmit}
+                  modalClose= {true}
+                />
               </form>
             </section>
       </div>
