@@ -8,3 +8,34 @@ button {
   should keep the default arrow cursor for buttons */
   cursor: pointer;
 }
+
+/* Interesting shimmer effect */
+.ideaTitle, .ideaAuthor {
+  color: black;
+  background-position: -500%;
+  transition: background-position 1.5s ease-in-out;
+}
+
+.ideaTitle:hover, .ideaAuthor:hover {
+  background: linear-gradient(90deg, white, black);
+  background-repeat: no-repeat;
+  background-size: 80%;
+  background-clip: text;
+  -webkit-text-fill-color: rgba(0,0,0,0.5);
+  background-position: 500%;
+}
+
+.ideaUnderline, .authorUnderline {
+  width: 0%;
+  height: .2rem;
+  border-bottom: .2rem solid black;
+  transition: width 1s ease-in-out;
+}
+
+.ideaTitle:hover + .ideaUnderline {
+  width: 90%;
+}
+
+.ideaAuthor:hover + .authorUnderline {
+  width: 30%;
+}
