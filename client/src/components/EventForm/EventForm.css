@@ -203,3 +203,37 @@ textarea {
 .timepicker-close:focus {
     background-color: rgba(69, 69, 69);
 }
+
+.is-today {
+    color: #f46717 !important;
+}
+
+.is-selected {
+    background-color: #f46717 !important;
+}
+
+.datepicker-day-button:active{
+    background-color: #f46717 !important;
+    opacity: .4;
+}
+
+.timepicker-tick:hover {
+    background-color: #f46717 !important;
+    opacity: .4;
+}
+
+.clockpicker-canvas-bg {
+    fill: #f46717 !important;
+}
+
+.timepicker-canvas-bearing {
+    fill: #f46717;
+}
+
+.timepicker-canvas-bg {
+    fill: #f46717;
+}
+
+.timepicker-canvas line {
+    stroke: #f46717;
+}
