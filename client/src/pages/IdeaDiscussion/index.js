@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import Vote from "../../components/Vote"
 import DeleteBtn from "../../components/DeleteBtn";
-import { StyleButton, StyleLink } from "../../components/StyleButton";
+import { StyleLink } from "../../components/StyleButton";
 
 
 class IdeaDiscussion extends Component {
