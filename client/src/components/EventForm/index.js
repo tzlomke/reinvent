@@ -2,7 +2,6 @@ import React from 'react';
 import './EventForm.css';
 import { StyleButton } from "../../components/StyleButton";
 // import { PresignedPost } from 'aws-sdk/clients/s3';
-import { StyleButton } from "../../components/StyleButton";
 
 function EventForm (props)  {
 
