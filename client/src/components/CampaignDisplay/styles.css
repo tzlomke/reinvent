@@ -8,3 +8,69 @@ button {
   should keep the default arrow cursor for buttons */
   cursor: pointer;
 }
+
+/* Interesting shimmer effect */
+.ideaTitleClick, .ideaAuthor {
+  color: black;
+  background-position: -500%;
+  transition: background-position 1.5s ease-in-out;
+}
+
+.ideaTitleClick:hover, .ideaAuthor:hover {
+  background: linear-gradient(90deg, white, #f46717);
+  background-repeat: no-repeat;
+  background-size: 80%;
+  background-clip: text;
+  -webkit-text-fill-color: rgba(0,0,0,0.5);
+  background-position: 500%;
+}
+
+.ideaUnderline, .authorUnderline {
+  width: 0%;
+  height: .2rem;
+  border-bottom: .2rem solid #f46717;
+  transition: width 1s ease-in-out;
+}
+
+.ideaTitleClick:hover + .ideaUnderline {
+  width: 90%;
+}
+
+.ideaAuthor:hover + .authorUnderline {
+  width: 30%;
+}
+
+.ideaSynopsisContainer {
+  height: 3rem;
+  padding: 1% 0%;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  border-radius: 1rem;
+  transition: height 1s ease-in-out;
+}
+
+.ideaSynopsis {
+  /* color: #f46717; */
+  font-size: 0rem;
+  padding: 0% 2%;
+  transition: font-size 1s ease-in-out;
+}
+
+.ideaSynopsisContainer:hover {
+  height: 100%;
+}
+
+.ideaSynopsisContainer:hover > .ideaSynopsis {
+  font-size: 1.5rem;
+}
+
+.ideaSynopsisContainer:hover > .synopsisInstructions {
+  font-size: 0rem;
+}
+
+.synopsisInstructions {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #f46717;
+  transition: font-size 1s ease-in-out;
+}

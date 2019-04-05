@@ -63,7 +63,6 @@ module.exports = {
 
 	getUserById: function(req, res) {
 		let id = req.params.id;
-		console.log("ID: " + id);
 		db.User
 			.find({ _id: id })
 			.populate("campaigns")

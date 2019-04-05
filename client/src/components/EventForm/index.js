@@ -2,6 +2,7 @@ import React from 'react';
 import './EventForm.css';
 import { StyleButton } from "../../components/StyleButton";
 // import { PresignedPost } from 'aws-sdk/clients/s3';
+import { StyleButton } from "../../components/StyleButton";
 
 function EventForm (props)  {
 
@@ -46,10 +47,11 @@ function EventForm (props)  {
                         <label htmlFor="eventDescription">Event Description</label>
                         <textarea id="eventDescription" name="eventDescription" value={props.eventDescription} onChange={props.handleChange}></textarea>
                     </section>
-                    <StyleButton
-                        btnTxt={buttonText}
-                        id="submitEvent"
+                    <StyleButton 
+                        type={"submit"}
+                        id={"submitEvent"}
                         onClick={props.handleFormSubmit}
+                        btnTxt={buttonText}
                     />
                 </form>
             </section>

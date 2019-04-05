@@ -79,7 +79,6 @@ module.exports = {
             trendingCampaigns.push(campaign)
           }
         });
-        console.log(trendingCampaigns);
         res.json(trendingCampaigns);
       })
       .catch(err => res.json(err));
@@ -102,7 +101,6 @@ module.exports = {
   },
   // Create a discussion
   createDiscussion: (req, res) => {
-    console.log(req.body)
     db.Campaign
       // When utilizing findOneAndUpdate, you must explicitly tell it to runValidators as an option
       .findOneAndUpdate({ _id: req.params.id }, { $push: { comments: req.body } }, { runValidators: true })
