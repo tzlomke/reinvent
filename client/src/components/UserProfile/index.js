@@ -151,15 +151,13 @@ class UserProfile extends Component {
 				synopsis: this.state.campaignInputArea
 			})
 			.then(response => {
-				(console.log(`You successfully uploaded: ${response.data.title}`));
+				(window.location.assign(`/ideas/${response.data}`));
 			});
 		this.setState({
 			titleInput: '',
 			campaignInputArea: ''
 		});
 		campaignForm.reset();
-		// Add window.location.reload() to allow the ideas to auto refresh
-		window.location.reload();
 	};
 	
 	componentDidMount =() => {
