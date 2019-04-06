@@ -32,9 +32,10 @@
       text-align:center;
       text-shadow: 0 0px 0 #333,
         0 6px 8px rgba(0,0,0,.4),
-        0 9px 10px rgba(0,0,0,.15),
+        0 9px 10px rgba(46, 17, 17, 0.15),
         0 30px 10px rgba(0,0,0,.18),
         0 15px 10px rgba(0,0,0,.21);
+      transition: all .7s;
     }
 
     /* Auth Links */
@@ -202,12 +203,6 @@
       display: inline-block;
       width: 20%;
     }
-
-    /* .developer-name {
-      display: block;
-      margin: 20px;
-      margin: auto;
-    } */
     
     .developer-profile {
       position: relative;
