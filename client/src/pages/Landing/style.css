@@ -319,7 +319,7 @@
     
     .developer-profile:hover figcaption,
     .developer-profile.hover figcaption {
-      opacity: 1;
+      opacity: .70;
       -webkit-transform: translateX(0);
       transform: translateX(0);
     }
