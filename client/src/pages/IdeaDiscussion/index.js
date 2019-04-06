@@ -48,6 +48,7 @@ class IdeaDiscussion extends Component {
           window.location.pathname = "404"
         } else {
           const resDat = response.data[0];
+          resDat.comments.reverse();
           this.setState({
             campaignClicked: resDat
           });
@@ -117,7 +118,6 @@ class IdeaDiscussion extends Component {
 
   render () {
     const campaignClicked = this.state.campaignClicked;
-    console.log(campaignClicked.vote);
     return (
       <div>
         <SubTitle 
@@ -169,7 +169,7 @@ class IdeaDiscussion extends Component {
                     discussionAuthorInput={this.state.discussionAuthorInput}
                     discussInputArea={this.state.discussInputArea}
                     />
-                  {campaignClicked.comments.reverse().map((discussion, index) => 
+                  {campaignClicked.comments.map((discussion, index) => 
                     <DiscussionDisplay
                       key={index}
                       discussionData={discussion}
@@ -206,7 +206,7 @@ class IdeaDiscussion extends Component {
                     discussionAuthorInput={this.state.inputAuthor}
                     discussInputArea={this.state.discussInputArea}
                   />
-                  {campaignClicked.comments.reverse().map((discussion, index) => 
+                  {campaignClicked.comments.map((discussion, index) => 
                     <DiscussionDisplay
                       key={index}
                       discussionData={discussion}
