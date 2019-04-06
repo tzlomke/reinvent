@@ -33,7 +33,7 @@ const page404 = () => {
       <Container>
 `      <StyleLink
           btnTxt="Take Me Home"
-          linkTo="/"
+          linkTo="/news-feed"
         />
         {/* <Link
 			    to="/"
