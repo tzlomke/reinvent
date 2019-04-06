@@ -171,7 +171,7 @@
 			transition: all .9s ease;
     }
     
-    #text-animated:before {
+    .glitch-effect:before {
       display: block;
       content: "What's the big idea?";
       position: absolute;
@@ -184,7 +184,7 @@
       z-index: -1;
     }
 
-    #text-animated:after {
+    .glitch-effect:after {
       display: block;
       content: "What's the big idea?";
       position: absolute;
@@ -197,11 +197,11 @@
       z-index: -2;
     }
 
-    #text-animated:before{
+    .glitch-effect:before{
       animation: glitch .4s cubic-bezier(.25, .46, .45, .94) both infinite
     }
     
-    #text-animated:after{
+    .glitch-effect:after{
       animation: glitch .4s cubic-bezier(.25, .46, .45, .94) reverse both infinite
     }
 
@@ -225,23 +225,6 @@
           transform: translate(0)
       }
     }
-		/* #text :nth-child(1) {
-			color: rgb(47, 47, 47);
-			clip-path: polygon(0% 0%, 100% 0%, 100% 40%, 0% 40%);
-		}
-		#text :nth-child(2) {
-			transform: translate(-50%,-50%) skewY(-15deg) skewX(40deg);
-			left: 8px;
-			top: -2.5px;
-			color: rgb(40, 40, 40);
-			clip-path: polygon(0% 40%, 100% 40%, 100% 60%, 0% 60%);
-		}
-		#text :nth-child(3) {
-			color: rgb(47, 47, 47);
-			clip-path: polygon(0% 60%, 100% 60%, 100% 100%, 0% 100%);
-			left: 16px;
-			top: -4.5px;
-    } */
     
     /* Developer Profiles */
     .developer-profiles-container {
