@@ -11,13 +11,13 @@ function EventForm (props)  {
     (function noEmptyForms() {
       const submitButton = document.getElementById('submitEvent');
       if (submitButton === null) {
-        return "User is on the rigth path."
+        return "User is on the right path."
       } else if (props.eventTitle === "" || props.startDate === "" || props.startTime === "" || props.endDate === "" || props.endTime === "" || props.eventDescription === "") {
         buttonText = "Please Enter all Information"
         submitButton.disabled = true;
       } else {
         submitButton.disabled = false;
-        buttonText = "Submit"
+        buttonText = "Add Event"
       };
     })();
 

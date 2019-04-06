@@ -13,7 +13,7 @@ function CampaignForm(props)  {
       submitButton.disabled = true;
     } else {
       submitButton.disabled = false;
-      buttonText = "Submit"
+      buttonText = "Add Idea"
     };
   })();
 
