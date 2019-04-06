@@ -116,6 +116,16 @@ class IdeaDiscussion extends Component {
     API.campaignDelete(campaignId).then(window.location.assign("/ideas/active"));
   }
 
+  allowMultipleUsers = (voteData) => {
+    const data = voteData[0];
+    for (var i=0; i<data.items.length; i++) {
+      if (!data.items[i].voters.includes(this.state.userId)) {
+          data.items[i].voted = false;
+        }
+    }
+    return [data];
+  }
+
   render () {
     const campaignClicked = this.state.campaignClicked;
     return (
@@ -150,7 +160,7 @@ class IdeaDiscussion extends Component {
                   key={campaignClicked._id}
                   >
                     <Vote
-                    data={campaignClicked.vote}
+                    data={this.allowMultipleUsers(campaignClicked.vote)}
                     onCreate={this.onCreate}
                     onUpvote={this.updateVote}
                     onClose={this.updateVote}
