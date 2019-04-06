@@ -3,6 +3,19 @@ import './ArticleForm.css';
 import { StyleButton } from "../../components/StyleButton";
 
 function ArticleForm(props)  {
+  let buttonText;
+  (function noEmptyForms() {
+    const submitButton = document.getElementById('submitArticle');
+    if (submitButton === null) {
+      return "User is on the Right Path"
+    } else if (props.inputTitle === "" || props.inputContent === "") {
+      buttonText = "Please Enter all Information"
+      submitButton.disabled = true;
+    } else {
+      submitButton.disabled = false;
+      buttonText = "Add Article"
+    };
+  })();
   
     return(
       <div className= "modal" id="articleFormModal">
@@ -21,7 +34,7 @@ function ArticleForm(props)  {
                 <textarea id="content" name="inputContent" value={props.inputContent} onChange={props.handleInputChange}></textarea>
               </section>
               <StyleButton
-                btnTxt="Post Article"
+                btnTxt= {buttonText}
                 id="submitArticle"
                 onClick={props.handleFormSubmit}
                 modalClose= {true}

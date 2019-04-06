@@ -4,6 +4,20 @@ import { StyleButton } from "../../components/StyleButton";
 
 
 function CampaignForm(props)  {
+    let buttonText;
+    (function noEmptyForms() {
+        const submitButton = document.getElementById('submitResource');
+        if (submitButton === null) {
+            return "User is on the Right Path"
+        } else if (props.title === "" || props.link === "") {
+            buttonText = "Please Enter all Information"
+            submitButton.disabled = true;
+        } else {
+            submitButton.disabled = false;
+            buttonText = "Add Resource"
+        };
+    })();
+
     return(
         <div className= "modal" id="resourceFormModal">
             <header className ="header">New Resource</header>
@@ -11,7 +25,7 @@ function CampaignForm(props)  {
                 <form id="resourceForm">
                     <section id="resourceTitleSection">
                         <label htmlFor="resourceTitle">Title</label>
-                        <input type="text" id="resoureTitle" name="title" value={props.title} onChange={props.handleInputChange}></input>
+                        <input type="text" id="resourceTitle" name="title" value={props.title} onChange={props.handleInputChange}></input>
                     </section>
                     <section id="resourceLinkSection">
                         <label htmlFor="resourceLink">Link</label>
@@ -22,7 +36,7 @@ function CampaignForm(props)  {
                         <input type="text" id="resourceCategory" name="category" value={props.authorInput} onChange={props.handleChange}></input>
                     </section> */}
                     <StyleButton
-                        btnTxt="Add Resource"
+                        btnTxt={buttonText}
                         id="submitResource"
                         onClick={props.handleFormSubmit}
                         modalClose= {true}
