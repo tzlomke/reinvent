@@ -1,41 +1,47 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import './Navbar.css';
 
 const Navbar = props => (
 
 	
 	<div className="navbar-right">
-		<Link
+		<NavLink
 			to="/News-Feed"
-			className="col s5 brand-logo center white-text nav-link"> News
-		</Link>
+			className="col s5 brand-logo center white-text nav-NavLink"
+			activeStyle={{color: "#f46717"}}> News
+		</NavLink>
 		<span className="pipe">|</span>
-		<Link
+		<NavLink
 			to="/ideas/active"
-			className="col s5 brand-logo center white-text nav-link"> Ideas
-		</Link>
+			className="col s5 brand-logo center white-text nav-NavLink"
+			activeStyle={{color: "#f46717"}}> Ideas
+		</NavLink>
 		<span className="pipe">|</span>
-		<Link
+		<NavLink
 			to="/calendar"
-			className="col s5 brand-logo center white-text nav-link"> Calendar
-		</Link>
+			className="col s5 brand-logo center white-text nav-NavLink"
+			activeStyle={{color: "#f46717"}}> Calendar
+		</NavLink>
 		<span className="pipe">|</span>
-        <Link
+        <NavLink
 	    to="/resources"
-		className="col s5 brand-logo center white-text nav-link"> Resources
-		</Link>
+		className="col s5 brand-logo center white-text nav-NavLink"
+		activeStyle={{color: "#f46717"}}> Resources
+		</NavLink>
 		<span className="pipe">|</span>
-		<Link
+		<NavLink
 			to={props.profileRoute}
-			className="col s5 brand-logo center white-text nav-link"> Profile
-		</Link>
+			className="col s5 brand-logo center white-text nav-NavLink"
+			activeStyle={{color: "#f46717"}}> Profile
+		</NavLink>
 		<span className="pipe">|</span>
-		<Link
+		<NavLink
 			onClick={props.onLogoutClick}
 			to="/dashboard"
-			className="col s5 brand-logo center white-text nav-link"> Logout
-		</Link>
+			className="col s5 brand-logo center white-text nav-NavLink"
+			activeStyle={{color: "#f46717"}}> Logout
+		</NavLink>
 		
 	</div>
 );

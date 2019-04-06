@@ -29,7 +29,6 @@ class UserProfile extends Component {
 		titleInput: '',
 		authorInput: '',
 		campaignInputArea: ''
-
 	};
 
 	handleShowImageUploadModal = () => {
