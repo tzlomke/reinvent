@@ -21,16 +21,16 @@ class Landing extends Component {
 	handleScroll () {
         $('html, body').animate({
 			scrollTop: $(".about-container").offset().top,
-			color: $(".logo-text").css("color", "#f46717")
+			color: $(".logo-text").css("color", "#f46717"),
 		}, 2000);
 		
-		$("#text span").css({
-			color: "rgb(47, 47, 47)",
-			transform: "translate(-50%,-50%) skewY(0deg) skewX(0deg)",
-			left: "0",
-			top: "0",
-			transitionDelay: "1.9s"
-		});
+		// $("#text span").css({
+		// 	color: "rgb(47, 47, 47)",
+		// 	transform: "translate(-50%,-50%) skewY(0deg) skewX(0deg)",
+		// 	left: "0",
+		// 	top: "0",
+		// 	transitionDelay: "1.9s"
+		// });
 	};
 
 	render () {
@@ -111,9 +111,7 @@ class Landing extends Component {
 								<div className="display-text">
 									<div>
 										<div id="text">
-											<span>What's the big idea?</span>
-											<span>What's the big idea?</span>
-											<span>What's the big idea?</span>
+											<span id="text-animated">What's the big idea?</span>
 										</div>
 									</div>
 								</div>

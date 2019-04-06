@@ -148,11 +148,6 @@
       height: 300px;
       color: black;
       position: relative;
-      /* text-shadow: 0 0px 0 #333,
-        0 3px 4px rgba(0,0,0,.4),
-        0 4.5px 5px rgba(0,0,0,.15),
-        0 15px 5px rgba(0,0,0,.18),
-        0 7.5px 5px rgba(0,0,0,.21); */
       float: left;
       margin-left: 150px;
       margin-bottom: -100px;
@@ -174,8 +169,63 @@
 			left: 0;
       top: 0;
 			transition: all .9s ease;
-		}
-		#text :nth-child(1) {
+    }
+    
+    #text-animated:before {
+      display: block;
+      content: "What's the big idea?";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      opacity: .8;
+      color: rgb(13, 125, 125);
+      z-index: -1;
+    }
+
+    #text-animated:after {
+      display: block;
+      content: "What's the big idea?";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      opacity: 1;
+      color: #f47617;
+      z-index: -2;
+    }
+
+    #text-animated:before{
+      animation: glitch .4s cubic-bezier(.25, .46, .45, .94) both infinite
+    }
+    
+    #text-animated:after{
+      animation: glitch .4s cubic-bezier(.25, .46, .45, .94) reverse both infinite
+    }
+
+    @keyframes glitch {
+      0% {
+          transform: translate(0)
+      }
+      20% {
+          transform: translate(-5px, 5px)
+      }
+      40% {
+          transform: translate(-5px, -5px)
+      }
+      60% {
+          transform: translate(5px, 5px)
+      }
+      80% {
+          transform: translate(5px, -5px)
+      }
+      to {
+          transform: translate(0)
+      }
+    }
+		/* #text :nth-child(1) {
 			color: rgb(47, 47, 47);
 			clip-path: polygon(0% 0%, 100% 0%, 100% 40%, 0% 40%);
 		}
@@ -191,7 +241,7 @@
 			clip-path: polygon(0% 60%, 100% 60%, 100% 100%, 0% 100%);
 			left: 16px;
 			top: -4.5px;
-    }
+    } */
     
     /* Developer Profiles */
     .developer-profiles-container {
