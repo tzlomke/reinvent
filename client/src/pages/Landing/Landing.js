@@ -20,7 +20,8 @@ class Landing extends Component {
 
 	handleScroll () {
         $('html, body').animate({
-            scrollTop: $(".about-container").offset().top,
+			scrollTop: $(".about-container").offset().top,
+			color: $(".logo-text").css("color", "#f46717")
 		}, 2000);
 		
 		$("#text span").css({
@@ -117,10 +118,10 @@ class Landing extends Component {
 									</div>
 								</div>
 
-								<p className="text-content" style={{lineHeight: "24px"}}>
-								Your two-year product development timeline? <span style={{fontWeight: "bold", fontSize: "24px"}}>Too slow.</span> Your top-down hierarchy? <span style={{fontWeight: "bold", fontSize: "24px"}}>Too rigid.</span> We're here to <span style={{fontWeight: "bold", fontSize: "24px"}}>change that.</span> 
-
-								
+								<p className="text-content" style={{lineHeight: "24px", marginTop: "20px"}}>
+									Your two-year product development timeline? <span style={{fontWeight: "bold", fontSize: "24px", color: "#f46717"}}>Too slow.</span> 
+									&nbsp;Your company hierarchy? <span style={{fontWeight: "bold", fontSize: "24px", color: "#f46717"}}>Too rigid.</span> 
+									&nbsp;We're here to <span style={{fontWeight: "bold", fontSize: "24px", color: "#f46717"}}>change that.</span> 
 								</p>
 								
 							</div>
@@ -130,17 +131,19 @@ class Landing extends Component {
 						<div className="row">
 						    <div className="col s12">
 								<p className="text-content" style={{lineHeight: "24px"}}>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
-								ncididunt ut labore et dolore magna aliqua. Ut etiam sit amet nisl purus in mollis nunc. Adipiscing 
-								commodo elit at imperdiet dui accumsan sit amet. Turpis nunc eget lorem dolor sed viverra ipsum nunc aliquet.
-								 Egestas sed sed risus pretium. Nec ullamcorper sit amet risus nullam. Non enim praesent elementum facilisis leo vel 
-								 fringilla est ullamcorper. Sed faucibus turpis in eu. Libero nunc consequat interdum varius sit amet mattis vulputate. Hac 
-								<br /><br />
-								 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
-								ncididunt ut labore et dolore magna aliqua. Ut etiam sit amet nisl purus in mollis nunc. Adipiscing 
-								commodo elit at imperdiet dui accumsan sit amet. Turpis nunc eget lorem dolor sed viverra ipsum nunc aliquet.
-								 Egestas sed sed risus pretium. Nec ullamcorper sit amet risus nullam. Non enim praesent elementum facilisis leo vel 
-								 fringilla est ullamcorper. Sed faucibus turpis in eu. Libero nunc consequat interdum varius sit amet mattis vulputate. Hac 
+									In the modern world, businesses have to move at light speed to keep up. You know it. Your competitors know it. So do your employees.
+									As workplace hierarchies are flattened, effective decision makers understand the value of bottom-up innovation. If you're going to stay
+									ahead, you'll need to source ideas from every level of your organization. Re:invent is a platform designed to help you do just that.
+									<br /><br />
+									Re:invent enables the capture and management of ideas from seed to harvest. Collective knowledge is aggregated through discussion and 
+									voting modules, ensuring that only the best ideas rise to the top. Not only will you hear from those best-positioned to spot emerging trends,
+									you'll get the added benefit of an <a href="https://www.forbes.com/sites/kevinkruse/2015/06/22/employee-engagement-strategy/#4d57fc871f60" style={{color: "#f46717", textDecoration: "underline"}}>engaged</a>
+									&nbsp;workforce, increasing day-to-day <a href="https://hbr.org/2013/07/employee-engagement-does-more" style={{color: "#f46717", textDecoration: "underline"}}>efficiency</a>.
+									<br /><br />
+									Demo the application by registering above. If you walk away impressed, contact a member of our team through LinkedIn by clicking one
+									of the images below so that we can discuss tailoring the application to suit your business' needs.
+									<br /><br />
+									What's the big idea? <span style={{fontWeight: "bold", fontSize: "24px", color: "#f46717"}}>Re:invent</span> is here to help you find the answer.
 								</p>
 							</div>
 						</div>

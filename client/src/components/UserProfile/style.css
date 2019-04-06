@@ -81,9 +81,14 @@
 
 .profile-image-container:hover figcaption,
 .profile-image-container.hover figcaption {
-  opacity: .35;
+  opacity: .65;
   -webkit-transform: translateX(0);
   transform: translateX(0);
+}
+
+.ion-android-add {
+  color: #f46717;
+  opacity: 1;
 }
 
 .profile-image-container:hover:before,
@@ -264,7 +269,7 @@
 
 .profile-campaign-item {
   padding-bottom: 30px;
-  transition: transform() 2s;
+  transition: all .3s ease-in-out;
 }
 
 .campaign-borderline {
@@ -273,8 +278,7 @@
 }
 
 .profile-campaign-item:hover {
-  transform: scale(1.0001);
-  color: rgb(23, 23, 23);
+  color: #f46717;
 }
 
 .campaign-link {

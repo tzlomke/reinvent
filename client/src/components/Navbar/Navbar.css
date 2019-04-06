@@ -49,6 +49,10 @@
   font-weight: 900;
 }
 
+.nav-link:active {
+  color: #f46717;
+}
+
 
 
 @media (min-width: 576px) {

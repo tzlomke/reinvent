@@ -51,6 +51,7 @@ function EventForm (props)  {
                         id={"submitEvent"}
                         onClick={props.handleFormSubmit}
                         btnTxt={buttonText}
+                        modalClose ={true}
                     />
                 </form>
             </section>
