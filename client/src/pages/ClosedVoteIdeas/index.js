@@ -6,7 +6,7 @@ import voteAPI from "../../utils/API";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 // import { Col, Row, Container } from "../../components/Grid";
-import { SubTitle } from "../../components/Title";
+import { Title } from "../../components/Title";
 import { CardOutline } from "../../components/NewsCard";
 import Vote from "../../components/Vote"
 
@@ -70,8 +70,8 @@ class ClosedVoteIdeas extends Component {
   render(){
     return (
       <div>
-        <SubTitle 
-          subTitleText="Closed Ideas"
+        <Title 
+          titleText="Closed Ideas"
         />
         <CardOutline
           colSize={ "12" } 

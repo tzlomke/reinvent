@@ -50,7 +50,7 @@ class Detail extends Component {
             </Col>
           </Row>
           <Row>
-            <Col size="md-10 md-offset-1">
+            <Col size="12 md-10 md-offset-1">
               <article>
                 <p className="preThis">
                   {this.state.article.content}
