@@ -79,6 +79,7 @@ module.exports = {
             trendingCampaigns.push(campaign)
           }
         });
+        console.log(trendingCampaigns)
         res.json(trendingCampaigns);
       })
       .catch(err => res.json(err));

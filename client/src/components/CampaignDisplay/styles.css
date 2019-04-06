@@ -52,7 +52,7 @@ button {
 .ideaSynopsis {
   /* color: #f46717; */
   font-size: 0rem;
-  padding: 0% 2%;
+  padding: 0% 3%;
   transition: font-size 1s ease-in-out;
 }
 
@@ -66,6 +66,19 @@ button {
 
 .ideaSynopsisContainer:hover > .synopsisInstructions {
   font-size: 0rem;
+}
+
+.ideaSynopsisContainerFull {
+  height: 100%;
+  padding: 1% 0%;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  border-radius: 1rem;
+}
+
+.ideaSynopsisFull {
+  font-size: 1.5rem;
+  padding: 0% 3%;
 }
 
 .synopsisInstructions {

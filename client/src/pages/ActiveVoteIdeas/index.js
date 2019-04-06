@@ -83,6 +83,7 @@ class ActiveVoteIdeas extends Component {
 
   render(){
     const campaignsFromDB = this.state.campaignsFromDB;
+    console.log(campaignsFromDB);
     return (
       <div>
         <Title 

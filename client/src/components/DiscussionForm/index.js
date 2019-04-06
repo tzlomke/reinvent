@@ -28,7 +28,7 @@ const DiscussionForm = ({ discussionSubmit, discussionFormChange, discussionAuth
               <h5 id="authorDiscIt" name="discussionAuthorInput">{discussionAuthorInput}</h5>
             </section>
             <section id="newCampSynop">
-              <label htmlFor="discussIt">Ad to Discussion</label>
+              <label htmlFor="discussIt">Add to Discussion</label>
               <textarea id="discussIt" name="discussInputArea" value={discussInputArea} onChange={discussionFormChange}></textarea>
             </section>
               <StyleButton
