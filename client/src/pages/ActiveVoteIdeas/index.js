@@ -81,9 +81,18 @@ class ActiveVoteIdeas extends Component {
     this.setState({ campaignExpand: false });
   };
 
+  allowMultipleUsers = (voteData) => {
+    const data = voteData[0];
+    for (var i=0; i<data.items.length; i++) {
+      if (!data.items[i].voters.includes(this.state.userId)) {
+          data.items[i].voted = false;
+        }
+    }
+    return [data];
+  }
+
   render(){
     const campaignsFromDB = this.state.campaignsFromDB;
-    console.log(campaignsFromDB);
     return (
       <div>
         <Title 
@@ -117,7 +126,7 @@ class ActiveVoteIdeas extends Component {
                     onEdit={this.updateVote}
                     isAdmin={true}
                     clientId={this.state.userId}
-                    data={campaign.vote}
+                    data={this.allowMultipleUsers(campaign.vote)}
                     />
                 </CampaignDisplay>
               ):(

@@ -67,6 +67,16 @@ class ClosedVoteIdeas extends Component {
     this.loadCampaigns();
   };
 
+  allowMultipleUsers = (voteData) => {
+    const data = voteData[0];
+    for (var i=0; i<data.items.length; i++) {
+      if (!data.items[i].voters.includes(this.state.userId)) {
+          data.items[i].voted = false;
+        }
+    }
+    return [data];
+  }
+
   render(){
     return (
       <div>
@@ -100,7 +110,7 @@ class ClosedVoteIdeas extends Component {
                   onEdit={this.updateVote}
                   isAdmin={true}
                   clientId={this.state.userId}
-                  data={campaign.vote}
+                  data={this.allowMultipleUsers(campaign.vote)}
                   />
               </CampaignDisplay>
             ):(
