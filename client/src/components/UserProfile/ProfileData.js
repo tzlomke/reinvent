@@ -45,7 +45,7 @@ const ProfileData = (props) => {
 				</header>
 				<section className="user-data">
 					<div className="user-campaigns">
-						<h3 style={{fontFamily: "FatFont"}}>{username}'s Ideas</h3>
+						<h3 style={{fontFamily: "Makhina", display: "inline-block"}}>{username}'s Ideas</h3>
 						<ul className="profile-campaign-list">
 							{userCampaigns.map(campaign => (
 								<li className="campaign" key={campaign._id}>
