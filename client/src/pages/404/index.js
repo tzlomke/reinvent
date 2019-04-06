@@ -22,20 +22,6 @@ let allowHeaderAndContainer = true;
     allowHeaderAndContainer = false;
   }
 })();
-// (() => {
-//   const currentPath = window.location.pathname;
-//   const splitPath = currentPath.split('/');
-//   if(splitPath[1] === 'ideas' && currentPath !== "/404") {
-//     const regExReadyPath = currentPath.replace(/\//g, "\\/");
-//     const regExPath = new RegExp(regExReadyPath);
-//     const newURL = currentPath.replace(regExPath, "/404")
-//     window.location.pathname = newURL;
-//   }
-// })();
-
-// (() => {
-//   window.location.reload();
-// })()
 
 const page404 = () => {
   return(
