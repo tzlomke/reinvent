@@ -13,7 +13,7 @@ button {
 .ideaTitleClick, .ideaAuthor {
   color: black;
   background-position: -500%;
-  transition: background-position 1.5s ease-in-out;
+  transition: background-position .75s ease-in-out;
 }
 
 .ideaTitleClick:hover, .ideaAuthor:hover {
@@ -29,7 +29,7 @@ button {
   width: 0%;
   height: .2rem;
   border-bottom: .2rem solid #f46717;
-  transition: width 1s ease-in-out;
+  transition: width .25s ease-in-out;
 }
 
 .ideaTitleClick:hover + .ideaUnderline {
@@ -46,14 +46,14 @@ button {
   border-left: 2px solid black;
   border-right: 2px solid black;
   border-radius: 1rem;
-  transition: height 1s ease-in-out;
+  transition: height .25s ease-in-out;
 }
 
 .ideaSynopsis {
   /* color: #f46717; */
   font-size: 0rem;
   padding: 0% 3%;
-  transition: font-size 1s ease-in-out;
+  transition: font-size .25s ease-in-out;
 }
 
 .ideaSynopsisContainer:hover {
@@ -85,5 +85,5 @@ button {
   text-align: center;
   font-size: 1.5rem;
   color: #f46717;
-  transition: font-size 1s ease-in-out;
+  transition: font-size .25s ease-in-out;
 }
