@@ -13,13 +13,25 @@ function ArticleForm(props)  {
       submitButton.disabled = true;
     } else {
       submitButton.disabled = false;
-      buttonText = "Add Article"
+      if (props.postType === "edit") {
+        buttonText = "Update Article"
+      } else {
+        buttonText = "Add Article"
+      };
     };
   })();
-  
+
+  var postType = function (type){
+    if (type === "edit") {
+        return "Edit"
+    } else {
+      return "New"
+    };
+  };
+
     return(
       <div className= "modal" id="articleFormModal">
-        <header className ="header">New Post</header>
+        <header className ="header">{postType(props.postType)} Post</header>
           <section id="articleEntry">
             <form id="newArticle">
               <section id="newArticleTitle">

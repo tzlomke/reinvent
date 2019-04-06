@@ -114,5 +114,8 @@ export default {
   // // Saves an article to the database
   saveArticle: function(articlesData) {
   return axios.post("/api/news-feed", articlesData);
+  },
+  editArticle: (id, articlesData) => {
+    return axios.put('/api/news-feed/' + id, articlesData);
   } 
 };
