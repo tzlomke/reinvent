@@ -4,7 +4,7 @@ import API from "../../utils/API";
 import voteAPI from "../../utils/API";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { SubTitle } from "../../components/Title";
+import { Title } from "../../components/Title";
 import { CardOutline } from "../../components/NewsCard";
 import Vote from "../../components/Vote";
 
@@ -106,8 +106,8 @@ class TrendingVoteIdeas extends Component {
     const campaignsFromDB = this.state.campaignsFromDB;
     return (
       <div>
-        <SubTitle 
-          subTitleText="Trending Ideas"
+        <Title 
+          titleText="Trending Ideas"
         />
         <CardOutline
           colSize={ "12" } 
