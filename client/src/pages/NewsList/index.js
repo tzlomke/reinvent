@@ -91,7 +91,7 @@ handleFormSubmit = event => {
     return (
       <Container>
         <StyleButton
-          btnTxt="Post an Article"
+          btnTxt="Post an Article +"
           dataTarget="articleFormModal"
           modal= {true}
         />

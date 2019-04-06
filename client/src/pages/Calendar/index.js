@@ -109,7 +109,7 @@ class Calendar extends Component {
         <Container>
             {/* <button data-target="eventFormModal" className="btn modal-trigger">Add an Event</button> */}
             <StyleButton
-                btnTxt="Add an Event"
+                btnTxt="Add an Event +"
                 dataTarget="eventFormModal"
                 modal= {true}
             />

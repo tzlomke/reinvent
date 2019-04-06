@@ -63,7 +63,7 @@ class Resources extends Component {
         <Container>
             {/* <button data-target="resourceFormModal" className="btn modal-trigger">Add a Resource Link</button> */}
             <StyleButton
-                btnTxt="Add a Resource Link"
+                btnTxt="Add a Resource Link +"
                 dataTarget="resourceFormModal"
                 modal= {true}
             />

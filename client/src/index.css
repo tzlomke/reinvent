@@ -31,3 +31,12 @@ body {
 .pageTitle {
   font-family: "Makhina";
 }
+
+.modal input[type=text]:focus  {
+  border-bottom: 1px solid #f46717 !important;
+  box-shadow: 0 1px #f46717 !important;
+}
+
+.modal input[type=text]:focus + label{
+  color: #f46717 !important;
+}
