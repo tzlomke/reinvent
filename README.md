@@ -75,7 +75,7 @@ All authors contributed to front end styling, and general front-end support. Add
 
 * **Akop Karapetyan** - *News-feed full stack, awesome button/link component, seed file, and general DB creation* - [Jack87](https://github.com/Jack87)
 
-* **Taylor Zlomke** - *All security-related protocl, splash page, and general styling tone, profile page* - [tzlomke](https://github.com/tzlomke)
+* **Taylor Zlomke** - *All security-related protocol, splash page, general design and UI, profile page full stack* - [tzlomke](https://github.com/tzlomke)
 
 * **Andy Marshall** - *Navigation, and front end styling* - [andrew-marshall1](https://github.com/andrew-marshall1)
 
