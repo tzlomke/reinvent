@@ -20,11 +20,9 @@ class TrendingVoteIdeas extends Component {
 
   loadUser = () => {
     let authenticatedUserId = this.props.auth.user.id
-    console.log(this.props.auth.user.id);
 		API.getUserById(authenticatedUserId)
 			.then(response => {
         let userData = response.data[0]
-        console.log(userData);
 				this.setState({
 					userId: userData._id,
 					discussionAuthorInput: `${userData.username}`,
@@ -52,8 +50,6 @@ class TrendingVoteIdeas extends Component {
     setTimeout(() =>{
       data.campaign =[this.campaignId];
       voteAPI.saveVote(data).then(res => {
-          console.log(res.data._id);
-          console.log(res.data);
           API.campaignPut(this.campaignId, {vote: res.data._id})
           .then(res=>console.log(res.data))
       });
@@ -149,6 +145,7 @@ class TrendingVoteIdeas extends Component {
                   author={campaign.author}
                   synopsis={campaign.synopsis}
                   key={campaign._id}
+                  id={campaign._id}
                   />
                 )
               ))
