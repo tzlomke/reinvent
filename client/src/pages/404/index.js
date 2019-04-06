@@ -12,7 +12,8 @@ import {  StyleLink } from "../../components/StyleButton";
 // Before this function, since ideas is not an exact path, 404 would load the header twice
 // Once in the ideas page, and once in the 404 page.
 (() => {
-  const currentPath = window.location.pathname;
+  const currentPath = window.location.pathname.split('/');
+  console.log(currentPath);
   if(currentPath !== "/ideas") {
   // The if() below is highly problematic, and reroutes like crazy
   // Since the ideas path is really the only path that has issues with 404, the code has been rewritten as above
