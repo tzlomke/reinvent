@@ -161,14 +161,14 @@ class IdeaDiscussion extends Component {
                     isAdmin={true}
                     clientId={this.state.userId}
                     />
+                  </CampaignDisplay>
                   <DiscussionForm 
                     discussionSubmit={this.handleDiscussionSubmit}
                     discussionFormChange={this.handleChange}
                     discussionTitleInput={this.state.discussionTitleInput}
                     discussionAuthorInput={this.state.discussionAuthorInput}
                     discussInputArea={this.state.discussInputArea}
-                  />
-                  </CampaignDisplay>
+                    />
                   {campaignClicked.comments.reverse().map((discussion, index) => 
                     <DiscussionDisplay
                       key={index}
