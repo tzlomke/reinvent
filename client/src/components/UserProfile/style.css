@@ -81,7 +81,7 @@
 
 .profile-image-container:hover figcaption,
 .profile-image-container.hover figcaption {
-  opacity: .65;
+  opacity: .50;
   -webkit-transform: translateX(0);
   transform: translateX(0);
 }

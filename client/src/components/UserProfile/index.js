@@ -12,15 +12,18 @@ import { Container } from "../../components/Grid";
 import CampaignForm from "../CampaignForm";
 import { CardOutline } from "../../components/NewsCard";
 import "./style.css";
+import { Title, /* SubTitle */ } from "../../components/Title";
+
 
 class UserProfile extends Component {
 
 	state = {
-		userId: "",
-		userFullName: "",
-		username: "",
+		userId: '',
+		userFullName: '',
+		username: '',
+		userFirstName:'',
 		userCampaigns: [],
-		profileImage: "",
+		profileImage: '',
 		selectedFile: null,
 		showImageUploadModal: false,
 		titleInput: '',
@@ -124,6 +127,7 @@ class UserProfile extends Component {
 				let userData = response.data[0]
 				this.setState({
 					userId: userData._id,
+					userFirstName: userData.firstName,
 					userFullName: `${userData.firstName} ${userData.lastName}`,
 					authorInput: userData.username,
 					username: userData.username,
@@ -138,7 +142,9 @@ class UserProfile extends Component {
 						profileImage: defaultProfileImage
 					});
 				};
-			});
+			}).then(
+				this.setUserProfile()
+			);
 	};
 
 	handleFormSubmit = (event) => {
@@ -170,17 +176,26 @@ class UserProfile extends Component {
 		let usernameParam = userParam.split("/")[2];
 		if (this.state.username !== usernameParam) {
 			this.loadUser();
+
 		};
-   	};
+	};
+	   
+	setUserProfile = () => {
+		if (this.state.userId !== this.props.auth.user.id) {
+			return this.state.userFirstName + "'s "
+		} else {
+			return "My "
+		}
+	}
 
 	render() {
 		const { user } = this.props.auth
 
 		return(
 			<Container>
-				{/* <Title 
-          			titleText="My Profile"
-				/> */}
+				<Title 
+          			titleText={this.setUserProfile() + "Profile"}
+				/>
 				<CardOutline
 					colSize={ "12" } 
 					cardColor={ "" }
