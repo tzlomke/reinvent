@@ -26,14 +26,17 @@ class Detail extends Component {
 
   componentDidMount() {
     API.getArticle(this.props.match.params.id)
-      .then(res => 
+      .then(res => {
         this.setState({ 
           article: res.data, 
           inputTitle: res.data.title, 
           inputAuthor: res.data.author, 
           inputContent: res.data.content 
-        }))
-      .catch(err => console.log(err));
+        })})
+      .catch(err => {
+        console.log(err)
+        window.location.pathname = '404';
+      });
     window.$('.modal').modal();
   };
 
