@@ -79,7 +79,7 @@ All authors contributed to front end styling, and general front-end support. Add
 
 * **Andy Marshall** - *Navigation, and front end styling* - [andrew-marshall1](https://github.com/andrew-marshall1)
 
-* **Brant Keener** - *Ideas/discussion linking, 404 handling, general DB creation* - [funkedee](https://github.com/funkedee)
+* **Brant Keener** - *Ideas/discussion linking, 404 handling, general DB creation* - [BrantKeeer](https://github.com/BrantKeener)
 
 ## License
 
