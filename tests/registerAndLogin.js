@@ -58,6 +58,21 @@ module.exports = {
     browser
       // For testing production:
       // .url('http://reinvent-io.herokuapp.com/')
+      // .assert.containsText('.logo-text', 'Re:invent')
+      // .url('http://reinvent-io.herokuapp.com/news-feed')
+      // .assert.containsText('.logo-text', 'Re:invent')
+      // .url('http://reinvent-io.herokuapp.com/ideas/active')
+      // .assert.containsText('.logo-text', 'Re:invent')
+      // .url('http://reinvent-io.herokuapp.com/ideas/closed')
+      // .assert.containsText('.logo-text', 'Re:invent')
+      // .url('http://reinvent-io.herokuapp.com/ideas/trending')
+      // .assert.containsText('.logo-text', 'Re:invent')
+      // .url('http://reinvent-io.herokuapp.com/ideas/calendar')
+      // .assert.containsText('.logo-text', 'Re:invent')
+      // .url('http://reinvent-io.herokuapp.com/ideas/resources')
+      // .assert.containsText('.logo-text', 'Re:invent')
+      // .url('http://reinvent-io.herokuapp.com/ideas/profile')
+      // .assert.containsText('.logo-text', 'Re:invent')
 
       // For testing locally:
       .url('http://localhost:3000/')
@@ -85,7 +100,7 @@ module.exports = {
       // .url('http://reinvent-io.herokuapp.com/')
 
       // For testing locally:
-      .url('http://localhost:3000/')
+      // .url('http://localhost:3000/')
       .waitForElementVisible('.auth-links')
       .click('.register')
       .waitForElementVisible('#firstName')
