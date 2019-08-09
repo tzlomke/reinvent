@@ -57,7 +57,7 @@ class Landing extends Component {
 									</div>
 									
 									<div className="col s12 center-align links-container">
-										<a className="auth-links button" href="/register"
+										<a className="auth-links button register" href="/register"
 											style={{
 												width: "150px",
 												borderRadius: "3px",
@@ -67,7 +67,7 @@ class Landing extends Component {
 											Register
 										</a>
 											
-										<a className="auth-links button" href="/login"
+										<a className="auth-links button login" href="/login"
 											style={{
 												marginLeft: "5rem",
 												width: "150px",
