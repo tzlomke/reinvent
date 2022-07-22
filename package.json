@@ -30,7 +30,7 @@
     "bootstrap": "^4.3.1",
     "dotenv": "^7.0.0",
     "express": "^4.16.3",
-    "file-type": "^10.9.0",
+    "file-type": "^16.5.4",
     "fs": "0.0.1-security",
     "if-env": "^1.0.4",
     "is-empty": "^1.2.0",
